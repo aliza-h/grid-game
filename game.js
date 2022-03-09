@@ -33,4 +33,3 @@ for (let row = 1; row <= 10; row++) { // creates the rows
     // ID
     // obstacle/no obstacle
     // player/no player
-
