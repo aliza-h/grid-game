@@ -1,21 +1,25 @@
 #game-board {
     display: flex;
     flex-direction: column;
-    height: auto;
-    width: auto;
+    align-items: center;
+    justify-content: center;
+    height: 60vw;
+    width: 60vw;
     border: 2px solid red;
 }
 
 .game-row {
     display: flex;
-    height: 10px;
-    width: 60px;
+    align-items: center;
+    justify-content: space-around;
+    height: 6vw;
+    width: 55vw;
     border: 1px solid blue;
 }
 
 .game-cell {
     display: flex;
-    height: 5px;
-    width: 5px;
+    height: 5vw;
+    width: 5vw;
     border: 1px solid blue;
 }
