@@ -6,14 +6,18 @@
 
 let gameBoard = document.getElementById("game-board");
 
-for (let row = 0; row < 10; row++) {
+let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+for (let row = 1; row <= 10; row++) {
     let gameRow = document.createElement("div");
     gameRow.className = "game-row";
+    gameRow.id = row;
     gameBoard.appendChild(gameRow);
 
-    for (let cell = 0; cell < 10; cell++) {
+    for (let col = 1; col <= 10; col++) {
         let gameCell = document.createElement("div");
         gameCell.className = "game-cell";
+        gameCell.id = alphabetStr[row - 1] + col;
         gameRow.appendChild(gameCell);
     }
 
