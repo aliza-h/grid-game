@@ -4,7 +4,7 @@ let cellArr = []; // the array of cell objects
 let shipStats = [{
     "shipType":"basic",
     "shipHP":100,
-    
+
 }];
 
 
@@ -98,6 +98,20 @@ function generateGrid(rows,colunms){
             });
         }
     }
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
 }
 
 generateGrid(10,10);

@@ -18,8 +18,15 @@
     <body>
         <h1>Grid Game</h1>
 
-        <div id="game-board">
+        <div id="game-board"  ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- game board goes here -->
+        </div>
+
+        <div id="characters">
+          <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)">
+          <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)">
+          <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)">
+          <img src="images/Teleporter.jpeg" id="Teleporter"  draggable="true" ondragstart="drag(event)">
         </div>
 
         <script src="game.js"></script>
