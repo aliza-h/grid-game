@@ -1,5 +1,6 @@
 let cellArr = []; // the array of cell objects
-
+let numberOfRows = 0;
+let numberOfColumns = 0;
 
 let shipStats = [{
     "shipType":"basic",
@@ -71,6 +72,54 @@ function attactCell(cell,color,damage)//cell is the cell that is being attacked
     }
 }
 
+function attackRow(yourColor, startAt, toRight, damage)
+{
+    if (toRight)
+    {
+        let cellStart = startAt;
+        let endAt = numberOfColumns*(Math.trunc(startAt/numberOfColumns)+1)//you may need to add/subtract one
+
+        while (cellStart <= endAt)
+        {
+            cellStart++;
+            attactCell(cellStart,yourColor,damage);
+        }
+    }
+    else
+    {
+        let cellStart = startAt;
+        let endAt = numberOfColumns*(Math.trunc(startAt/numberOfColumns))+1//you may need to add or subtract one
+
+        while (cellStart >= endAt)
+        {
+            cellStart--;
+            attactCell(cellStart,yourColor,damage);
+        }
+    }
+}
+
+function attackColumn(yourColor,startAt,down,damage)
+{
+    if (down)
+    {
+        let cellStart = startAt;
+        while (startAt <= numberOfColumns*numberOfRows)
+        {
+            attactCell(cellStart,yourColor,damage);
+            cellStart+=numberOfRows;
+        }
+    }
+    else
+    {
+        let cellStart = startAt;
+        while (startAt > 0)
+        {
+            attactCell(cellStart,yourColor,damage);
+            cellStart-=numberOfRows;
+        }
+    }
+}
+
 function generateGrid(rows,colunms){
     let gameBoard = document.getElementById("game-board"); // the game board
 
@@ -98,12 +147,15 @@ function generateGrid(rows,colunms){
             });
         }
     }
+
+    numberOfRows = rows;
+    numberOfColumns = colunms;
 }
 
 generateGrid(10,10);
 chooseYourShips();
 
-
+//console.log(25%13);
 // EACH CELL HAS
     // ID
     // obstacle/no obstacle
