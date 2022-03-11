@@ -66,3 +66,20 @@ img{
 	z-index:  7;
 	display: none;
 }
+/*color and name fields */
+button{
+    margin-left: 23%
+}
+
+#player2Color, #player2Name{
+    margin-left: 50%;
+}
+
+#words1{
+    margin-left: 50%;
+    margin-top: -7%;
+}
+
+#player1{
+    margin-left: 8%;
+}

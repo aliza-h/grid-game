@@ -117,7 +117,55 @@ function drop(ev) {
 generateGrid(10,10);
 chooseYourShips();
 
+let colorwheel;
+let colorWell;
 
+window.addEventListener("load", startup, false);
+
+function startup() {
+  colorwheel = document.querySelector("#player1Color");
+  colorwheel.addEventListener("input", updateFirst, false);
+  colorwheel.select();
+
+  colorWell = document.querySelector("#player2Color");
+  colorWell.addEventListener("input", updateSecond, false);
+  colorWell.select();
+}
+
+function updateFirst(event) {
+    let color1 = document.querySelectorAll("#A1, #A2, #B1, #B2, #C1, #C2, #D1, #D2, #E1, #E2, #F1, #F2, #G1, #G2, #H1, #H2, #I1, #I2, #J1, #J2");
+    for (let i = 0; i < color1.length; i++){
+      if (color1){
+          color1[i].style.borderColor = event.target.value;
+    }
+  }
+}
+function updateSecond(event){
+    let color2 = document.querySelectorAll("#A9, #A10, #B9, #B10, #C9, #C10, #D9, #D10, #E9, #E10, #F9, #F10, #G9, #G10, #H9, #H10, #I9, #I10, #J9, #J10");
+  for (let i = 0; i < color2.length; i++){
+    if (color2){
+        color2[i].style.borderColor = event.target.value;
+  }
+  }
+}
+
+
+let submit = document.getElementById("submit")
+let player1 = document.getElementById("player1Name")
+let player2 = document.getElementById("player2Name")
+let player1Color = document.getElementById("player1Color")
+let player2Color = document.getElementById("player2Color")
+submit.addEventListener('click', event => {
+   
+    if( player1.value == player2.value){
+        alert("Don't have the same name");
+        document.location.reload();
+    }
+    if (player1Color.value == player2Color.value){
+        alert("Don't pick the same color");
+        document.location.reload();
+    }
+})
 // EACH CELL HAS
     // ID
     // obstacle/no obstacle

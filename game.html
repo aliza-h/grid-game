@@ -17,7 +17,37 @@
     </head>
     <body>
         <h1>Grid Game</h1>
-
+        <div class = "form">
+            <form id = "player1">
+                <div class = "words">Please enter name and color for the game</div>
+             <input type="text" id = "player1Name" required>
+              <br>
+              <br>
+              <input type="color" value="#000000" id="player1Color" list="Colors" required>
+                 <datalist id="Colors">
+                     <option>#ff0000</option>
+                 <option>#00ff00</option>
+                 <option>#0000ff</option>
+                 <option>#ffd659</option>
+                 </datalist>
+                 <br>
+                 <br>
+                 <div id = "words1">Please enter name and color for the game</div>
+                 <input type="text" id = "player2Name" required>
+                 <br>
+                 <br> 
+                 <input type="color" value="#000000" id="player2Color" list="test" required>
+                  <datalist id="test">
+                 <option>#ff0000</option>
+                 <option>#00ff00</option>
+                 <option>#0000ff</option>
+                 <option>#ffd659</option>
+                 </datalist>      
+             <br>
+             <br>
+         <button type = "submit" id = "submit" onclick="this.style.visibility = 'hidden'">submit</button>
+         </form>
+     </div>
         <div id="game-board"  ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- game board goes here -->
         </div>
