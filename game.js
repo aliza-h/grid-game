@@ -151,8 +151,8 @@ function generateGrid(rows,colunms){
     numberOfRows = rows;
     numberOfColumns = colunms;
 }
-
-generateGrid(10,10);
+ 
+generateGrid(10,15);
 chooseYourShips();
 
 //console.log(25%13);
