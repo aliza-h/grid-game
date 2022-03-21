@@ -1,10 +1,11 @@
+// ARH: I don't know why the board styling isn't showing up. It worked before, but now it doesn't, and that is SUPREMELY stupid.
+
+
 let cellArr = []; // the array of cell objects
 
-
 let shipStats = [{
-    "shipType":"basic",
-    "shipHP":100,
-    
+    "shipType": "basic",
+    "shipHP": 100,
 }];
 
 
@@ -13,7 +14,7 @@ function drawActors()//unsure how to impliment at this point, but it should upda
     cellArr.forEach(function doIt() {
         if (hasObstacle)
         {
-            //draw a tree
+            // draw a tree
         }
 
         if (hasAnything)
@@ -71,18 +72,20 @@ function attactCell(cell,color,damage)//cell is the cell that is being attacked
     }
 }
 
-function generateGrid(rows,colunms){
+
+// ARH: This function takes the parameters (rows and columns) and creates a game board with [rows] cells in the y-axis and [columns] cells in the x-axis.
+function generateGrid(rows, columns){ // ARH: corrected the spelling of "columns" cuz I'm OCD like that :D
     let gameBoard = document.getElementById("game-board"); // the game board
 
     let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     for (let row = 1; row <= rows; row++) { // creates the rows
         let gameRow = document.createElement("div");
-        gameRow.className = "game-row";
+        gameRow.className = "game-row"; // adds class game-row so I can style it
         gameRow.id = row;
         gameBoard.appendChild(gameRow); // adds row to board
 
-        for (let col = 1; col <= colunms; col++) { // creates cells
+        for (let col = 1; col <= columns; col++) { // creates cells
             let gameCell = document.createElement("div");
             gameCell.className = "game-cell";
             gameCell.id = alphabetStr[row - 1] + col;
@@ -100,7 +103,17 @@ function generateGrid(rows,colunms){
     }
 }
 
-generateGrid(10,10);
+// ARH: This is where I'm gonna test the JS prompt
+// ...On second thought, I don't need this to be a PROMPT. Imma comment this out for now.
+/*
+let squareSize = prompt("Enter the desired square dimension (just one integer). Thx m8", "0");
+generateGrid(parseInt(string, squareSize), parseInt(string, squareSize));
+*/
+
+
+//generateGrid(10, 10);
+//generateGrid(15, 15);
+//generateGrid(20, 20);
 chooseYourShips();
 
 
