@@ -40,6 +40,10 @@
             To do that, I'll need to do some serious math.
             */
 
+            body {
+                background-color: #34BCAA;
+            }
+
             #game-board {
                 display: flex;
                 flex-direction: column;
@@ -47,7 +51,10 @@
                 justify-content: center;
                 height: auto;
                 width: auto;
-                border: 2px solid red;
+                padding-top: 2vw;
+                padding-bottom: 2vw;
+                border: 2px solid black;
+                background-color: #AFF6ED;
             }
 
             .game-row {
@@ -58,14 +65,19 @@
                 width: 55vw;*/
                 height: auto;
                 width: auto;
-                border: 1px solid green;
+                /*border: 1px solid green;*/
             }
 
             .game-cell {
                 display: flex;
                 height: 4vw;
                 width: 4vw;
-                border: 1px solid blue;
+                margin: 1px;
+                border: 2px solid black;
+            }
+
+            .game-cell:hover {
+                background-color: #dedede;
             }
 
         </style>

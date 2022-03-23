@@ -111,7 +111,7 @@ generateGrid(parseInt(string, squareSize), parseInt(string, squareSize));
 */
 
 
-//generateGrid(10, 10);
+generateGrid(10, 10);
 //generateGrid(15, 15);
 //generateGrid(20, 20);
 chooseYourShips();
