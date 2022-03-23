@@ -120,6 +120,130 @@ function attackColumn(yourColor,startAt,down,damage)
     }
 }
 
+function attactInARange(at,range)
+{
+    let ups = range;
+    let rights = 0;
+    let downs = 0;
+    let lefts = 0;
+
+    while (ups > 0)
+    {
+        let adding = at;
+        let goUps = ups;
+        let goRights = rights;
+
+        while (goUps > 0 && !isAtTop(adding))
+        {
+            adding -= numberOfRows;
+            //add event listener to cell "adding"
+            goUps--;
+        }
+
+        while (goRights > 0 && !isAtRight(adding))
+        {
+            adding++;
+            //add event listener to cell "adding"
+            goRights--;
+        }
+        ups--;
+        rights++;
+    }
+
+    while (rights > 0)
+    {
+        let adding = at;
+        let goRights = rights;
+        let goDowns = downs;
+
+        while (goRights > 0 && !isAtRight(adding))
+        {
+            adding++;
+            //add event listener to cell "adding"
+            goRights--;
+        }
+
+        while (goDowns > 0 && !isAtBottom(adding))
+        {
+            adding += numberOfColumns
+            //add event listener to cell "adding"
+            goDowns--;
+        }
+        rights--;
+        downs++;
+    }
+
+    while (downs > 0)
+    {
+        let adding = at;
+        let goDowns = downs;
+        let goLefts = lefts;
+
+        while (goDowns > 0 && !isAtBottom(adding))
+        {
+            adding += numberOfColumns
+            //add event listener to cell "adding"
+            goDowns--;
+        }
+
+        while (goLefts > 0 && !isAtLeft)
+        {
+            adding--;
+            //add event listener to cell "adding"
+            goLefts--;
+        }
+
+        downs--;
+        lefts++;
+    }
+    
+    while (lefts > 0)
+    {
+        let adding = at;
+        let goLefts = lefts;
+        let goUps = ups;
+
+        while (goLefts > 0 && !isAtLeft)
+        {
+            adding--;
+            //add event listener to cell "adding"
+            goLefts--;
+        }
+
+        while (goUps > 0 && !isAtTop(adding))
+        {
+            adding -= numberOfRows;
+            //add event listener to cell "adding"
+            goUps--;
+        }
+    }
+}
+
+function isAtEdge(num)
+{
+    return isAtTop(num) && isAtBottom(num) && isAtRight(num) && isAtLeft(num);
+}
+
+function isAtTop(num)
+{
+    return num < numberOfRows;
+}
+
+function isAtLeft(num)
+{
+    return num % numberOfRows == 0;
+}
+
+function isAtRight(num)
+{
+   return num % numberOfRows == (numberOfRows - 1);
+}
+
+function isAtBottom(num)
+{
+    return num > (numberOfColumns-1)*numberOfRows;
+}
+
 function generateGrid(rows,colunms){
     let gameBoard = document.getElementById("game-board"); // the game board
 
