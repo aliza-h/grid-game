@@ -19,6 +19,51 @@
     <body>
         <h1>Grid Game</h1>
 
+        <!-- ARH: This is stuff Aleks added. I'll style it later. -->
+
+        <form id = "players">
+            <div class="column">
+                <div class="row">
+
+                    <div class="player-input" id="player1">
+                        <h3>Player 1</h3>
+                        <p>Please enter name and color for the game</p>
+                        <input type="text" class="player-names" id = "player1Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player1Color" list="Colors" required>
+
+                        <datalist id="Colors">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+
+                    <div class="player-input" id="player2">
+                        <h3>Player 2</h3>
+                        <p>Please enter name and color for the game</p>
+
+                        <input type="text" class="player-names" id = "player2Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player2Color" list="test" required>
+                            
+                        <datalist id="test">
+                            <option>#ff0000</option>                    <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+                </div>
+
+
+                    <button type = "submit" id = "submit" onclick="this.style.visibility = 'hidden'">submit</button>
+            </div>
+        </form>
+
+
+        <!-- ^ ARH: This is stuff Aleks added. I'll style it later. ^ -->
+
         <div id="game-board">
             <!-- game board goes here -->
         </div>
@@ -78,6 +123,120 @@
             .game-cell:hover {
                 background-color: #C4FFF9;
             }
+
+            /* ARH: I'll style this stuff */
+            form {
+                display: flex;
+                border: 2px solid red;
+                justify-content: center;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 100%
+            }
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+
+            .players {
+                display: flex;
+                flex-direction: row;
+            }
+
+            h3 {
+                margin-top: 1vh;
+                margin-bottom: 1vh;
+            }
+
+            .player-input {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid blue;
+                width: 40vw;
+            }
+
+            .player-names {
+                width: 25vw;
+                height: 4vh;
+                margin-bottom: 2vh;
+            }
+
+            .player-colors {
+                width: 25vw;
+                height: 4vh;
+                margin-bottom: 2vh;
+            }
+
+            #submit { /* Change font + rounded border + color */
+                width: 25vw;
+                height: 6vh;
+                margin-bottom: 2vh;
+            }
+
+            #characters {
+                float: left;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 35vw;
+                width: 15vw;
+                border: 2px solid red;
+            }
+
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                height: 5vw;
+                width: 5vw;
+            }
+
+            /* Attack */
+            .red_background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                opacity: 0.5;
+                z-index:  7;
+                display: none;
+            }
+
+            /* Movement */
+            .blue_background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: blue;
+                opacity: 0.5;
+                z-index:  7;
+                display: none;
+            }
+
+            /*color and name fields */
+            /*
+            button {
+                margin-left: 23%
+            }
+
+            #player2Color, #player2Name {
+                margin-left: 50%;
+            }
+
+            #player1 {
+                margin-left: 8%;
+            }
+            */
+
+            /* ^ ARH: I'll style this stuff ^ */
 
         </style>
 
