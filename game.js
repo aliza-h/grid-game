@@ -74,7 +74,7 @@ function attactCell(cell,color,damage)//cell is the cell that is being attacked
 
 
 // ARH: This function takes the parameters (rows and columns) and creates a game board with [rows] cells in the y-axis and [columns] cells in the x-axis.
-function generateGrid(rows, columns){ // ARH: corrected the spelling of "columns" cuz I'm OCD like that :D
+function generateGrid(rows, columns) { // ARH: corrected the spelling of "columns" cuz I'm OCD like that :D
     let gameBoard = document.getElementById("game-board"); // the game board
 
     let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
