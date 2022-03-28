@@ -3,22 +3,20 @@ let numberOfRows = 0;
 let numberOfColumns = 0;
 
 let shipStats = [{
-    "shipType":"basic",
-    "shipHP":100,
-    
+    "shipType": "basic",
+    "shipHP": 100,
+
 }];
 
 
 function drawActors()//unsure how to impliment at this point, but it should update every time an action happens
 {
     cellArr.forEach(function doIt() {
-        if (hasObstacle)
-        {
+        if (hasObstacle) {
             //draw a tree
         }
 
-        if (hasAnything)
-        {
+        if (hasAnything) {
             //color = shipColor
             //whichShip = shipType
             //draw ship based on kind and color
@@ -27,20 +25,18 @@ function drawActors()//unsure how to impliment at this point, but it should upda
     })
 }
 
-function addShipTo(thisCell,thisShip,thisColor)
-{
+function addShipTo(thisCell, thisShip, thisColor) {
     cellArr[thisCell] = {
-        "id":thisCell-1,//verify that this is what you want
-        "hasAnything":false,
-        "hasObstacle":false,
-        "shipType":thisShip,
-        "shipColor":thisColor,
-        "HP":shipStats[thisShip].shipHP,
+        "id": thisCell - 1,//verify that this is what you want
+        "hasAnything": false,
+        "hasObstacle": false,
+        "shipType": thisShip,
+        "shipColor": thisColor,
+        "HP": shipStats[thisShip].shipHP,
     }
 }
 
-function chooseYourShips()
-{
+function chooseYourShips() {
     blueShipsToChoose = 3;
     redShipsToChoose = 3;
     blueShipsToPlace = 0;
@@ -61,111 +57,135 @@ function chooseYourShips()
     //move onto the ship placing phase
 }
 
-function attactCell(cell,color,damage)//cell is the cell that is being attacked
+function attactCell(cell, color, damage)//cell is the cell that is being attacked
 {
-    if (cellArr[cell].hasAnything)
-    {
-        if (cellArr[cell].shipColor != color)
-        {
+    if (cellArr[cell].hasAnything) {
+        if (cellArr[cell].shipColor != color) {
             cellArr[cell].HP -= damage;
         }
     }
 }
 
-function attackRow(yourColor, startAt, toRight, damage)
-{
-    if (toRight)
-    {
+function attackRow(yourColor, startAt, toRight, damage) {
+    if (toRight) {
         let cellStart = startAt;
-        let endAt = numberOfColumns*(Math.trunc(startAt/numberOfColumns)+1)//you may need to add/subtract one
+        let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns) + 1)//you may need to add/subtract one
 
-        while (cellStart <= endAt)
-        {
+        while (true) {
+            if (isAtRight(cellStart))break;
             cellStart++;
-            attactCell(cellStart,yourColor,damage);
+            let cell = document.getElementById(cellStart);
+            cell.style.borderColor = "red";
+            attactCell(cellStart, yourColor, damage);
         }
     }
-    else
-    {
+    else {
         let cellStart = startAt;
-        let endAt = numberOfColumns*(Math.trunc(startAt/numberOfColumns))+1//you may need to add or subtract one
+        let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns)) + 1//you may need to add or subtract one
 
-        while (cellStart >= endAt)
-        {
+        while (cellStart >= endAt) {
+            if(isAtLeft(cellStart))break;
             cellStart--;
-            attactCell(cellStart,yourColor,damage);
+            let cell = document.getElementById(cellStart);
+            cell.style.borderColor = "red";
+            attactCell(cellStart, yourColor, damage);
         }
     }
 }
 
-function attackColumn(yourColor,startAt,down,damage)
-{
-    if (down)
-    {
+function attackColumn(yourColor, startAt, down, damage) {
+    if (down) {
         let cellStart = startAt;
-        while (startAt <= numberOfColumns*numberOfRows)
-        {
-            attactCell(cellStart,yourColor,damage);
-            cellStart+=numberOfRows;
+        while (true) {
+            if(isAtBottom(cellStart))break;
+            let cell = document.getElementById(cellStart);
+            console.log(cell);
+            cell.style.borderColor = "red";
+            attactCell(cellStart, yourColor, damage);
+            cellStart += numberOfColumns;
         }
     }
-    else
-    {
+    else {
         let cellStart = startAt;
-        while (startAt > 0)
-        {
-            attactCell(cellStart,yourColor,damage);
-            cellStart-=numberOfRows;
+        while (true) {
+            if (isAtTop(cellStart))break;
+            let cell = document.getElementById(cellStart);
+            cell.style.borderColor = "red";
+            attactCell(cellStart, yourColor, damage);
+            cellStart -= numberOfColumns;
         }
     }
 }
 
-function attactInARange(at,range)
-{
+function attackInARange(at, range) {
     let ups = range;
     let rights = 0;
     let downs = 0;
     let lefts = 0;
 
-    while (ups > 0)
+    if(isAtTop(at))
     {
+        rights = ups;
+        ups = 0;
+    }
+
+    while (ups > 0) {
         let adding = at;
         let goUps = ups;
         let goRights = rights;
 
-        while (goUps > 0 && !isAtTop(adding))
-        {
-            adding -= numberOfRows;
+        while (goUps > 0) {
+            if(isAtTop(adding))break;
+            adding -= numberOfColumns;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
+            console.log("colored " + adding);
             //add event listener to cell "adding"
             goUps--;
+            
         }
 
-        while (goRights > 0 && !isAtRight(adding))
-        {
+        while (goRights > 0) {
+            if(isAtRight(adding))break;
             adding++;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goRights--;
+            
         }
         ups--;
         rights++;
     }
 
-    while (rights > 0)
+    if (isAtRight(at))
     {
+        downs = rights;
+        rights = 0;
+    }
+    
+    console.log("here");
+    //sleep(1000);
+
+    while (rights > 0) {
         let adding = at;
         let goRights = rights;
         let goDowns = downs;
 
-        while (goRights > 0 && !isAtRight(adding))
-        {
+        while (goRights > 0) {
+            if(isAtRight(adding))break;
             adding++;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goRights--;
         }
 
-        while (goDowns > 0 && !isAtBottom(adding))
-        {
+        while (goDowns > 0) {
+            if(isAtBottom(adding))break;
             adding += numberOfColumns
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goDowns--;
         }
@@ -173,22 +193,33 @@ function attactInARange(at,range)
         downs++;
     }
 
-    while (downs > 0)
+    console.log("here");
+
+    if (isAtBottom(at))
     {
+        lefts = downs;
+        downs = 0;
+    }
+
+    while (downs > 0) {
         let adding = at;
         let goDowns = downs;
         let goLefts = lefts;
 
-        while (goDowns > 0 && !isAtBottom(adding))
-        {
+        while (goDowns > 0) {
+            if(isAtBottom(adding))break;
             adding += numberOfColumns
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goDowns--;
         }
 
-        while (goLefts > 0 && !isAtLeft)
-        {
+        while (goLefts > 0) {
+            if(isAtLeft(adding))break;
             adding--;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goLefts--;
         }
@@ -196,87 +227,121 @@ function attactInARange(at,range)
         downs--;
         lefts++;
     }
-    
-    while (lefts > 0)
-    {
+
+console.log("here");
+
+    if (isAtLeft(at))
+        return;
+
+    while (lefts > 0) {
         let adding = at;
         let goLefts = lefts;
         let goUps = ups;
 
-        while (goLefts > 0 && !isAtLeft)
-        {
+        while (goLefts > 0) {
+            if(isAtLeft(adding))break;
             adding--;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goLefts--;
         }
 
-        while (goUps > 0 && !isAtTop(adding))
-        {
-            adding -= numberOfRows;
+        while (goUps > 0) {
+            if(isAtTop(adding))break;
+            adding -= numberOfColumns;
+            let cell = document.getElementById(adding);
+            cell.style.borderColor = "red";
             //add event listener to cell "adding"
             goUps--;
         }
+        lefts--;
+        ups++;
     }
+
+    console.log("here");
 }
 
-function isAtEdge(num)
-{
+function isAtEdge(num) {
     return isAtTop(num) && isAtBottom(num) && isAtRight(num) && isAtLeft(num);
 }
 
-function isAtTop(num)
-{
-    return num < numberOfRows;
+function isAtTop(num) {
+    return num < numberOfColumns;
 }
 
-function isAtLeft(num)
-{
-    return num % numberOfRows == 0;
+function isAtLeft(num) {
+    return num % numberOfColumns == 0;
 }
 
-function isAtRight(num)
-{
-   return num % numberOfRows == (numberOfRows - 1);
+function isAtRight(num) {
+    return num % numberOfColumns == (numberOfColumns - 1);
 }
 
-function isAtBottom(num)
-{
-    return num > (numberOfColumns-1)*numberOfRows;
+function isAtBottom(num) {
+    return num >= (numberOfColumns - 1) * numberOfRows;
 }
 
-function generateGrid(rows,colunms){
+function generateGrid(rows, colunms) {
+    let id = 0;
     let gameBoard = document.getElementById("game-board"); // the game board
 
-    let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     for (let row = 1; row <= rows; row++) { // creates the rows
         let gameRow = document.createElement("div");
         gameRow.className = "game-row";
-        gameRow.id = row;
+        //gameRow.id = row;
         gameBoard.appendChild(gameRow); // adds row to board
 
         for (let col = 1; col <= colunms; col++) { // creates cells
             let gameCell = document.createElement("div");
             gameCell.className = "game-cell";
-            gameCell.id = alphabetStr[row - 1] + col;
+            gameCell.id = id;
             gameRow.appendChild(gameCell); // adds cell to board
 
             cellArr.push({ // creates a new object for the current cell
-                "id" : gameCell.id,
-                "hasAnything":false,
-                "hasObstacle":false,
-                "shipType":null,
-                "shipColor":null,
-                "HP":-1,
+                "id": gameCell.id,
+                "hasAnything": false,
+                "hasObstacle": false,
+                "shipType": null,
+                "shipColor": null,
+                "HP": -1,
             });
+            id++;
         }
     }
 
     numberOfRows = rows;
     numberOfColumns = colunms;
 }
- 
-generateGrid(10,15);
+
+function testGenerateGrid(rows, colunms) {//trying something new
+    let gameBoard = document.getElementById("game-board"); // the game board
+
+    for (let id = 0; id < rows*colunms; id++) { // creates cells
+        let gameCell = document.createElement("div");
+        gameCell.className = "game-cell";
+        gameCell.id = id;
+        gameRow.appendChild(gameCell); // adds cell to board
+
+        cellArr.push({ // creates a new object for the current cell
+            "id": gameCell.id,
+            "hasAnything": false,
+            "hasObstacle": false,
+            "shipType": null,
+            "shipColor": null,
+            "HP": -1,
+        });
+    }
+    numberOfRows = rows;
+    numberOfColumns = colunms;
+}
+
+
+
+
+generateGrid(10, 10);
 chooseYourShips();
 
 //console.log(25%13);
@@ -284,3 +349,7 @@ chooseYourShips();
     // ID
     // obstacle/no obstacle
     // player/no player
+
+    function sleep(milliseconds) {
+        
+      }
