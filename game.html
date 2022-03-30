@@ -12,55 +12,280 @@
         <!-- <link rel="icon" href="/favicon.ico">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
 
-        <link rel="stylesheet" href="styles.css">
-
     </head>
     <body>
         <h1>Grid Game</h1>
-        <div class = "form">
-            <form id = "player1">
-                <div class = "words">Please enter name and color for the game</div>
-             <input type="text" id = "player1Name" required>
-              <br>
-              <br>
-              <input type="color" value="#000000" id="player1Color" list="Colors" required>
-                 <datalist id="Colors">
-                     <option>#ff0000</option>
-                 <option>#00ff00</option>
-                 <option>#0000ff</option>
-                 <option>#ffd659</option>
-                 </datalist>
-                 <br>
-                 <br>
-                 <div id = "words1">Please enter name and color for the game</div>
-                 <input type="text" id = "player2Name" required>
-                 <br>
-                 <br> 
-                 <input type="color" value="#000000" id="player2Color" list="test" required>
-                  <datalist id="test">
-                 <option>#ff0000</option>
-                 <option>#00ff00</option>
-                 <option>#0000ff</option>
-                 <option>#ffd659</option>
-                 </datalist>      
-             <br>
-             <br>
-         <button type = "submit" id = "submit" onclick="this.style.visibility = 'hidden'">submit</button>
-         </form>
-     </div>
+
+        <form id = "players">
+            <div class="column">
+                <div class="row">
+
+                    <div class="player-input" id="player1">
+                        <h3>Player 1</h3>
+                        <p>Choose name and color</p>
+                        <input type="text" class="player-names" id = "player1Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player1Color" list="Colors" required>
+
+                        <datalist id="Colors">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+
+                    <div class="player-input" id="player2">
+                        <h3>Player 2</h3>
+                        <p>Choose name and color</p>
+
+                        <input type="text" class="player-names" id = "player2Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player2Color" list="test" required>
+                            
+                        <datalist id="test">
+                            <option>#ff0000</option>                    <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="button-box">
+            <button class="choose-board" id="sm-board">10 x 10</button>
+            <button class="choose-board" id="med-board">15 x 15</button>
+            <button class="choose-board" id="lg-board">20 x 20</button>
+        </div>
+
+        <!-- onclick="this.style.visibility = 'hidden'" -->
+        <button type = "submit" id = "submit">submit</button>
+
         <div id="game-board"  ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- game board goes here -->
         </div>
 
-        <div id="characters">
-          <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)">
-          <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)">
-          <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)">
-          <img src="images/Teleporter.jpeg" id="Teleporter"  draggable="true" ondragstart="drag(event)">
-        </div>
+
+<div id="characters">
+    <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)">
+    <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)">
+    <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)">
+    <img src="images/Teleporter.jpeg" id="Teleporter"  draggable="true" ondragstart="drag(event)">
+  </div>
+        <style>
+            /*
+            Reference palette:
+            https://coolors.co/palette/057672-05827d-058f8a-059d98-06ada7-07beb8-3dccc7-68d8d6-9ceaef-c4fff9
+            */
+
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #06ADA7;
+                font-family: Optima;
+            }
+
+            #game-board {
+                visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: auto;
+                width: auto;
+                padding-top: 2vw;
+                padding-bottom: 2vw;
+                border: 2px solid #057672;
+                background-color: #9CEAEF;
+            }
+
+            .game-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                /*height: 6vw;
+                width: 55vw;*/
+                height: auto;
+                width: auto;
+                /*border: 1px solid green;*/
+            }
+
+            .game-cell {
+                display: flex;
+                height: 4vw;
+                width: 4vw;
+                margin: 1px;
+                border: 2px solid #057672;
+            }
+
+            .game-cell:hover {
+                background-color: #C4FFF9;
+            }
+
+            /* ARH: I'll style this stuff */
+            form {
+                display: flex;
+                justify-content: center;
+            }
+
+            .button-box {
+                display: flex;
+                flex-direction: column;
+                width: 30vw;
+                align-items: center;
+                margin-top: 5vh;
+                margin-bottom: 5vh;
+            }
+
+            button.choose-board {
+                background-color: #9CEAEF;
+                font-family: Verdana;
+                font-size: 15px;
+                width: 10vw;
+                height: auto;
+                padding: 2vh;
+                border-radius: 10px;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 100%
+            }
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+
+            .players {
+                display: flex;
+                flex-direction: row;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            h1 {
+                display: flex;
+                justify-content: center;
+            }
+
+            h3 {
+                margin-top: 1vh;
+                margin-bottom: 1vh;
+                font-size: 25px;
+            }
+
+            .player-input {
+                display: flex;
+                flex-direction: column;
+                width: 40vw;
+                align-items: center;
+            }
+
+            .player-names {
+                width: 25vw;
+                height: 4vh;
+                margin-bottom: 2vh;
+                border-radius: 10px;
+            }
+
+            .player-colors {
+                width: 25vw;
+                height: 4vh;
+                margin-bottom: 2vh;
+                border-radius: 6px;
+            }
+
+            #submit { /* Change font + rounded border + color */
+                background-color: #9CEAEF;
+                font-family: Verdana;
+                font-size: 20px;
+                width: auto;
+                height: auto;
+                padding: 2vh;
+                margin-bottom: 2vh;
+                margin-top: 5vh;
+                border-radius: 10px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+            }
+
+            #submit:hover {
+                background-color: #C4FFF9;
+                cursor: pointer;
+            }
+
+            .player-colors:hover {
+                cursor: pointer;
+            }
+
+            #characters {
+                float: left;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 35vw;
+                width: 15vw;
+            }
+
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                height: 5vw;
+                width: 5vw;
+            }
+
+            /* Attack */
+            .red_background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                opacity: 0.5;
+                z-index:  7;
+                display: none;
+            }
+
+            /* Movement */
+            .blue_background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: blue;
+                opacity: 0.5;
+                z-index:  7;
+                display: none;
+            }
+
+            /*color and name fields */
+            /*
+            button {
+                margin-left: 23%
+            }
+
+            #player2Color, #player2Name {
+                margin-left: 50%;
+            }
+
+            #player1 {
+                margin-left: 8%;
+            }
+            */
+
+            /* ^ ARH: I'll style this stuff ^ */
+
+        </style>
 
         <script src="game.js"></script>
-
-
     </body>
 </html>

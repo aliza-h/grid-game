@@ -1,3 +1,9 @@
+/*
+ARH:
+I want the game board to stay the same size, and I want all cells to be NICE SQUARES, regardless of the actual cell count.
+To do that, I'll need to do some serious math.
+*/
+
 #game-board {
     float: left;
     display: flex;
@@ -24,15 +30,16 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 6vw;
-    width: 55vw;
-    border: 1px solid blue;
+    height: 6vw; // comment out
+    width: 55vw; // comment out
+
+    border: 1px solid green;
 }
 
 .game-cell {
     display: flex;
-    height: 5vw;
-    width: 5vw;
+    height: 5vw; // comment out
+    width: 5vw; // comment out
     border: 1px solid blue;
 }
 
