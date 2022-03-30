@@ -12,14 +12,9 @@
         <!-- <link rel="icon" href="/favicon.ico">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
 
-        <!-- ARH: commenting out the stylesheet ref for now -->
-        <!-- <link rel="stylesheet" href="styles.css"> -->
-
     </head>
     <body>
         <h1>Grid Game</h1>
-
-        <!-- ARH: This is stuff Aleks added. I'll style it later. -->
 
         <form id = "players">
             <div class="column">
@@ -55,20 +50,21 @@
                         </datalist>
                     </div>
                 </div>
-
-
-                    <button type = "submit" id = "submit" onclick="this.style.visibility = 'hidden'">submit</button>
             </div>
         </form>
 
+        <div class="button-box">
+            <button class="choose-board" id="sm-board">10 x 10</button>
+            <button class="choose-board" id="med-board">15 x 15</button>
+            <button class="choose-board" id="lg-board">20 x 20</button>
+        </div>
 
-        <!-- ^ ARH: This is stuff Aleks added. I'll style it later. ^ -->
+        <!-- onclick="this.style.visibility = 'hidden'" -->
+        <button type = "submit" id = "submit">submit</button>
 
         <div id="game-board">
             <!-- game board goes here -->
         </div>
-
-        <script src="game.js"></script>
 
 
         <style>
@@ -78,11 +74,15 @@
             */
 
             body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 background-color: #06ADA7;
                 font-family: Optima;
             }
 
             #game-board {
+                visibility: hidden;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -122,6 +122,25 @@
             form {
                 display: flex;
                 justify-content: center;
+            }
+
+            .button-box {
+                display: flex;
+                flex-direction: column;
+                width: 30vw;
+                align-items: center;
+                margin-top: 5vh;
+                margin-bottom: 5vh;
+            }
+
+            button.choose-board {
+                background-color: #9CEAEF;
+                font-family: Verdana;
+                font-size: 15px;
+                width: 10vw;
+                height: auto;
+                padding: 2vh;
+                border-radius: 10px;
             }
 
             .row {
@@ -261,6 +280,6 @@
 
         </style>
 
-
+        <script src="game.js"></script>
     </body>
 </html>

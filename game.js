@@ -1,4 +1,12 @@
-// ARH: I don't know why the board styling isn't showing up. It worked before, but now it doesn't, and that is SUPREMELY stupid.
+let gameBoard = document.getElementById("game-board");
+let buttonBox = document.querySelector("button-box");
+let playerForm = document.getElementById("players");
+
+let smBoardButton = document.getElementById("sm-board");
+let medBoardButton = document.getElementById("med-board");
+let lgBoardButton = document.getElementById("lg-board");
+
+let submitButton = document.getElementById("submit");
 
 
 let cellArr = []; // the array of cell objects
@@ -61,8 +69,7 @@ function chooseYourShips()
     //move onto the ship placing phase
 }
 
-function attactCell(cell,color,damage)//cell is the cell that is being attacked
-{
+function attactCell(cell,color,damage) { //cell is the cell that is being attacked
     if (cellArr[cell].hasAnything)
     {
         if (cellArr[cell].shipColor != color)
@@ -75,7 +82,6 @@ function attactCell(cell,color,damage)//cell is the cell that is being attacked
 
 // ARH: This function takes the parameters (rows and columns) and creates a game board with [rows] cells in the y-axis and [columns] cells in the x-axis.
 function generateGrid(rows, columns) { // ARH: corrected the spelling of "columns" cuz I'm OCD like that :D
-    let gameBoard = document.getElementById("game-board"); // the game board
 
     let alphabetStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -103,18 +109,34 @@ function generateGrid(rows, columns) { // ARH: corrected the spelling of "column
     }
 }
 
-// ARH: This is where I'm gonna test the JS prompt
-// ...On second thought, I don't need this to be a PROMPT. Imma comment this out for now.
-/*
-let squareSize = prompt("Enter the desired square dimension (just one integer). Thx m8", "0");
-generateGrid(parseInt(string, squareSize), parseInt(string, squareSize));
-*/
+function createSmallBoard() {
+    generateGrid(10, 10);
+    console.log("generated small board");
+}
 
+function createMediumBoard() {
+    generateGrid(15, 15);
+    console.log("generate medium board");
+}
 
-generateGrid(10, 10);
-//generateGrid(15, 15);
-//generateGrid(20, 20);
-chooseYourShips();
+function createLargeBoard() {
+    generateGrid(20, 20);
+    console.log("generated large board");
+}
+
+function revealBoard() {
+    playerForm.style.visibility = "hidden";
+    buttonBox.style.visibility = "hidden";
+    gameBoard.style.visibility = "visible";
+}
+
+smBoardButton.addEventListener("click", createSmallBoard);
+medBoardButton.addEventListener("click", createMediumBoard);
+lgBoardButton.addEventListener("click", createLargeBoard);
+
+submitButton.addEventListener("click", revealBoard);
+
+//chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
 
 
 // EACH CELL HAS
