@@ -294,7 +294,7 @@ function isAtBottom(num) {
     return num >= (numberOfColumns - 1) * numberOfRows;
 }
 
-function generateGrid(rows, colunms) {
+function generateGrid(rows, columns) {
     let id = 0;
     let gameBoard = document.getElementById("game-board"); // the game board
 
@@ -325,7 +325,7 @@ function generateGrid(rows, colunms) {
     }
 
     numberOfRows = rows;
-    numberOfColumns = colunms;
+    numberOfColumns = columns;
 }
 
 function allowDrop(ev) {
