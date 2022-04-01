@@ -462,7 +462,7 @@ let player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let button1 = document.getElementById("button1")
 submit.addEventListener('click', event => {
-    event.preventDefault();
+   event.preventDefault();
     document.getElementById('player1Color').style.visibility = "visible";
     document.getElementById('player2Name').style.visibility = 'hidden';
     document.getElementById('player1Name').style.visibility = 'hidden';
@@ -485,8 +485,7 @@ submit.addEventListener('click', event => {
         if (player2Color.value == "#000000") {
             alert("Please pick a different color");
             document.location.reload();
-        }
-
+        }    
         if (player1Color.value != player2Color.value) {
             submit.remove();
         }
@@ -498,8 +497,7 @@ submit.addEventListener('click', event => {
         document.getElementById('words1').remove();
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
-    })
-
+    })   
 })
 
 button1.addEventListener('click', event => {
@@ -515,6 +513,6 @@ button1.addEventListener('click', event => {
 })
 
 // EACH CELL HAS
-// ID
-// obstacle/no obstacle
-// player/no player
+    // ID
+    // obstacle/no obstacle
+    // player/no player
