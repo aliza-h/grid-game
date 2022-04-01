@@ -2,10 +2,6 @@ let gameBoard = document.getElementById("game-board");
 let buttonBox = document.querySelector("button-box");
 let playerForm = document.getElementById("players");
 
-let smBoardButton = document.getElementById("sm-board");
-let medBoardButton = document.getElementById("med-board");
-let lgBoardButton = document.getElementById("lg-board");
-
 let submitButton = document.getElementById("submit");
 
 
@@ -109,32 +105,7 @@ function generateGrid(rows, columns) { // ARH: corrected the spelling of "column
     }
 }
 
-function createSmallBoard() {
-    generateGrid(10, 10);
-    console.log("generated small board");
-}
-
-function createMediumBoard() {
-    generateGrid(15, 15);
-    console.log("generate medium board");
-}
-
-function createLargeBoard() {
-    generateGrid(20, 20);
-    console.log("generated large board");
-}
-
-function revealBoard() {
-    playerForm.style.visibility = "hidden";
-    buttonBox.style.visibility = "hidden";
-    gameBoard.style.visibility = "visible";
-}
-
-smBoardButton.addEventListener("click", createSmallBoard);
-medBoardButton.addEventListener("click", createMediumBoard);
-lgBoardButton.addEventListener("click", createLargeBoard);
-
-submitButton.addEventListener("click", revealBoard);
+generateGrid(10, 10);
 
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
 
