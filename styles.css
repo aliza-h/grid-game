@@ -15,6 +15,7 @@ body {
     padding-bottom: 2vw;
     border: 2px solid #057672;
     background-color: #9CEAEF;
+    visibility: hidden;
 }
 
 .game-row {
@@ -119,6 +120,7 @@ img {
     margin-right: auto;*/
     height: 4vw;
     width: 4vw;
+
 }
 
 /* Attack */
@@ -153,7 +155,7 @@ img {
 }
 
 #words, #words1{
-visibility: hidden;
+    visibility: hidden;
 }
 
 #words{
@@ -161,18 +163,16 @@ visibility: hidden;
 }
 
 #player1{
-margin-left: 8%;
+    margin-left: 8%;
 }
 
 #player1Color, #player2Color{
-visibility:hidden;
+    visibility:hidden;
 }
 
-
-
 #player1Name {
-visibility: hidden;
-font-family: Verdana;
+    visibility: hidden;
+    font-family: Verdana;
     font-size: 10px;
     width: auto;
     height: auto;
@@ -185,43 +185,43 @@ font-family: Verdana;
 #player2Name{
     visibility: hidden;
     font-family: Verdana;
-        font-size: 10px;
-        width: auto;
-        height: auto;
-        padding: 2vh;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-left: 20%;
+    font-size: 10px;
+    width: auto;
+    height: auto;
+    padding: 2vh;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 20%;
 }
 
 #player1Color{
     visibility: hidden;
     font-family: Verdana;
-        font-size: 10px;
-        width: auto;
-        height: auto;
-        padding: 2vh;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 3px;  
+    font-size: 10px;
+    width: auto;
+    height: auto;
+    padding: 2vh;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;  
 }
 
 #player2Color{
     visibility: hidden;
     font-family: Verdana;
-        font-size: 10px;
-        width: auto;
-        height: auto;
-        padding: 2vh;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-left: 50%;
+    font-size: 10px;
+    width: auto;
+    height: auto;
+    padding: 2vh;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 50%;
 }
 
 #board-size{
-font-family: Verdana;
+    font-family: Verdana;
     font-size: 10px;
     width: auto;
     height: auto;

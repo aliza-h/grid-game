@@ -1,78 +1,81 @@
 <!doctype html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Grid Game</title>
-        <meta name="description" content="A grid game.">
-        <meta name="author" content="The four of us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="icon" href="/favicon.ico">
+    <title>Grid Game</title>
+    <meta name="description" content="A grid game.">
+    <meta name="author" content="The four of us">
+
+    <!-- <link rel="icon" href="/favicon.ico">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <h1>Grid Game</h1>
-        <div class="column">
-            <div class="row">
-        <form id = "players">
-        <div class = "form">
-            <select name = "board-size" id ="board-size">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Grid Game</h1>
+    <div class="column">
+        <div class="row">
+            <form id="players">
+                <div class="form">
+                    <select name="board-size" id="board-size">
                <option disabled selected></option> 
                <option id = "1">10x10</option>
                <option id = "2">15x15</option>
                <option id = "3">20x20</option>
                </select>
-               <input type="button" onclick="myFunction()" value="go" id="button1">
-               <div id = "name">
-               <div id = "words1">Please enter name and color for the game</div>
-               <div id = "words">Please enter name and color for the game</div>
-               </div>
-               <div id = "names">
-               <input type="text" id = "player1Name" required>
-             <input type="text" id = "player2Name" required>
-             </div>
-             <div id = "colors">
-              <input type="color" value = "#000000" list = "Colors" id="player1Color" required>
-                 <datalist id="Colors">
+                    <input type="button" onclick="myFunction()" value="go" id="button1">
+                    <div id="name">
+                        <div id="words1">Please enter name and color for the game</div>
+                        <div id="words">Please enter name and color for the game</div>
+                    </div>
+                    <div id="names">
+                        <input type="text" id="player1Name" required>
+                        <input type="text" id="player2Name" required>
+                    </div>
+                    <div id="colors">
+                        <input type="color" value="#000000" list="Colors" id="player1Color" required>
+                        <datalist id="Colors">
                     <option>#ff0000</option>
                  <option>#00ff00</option>
                  <option>#0000ff</option>
                  <option>#ffd659</option>
-                 </datalist> 
-                
+                 </datalist>
 
-              
-                 <input type="color" value = "#000000" list = "test" id="player2Color" required>
-                  <datalist id="test">
+
+
+                        <input type="color" value="#000000" list="test" id="player2Color" required>
+                        <datalist id="test">
                  <option>#ff0000</option>
                  <option>#00ff00</option>
                  <option>#0000ff</option>
                  <option>#ffd659</option>
-                 </datalist> 
-                 </div>
-         <button type = "submit" id = "submit">Submit</button> 
-         </div>
-         </form>
-     </div>
-     
-        <div id="game-board"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                 </datalist>
+                    </div>
+                    <button type="submit" id="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="game-board" ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- game board goes here -->
-            <div id = "names1">
-                <div id = "name1"></div>
-                <div id = "name2"></div>
-               </div>
-               </div>
+            <div id="names1">
+                <div id="name1"></div>
+                <div id="name2"></div>
+            </div>
+        </div>
 
 
-<div id="characters">
-    <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)">
-    <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)">
-    <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)">
-    <img src="images/Teleporter.jpeg" id="Teleporter"  draggable="true" ondragstart="drag(event)">
-  </div>
+        <div id="characters">
+            <img src="images/MAttack.jpeg" id="Melee" draggable="true" ondragstart="drag(event)">
+            <img src="images/Defender.jpeg" id="Defender" draggable="true" ondragstart="drag(event)">
+            <img src="images/RAttack.jpeg" id="Ranger" draggable="true" ondragstart="drag(event)">
+            <img src="images/Teleporter.jpeg" id="Teleporter" draggable="true" ondragstart="drag(event)">
+        </div>
         <script src="game.js"></script>
-    </body>
+</body>
+
 </html>

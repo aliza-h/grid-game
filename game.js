@@ -2,13 +2,13 @@ let gameBoard = document.getElementById("game-board");
 let buttonBox = document.querySelector("button-box");
 let playerForm = document.getElementById("players");
 
-
+let playerOneColor = document.getElementById("player1Color").value;
+let playerTwoColor = document.getElementById("player2Color").value;
 let submitButton = document.getElementById("submit");
 
 let numberOfRows = 0;
 let numberOfColumns = 0;
-let playerOneColor;
-let playerTwoColor;
+
 
 
 
@@ -366,6 +366,7 @@ function myFunction() {
             for (let i = 0; i < color1.length; i++) {
                 if (color1) {
                     color1[i].style.borderColor = event.target.value;
+                    console.log(playerOneColor);
                 }
             }
         }
@@ -375,6 +376,7 @@ function myFunction() {
             for (let i = 0; i < color2.length; i++) {
                 if (color2) {
                     color2[i].style.borderColor = event.target.value;
+                    console.log(playerTwoColor);
                 }
             }
         }
@@ -460,48 +462,49 @@ let player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let button1 = document.getElementById("button1")
 submit.addEventListener('click', event => {
-   event.preventDefault();
+    event.preventDefault();
     document.getElementById('player1Color').style.visibility = "visible";
     document.getElementById('player2Name').style.visibility = 'hidden';
     document.getElementById('player1Name').style.visibility = 'hidden';
     document.getElementById('player2Color').style.visibility = 'visible';
-    if( player1.value == player2.value){
+    if (player1.value == player2.value) {
         alert("Don't have the same name");
         document.location.reload();
     }
 
-    submit.addEventListener('click', event =>{
-        if(player1Color.value == player2Color.value){
+    submit.addEventListener('click', event => {
+        if (player1Color.value == player2Color.value) {
             alert("Can't be same color");
             document.location.reload();
         }
-        if (player1Color.value == "#000000"){
+        if (player1Color.value == "#000000") {
             alert("Please pick a different color");
             document.location.reload();
         }
 
-        if (player2Color.value == "#000000"){
+        if (player2Color.value == "#000000") {
             alert("Please pick a different color");
             document.location.reload();
         }
-        
-        if(player1Color.value != player2Color.value){
+
+        if (player1Color.value != player2Color.value) {
             submit.remove();
         }
         document.getElementById('player1Color').remove();
         document.getElementById('words').remove();
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt +"&nbsp" + "side";
+        document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
         document.getElementById('player2Color').remove();
         document.getElementById('words1').remove();
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt +"&nbsp" + "side";
+        document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
     })
-    
+
 })
 
 button1.addEventListener('click', event => {
     event.preventDefault();
+    document.getElementById("game-board").style.visibility = "visible"
     document.getElementById('board-size').remove();
     document.getElementById('button1').remove();
     document.getElementById('player1Name').style.visibility = 'visible';
@@ -511,8 +514,7 @@ button1.addEventListener('click', event => {
     document.getElementById('words1').style.visibility = 'visible';
 })
 
-        
 // EACH CELL HAS
-    // ID
-    // obstacle/no obstacle
-    // player/no player
+// ID
+// obstacle/no obstacle
+// player/no player
