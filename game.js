@@ -461,6 +461,7 @@ let player1Color = document.getElementById("player1Color")
 let player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let button1 = document.getElementById("button1")
+
 submit.addEventListener('click', event => {
    event.preventDefault();
     document.getElementById('player1Color').style.visibility = "visible";
@@ -510,7 +511,7 @@ button1.addEventListener('click', event => {
     document.getElementById('submit').style.visibility = 'visible';
     document.getElementById('words').style.visibility = 'visible';
     document.getElementById('words1').style.visibility = 'visible';
-})
+}) 
 
 // EACH CELL HAS
     // ID

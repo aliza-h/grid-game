@@ -150,8 +150,8 @@ img {
 
 
 #submit{
-    visibility: hidden;
-    margin-left: 25%;
+    visibility: hidden; 
+    margin-left: 35%;
 }
 
 #words, #words1{
@@ -192,15 +192,15 @@ img {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 20%;
+    margin-left: 35%;
 }
 
 #player1Color{
     visibility: hidden;
     font-family: Verdana;
     font-size: 10px;
-    width: auto;
-    height: auto;
+    width: 150px;
+    height: 50px;
     padding: 2vh;
     border-radius: 10px;
     text-transform: uppercase;
@@ -211,13 +211,13 @@ img {
     visibility: hidden;
     font-family: Verdana;
     font-size: 10px;
-    width: auto;
-    height: auto;
+    width: 150px;
+    height: 50px;
     padding: 2vh;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 #board-size{
