@@ -112,11 +112,10 @@ h3 {
 }
 
 .player-colors {
-    width: auto;
+    width: 3vw;
     height: 5vh;
     margin-bottom: 2vh;
     border-radius: 30px;
-    appearance: none;
 }
 
 #submit { /* Change font + rounded border + color */
