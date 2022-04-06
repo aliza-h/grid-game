@@ -23,7 +23,6 @@ const player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let button1 = document.getElementById("button1")
 
-
 let cellArr = []; // the array of cell objects
 
 let shipStats = [{
@@ -466,4 +465,4 @@ button1.addEventListener('click', event => {
 // EACH CELL HAS
 // ID
 // obstacle/no obstacle
-// player/no player   
+// player/no player

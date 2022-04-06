@@ -22,7 +22,7 @@
             <form id="players">
                 <div class="form">
                     <select name="board-size" id="board-size">
-               <option disabled selected></option> 
+               <option disabled selected></option>
                <option id = "1">10x10</option>
                <option id = "2">15x15</option>
                <option id = "3">20x20</option>
@@ -60,22 +60,56 @@
                 </div>
             </form>
         </div>
+        <div>
+
+        <div id="p1">
+          <div id="shipMA1">
+            <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+          </div>
+          <div id="shipD1">
+            <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+          </div>
+          <div id="shipRA1">
+            <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+          </div>
+          <div id="shipH1">
+            <img src="images/Healer.jpeg" id="Healer"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+          </div>
+        </div>
+
+        <div id="p2">
+            <div id="shipMA2">
+              <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+            </div>
+            <div id="shipD2">
+              <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+            </div>
+            <div id="shipRA2">
+              <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+            </div>
+            <div id="shipH2">
+              <img src="images/Healer.jpeg" id="Healer"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+            </div>
+          </div>
+
+        </div>
 
         <div id="game-board" ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- game board goes here -->
+
             <div id="names1">
                 <div id="name1"></div>
                 <div id="name2"></div>
             </div>
+
         </div>
 
-
-        <div id="characters">
-            <img src="images/MAttack.jpeg" id="Melee" draggable="true" ondragstart="drag(event)">
-            <img src="images/Defender.jpeg" id="Defender" draggable="true" ondragstart="drag(event)">
-            <img src="images/RAttack.jpeg" id="Ranger" draggable="true" ondragstart="drag(event)">
-            <img src="images/Teleporter.jpeg" id="Teleporter" draggable="true" ondragstart="drag(event)">
+        <div id="Actions" class="actList">
+          <p >Attack</p>
+          <p >Movement</p>
+          <p >End Turn</p>
         </div>
+
         <script src="game.js"></script>
 </body>
 
