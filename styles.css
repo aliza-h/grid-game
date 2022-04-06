@@ -150,13 +150,9 @@ img {
 
 
 #submit{
-    visibility: hidden; 
     margin-left: 35%;
 }
 
-#words, #words1{
-    visibility: hidden;
-}
 
 #words{
     margin-top: -17%;
@@ -171,7 +167,6 @@ img {
 }
 
 #player1Name {
-    visibility: hidden;
     font-family: Verdana;
     font-size: 10px;
     width: auto;
@@ -183,7 +178,6 @@ img {
 }
 
 #player2Name{
-    visibility: hidden;
     font-family: Verdana;
     font-size: 10px;
     width: auto;
@@ -232,6 +226,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-left: 40%;
+    visibility: hidden;
 }
 
 #words, #words1{
@@ -254,4 +249,8 @@ margin-left: 65%;
 
 #name1{
     font-size: 25px;
+}
+
+#button1 {
+    visibility: hidden;
 }
