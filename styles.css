@@ -295,16 +295,19 @@ img {
     display: flex;
 }
 
-#names1{
+#names1 {
     display: flex;
-}
-#name2{
-font-size: 25px;
-margin-left: 65%;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid red;
 }
 
-#name1{
-    font-size: 25px;
+.board-player-name {
+    border: 1px solid blue;
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 #p1{
