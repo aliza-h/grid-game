@@ -1,25 +1,33 @@
+
+/*
+Reference palette:
+https://coolors.co/palette/057672-05827d-058f8a-059d98-06ada7-07beb8-3dccc7-68d8d6-9ceaef-c4fff9
+*/
+
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #06ADA7;
     font-family: Optima;
 }
 
 #game-board {
+    display: flex;
     flex-direction: column;
-    /*align-items: center;
-    justify-content: center;*/
+    align-items: center;
+    justify-content: center;
     height: auto;
     width: auto;
     padding-top: 2vw;
     padding-bottom: 2vw;
     border: 2px solid #057672;
     background-color: #9CEAEF;
-    visibility: hidden;
 }
 
 .game-row {
     display: flex;
+    align-items: center;
     justify-content: space-around;
     /*height: 6vw;
     width: 55vw;*/
@@ -29,6 +37,7 @@ body {
 }
 
 .game-cell {
+    display: flex;
     height: 4vw;
     width: 4vw;
     margin: 1px;
@@ -40,6 +49,10 @@ body {
 }
 
 /* ARH: I'll style this stuff */
+form {
+    display: flex;
+    justify-content: center;
+}
 
 .button-box {
     display: flex;
@@ -50,10 +63,9 @@ body {
     margin-bottom: 5vh;
 }
 
-
 .row {
     display: flex;
-    /*flex-direction: row;*/
+    flex-direction: row;
     justify-content: space-around;
     width: 100%
 }
@@ -65,6 +77,10 @@ body {
     align-items: center;
 }
 
+.players {
+    display: flex;
+    flex-direction: row;
+}
 
 p {
     font-size: 18px;
@@ -81,8 +97,28 @@ h3 {
     font-size: 25px;
 }
 
+.player-input {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    align-items: center;
+}
 
-#submit, #colorsubmit, #button1 { /* Change font + rounded border + color */
+.player-names {
+    width: 25vw;
+    height: 4vh;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+}
+
+.player-colors {
+    width: 3vw;
+    height: 5vh;
+    margin-bottom: 2vh;
+    border-radius: 30px;
+}
+
+#submit, #colorsubmit, #button1 { /* Change font + rounded border + color CHECK ON THIS!!!*/
     background-color: #9CEAEF;
     font-family: Verdana;
     font-size: 20px;
@@ -101,26 +137,26 @@ h3 {
     cursor: pointer;
 }
 
+.player-colors:hover {
+    cursor: pointer;
+}
 
 #characters {
     float: left;
     display: flex;
-    flex-direction: row;
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    height: 4vw;
-    width: 4vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 35vw;
+    width: 15vw;
 }
-
-
 
 img {
     display: block;
-    /*margin-left: auto;
-    margin-right: auto;*/
-    height: 4vw;
-    width: 4vw;
-
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vw;
+    width: 5vw;
 }
 
 /* Attack */
@@ -144,6 +180,9 @@ img {
     z-index:  7;
     display: none;
 }
+
+
+/* rework everything below */
 
 
 /*color and name fields */

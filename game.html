@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html>
+<<<<<<< HEAD
 
 <head>
     <meta charset="utf-8">
@@ -80,3 +81,69 @@
 </body>
 
 </html>
+=======
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Grid Game</title>
+        <meta name="description" content="A grid game.">
+        <meta name="author" content="The four of us">
+
+        <link rel="stylesheet" href="styles.css"/>
+        <!-- <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+    </head>
+    <body>
+        <h1>Grid Game</h1>
+
+        <form id = "players">
+            <div class="column">
+                <div class="row">
+
+                    <div class="player-input" id="player1">
+                        <h3>Player 1</h3>
+                        <p>Choose name and color</p>
+                        <input type="text" class="player-names" id = "player1Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player1Color" list="Colors" required>
+
+                        <datalist id="Colors">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+
+                    <div class="player-input" id="player2">
+                        <h3>Player 2</h3>
+                        <p>Choose name and color</p>
+
+                        <input type="text" class="player-names" id = "player2Name" required>
+
+                        <input type="color" class="player-colors" value="#000000" id="player2Color" list="test" required>
+                            
+                        <datalist id="test">
+                            <option>#ff0000</option>
+                            <option>#00ff00</option>
+                            <option>#0000ff</option>
+                            <option>#ffd659</option>
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- onclick="this.style.visibility = 'hidden'" -->
+        <button type = "submit" id = "submit">submit</button>
+
+        <div id="game-board">
+            <!-- game board goes here -->
+        </div>
+
+        <script src="game.js"></script>
+    </body>
+</html>
+>>>>>>> origin/aliza-2-no-tw
