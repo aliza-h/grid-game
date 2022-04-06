@@ -16,6 +16,7 @@ let player1 = document.getElementById("player1Name")
 let player2 = document.getElementById("player2Name")
 let currentturn = player1
 
+<<<<<<< HEAD
 let submit = document.getElementById("submit")
 let colorsubmit = document.getElementById('colorsubmit')
 const player1Color = document.getElementById("player1Color")
@@ -23,6 +24,8 @@ const player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let button1 = document.getElementById("button1")
 
+=======
+>>>>>>> fc137d8 (Char menus)
 let cellArr = []; // the array of cell objects
 
 let shipStats = [{
@@ -388,8 +391,11 @@ submit.addEventListener('click', event => {
         document.getElementById('words1').remove();
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
+<<<<<<< HEAD
         document.getElementById('board-size').style.visibility = 'visible';
         document.getElementById('button1').style.visibility = 'visible';
+=======
+>>>>>>> fc137d8 (Char menus)
     })
 })
 
@@ -453,6 +459,7 @@ button1.addEventListener('click', event => {
     document.getElementById("game-board").style.visibility = "visible"
     document.getElementById('board-size').remove();
     document.getElementById('button1').remove();
+<<<<<<< HEAD
     if (currentturn == player1){
     document.querySelector("body").style.backgroundColor = player1Color.value;
     }
@@ -461,6 +468,32 @@ button1.addEventListener('click', event => {
     }
 })
 
+=======
+    document.getElementById('player1Name').style.visibility = 'visible';
+    document.getElementById('player2Name').style.visibility = 'visible';
+    document.getElementById('submit').style.visibility = 'visible';
+    document.getElementById('words').style.visibility = 'visible';
+    document.getElementById('words1').style.visibility = 'visible';
+})
+
+
+function listing() {
+  document.getElementById("Actions").classList.toggle("show");
+}
+
+window.onclick = function(event){
+  if (!event.target.matches('.dropbtn')){
+    var dropdowns = document.getElementsByClassName("actList");
+    var i;
+    for (i = 0; i < dropdowns.length; i++){
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')){
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+>>>>>>> fc137d8 (Char menus)
 
 // EACH CELL HAS
 // ID
