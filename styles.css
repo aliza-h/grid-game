@@ -19,8 +19,7 @@ body {
     justify-content: center;
     height: auto;
     width: auto;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding: 2vw;
     border: 2px solid #057672;
     background-color: #9CEAEF;
     visibility: hidden;
@@ -300,11 +299,9 @@ img {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid red;
 }
 
 .board-player-name {
-    border: 1px solid blue;
     font-size: 20px;
     margin-left: 2%;
     margin-right: 2%;
