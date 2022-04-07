@@ -373,20 +373,23 @@ submit.addEventListener('click', event => {
         document.location.reload();
     }
 
+
     submit.addEventListener('click', event => {
+
         if (player1Color.value == player2Color.value) {
             alert("Can't be same color");
             document.location.reload();
         }
-        if (player1Color.value == "#000000") {
-            alert("Please pick a different color");
+        if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
+            alert("Please pick one of the preset colors")
             document.location.reload();
-        }
+        } 
 
-        if (player2Color.value == "#000000") {
-            alert("Please pick a different color");
+        if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
+            alert("Please pick one of the preset colors")
             document.location.reload();
-        }
+        } 
+
         if (player1Color.value != player2Color.value) {
             submit.remove();
         }
@@ -394,10 +397,16 @@ submit.addEventListener('click', event => {
         document.getElementById('words').remove();
         var txt = document.getElementById("player1Name").value;
         document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
+        let txtcolor = document.getElementById("name1")
+        txtcolor.style.color = player1Color.value;
+        txtcolor.style.fontWeight = 'bolder';
         document.getElementById('player2Color').remove();
         document.getElementById('words1').remove();
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
+        let txtcolor2 = document.getElementById("name2")
+        txtcolor2.style.color = player2Color.value;
+        txtcolor2.style.fontWeight = 'bolder';
         document.getElementById('board-size').style.visibility = 'visible';
         document.getElementById('button1').style.visibility = 'visible';
     })
@@ -406,8 +415,10 @@ submit.addEventListener('click', event => {
 button1.addEventListener('click', event => {
 
     event.preventDefault();
+
     let select = document.getElementById('board-size');
     let option = select.options[select.selectedIndex];
+
 
     if (option.value == "10x10") {
         generateGrid(10, 10);
@@ -460,6 +471,8 @@ button1.addEventListener('click', event => {
         alert("Please pick a size");
         document.location.reload();
     }
+    document.getElementById("p1").style.visibility = "visible"
+    document.getElementById("p2").style.visibility = "visible"
     document.getElementById("game-board").style.visibility = "visible"
     document.getElementById('board-size').remove();
     document.getElementById('button1').remove();

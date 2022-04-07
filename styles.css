@@ -172,8 +172,8 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 5vw;
-    width: 5vw;
+    height: 4vw;
+    width: 4vw;
 }
 
 /* Attack */
@@ -318,6 +318,7 @@ margin-left: 65%;
   border: 2px solid red;
   margin-right: 45px;
   margin-bottom: 15px;
+  visibility: hidden;
 }
 
 #p2{
@@ -332,7 +333,7 @@ margin-left: 65%;
   border: 2px solid blue;
   margin-left: 45px;
   margin-bottom: 15px;
-
+  visibility: hidden;
 }
 
 
