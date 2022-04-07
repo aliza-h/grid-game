@@ -25,11 +25,21 @@ let button1 = document.getElementById("button1")
 
 let cellArr = []; // the array of cell objects
 
-let shipStats = [{
-    "shipType": "basic",
+let shipStats = [
+    {
+    "shipType": "defender",
     "shipHP": 100,
-
-}];
+    "attackRange":1,
+    "movementRange":1
+},
+{
+    "shipType": "attacker",
+    "shipHP": 50,
+    "attackRange":2,
+    "attackPower":25,
+    "movementRange":3
+}
+];
 
 
 function drawActors() //unsure how to impliment at this point, but it should update every time an action happens
