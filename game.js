@@ -565,8 +565,7 @@ ready2.addEventListener('click', event => {
     countDown(5, function(){
         alert("game started")
         //Not sure if this works
-        document.getElementById("actions").ariaDisabled = "false";
-        document.getAnimations("displayDiv").remove();
+        document.getElementById("displayDiv").remove();
     });
 })
     //optimize this better. Timer for change colors
