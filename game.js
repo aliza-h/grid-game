@@ -32,17 +32,32 @@ let cellArr = []; // the array of cell objects
 
 let shipStats = [
     {
-    "shipType": "defender",
-    "shipHP": 100,
-    "attackRange":1,
-    "movementRange":1
+    shipType: "Defender",
+    shipHP: 100,
+    attackRange:1,
+    movementRange:1
 },
 {
-    "shipType": "attacker",
-    "shipHP": 50,
-    "attackRange":2,
-    "attackPower":25,
-    "movementRange":3
+    shipType: "Melee",
+    shipHP: 50,
+    attackRange:2,
+    attackPower:25,
+    movementRange:3
+},
+{
+    shipType:"Healer",
+    shipHP:30,
+    attackRange:1,
+    attackPower:10,
+    healPower:15,
+    movementRange:4
+},
+{
+    shipType:"Ranger",
+    shipHP:50,
+    attackRange:0,
+    attackPower:20,
+    movementRange:3
 }
 ];
 
@@ -64,13 +79,45 @@ function drawActors() //unsure how to impliment at this point, but it should upd
 }
 
 function addShipTo(thisCell, thisShip, thisColor) {
+    var result = shipStats.filter(x => x.shipType == thisShip);
+
+    console.log(result);
+    console.log(result[0].shipHp);
+    console.log(result[0].shipHP);
+
+
     cellArr[thisCell] = {
-        "id": thisCell - 1, //verify that this is what you want
-        "hasAnything": false,
+        "id": thisCell,
+        "hasAnything": true,
         "hasObstacle": false,
         "shipType": thisShip,
         "shipColor": thisColor,
-        "HP": shipStats[thisShip].shipHP,
+        "HP": result[0].shipHP,
+    }
+}
+
+function moveShipTo(from,to)
+{
+    cellArr[to] = 
+    {
+        "id": cellArr[from].id,
+        "hasAnything": true,
+        "hasObstacle": false,
+        "shipType": cellArr[from].shipType,
+        "shipColor": cellArr[from].shipColor,
+        "HP": cellArr[from].HP,
+    }
+
+    //draw the ship to the cell
+
+    cellArr[from] = 
+    {
+        "id": from,
+        "hasAnything": false,
+        "hasObstacle": false,
+        "shipType": null,
+        "shipColor": null,
+        "HP": -1,
     }
 }
 
@@ -360,7 +407,18 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    console.log(data);
     ev.target.appendChild(document.getElementById(data));
+
+    var player = data.substring(0,2);
+    var toCell = ev.target.id.substring(4);
+    var type = data.substring(3);
+
+    console.log(player);
+    console.log(toCell);
+    console.log(type);
+
+    addShipTo(toCell,type,player);
 }
 
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
@@ -546,6 +604,10 @@ window.onclick = function(event){
       }
     }
   }
+}
+
+function printArray(){
+    console.log(cellArr);
 }
 
 // EACH CELL HAS
