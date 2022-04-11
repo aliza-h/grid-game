@@ -18,12 +18,17 @@ let currentturn = player1
 
 let submit = document.getElementById("submit")
 let colorsubmit = document.getElementById('colorsubmit')
-const player1Color = document.getElementById("player1Color")
-const player2Color = document.getElementById("player2Color")
+let player1Color = document.getElementById("player1Color")
+let player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
-let button1 = document.getElementById("button1")
+let p1 = document.getElementById("p1");
+
+let ready1 = document.getElementById("ready1")
+let ready2 = document.getElementById("ready2")
+
 
 let cellArr = []; // the array of cell objects
+
 
 let shipStats = [
     {
@@ -422,7 +427,7 @@ function drop(ev) {
 
 submit.addEventListener('click', event => {
     event.preventDefault();
-    document.getElementById('player1Color').style.visibility = "visible";
+    document.getElementById('player1Color').style.visibility = 'visible';
     document.getElementById('player2Name').style.visibility = 'hidden';
     document.getElementById('player1Name').style.visibility = 'hidden';
     document.getElementById('player2Color').style.visibility = 'visible';
@@ -431,54 +436,59 @@ submit.addEventListener('click', event => {
         document.location.reload();
     }
 
+
     submit.addEventListener('click', event => {
+
         if (player1Color.value == player2Color.value) {
             alert("Can't be same color");
             document.location.reload();
         }
-        if (player1Color.value == "#000000") {
-            alert("Please pick a different color");
+        if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
+            alert("Please pick one of the preset colors")
             document.location.reload();
-        }
+        } 
 
-        if (player2Color.value == "#000000") {
-            alert("Please pick a different color");
+        if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
+            alert("Please pick one of the preset colors")
             document.location.reload();
-        }
-        if (player1Color.value != player2Color.value) {
-            submit.remove();
-        }
-        document.getElementById('player1Color').remove();
-        document.getElementById('words').remove();
+        } 
+
+        document.getElementById('player1Color').style.visibility = "hidden";
+        document.getElementById('words').style.visibility = "hidden";
         var txt = document.getElementById("player1Name").value;
         document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
-        document.getElementById('player2Color').remove();
-        document.getElementById('words1').remove();
+        let txtcolor = document.getElementById("name1")
+        txtcolor.style.color = player1Color.value;
+        txtcolor.style.fontWeight = 'bolder';
+        document.getElementById('player2Color').style.visibility = "hidden";
+        document.getElementById('words1').style.visibility = "hidden";
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
+        let txtcolor2 = document.getElementById("name2")
+        txtcolor2.style.color = player2Color.value;
+        txtcolor2.style.fontWeight = 'bolder';
         document.getElementById('board-size').style.visibility = 'visible';
-        document.getElementById('button1').style.visibility = 'visible';
-    })
-})
 
-button1.addEventListener('click', event => {
+submit.addEventListener('click', event => {
 
     event.preventDefault();
+
     let select = document.getElementById('board-size');
     let option = select.options[select.selectedIndex];
+
 
     if (option.value == "10x10") {
         generateGrid(10, 10);
         let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
         for (let i = 0; i < color1.length; i++) {
             if (color1) {
-                color1[i].style.borderColor = player1Color.value;
+                color1[i].style.backgroundColor = player1Color.value;
             }
         }
         let color2 = document.querySelectorAll("#cell8, #cell9, #cell18, #cell19, #cell28, #cell29, #cell38, #cell39, #cell48, #cell49, #cell58, #cell59, #cell68, #cell69, #cell78, #cell79, #cell88, #cell89, #cell98, #cell99");
         for (let i = 0; i < color2.length; i++) {
             if (color2) {
-                color2[i].style.borderColor = player2Color.value;
+                color2[i].style.backgroundColor = player2Color.value;
             }
         }
 
@@ -488,13 +498,13 @@ button1.addEventListener('click', event => {
         let color3 = document.querySelectorAll("#cell0, #cell1, #cell15, #cell16, #cell30, #cell31, #cell45, #cell46, #cell60, #cell61, #cell75, #cell76, #cell90, #cell91, #cell105, #cell106, #cell120, #cell121, #cell135, #cell136, #cell150, #cell151, #cell165, #cell166, #cell180, #cell181, #cell195, #cell196, #cell210, #cell211")
         for (let i = 0; i < color3.length; i++) {
             if (color3) {
-                color3[i].style.borderColor = player1Color.value;
+                color3[i].style.backgroundColor = player1Color.value;
             }
 
             let color4 = document.querySelectorAll("#cell13, #cell14, #cell28, #cell29, #cell43, #cell44, #cell58, #cell59, #cell73, #cell74, #cell88, #cell89, #cell103, #cell104, #cell118, #cell119, #cell133, #cell134, #cell148, #cell149, #cell163, #cell164, #cell178, #cell179, #cell193, #cell194, #cell208, #cell209, #cell223, #cell224")
             for (let i = 0; i < color4.length; i++) {
                 if (color4) {
-                    color4[i].style.borderColor = player2Color.value;
+                    color4[i].style.backgroundColor = player2Color.value;
                 }
             }
         }
@@ -503,14 +513,14 @@ button1.addEventListener('click', event => {
         let color5 = document.querySelectorAll("#cell0, #cell1, #cell20, #cell21, #cell40, #cell41, #cell60, #cell61, #cell80, #cell81, #cell100, #cell101, #cell120, #cell121, #cell140, #cell141, #cell160, #cell161, #cell180, #cell181, #cell200, #cell201, #cell220, #cell221, #cell240, #cell241, #cell260, #cell261, #cell280, #cell281, #cell300, #cell301, #cell320, #cell321, #cell340, #cell341, #cell360, #cell361, #cell380, #cell381")
         for (let i = 0; i < color5.length; i++) {
             if (color5) {
-                color5[i].style.borderColor = player1Color.value;
+                color5[i].style.backgroundColor = player1Color.value;
             }
         }
 
         let color6 = document.querySelectorAll("#cell18, #cell19, #cell38, #cell39, #cell58, #cell59, #cell78, #cell79, #cell98, #cell99, #cell118, #cell119, #cell138, #cell139, #cell158, #cell159, #cell178, #cell179, #cell198, #cell199, #cell218, #cell219, #cell238, #cell239, #cell258, #cell259, #cell278, #cell279, #cell298, #cell299, #cell318, #cell319, #cell338, #cell339, #cell358, #cell359, #cell378, #cell379, #cell398, #cell399")
         for (let i = 0; i < color6.length; i++) {
             if (color6) {
-                color6[i].style.borderColor = player2Color.value;
+                color6[i].style.backgroundColor = player2Color.value;
             }
         }
 
@@ -518,18 +528,66 @@ button1.addEventListener('click', event => {
         alert("Please pick a size");
         document.location.reload();
     }
+    document.getElementById("p1").style.visibility = "visible"
+    document.getElementById("p2").style.visibility = "visible"
     document.getElementById("game-board").style.visibility = "visible"
     document.getElementById('board-size').remove();
-    document.getElementById('button1').remove();
+    document.getElementById('submit').remove();
+    document.getElementById('player2Name').remove();
+    document.getElementById('player1Name').remove();
+    document.getElementById('player1Color').remove();
+    document.getElementById('words').remove();
+    document.getElementById('player2Color').remove();
+    document.getElementById('words1').remove();
+    document.getElementById("ready-check1").innerHTML = "Not Ready";
+    document.getElementById("ready-check2").innerHTML = "Not Ready";
+    document.getElementById("ready1").style.backgroundColor = player1Color.value;
+    document.getElementById("ready2").style.backgroundColor = player2Color.value;
+
+//optimize this so no matter what order you click it will do the set timeout
+ready1.addEventListener('click', event => {
+    document.getElementById("ready1").remove();
+    document.getElementById("ready-check1").innerHTML = "Ready!"
+    document.getElementById("p1").remove();
+
+})
+ready2.addEventListener('click', event => {
+    document.getElementById("ready2").remove();
+    document.getElementById("ready-check2").innerHTML = "Ready!"
+    document.getElementById("p2").remove();
+    function countDown(i, callback) {
+        callback = callback || function(){};
+        var int = setInterval(function() {
+            document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
+            i-- || (clearInterval(int), callback());
+        }, 1000);
+    }
+    countDown(5, function(){
+        alert("game started")
+        //Not sure if this works
+        document.getElementById("actions").ariaDisabled = "false";
+        document.getAnimations("displayDiv").remove();
+    });
+})
+    //optimize this better. Timer for change colors
+    setInterval(
+        function () {
+          document.body.style.backgroundColor = player2Color.value;
+        },5000)
+        setInterval(
+            function () {
+                document.body.style.backgroundColor = player1Color.value;
+            }, 4000
+        )
+
     if (currentturn == player1){
     document.querySelector("body").style.backgroundColor = player1Color.value;
-    }
-    else if (currentturn == player2){
-        document.querySelector("body").style.backgroundColor = player2Color.value;
-    }
+    } 
+    
+})
+    })
 })
 
-  
 
 function listing() {
   document.getElementById("Actions").classList.toggle("show");
