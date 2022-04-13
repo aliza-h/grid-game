@@ -354,9 +354,12 @@ function drop(ev) {
 submit.addEventListener('click', event => {
     event.preventDefault();
     
-    document.getElementById('player1Color').style.visibility = "visible";
-    document.getElementById('player2Name').style.visibility = 'hidden';
     document.getElementById('player1Name').style.visibility = 'hidden';
+    document.getElementById('player1Name').style.height = '0vh';
+    document.getElementById('player1Color').style.visibility = "visible";
+
+    document.getElementById('player2Name').style.visibility = 'hidden';
+    document.getElementById('player2Name').style.height = '0vh';
     document.getElementById('player2Color').style.visibility = 'visible';
     
     if (player1.value == player2.value) {
@@ -393,6 +396,7 @@ submit.addEventListener('click', event => {
         
         //document.getElementById('board-size').style.visibility = 'visible';
         //document.getElementById('button1').style.visibility = 'visible';
+        document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
     })
 })

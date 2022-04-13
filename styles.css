@@ -29,11 +29,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    /*height: 6vw;
-    width: 55vw;*/
     height: auto;
     width: auto;
-    /*border: 1px solid green;*/
 }
 
 .game-cell {
@@ -105,7 +102,6 @@ h3 {
 }
 
 #player-input-box {
-    border: 2px solid red;
     display: flex;
     width: 80vw;
     justify-content: space-around;
@@ -219,12 +215,6 @@ img {
 
 
 
-
-#player1Color, #player2Color{
-    visibility:hidden;
-}
-
-
 #player1Name {
     font-family: Verdana;
     font-size: 10px;
@@ -248,8 +238,7 @@ img {
 }
 
 
-#player1Color{
-    visibility: hidden;
+#player1Color, #player2Color {
     font-family: Verdana;
     font-size: 10px;
     width: 150px;
@@ -258,18 +247,11 @@ img {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    visibility: hidden;
 }
 
-#player2Color{
-    visibility: hidden;
-    font-family: Verdana;
-    font-size: 10px;
-    width: 150px;
-    height: 50px;
-    padding: 2vh;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+#text-prompt1, #text-prompt2 {
+    margin-bottom: 3vh;
 }
 
 #board-size{
@@ -286,9 +268,9 @@ img {
 }
 
 #board-size-box {
-    border: 2px solid blue;
     display: flex;
     flex-direction: column;
+    height: 0vh;
     visibility: hidden;
 }
 
