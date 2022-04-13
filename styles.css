@@ -104,6 +104,21 @@ h3 {
     align-items: center;
 }
 
+#player-input-box {
+    border: 2px solid red;
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.single-player-input {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    justify-content: space-between;
+}
+
 .player-names {
     width: 25vw;
     height: 4vh;
@@ -144,7 +159,6 @@ h3 {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    visibility: hidden;
 }
 
 
@@ -204,22 +218,12 @@ img {
 /*color and name fields */
 
 
-#submit{
-    margin-left: 35%;
-}
 
-
-#words{
-    margin-top: -17%;
-}
-
-#player1{
-    margin-left: 8%;
-}
 
 #player1Color, #player2Color{
     visibility:hidden;
 }
+
 
 #player1Name {
     font-family: Verdana;
@@ -228,7 +232,7 @@ img {
     height: auto;
     padding: 2vh;
     border-radius: 10px;
-    text-transform: uppercase;
+     /*text-transform: uppercase;*/
     letter-spacing: 3px;
 }
 
@@ -239,10 +243,10 @@ img {
     height: auto;
     padding: 2vh;
     border-radius: 10px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     letter-spacing: 3px;
-    margin-left: 35%;
 }
+
 
 #player1Color{
     visibility: hidden;
@@ -266,7 +270,6 @@ img {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 45%;
 }
 
 #board-size{
@@ -280,7 +283,12 @@ img {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 40%;
+}
+
+#board-size-box {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
     visibility: hidden;
 }
 
@@ -316,7 +324,6 @@ img {
   height: 8vw;
   width: 20vw;
   border: 2px solid red;
-  margin-right: 45px;
   margin-bottom: 15px;
 }
 
@@ -330,7 +337,6 @@ img {
   height: 8vw;
   width: 20vw;
   border: 2px solid blue;
-  margin-left: 45px;
   margin-bottom: 15px;
 
 }
