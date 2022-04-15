@@ -6,6 +6,7 @@ let playerOneColor = document.getElementById("player1Color").value;
 let playerTwoColor = document.getElementById("player2Color").value;
 let submitButton = document.getElementById("submit");
 
+let gameRow = document.querySelector(".game-row");
 let numberOfRows = 0;
 let numberOfColumns = 0;
 
@@ -23,6 +24,8 @@ let player2Color = document.getElementById("player2Color")
 let div = document.getElementById("Names")
 let p1 = document.getElementById("p1");
 
+const drops = [].slice.call(
+    document.querySelectorAll( '.drop' ), 0 );
 let ready1 = document.getElementById("ready1")
 let ready2 = document.getElementById("ready2")
 
@@ -378,6 +381,7 @@ function generateGrid(rows, colunms) {
             let gameCell = document.createElement("div");
             gameCell.className = "game-cell";
             gameCell.id = "cell" + id;
+
             gameRow.appendChild(gameCell); // adds cell to board
 
             cellArr.push({ // creates a new object for the current cell
@@ -396,8 +400,15 @@ function generateGrid(rows, colunms) {
     numberOfColumns = colunms;
 }
 
+
 function allowDrop(ev) {
-    ev.preventDefault();
+    let cell0 = document.querySelector("#cell0").setAttribute(ondrop="drop(event)", ondragover="allowDrop(event)");
+    if (cell0.id === "cell0") {
+      ev.preventDefault();
+    }
+    else if (cell0.className != "game-cell drop"){
+        console.log("can't place here")
+    }
 }
 
 function drag(ev) {
@@ -408,18 +419,18 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     console.log(data);
-    ev.target.appendChild(document.getElementById(data));
+    ev.target.appendChild(document.getElementById(data)); 
 
-    var player = data.substring(0,2);
+  /*var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
-
+    
     console.log(player);
     console.log(toCell);
     console.log(type);
 
-    addShipTo(toCell,type,player);
-}
+    addShipTo(toCell,type,player);*/
+} 
 
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
 
@@ -479,6 +490,29 @@ submit.addEventListener('click', event => {
 
     if (option.value == "10x10") {
         generateGrid(10, 10);
+
+
+document.querySelector("#cell0").classList.add("drop");
+document.querySelector("#cell1").classList.add("drop");
+document.querySelector("#cell10").classList.add("drop");
+document.querySelector("#cell11").classList.add("drop");
+document.querySelector("#cell20").classList.add("drop");
+document.querySelector("#cell21").classList.add("drop");
+document.querySelector("#cell30").classList.add("drop");
+document.querySelector("#cell31").classList.add("drop");
+document.querySelector("#cell40").classList.add("drop");
+document.querySelector("#cell41").classList.add("drop");
+document.querySelector("#cell50").classList.add("drop");
+document.querySelector("#cell51").classList.add("drop");
+document.querySelector("#cell60").classList.add("drop");
+document.querySelector("#cell61").classList.add("drop");
+document.querySelector("#cell70").classList.add("drop");
+document.querySelector("#cell71").classList.add("drop");
+document.querySelector("#cell80").classList.add("drop");
+document.querySelector("#cell81").classList.add("drop");
+document.querySelector("#cell90").classList.add("drop");
+document.querySelector("#cell91").classList.add("drop");
+
         let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
         for (let i = 0; i < color1.length; i++) {
             if (color1) {
@@ -566,6 +600,8 @@ ready2.addEventListener('click', event => {
         alert("game started")
         //Not sure if this works
         document.getElementById("displayDiv").remove();
+        document.getElementById("ready-check1").remove();
+        document.getElementById("ready-check2").remove();
     });
 })
     //optimize this better. Timer for change colors
