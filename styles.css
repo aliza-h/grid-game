@@ -323,7 +323,6 @@ margin-left: 65%;
 #readybuttons{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -353,6 +352,7 @@ margin-left: 65%;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    margin-left: 60%;
 }
 
 #p1 {

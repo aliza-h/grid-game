@@ -84,7 +84,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
     var result = shipStats.filter(x => x.shipType == thisShip);
 
     console.log(result);
-    console.log(result[0].shipHp);
+    console.log(result[0].shipHP);
     console.log(result[0].shipHP);
 
 
@@ -398,14 +398,17 @@ function generateGrid(rows, colunms) {
 
 
 function allowDrop(ev) {
-    let ondrop
-    let cell0 = document.querySelector("#cell0").setAttribute(ondrop="drop(event)", ondragover="allowDrop(event)");
-    if (cell0.id === "cell0") {
+    let cell0 = document.querySelector("#cell0")
+    if (cell0.className === "game-cell drop") {
       ev.preventDefault();
     }
     else if (cell0.className != "game-cell drop"){
         console.log("can't place here")
     }
+    if (ev.target.getAttribute("draggable") == "true")
+        ev.dataTransfer.dropEffect = "none";
+    else
+        ev.dataTransfer.dropEffect = "all";
 }
 
 function drag(ev) {
@@ -418,15 +421,12 @@ function drop(ev) {
     console.log(data);
     ev.target.appendChild(document.getElementById(data)); 
 
-  /*var player = data.substring(0,2);
+  var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
-    
-    console.log(player);
-    console.log(toCell);
-    console.log(type);
 
-    addShipTo(toCell,type,player);*/
+
+    addShipTo(toCell,type,player);
 } 
 
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
@@ -467,22 +467,6 @@ submit.addEventListener('click', event => {
 
     submit.addEventListener('click', event => {
 
-        // if (player1Color.value == player2Color.value) {
-        //     alert("Can't be same color");
-        //     document.location.reload();
-        // }
-        // if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
-        //     alert("Please pick one of the preset colors")
-        //     document.location.reload();
-        // } 
-
-        // if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
-        //     alert("Please pick one of the preset colors")
-        //     document.location.reload();
-        // } 
-
-
-
         document.getElementById('player1Color').style.visibility = "hidden";
         document.getElementById('words').style.visibility = "hidden";
         var txt = document.getElementById("player1Name").value;
@@ -514,37 +498,6 @@ submit.addEventListener('click', event => {
         if (player1Color.value == "Yellow") {
             txtcolor.style.color = "#fada5e"
         }
-
-    if (option.value == "10x10") {
-        generateGrid(10, 10);
-
-
-document.querySelector("#cell0").classList.add("drop");
-document.querySelector("#cell1").classList.add("drop");
-document.querySelector("#cell10").classList.add("drop");
-document.querySelector("#cell11").classList.add("drop");
-document.querySelector("#cell20").classList.add("drop");
-document.querySelector("#cell21").classList.add("drop");
-document.querySelector("#cell30").classList.add("drop");
-document.querySelector("#cell31").classList.add("drop");
-document.querySelector("#cell40").classList.add("drop");
-document.querySelector("#cell41").classList.add("drop");
-document.querySelector("#cell50").classList.add("drop");
-document.querySelector("#cell51").classList.add("drop");
-document.querySelector("#cell60").classList.add("drop");
-document.querySelector("#cell61").classList.add("drop");
-document.querySelector("#cell70").classList.add("drop");
-document.querySelector("#cell71").classList.add("drop");
-document.querySelector("#cell80").classList.add("drop");
-document.querySelector("#cell81").classList.add("drop");
-document.querySelector("#cell90").classList.add("drop");
-document.querySelector("#cell91").classList.add("drop");
-
-        let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
-        for (let i = 0; i < color1.length; i++) {
-            if (color1) {
-                color1[i].style.backgroundColor = player1Color.value;
-            }
         if (player2Color.value == "Red") {
             txtcolor2.style.color = "#e9967a"
         }
@@ -557,6 +510,10 @@ document.querySelector("#cell91").classList.add("drop");
         if (player2Color.value == "Yellow") {
             txtcolor2.style.color = "#fada5e"
         }
+        
+
+
+    
 
         submit.addEventListener('click', event => {
 
@@ -568,6 +525,27 @@ document.querySelector("#cell91").classList.add("drop");
 
             if (option.value == "10x10") {
                 generateGrid(10, 10);
+            
+            document.querySelector("#cell0").classList.add("drop");
+            document.querySelector("#cell1").classList.add("drop");
+            document.querySelector("#cell10").classList.add("drop");
+            document.querySelector("#cell11").classList.add("drop");
+            document.querySelector("#cell20").classList.add("drop");
+            document.querySelector("#cell21").classList.add("drop");
+            document.querySelector("#cell30").classList.add("drop");
+            document.querySelector("#cell31").classList.add("drop");
+            document.querySelector("#cell40").classList.add("drop");
+            document.querySelector("#cell41").classList.add("drop");
+            document.querySelector("#cell50").classList.add("drop");
+            document.querySelector("#cell51").classList.add("drop");
+            document.querySelector("#cell60").classList.add("drop");
+            document.querySelector("#cell61").classList.add("drop");
+            document.querySelector("#cell70").classList.add("drop");
+            document.querySelector("#cell71").classList.add("drop");
+            document.querySelector("#cell80").classList.add("drop");
+            document.querySelector("#cell81").classList.add("drop");
+            document.querySelector("#cell90").classList.add("drop");
+            document.querySelector("#cell91").classList.add("drop");
                 let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
@@ -603,7 +581,6 @@ document.querySelector("#cell91").classList.add("drop");
                         }
                     }
                 }
-
 
             } else if (option.value == "15x15") {
                 generateGrid(15, 15)
@@ -820,23 +797,8 @@ ready2.addEventListener('click', event => {
     });
 })
     //optimize this better. Timer for change colors
-    setInterval(
-        function () {
-          document.body.style.backgroundColor = player2Color.value;
-        },5000)
-        setInterval(
-            function () {
-                document.body.style.backgroundColor = player1Color.value;
-            }, 4000
-        )
-
-    if (currentturn == player1){
-    document.querySelector("body").style.backgroundColor = player1Color.value;
-    } 
     
-}
-        }
-    })
+})
 })
 
 
