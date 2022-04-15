@@ -402,6 +402,7 @@ function generateGrid(rows, colunms) {
 
 
 function allowDrop(ev) {
+    let ondrop
     let cell0 = document.querySelector("#cell0").setAttribute(ondrop="drop(event)", ondragover="allowDrop(event)");
     if (cell0.id === "cell0") {
       ev.preventDefault();
