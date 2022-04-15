@@ -1,112 +1,92 @@
 <!doctype html>
-
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Grid Game</title>
-    <meta name="description" content="A grid game.">
-    <meta name="author" content="The four of us">
-
-    <!-- <link rel="icon" href="/favicon.ico">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <h1>Grid Game</h1>
-    <div class="column">
-        <div class="row">
-            <form id="players">
-                <div class="form">
-                    <select name="board-size" id="board-size">
-               <option disabled selected></option>
-               <option id = "1">10x10</option>
-               <option id = "2">15x15</option>
-               <option id = "3">20x20</option>
-               </select>
-                    <div id="name">
-                        <div id="words1">Please enter name and color for the game</div>
-                        <div id="words">Please enter name and color for the game</div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Grid Game</title>
+        <meta name="description" content="A grid game.">
+        <meta name="author" content="The four of us">
+        <!-- <link rel="icon" href="/favicon.ico"><link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Grid Game</h1>
+        <div class="column">
+            <div class="row">
+                <form id="players">
+                    <div class="form">
+                        <select name="board-size" id="board-size">
+                            <option hidden disabled selected></option>
+                            <option id="1">10x10</option>
+                            <option id="2">15x15</option>
+                            <option id="3">20x20</option>
+                        </select>
+                        <div id="name">
+                            <div id="words1">Please enter name and color for the game</div>
+                            <div id="words">Please enter name and color for the game</div>
+                        </div>
+                        <div id="names">
+                            <input type="text" id="player1Name" required>
+                            <input type="text" id="player2Name" required>
+                        </div>
+                        <div id="colors">
+                            <!-- <input list="Colors" id="player1Color" required> -->
+                            <select id="player1Color" required>
+                                <option hidden disabled selected value>choose...</option>
+                                <option>Red</option>
+                                <option>Green</option>
+                                <option>Blue</option>
+                                <option>Yellow</option>
+                            </select>
+                            <!-- <input type="color" list="test" id="player2Color" required> -->
+                            <select id="player2Color" required>
+                                <option hidden disabled selected value>choose...</option>
+                                <option>Red</option>
+                                <option>Green</option>
+                                <option>Blue</option>
+                                <option>Yellow</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="submit">Submit</button>
                     </div>
-                    <div id="names">
-                        <input type="text" id="player1Name" required>
-                        <input type="text" id="player2Name" required>
-                    </div>
-                    <div id="colors">
-                        <input type="color" list="Colors" id="player1Color" required>
-                        <datalist id="Colors">
-                    <option>#e9967a</option>
-                 <option>#0bd67e</option>
-                 <option>#87ceeb</option>
-                 <option>#fada5e</option>
-                 </datalist>
-
-
-
-                        <input type="color" list="test" id="player2Color" required>
-                        <datalist id="test">
-                            <option>#e9967a</option>
-                            <option>#0bd67e</option>
-                            <option>#87ceeb</option>
-                            <option>#fada5e</option>
-                            </datalist>
-           
-                    </div>
-                    <button type="submit" id="submit">Submit</button>
+                </form>
+            </div>
+            <div>
+                <div id="p1">
+                    <img src="images/MAttack.jpeg" id="Melee" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/Defender.jpeg" id="Defender" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/RAttack.jpeg" id="Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/Healer.jpeg" id="Healer" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
                 </div>
-            </form>
-        </div>
-        <div>
-
-        <div id="p1">
-
-            <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-            <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-            <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-            <img src="images/Healer.jpeg" id="Healer"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-        </div>
-
-        <div id="p2">
-              <img src="images/MAttack.jpeg" id="Melee"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-              <img src="images/Defender.jpeg" id="Defender"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-              <img src="images/RAttack.jpeg" id="Ranger"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-              <img src="images/Healer.jpeg" id="Healer"  draggable="true" ondragstart="drag(event)" ondblclick="listing()">
-              </div>
-    
-
-        </div>
-      
-        <div id="game-board">
-            <!-- game board goes here -->
-            <span id="displayDiv">
-              </span>
-            <div id = "readybuttons">
-              <button type="button" id="ready1">Ready?</button>
-              <button type="button" id="ready2">Ready?</button>
+                <div id="p2">
+                    <img src="images/MAttack.jpeg" id="Melee" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/Defender.jpeg" id="Defender" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/RAttack.jpeg" id="Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                    <img src="images/Healer.jpeg" id="Healer" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
+                </div>
             </div>
-
-            <div id="names1">
-                <div class = "board-player-name" id="name1"></div>
-                <div class = "board-player-name" id="name2"></div>
+            <div id="game-board" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- game board goes here -->
+                <span id="displayDiv"></span>
+                <div id="readybuttons">
+                    <button type="button" id="ready1">Ready?</button>
+                    <button type="button" id="ready2">Ready?</button>
+                </div>
+                <div id="names1">
+                    <div class="board-player-name" id="name1"></div>
+                    <div class="board-player-name" id="name2"></div>
+                </div>
+                <div id="readycheck">
+                    <div class="readychecks" id="ready-check1"></div>
+                    <div class="readychecks" id="ready-check2"></div>
+                </div>
             </div>
-            <div id = "readycheck">
-              <div class = "readychecks" id = "ready-check1"></div>
-              <div class = "readychecks" id = "ready-check2"></div>
+            <div id="Actions" class="actList">
+                <p>Attack</p>
+                <p>Movement</p>
+                <p>End Turn</p>
             </div>
-        </div>
-
-        <div id="Actions" class="actList">
-          <p >Attack</p>
-          <p >Movement</p>
-          <p >End Turn</p>
-        </div>
-
-        <script src="game.js"></script>
-</body>
-
+            <script src="game.js"></script>
+    </body>
 </html>
-
 <!--hello-->

@@ -33,35 +33,34 @@ let ready2 = document.getElementById("ready2")
 let cellArr = []; // the array of cell objects
 
 
-let shipStats = [
+let shipStats = [{
+        shipType: "Defender",
+        shipHP: 100,
+        attackRange: 1,
+        movementRange: 1
+    },
     {
-    shipType: "Defender",
-    shipHP: 100,
-    attackRange:1,
-    movementRange:1
-},
-{
-    shipType: "Melee",
-    shipHP: 50,
-    attackRange:2,
-    attackPower:25,
-    movementRange:3
-},
-{
-    shipType:"Healer",
-    shipHP:30,
-    attackRange:1,
-    attackPower:10,
-    healPower:15,
-    movementRange:4
-},
-{
-    shipType:"Ranger",
-    shipHP:50,
-    attackRange:0,
-    attackPower:20,
-    movementRange:3
-}
+        shipType: "Melee",
+        shipHP: 50,
+        attackRange: 2,
+        attackPower: 25,
+        movementRange: 3
+    },
+    {
+        shipType: "Healer",
+        shipHP: 30,
+        attackRange: 1,
+        attackPower: 10,
+        healPower: 15,
+        movementRange: 4
+    },
+    {
+        shipType: "Ranger",
+        shipHP: 50,
+        attackRange: 0,
+        attackPower: 20,
+        movementRange: 3
+    }
 ];
 
 
@@ -99,10 +98,8 @@ function addShipTo(thisCell, thisShip, thisColor) {
     }
 }
 
-function moveShipTo(from,to)
-{
-    cellArr[to] = 
-    {
+function moveShipTo(from, to) {
+    cellArr[to] = {
         "id": cellArr[from].id,
         "hasAnything": true,
         "hasObstacle": false,
@@ -113,8 +110,7 @@ function moveShipTo(from,to)
 
     //draw the ship to the cell
 
-    cellArr[from] = 
-    {
+    cellArr[from] = {
         "id": from,
         "hasAnything": false,
         "hasObstacle": false,
@@ -447,47 +443,77 @@ submit.addEventListener('click', event => {
         alert("Don't have the same name");
         document.location.reload();
     }
-
+    
+    function preventDupes( select, index ) {
+        var options = select.options,
+            len = options.length;
+        while( len-- ) {
+            options[ len ].disabled = false;
+        }
+        select.options[ index ].disabled = true;
+        if( index === select.selectedIndex ) {
+            alert('You\'ve already selected the item "' + select.options[index].text + '".\n\nPlease choose another.');
+            this.selectedIndex = 0;
+        }
+    }
+    
+    player1Color.onchange = function() {
+        preventDupes.call(this, player2Color, this.selectedIndex );
+    };
+    
+    player2Color.onchange = function() {
+        preventDupes.call(this, player1Color, this.selectedIndex );
+    };
 
     submit.addEventListener('click', event => {
 
-        if (player1Color.value == player2Color.value) {
-            alert("Can't be same color");
-            document.location.reload();
-        }
-        if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
-            alert("Please pick one of the preset colors")
-            document.location.reload();
-        } 
+        // if (player1Color.value == player2Color.value) {
+        //     alert("Can't be same color");
+        //     document.location.reload();
+        // }
+        // if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
+        //     alert("Please pick one of the preset colors")
+        //     document.location.reload();
+        // } 
 
-        if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
-            alert("Please pick one of the preset colors")
-            document.location.reload();
-        } 
+        // if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
+        //     alert("Please pick one of the preset colors")
+        //     document.location.reload();
+        // } 
+
+
 
         document.getElementById('player1Color').style.visibility = "hidden";
         document.getElementById('words').style.visibility = "hidden";
         var txt = document.getElementById("player1Name").value;
         document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
         let txtcolor = document.getElementById("name1")
-        txtcolor.style.color = player1Color.value;
+        //txtcolor.style.color = player1Color.value;
         txtcolor.style.fontWeight = 'bolder';
         document.getElementById('player2Color').style.visibility = "hidden";
         document.getElementById('words1').style.visibility = "hidden";
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
         let txtcolor2 = document.getElementById("name2")
-        txtcolor2.style.color = player2Color.value;
+        //txtcolor2.style.color = player2Color.value;
         txtcolor2.style.fontWeight = 'bolder';
         document.getElementById('board-size').style.visibility = 'visible';
 
-submit.addEventListener('click', event => {
+        //console.log(player1Color.value);
+        //console.log(player2Color.value);
 
-    event.preventDefault();
-
-    let select = document.getElementById('board-size');
-    let option = select.options[select.selectedIndex];
-
+        if (player1Color.value == "Red") {
+            txtcolor.style.color = "#e9967a"
+        }
+        if (player1Color.value == "Green") {
+            txtcolor.style.color = "#0bd67e"
+        }
+        if (player1Color.value == "Blue") {
+            txtcolor.style.color = "#87ceeb"
+        }
+        if (player1Color.value == "Yellow") {
+            txtcolor.style.color = "#fada5e"
+        }
 
     if (option.value == "10x10") {
         generateGrid(10, 10);
@@ -519,71 +545,259 @@ document.querySelector("#cell91").classList.add("drop");
             if (color1) {
                 color1[i].style.backgroundColor = player1Color.value;
             }
+        if (player2Color.value == "Red") {
+            txtcolor2.style.color = "#e9967a"
         }
-        let color2 = document.querySelectorAll("#cell8, #cell9, #cell18, #cell19, #cell28, #cell29, #cell38, #cell39, #cell48, #cell49, #cell58, #cell59, #cell68, #cell69, #cell78, #cell79, #cell88, #cell89, #cell98, #cell99");
-        for (let i = 0; i < color2.length; i++) {
-            if (color2) {
-                color2[i].style.backgroundColor = player2Color.value;
-            }
+        if (player2Color.value == "Green") {
+            txtcolor2.style.color = "#0bd67e"
+        }
+        if (player2Color.value == "Blue") {
+            txtcolor2.style.color = "#87ceeb"
+        }
+        if (player2Color.value == "Yellow") {
+            txtcolor2.style.color = "#fada5e"
         }
 
+        submit.addEventListener('click', event => {
 
-    } else if (option.value == "15x15") {
-        generateGrid(15, 15)
-        let color3 = document.querySelectorAll("#cell0, #cell1, #cell15, #cell16, #cell30, #cell31, #cell45, #cell46, #cell60, #cell61, #cell75, #cell76, #cell90, #cell91, #cell105, #cell106, #cell120, #cell121, #cell135, #cell136, #cell150, #cell151, #cell165, #cell166, #cell180, #cell181, #cell195, #cell196, #cell210, #cell211")
-        for (let i = 0; i < color3.length; i++) {
-            if (color3) {
-                color3[i].style.backgroundColor = player1Color.value;
+            event.preventDefault();
+
+            let select = document.getElementById('board-size');
+            let option = select.options[select.selectedIndex];
+
+
+            if (option.value == "10x10") {
+                generateGrid(10, 10);
+                let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                        if (player1Color.value == "Red") {
+                            color1[i].style.backgroundColor = "#e9967a"
+                        }
+                        if (player1Color.value == "Green") {
+                            color1[i].style.backgroundColor = "#0bd67e"
+                        }
+                        if (player1Color.value == "Blue") {
+                            color1[i].style.backgroundColor = "#87ceeb"
+                        }
+                        if (player1Color.value == "Yellow") {
+                            color1[i].style.backgroundColor = "#fada5e"
+                        }
+                        //= player1Color.value;
+                    }
+                }
+                let color2 = document.querySelectorAll("#cell8, #cell9, #cell18, #cell19, #cell28, #cell29, #cell38, #cell39, #cell48, #cell49, #cell58, #cell59, #cell68, #cell69, #cell78, #cell79, #cell88, #cell89, #cell98, #cell99");
+                for (let i = 0; i < color2.length; i++) {
+                    if (color2) {
+                        if (player2Color.value == "Red") {
+                            color2[i].style.backgroundColor = "#e9967a"
+                        }
+                        if (player2Color.value == "Green") {
+                            color2[i].style.backgroundColor = "#0bd67e"
+                        }
+                        if (player2Color.value == "Blue") {
+                            color2[i].style.backgroundColor = "#87ceeb"
+                        }
+                        if (player2Color.value == "Yellow") {
+                            color2[i].style.backgroundColor = "#fada5e"
+                        }
+                    }
+                }
+
+
+            } else if (option.value == "15x15") {
+                generateGrid(15, 15)
+                let color3 = document.querySelectorAll("#cell0, #cell1, #cell15, #cell16, #cell30, #cell31, #cell45, #cell46, #cell60, #cell61, #cell75, #cell76, #cell90, #cell91, #cell105, #cell106, #cell120, #cell121, #cell135, #cell136, #cell150, #cell151, #cell165, #cell166, #cell180, #cell181, #cell195, #cell196, #cell210, #cell211")
+                for (let i = 0; i < color3.length; i++) {
+                    if (color3) {
+                        if (player1Color.value == "Red") {
+                            color3[i].style.backgroundColor = "#e9967a"
+                        }
+                        if (player1Color.value == "Green") {
+                            color3[i].style.backgroundColor = "#0bd67e"
+                        }
+                        if (player1Color.value == "Blue") {
+                            color3[i].style.backgroundColor = "#87ceeb"
+                        }
+                        if (player1Color.value == "Yellow") {
+                            color3[i].style.backgroundColor = "#fada5e"
+                        }
+                    }
+
+                    let color4 = document.querySelectorAll("#cell13, #cell14, #cell28, #cell29, #cell43, #cell44, #cell58, #cell59, #cell73, #cell74, #cell88, #cell89, #cell103, #cell104, #cell118, #cell119, #cell133, #cell134, #cell148, #cell149, #cell163, #cell164, #cell178, #cell179, #cell193, #cell194, #cell208, #cell209, #cell223, #cell224")
+                    for (let i = 0; i < color4.length; i++) {
+                        if (color4) {
+                            if (player2Color.value == "Red") {
+                                color4[i].style.backgroundColor = "#e9967a"
+                            }
+                            if (player2Color.value == "Green") {
+                                color4[i].style.backgroundColor = "#0bd67e"
+                            }
+                            if (player2Color.value == "Blue") {
+                                color4[i].style.backgroundColor = "#87ceeb"
+                            }
+                            if (player2Color.value == "Yellow") {
+                                color4[i].style.backgroundColor = "#fada5e"
+                            }
+                        }
+                    }
+                }
+            } else if (option.value == "20x20") {
+                generateGrid(20, 20)
+                let color5 = document.querySelectorAll("#cell0, #cell1, #cell20, #cell21, #cell40, #cell41, #cell60, #cell61, #cell80, #cell81, #cell100, #cell101, #cell120, #cell121, #cell140, #cell141, #cell160, #cell161, #cell180, #cell181, #cell200, #cell201, #cell220, #cell221, #cell240, #cell241, #cell260, #cell261, #cell280, #cell281, #cell300, #cell301, #cell320, #cell321, #cell340, #cell341, #cell360, #cell361, #cell380, #cell381")
+                for (let i = 0; i < color5.length; i++) {
+                    if (color5) {
+                        if (player1Color.value == "Red") {
+                            color5[i].style.backgroundColor = "#e9967a"
+                        }
+                        if (player1Color.value == "Green") {
+                            color5[i].style.backgroundColor = "#0bd67e"
+                        }
+                        if (player1Color.value == "Blue") {
+                            color5[i].style.backgroundColor = "#87ceeb"
+                        }
+                        if (player1Color.value == "Yellow") {
+                            color5[i].style.backgroundColor = "#fada5e"
+                        }
+                    }
+                }
+
+                let color6 = document.querySelectorAll("#cell18, #cell19, #cell38, #cell39, #cell58, #cell59, #cell78, #cell79, #cell98, #cell99, #cell118, #cell119, #cell138, #cell139, #cell158, #cell159, #cell178, #cell179, #cell198, #cell199, #cell218, #cell219, #cell238, #cell239, #cell258, #cell259, #cell278, #cell279, #cell298, #cell299, #cell318, #cell319, #cell338, #cell339, #cell358, #cell359, #cell378, #cell379, #cell398, #cell399")
+                for (let i = 0; i < color6.length; i++) {
+                    if (color6) {
+                        if (player2Color.value == "Red") {
+                            color6[i].style.backgroundColor = "#e9967a"
+                        }
+                        if (player2Color.value == "Green") {
+                            color6[i].style.backgroundColor = "#0bd67e"
+                        }
+                        if (player2Color.value == "Blue") {
+                            color6[i].style.backgroundColor = "#87ceeb"
+                        }
+                        if (player2Color.value == "Yellow") {
+                            color6[i].style.backgroundColor = "#fada5e"
+                        }
+                    }
+                }
+
+            } else if (option.value == "") {
+                alert("Please pick a size");
+                document.location.reload();
+            }
+            document.getElementById("p1").style.visibility = "visible"
+            document.getElementById("p2").style.visibility = "visible"
+            document.getElementById("game-board").style.visibility = "visible"
+            document.getElementById('board-size').remove();
+            document.getElementById('submit').remove();
+            document.getElementById('player2Name').remove();
+            document.getElementById('player1Name').remove();
+            document.getElementById('player1Color').remove();
+            document.getElementById('words').remove();
+            document.getElementById('player2Color').remove();
+            document.getElementById('words1').remove();
+            document.getElementById("ready-check1").innerHTML = "Not Ready";
+            document.getElementById("ready-check2").innerHTML = "Not Ready";
+
+            if (player1Color.value == "Red") {
+                document.getElementById("ready1").style.backgroundColor = "#e9967a"
+            }
+            if (player1Color.value == "Green") {
+                document.getElementById("ready1").style.backgroundColor = "#0bd67e"
+            }
+            if (player1Color.value == "Blue") {
+                document.getElementById("ready1").style.backgroundColor = "#87ceeb"
+            }
+            if (player1Color.value == "Yellow") {
+                document.getElementById("ready1").style.backgroundColor = "#fada5e"
             }
 
-            let color4 = document.querySelectorAll("#cell13, #cell14, #cell28, #cell29, #cell43, #cell44, #cell58, #cell59, #cell73, #cell74, #cell88, #cell89, #cell103, #cell104, #cell118, #cell119, #cell133, #cell134, #cell148, #cell149, #cell163, #cell164, #cell178, #cell179, #cell193, #cell194, #cell208, #cell209, #cell223, #cell224")
-            for (let i = 0; i < color4.length; i++) {
-                if (color4) {
-                    color4[i].style.backgroundColor = player2Color.value;
+            if (player2Color.value == "Red") {
+                document.getElementById("ready2").style.backgroundColor = "#e9967a"
+            }
+            if (player2Color.value == "Green") {
+                document.getElementById("ready2").style.backgroundColor = "#0bd67e"
+            }
+            if (player2Color.value == "Blue") {
+                document.getElementById("ready2").style.backgroundColor = "#87ceeb"
+            }
+            if (player2Color.value == "Yellow") {
+                document.getElementById("ready2").style.backgroundColor = "#fada5e"
+            }
+
+            //optimize this so no matter what order you click it will do the set timeout
+            ready1.addEventListener('click', event => {
+                document.getElementById("ready1").remove();
+                document.getElementById("ready-check1").innerHTML = "Ready!"
+                document.getElementById("p1").remove();
+
+            })
+            ready2.addEventListener('click', event => {
+                document.getElementById("ready2").remove();
+                document.getElementById("ready-check2").innerHTML = "Ready!"
+                document.getElementById("p2").remove();
+
+                function countDown(i, callback) {
+                    callback = callback || function() {};
+                    var int = setInterval(function() {
+                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
+                        i-- || (clearInterval(int), callback());
+                    }, 1000);
+                }
+                countDown(5, function() {
+                    alert("game started")
+                    //Not sure if this works
+                    document.getElementById("displayDiv").remove();
+                });
+            })
+            //optimize this better. Timer for change colors
+            setInterval(
+                function() {
+
+                    if (player2Color.value == "Red") {
+                        document.body.style.backgroundColor = "#e9967a"
+                    }
+                    if (player2Color.value == "Green") {
+                        document.body.style.backgroundColor = "#0bd67e"
+                    }
+                    if (player2Color.value == "Blue") {
+                        document.body.style.backgroundColor = "#87ceeb"
+                    }
+                    if (player2Color.value == "Yellow") {
+                        document.body.style.backgroundColor = "#fada5e"
+                    }
+                }, 5000)
+            setInterval(
+                function() {
+                    if (player1Color.value == "Red") {
+                        document.body.style.backgroundColor = "#e9967a"
+                    }
+                    if (player1Color.value == "Green") {
+                        document.body.style.backgroundColor = "#0bd67e"
+                    }
+                    if (player1Color.value == "Blue") {
+                        document.body.style.backgroundColor = "#87ceeb"
+                    }
+                    if (player1Color.value == "Yellow") {
+                        document.body.style.backgroundColor = "#fada5e"
+                    }
+
+                }, 4000
+            )
+
+            if (currentturn == player1) {
+                if (player1Color.value == "Red") {
+                    document.body.style.backgroundColor = "#e9967a"
+                }
+                if (player1Color.value == "Green") {
+                    document.body.style.backgroundColor = "#0bd67e"
+                }
+                if (player1Color.value == "Blue") {
+                    document.body.style.backgroundColor = "#87ceeb"
+                }
+                if (player1Color.value == "Yellow") {
+                    document.body.style.backgroundColor = "#fada5e"
                 }
             }
-        }
-    } else if (option.value == "20x20") {
-        generateGrid(20, 20)
-        let color5 = document.querySelectorAll("#cell0, #cell1, #cell20, #cell21, #cell40, #cell41, #cell60, #cell61, #cell80, #cell81, #cell100, #cell101, #cell120, #cell121, #cell140, #cell141, #cell160, #cell161, #cell180, #cell181, #cell200, #cell201, #cell220, #cell221, #cell240, #cell241, #cell260, #cell261, #cell280, #cell281, #cell300, #cell301, #cell320, #cell321, #cell340, #cell341, #cell360, #cell361, #cell380, #cell381")
-        for (let i = 0; i < color5.length; i++) {
-            if (color5) {
-                color5[i].style.backgroundColor = player1Color.value;
-            }
-        }
-
-        let color6 = document.querySelectorAll("#cell18, #cell19, #cell38, #cell39, #cell58, #cell59, #cell78, #cell79, #cell98, #cell99, #cell118, #cell119, #cell138, #cell139, #cell158, #cell159, #cell178, #cell179, #cell198, #cell199, #cell218, #cell219, #cell238, #cell239, #cell258, #cell259, #cell278, #cell279, #cell298, #cell299, #cell318, #cell319, #cell338, #cell339, #cell358, #cell359, #cell378, #cell379, #cell398, #cell399")
-        for (let i = 0; i < color6.length; i++) {
-            if (color6) {
-                color6[i].style.backgroundColor = player2Color.value;
-            }
-        }
-
-    } else if (option.value == "") {
-        alert("Please pick a size");
-        document.location.reload();
-    }
-    document.getElementById("p1").style.visibility = "visible"
-    document.getElementById("p2").style.visibility = "visible"
-    document.getElementById("game-board").style.visibility = "visible"
-    document.getElementById('board-size').remove();
-    document.getElementById('submit').remove();
-    document.getElementById('player2Name').remove();
-    document.getElementById('player1Name').remove();
-    document.getElementById('player1Color').remove();
-    document.getElementById('words').remove();
-    document.getElementById('player2Color').remove();
-    document.getElementById('words1').remove();
-    document.getElementById("ready-check1").innerHTML = "Not Ready";
-    document.getElementById("ready-check2").innerHTML = "Not Ready";
-    document.getElementById("ready1").style.backgroundColor = player1Color.value;
-    document.getElementById("ready2").style.backgroundColor = player2Color.value;
-
-//optimize this so no matter what order you click it will do the set timeout
-ready1.addEventListener('click', event => {
-    document.getElementById("ready1").remove();
-    document.getElementById("ready-check1").innerHTML = "Ready!"
-    document.getElementById("p1").remove();
 
 })
 ready2.addEventListener('click', event => {
@@ -620,33 +834,34 @@ ready2.addEventListener('click', event => {
     document.querySelector("body").style.backgroundColor = player1Color.value;
     } 
     
-})
+}
+        }
     })
 })
 
 
 function listing() {
-  document.getElementById("Actions").classList.toggle("show");
+    document.getElementById("Actions").classList.toggle("show");
 }
 
-window.onclick = function(event){
-  if (!event.target.matches('.dropbtn')){
-    var dropdowns = document.getElementsByClassName("actList");
-    var i;
-    for (i = 0; i < dropdowns.length; i++){
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')){
-        openDropdown.classList.remove('show');
-      }
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("actList");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
     }
-  }
 }
 
-function printArray(){
+function printArray() {
     console.log(cellArr);
 }
 
 // EACH CELL HAS
 // ID
 // obstacle/no obstacle
-// player/no player
+// player/no player// This is just a sample script. Paste your real code (javascript or HTML) here.
