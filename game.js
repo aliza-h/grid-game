@@ -350,7 +350,6 @@ function drop(ev) {
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
 
 
-
 submit.addEventListener('click', event => {
     event.preventDefault();
     
@@ -388,16 +387,15 @@ submit.addEventListener('click', event => {
             submit.remove();
         }
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
+        document.getElementById("name1").innerHTML = txt + "'s side";
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
+        document.getElementById("name2").innerHTML = txt + "'s side";
 
         document.getElementById("player-input-box").remove();
         
-        //document.getElementById('board-size').style.visibility = 'visible';
-        //document.getElementById('button1').style.visibility = 'visible';
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
+        document.getElementById('button1').style.visibility = "visible";
     })
 })
 
@@ -462,8 +460,7 @@ button1.addEventListener('click', event => {
 
     document.getElementById("game-board").style.visibility = "visible";
     document.getElementById("board-size-box").remove();
-    //document.getElementById('board-size').remove();
-    //document.getElementById('button1').remove();
+    document.getElementById('button1').remove();
 
     if (currentturn == player1){
     document.querySelector("body").style.backgroundColor = player1Color.value;
@@ -472,8 +469,6 @@ button1.addEventListener('click', event => {
         document.querySelector("body").style.backgroundColor = player2Color.value;
     }
 })
-
-  
 
 function listing() {
   document.getElementById("Actions").classList.toggle("show");
