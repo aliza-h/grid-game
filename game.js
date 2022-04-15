@@ -405,7 +405,7 @@ button1.addEventListener('click', event => {
     let select = document.getElementById('board-size');
     let option = select.options[select.selectedIndex];
 
-    if (option.value == "10x10") {
+    if (option.value == "10x10") { // HOVER COLOR
         generateGrid(10, 10);
         let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
         for (let i = 0; i < color1.length; i++) {
@@ -421,7 +421,7 @@ button1.addEventListener('click', event => {
         }
 
 
-    } else if (option.value == "15x15") {
+    } else if (option.value == "15x15") { // HOVER COLOR
         generateGrid(15, 15)
         let color3 = document.querySelectorAll("#cell0, #cell1, #cell15, #cell16, #cell30, #cell31, #cell45, #cell46, #cell60, #cell61, #cell75, #cell76, #cell90, #cell91, #cell105, #cell106, #cell120, #cell121, #cell135, #cell136, #cell150, #cell151, #cell165, #cell166, #cell180, #cell181, #cell195, #cell196, #cell210, #cell211")
         for (let i = 0; i < color3.length; i++) {
@@ -486,6 +486,8 @@ window.onclick = function(event){
     }
   }
 }
+
+
 
 // EACH CELL HAS
 // ID
