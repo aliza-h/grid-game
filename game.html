@@ -11,46 +11,55 @@
     </head>
     <body>
         <h1>Grid Game</h1>
-        <div class="column">
-            <div class="row">
-                <form id="players">
-                    <div class="form">
-                        <select name="board-size" id="board-size">
-                            <option hidden disabled selected></option>
-                            <option id="1">10x10</option>
-                            <option id="2">15x15</option>
-                            <option id="3">20x20</option>
-                        </select>
-                        <div id="name">
-                            <div id="words1">Please enter name and color for the game</div>
-                            <div id="words">Please enter name and color for the game</div>
-                        </div>
-                        <div id="names">
-                            <input type="text" id="player1Name" required>
-                            <input type="text" id="player2Name" required>
-                        </div>
-                        <div id="colors">
-                            <!-- <input list="Colors" id="player1Color" required> -->
-                            <select id="player1Color" required>
-                                <option hidden disabled selected value>choose...</option>
-                                <option>Red</option>
-                                <option>Green</option>
-                                <option>Blue</option>
-                                <option>Yellow</option>
-                            </select>
-                            <!-- <input type="color" list="test" id="player2Color" required> -->
-                            <select id="player2Color" required>
-                                <option hidden disabled selected value>choose...</option>
-                                <option>Red</option>
-                                <option>Green</option>
-                                <option>Blue</option>
-                                <option>Yellow</option>
-                            </select>
-                        </div>
-                        <button type="submit" id="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
+            
+        <div id="board-size-box">
+            <h2>Choose a board size</h2>
+
+            <select name="board-size" id="board-size">
+                <option disabled selected></option>
+                <option id = "1">10x10</option>
+                <option id = "2">15x15</option>
+                <option id = "3">20x20</option>
+            </select>
+        </div>
+
+
+    <div id="player-input-box">
+    
+        <div class="single-player-input" id="player-1-box">
+            <h2>Player 1</h2>
+            <div id="text-prompt1">Please enter a nickname</div>
+            <input type="text" id="player1Name" required>
+
+            <select id="player1Color" required>
+                <option hidden disabled selected value>choose...</option>
+                <option>Red</option>
+                <option>Green</option>
+                <option>Blue</option>
+                <option>Yellow</option>
+            </select>
+        </div>
+
+        <div class="single-player-input" id="player-2-box">
+            <h2>Player 2</h2>
+            <div id="text-prompt2">Please enter a nickname</div>
+            <input type="text" id="player2Name" required>
+
+            <select id="player2Color" required>
+                <option hidden disabled selected value>choose...</option>
+                <option>Red</option>
+                <option>Green</option>
+                <option>Blue</option>
+                <option>Yellow</option>
+            </select>
+        </div>
+    
+    </div>
+
+
+    <button type="submit" id="submit">Submit</button>
+
+
             <div>
                 <div id="p1">
                     <img src="images/MAttack.jpeg" id="p1-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listing()">
