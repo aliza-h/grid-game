@@ -531,15 +531,31 @@ submit.addEventListener('click', event => {
                     if (color1) {
                         if (player1Color.value == "Red") {
                             color1[i].style.backgroundColor = "#e9967a"
+                            document.getElementById("p1-Melee").src="images/attacker_red.png";
+                            document.getElementById("p1-Defender").src="images/defender_red.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
                             color1[i].style.backgroundColor = "#0bd67e"
+                            document.getElementById("p1-Melee").src="images/attacker_green.png";
+                            document.getElementById("p1-Defender").src="images/defender_green.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
                             color1[i].style.backgroundColor = "#87ceeb"
+                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src="images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
                             color1[i].style.backgroundColor = "#fada5e"
+                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
                         }
                         //= player1Color.value;
                     }
@@ -549,15 +565,31 @@ submit.addEventListener('click', event => {
                     if (color2) {
                         if (player2Color.value == "Red") {
                             color2[i].style.backgroundColor = "#e9967a"
+                            document.getElementById("p2-Melee").src="images/attacker_red.png";
+                            document.getElementById("p2-Defender").src="images/defender_red.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
                             color2[i].style.backgroundColor = "#0bd67e"
+                            document.getElementById("p2-Melee").src="images/attacker_green.png";
+                            document.getElementById("p2-Defender").src="images/defender_green.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
                             color2[i].style.backgroundColor = "#87ceeb"
+                            document.getElementById("p2-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p2-Defender").src="images/defender_blue.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
                             color2[i].style.backgroundColor = "#fada5e"
+                            document.getElementById("p2-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p2-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p2-Healer").src="images/healer_yellow.png";
                         }
                     }
                 }
