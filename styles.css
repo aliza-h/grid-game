@@ -19,8 +19,7 @@ body {
     justify-content: center;
     height: auto;
     width: auto;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding: 2vw;
     border: 2px solid #057672;
     background-color: #9CEAEF;
     visibility: hidden;
@@ -257,12 +256,22 @@ img {
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 40%;
+    visibility: hidden;
+}
+
+#board-size-box {
+    display: flex;
+    flex-direction: column;
+    padding: 3vw;
+    justify-content: space-around;
+    height: 0vh;
+    border: 4px solid #057672;
+    background-color: #9CEAEF;
     visibility: hidden;
 }
 
 
-#name, #names #colors{
+#name, #names, #colors{
     display: flex;
 }
 
