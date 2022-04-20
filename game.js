@@ -431,7 +431,7 @@ submit.addEventListener('click', event => {
         alert("Don't have the same name");
         document.location.reload();
     }
-    
+
     function preventDupes( select, index ) {
         var options = select.options,
             len = options.length;
@@ -444,11 +444,11 @@ submit.addEventListener('click', event => {
             this.selectedIndex = 0;
         }
     }
-    
+
     player1Color.onchange = function() {
         preventDupes.call(this, player2Color, this.selectedIndex );
     };
-    
+
     player2Color.onchange = function() {
         preventDupes.call(this, player1Color, this.selectedIndex );
     };
@@ -462,12 +462,12 @@ submit.addEventListener('click', event => {
         // if(player1Color.value != "#e9967a" && player1Color.value != "#0bd67e" && player1Color.value != "#87ceeb" && player1Color.value != "#fada5e"){
         //     alert("Please pick one of the preset colors")
         //     document.location.reload();
-        // } 
+        // }
 
         // if(player2Color.value != "#e9967a" && player2Color.value != "#0bd67e" && player2Color.value != "#87ceeb" && player2Color.value != "#fada5e"){
         //     alert("Please pick one of the preset colors")
         //     document.location.reload();
-        // } 
+        // }
 
 
 
@@ -794,8 +794,30 @@ submit.addEventListener('click', event => {
 })
 
 
-function listing() {
-    document.getElementById("Actions").classList.toggle("show");
+function listingM1() {
+  document.getElementById("ActionsM1").classList.toggle("show");
+}
+function listingR1() {
+  document.getElementById("ActionsR1").classList.toggle("show");
+}
+function listingD1() {
+  document.getElementById("ActionsD1").classList.toggle("show");
+}
+function listingH1() {
+  document.getElementById("ActionsH1").classList.toggle("show");
+}
+
+function listingM2() {
+  document.getElementById("ActionsM2").classList.toggle("show");
+}
+function listingR2() {
+  document.getElementById("ActionsR2").classList.toggle("show");
+}
+function listingD2() {
+  document.getElementById("ActionsD2").classList.toggle("show");
+}
+function listingH2() {
+  document.getElementById("ActionsH2").classList.toggle("show");
 }
 
 window.onclick = function(event) {
@@ -810,6 +832,155 @@ window.onclick = function(event) {
         }
     }
 }
+
+
+let mAtt1 = document.getElementById("attackM1");
+let mMove1 = document.getElementById("movementM1");
+let mEndTurn1 = document.getElementById("endTurnM1");
+
+let rAtt1 = document.getElementById("attackR1");
+let rMove1 = document.getElementById("movementR1");
+let rEndTurn1 = document.getElementById("endTurnR1");
+
+let dAtt1 = document.getElementById("attackD1");
+let dMove1 = document.getElementById("movementD1");
+let dEndTurn1 = document.getElementById("endTurnD1");
+
+let hHeal1 = document.getElementById("healH1");
+let hAtt1 = document.getElementById("attackH1");
+let hMove1 = document.getElementById("movementH1");
+let hEndTurn1 = document.getElementById("endTurnH1");
+
+
+
+
+let mAtt2 = document.getElementById("attackM2");
+let mMove2 = document.getElementById("movementM2");
+let mEndTurn2 = document.getElementById("endTurnM2");
+
+let rAtt2 = document.getElementById("attackR2");
+let rMove2 = document.getElementById("movementR2");
+let rEndTurn2 = document.getElementById("endTurnR2");
+
+let dAtt2 = document.getElementById("attackD2");
+let dMove2 = document.getElementById("movementD2");
+let dEndTurn2 = document.getElementById("endTurnD2");
+
+let hHeal2 = document.getElementById("healH2");
+let hAtt2 = document.getElementById("attackH2");
+let hMove2 = document.getElementById("movementH2");
+let hEndTurn2 = document.getElementById("endTurnH2");
+
+
+
+function AttackM1() {
+
+}
+
+function MovementM1(){
+
+}
+
+function EndTurnM1(){
+
+}
+
+function AttackR1() {
+
+}
+
+function MovementR1(){
+
+}
+
+function EndTurnR1(){
+
+}
+
+function AttackD1() {
+
+}
+
+function MovementD1(){
+
+}
+
+function EndTurnD1(){
+
+}
+
+function HealH1(){
+
+}
+
+function AttackH1() {
+
+}
+
+function MovementH1(){
+
+}
+
+function EndTurnH1(){
+
+}
+
+
+
+
+function AttackM2() {
+
+}
+
+function MovementM2(){
+
+}
+
+function EndTurnM2(){
+
+}
+
+function AttackR2() {
+
+}
+
+function MovementR2(){
+
+}
+
+function EndTurnR2(){
+
+}
+
+function AttackD2() {
+
+}
+
+function MovementD2(){
+
+}
+
+function EndTurnD2(){
+
+}
+
+function HealH2(){
+
+}
+
+function AttackH2() {
+
+}
+
+function MovementH2(){
+
+}
+
+function EndTurnH2(){
+
+}
+
+
 
 function printArray() {
     console.log(cellArr);
