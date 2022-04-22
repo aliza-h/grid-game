@@ -495,29 +495,29 @@ submit.addEventListener('click', event => {
         //console.log(player2Color.value);
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#e9967a";
+            txtcolor.style.color = "#7B0000";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#0bd67e";
+            txtcolor.style.color = "#047B00";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#87ceeb";
+            txtcolor.style.color = "#001A7B";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#fada5e";
+            txtcolor.style.color = "#997B00";
         }
 
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#e9967a";
+            txtcolor2.style.color = "#7B0000";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#0bd67e";
+            txtcolor2.style.color = "#047B00";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#87ceeb";
+            txtcolor2.style.color = "#001A7B";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#fada5e";
+            txtcolor2.style.color = "#997B00";
         }
 
         submit.addEventListener('click', event => {
