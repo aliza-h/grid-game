@@ -356,7 +356,7 @@ function isAtBottom(num) {
 }
 
 // ARH: This function takes the parameters (rows and columns) and creates a game board with [rows] cells in the y-axis and [columns] cells in the x-axis.
-function generateGrid(rows, colunms) {
+function generateGrid(rows, columns) {
     let id = 0;
     let gameBoard = document.getElementById("game-board"); // the game board
 
@@ -368,7 +368,7 @@ function generateGrid(rows, colunms) {
         //gameRow.id = row;
         gameBoard.appendChild(gameRow); // adds row to board
 
-        for (let col = 1; col <= colunms; col++) { // creates cells
+        for (let col = 1; col <= columns; col++) { // creates cells
             let gameCell = document.createElement("div");
             gameCell.className = "game-cell";
             gameCell.id = "cell" + id;
@@ -387,7 +387,7 @@ function generateGrid(rows, colunms) {
     }
 
     numberOfRows = rows;
-    numberOfColumns = colunms;
+    numberOfColumns = columns;
 }
 
 function allowDrop(ev) {
@@ -530,32 +530,37 @@ submit.addEventListener('click', event => {
 
             if (option.value == "10x10") {
                 generateGrid(10, 10);
+                // cell colors are defined here
                 let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                         if (player1Color.value == "Red") {
-                            color1[i].style.backgroundColor = "#e9967a"
+                            color1[i].style.backgroundColor = "#e9967a";
+                            color1[i].style.borderColor = "#7B0000";
                             document.getElementById("p1-Melee").src="images/attacker_red.png";
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color1[i].style.backgroundColor = "#0bd67e"
+                            color1[i].style.backgroundColor = "#0bd67e";
+                            color1[i].style.borderColor = "#047B00";
                             document.getElementById("p1-Melee").src="images/attacker_green.png";
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color1[i].style.backgroundColor = "#87ceeb"
+                            color1[i].style.backgroundColor = "#87ceeb";
+                            color1[i].style.borderColor = "#001A7B";
                             document.getElementById("p1-Melee").src="images/attacker_blue.png";
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color1[i].style.backgroundColor = "#fada5e"
+                            color1[i].style.backgroundColor = "#fada5e";
+                            color1[i].style.borderColor = "#997B00";
                             document.getElementById("p1-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
@@ -564,32 +569,38 @@ submit.addEventListener('click', event => {
                         //= player1Color.value;
                     }
                 }
+
+                // cell colors are defined here
                 let color2 = document.querySelectorAll("#cell8, #cell9, #cell18, #cell19, #cell28, #cell29, #cell38, #cell39, #cell48, #cell49, #cell58, #cell59, #cell68, #cell69, #cell78, #cell79, #cell88, #cell89, #cell98, #cell99");
                 for (let i = 0; i < color2.length; i++) {
                     if (color2) {
                         if (player2Color.value == "Red") {
-                            color2[i].style.backgroundColor = "#e9967a"
+                            color2[i].style.backgroundColor = "#e9967a";
+                            color2[i].style.borderColor = "#7B0000";
                             document.getElementById("p2-Melee").src="images/attacker_red.png";
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
-                            color2[i].style.backgroundColor = "#0bd67e"
+                            color2[i].style.backgroundColor = "#0bd67e";
+                            color2[i].style.borderColor = "#047B00";
                             document.getElementById("p2-Melee").src="images/attacker_green.png";
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
-                            color2[i].style.backgroundColor = "#87ceeb"
+                            color2[i].style.backgroundColor = "#87ceeb";
+                            color2[i].style.borderColor = "#001A7B";
                             document.getElementById("p2-Melee").src="images/attacker_blue.png";
                             document.getElementById("p2-Defender").src="images/defender_blue.png";
                             document.getElementById("p2-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
-                            color2[i].style.backgroundColor = "#fada5e"
+                            color2[i].style.backgroundColor = "#fada5e";
+                            color2[i].style.borderColor = "#997B00";
                             document.getElementById("p2-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
@@ -605,16 +616,20 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color3.length; i++) {
                     if (color3) {
                         if (player1Color.value == "Red") {
-                            color3[i].style.backgroundColor = "#e9967a"
+                            color3[i].style.backgroundColor = "#e9967a";
+                            color3[i].style.borderColor = "#7B0000";
                         }
                         if (player1Color.value == "Green") {
-                            color3[i].style.backgroundColor = "#0bd67e"
+                            color3[i].style.backgroundColor = "#0bd67e";
+                            color3[i].style.borderColor = "#047B00";
                         }
                         if (player1Color.value == "Blue") {
-                            color3[i].style.backgroundColor = "#87ceeb"
+                            color3[i].style.backgroundColor = "#87ceeb";
+                            color3[i].style.borderColor = "#001A7B";
                         }
                         if (player1Color.value == "Yellow") {
-                            color3[i].style.backgroundColor = "#fada5e"
+                            color3[i].style.backgroundColor = "#fada5e";
+                            color3[i].style.borderColor = "#997B00";
                         }
                     }
 
@@ -623,15 +638,19 @@ submit.addEventListener('click', event => {
                         if (color4) {
                             if (player2Color.value == "Red") {
                                 color4[i].style.backgroundColor = "#e9967a"
+                                color4[i].style.borderColor = "#7B0000";
                             }
                             if (player2Color.value == "Green") {
-                                color4[i].style.backgroundColor = "#0bd67e"
+                                color4[i].style.backgroundColor = "#0bd67e";
+                                color4[i].style.borderColor = "#047B00";
                             }
                             if (player2Color.value == "Blue") {
                                 color4[i].style.backgroundColor = "#87ceeb"
+                                color4[i].style.borderColor = "#001A7B";
                             }
                             if (player2Color.value == "Yellow") {
-                                color4[i].style.backgroundColor = "#fada5e"
+                                color4[i].style.backgroundColor = "#fada5e";
+                                color4[i].style.borderColor = "#997B00";
                             }
                         }
                     }
@@ -643,15 +662,19 @@ submit.addEventListener('click', event => {
                     if (color5) {
                         if (player1Color.value == "Red") {
                             color5[i].style.backgroundColor = "#e9967a"
+                            color5[i].style.borderColor = "#7B0000";
                         }
                         if (player1Color.value == "Green") {
-                            color5[i].style.backgroundColor = "#0bd67e"
+                            color5[i].style.backgroundColor = "#0bd67e";
+                            color5[i].style.borderColor = "#047B00";
                         }
                         if (player1Color.value == "Blue") {
-                            color5[i].style.backgroundColor = "#87ceeb"
+                            color5[i].style.backgroundColor = "#87ceeb";
+                            color5[i].style.borderColor = "#001A7B";
                         }
                         if (player1Color.value == "Yellow") {
-                            color5[i].style.backgroundColor = "#fada5e"
+                            color5[i].style.backgroundColor = "#fada5e";
+                            color5[i].style.borderColor = "#997B00";
                         }
                     }
                 }
@@ -660,16 +683,20 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color6.length; i++) {
                     if (color6) {
                         if (player2Color.value == "Red") {
-                            color6[i].style.backgroundColor = "#e9967a"
+                            color6[i].style.backgroundColor = "#e9967a";
+                            color6[i].style.borderColor = "#7B0000";
                         }
                         if (player2Color.value == "Green") {
-                            color6[i].style.backgroundColor = "#0bd67e"
+                            color6[i].style.backgroundColor = "#0bd67e";
+                            color6[i].style.borderColor = "#047B00";
                         }
                         if (player2Color.value == "Blue") {
-                            color6[i].style.backgroundColor = "#87ceeb"
+                            color6[i].style.backgroundColor = "#87ceeb";
+                            color6[i].style.borderColor = "#001A7B";
                         }
                         if (player2Color.value == "Yellow") {
-                            color6[i].style.backgroundColor = "#fada5e"
+                            color6[i].style.backgroundColor = "#fada5e";
+                            color6[i].style.borderColor = "#997B00";
                         }
                     }
                 }
