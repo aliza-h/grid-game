@@ -44,9 +44,9 @@ body {
     border: 2px solid #057672;
 }
 
-.game-cell:hover {
+/*.game-cell:hover {
     background-color: #C4FFF9;
-}
+}*/
 
 /* ARH: I'll style this stuff */
 form {
