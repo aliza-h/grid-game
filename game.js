@@ -83,9 +83,9 @@ function drawActors() //unsure how to impliment at this point, but it should upd
 function addShipTo(thisCell, thisShip, thisColor) {
     var result = shipStats.filter(x => x.shipType == thisShip);
 
-    console.log(result);
+    /*console.log(result);
     console.log(result[0].shipHP);
-    console.log(result[0].shipHP);
+    console.log(result[0].shipHP);*/
 
 
     cellArr[thisCell] = {
@@ -94,7 +94,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
         "hasObstacle": false,
         "shipType": thisShip,
         "shipColor": thisColor,
-        "HP": result[0].shipHP,
+        //"HP": result[0].shipHP,
     }
 }
 
@@ -398,37 +398,57 @@ function generateGrid(rows, colunms) {
 
 
 function allowDrop(ev) {
-    let cell0 = document.querySelector("#cell0")
-    if (cell0.className === "game-cell drop") {
-      ev.preventDefault();
-    }
-    else if (cell0.className != "game-cell drop"){
-        console.log("can't place here")
-    }
+    ev.preventDefault();
     if (ev.target.getAttribute("draggable") == "true")
         ev.dataTransfer.dropEffect = "none";
     else
         ev.dataTransfer.dropEffect = "all";
 }
-
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    console.log(data);
-    ev.target.appendChild(document.getElementById(data)); 
-
-  var player = data.substring(0,2);
+    let data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
-
+    console.log(data);
+    console.log(player);
+    console.log(toCell);
+    console.log(type);
 
     addShipTo(toCell,type,player);
 } 
+//player 2 drag and drop come back and fix this later
+/*
+function allowDrops(event) {
+    event.preventDefault();
+    if (event.target.getAttribute("draggable") == "true")
+        event.dataTransfer.dropEffect = "none";
+    else
+        event.dataTransfer.dropEffect = "all";
+}
 
+function drager(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function dropp(event) {
+    let data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+    var player = data.substring(0,2);
+    var toCell = event.target.id.substring(4);
+    var type = data.substring(3);
+    console.log(data);
+    console.log(player);
+    console.log(toCell);
+    console.log(type);
+
+    addShipTo(toCell,type,player);
+} 
+*/
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
 
 
@@ -527,25 +547,205 @@ submit.addEventListener('click', event => {
                 generateGrid(10, 10);
             
             document.querySelector("#cell0").classList.add("drop");
+            let cell = document.getElementById("cell0");
+            cell.setAttribute('ondrop', "drop(event)")
+            cell.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell1").classList.add("drop");
+            let cell1 = document.getElementById("cell1");
+            cell1.setAttribute('ondrop', "drop(event)")
+            cell1.setAttribute('ondragover', "allowDrop(event)")
+        
             document.querySelector("#cell10").classList.add("drop");
+            let cell10 = document.getElementById("cell10");
+            cell10.setAttribute('ondrop', "drop(event)")
+            cell10.setAttribute('ondragover', "allowDrop(event)")
+            
             document.querySelector("#cell11").classList.add("drop");
+            let cell11 = document.getElementById("cell11");
+            cell11.setAttribute('ondrop', "drop(event)")
+            cell11.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell20").classList.add("drop");
+            let cell20 = document.getElementById("cell20");
+            cell20.setAttribute('ondrop', "drop(event)")
+            cell20.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell21").classList.add("drop");
+            let cell21 = document.getElementById("cell21");
+            cell21.setAttribute('ondrop', "drop(event)")
+            cell21.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell30").classList.add("drop");
+            let cell30 = document.getElementById("cell30");
+            cell30.setAttribute('ondrop', "drop(event)")
+            cell30.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell31").classList.add("drop");
+            let cell31 = document.getElementById("cell31");
+            cell31.setAttribute('ondrop', "drop(event)")
+            cell31.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell40").classList.add("drop");
+            let cell40 = document.getElementById("cell40");
+            cell40.setAttribute('ondrop', "drop(event)")
+            cell40.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell41").classList.add("drop");
+            let cell41 = document.getElementById("cell41");
+            cell41.setAttribute('ondrop', "drop(event)")
+            cell41.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell50").classList.add("drop");
+            let cell50 = document.getElementById("cell50");
+            cell50.setAttribute('ondrop', "drop(event)")
+            cell50.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell51").classList.add("drop");
+            let cell51 = document.getElementById("cell51");
+            cell51.setAttribute('ondrop', "drop(event)")
+            cell51.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell60").classList.add("drop");
+            let cell60 = document.getElementById("cell60");
+            cell60.setAttribute('ondrop', "drop(event)")
+            cell60.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell61").classList.add("drop");
+            let cell61 = document.getElementById("cell61");
+            cell61.setAttribute('ondrop', "drop(event)")
+            cell61.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell70").classList.add("drop");
+            let cell70 = document.getElementById("cell70");
+            cell70.setAttribute('ondrop', "drop(event)")
+            cell70.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell71").classList.add("drop");
+            let cell71 = document.getElementById("cell71");
+            cell71.setAttribute('ondrop', "drop(event)")
+            cell71.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell80").classList.add("drop");
+            let cell80 = document.getElementById("cell80");
+            cell80.setAttribute('ondrop', "drop(event)")
+            cell80.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell81").classList.add("drop");
+            let cell81 = document.getElementById("cell81");
+            cell81.setAttribute('ondrop', "drop(event)")
+            cell81.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell90").classList.add("drop");
+            let cell90 = document.getElementById("cell90");
+            cell90.setAttribute('ondrop', "drop(event)")
+            cell90.setAttribute('ondragover', "allowDrop(event)")
+
             document.querySelector("#cell91").classList.add("drop");
+            let cell91 = document.getElementById("cell91");
+            cell91.setAttribute('ondrop', "drop(event)")
+            cell91.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell8").classList.add("drops");
+            let cell8 = document.getElementById("cell8");
+            cell8.setAttribute('ondrop', "drop(event)")
+            cell8.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell9").classList.add("drops");
+            let cell9 = document.getElementById("cell9");
+            cell9.setAttribute('ondrop', "drop(event)")
+            cell9.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell18").classList.add("drops");
+            let cell18 = document.getElementById("cell18");
+            cell18.setAttribute('ondrop', "drop(event)")
+            cell18.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell19").classList.add("drops");
+            let cell19 = document.getElementById("cell19");
+            cell19.setAttribute('ondrop', "drop(event)")
+            cell19.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell28").classList.add("drops");
+            let cell28 = document.getElementById("cell28");
+            cell28.setAttribute('ondrop', "drop(event)")
+            cell28.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell29").classList.add("drops");
+            let cell29 = document.getElementById("cell29");
+            cell29.setAttribute('ondrop', "drop(event)")
+            cell29.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell38").classList.add("drops");
+            let cell38 = document.getElementById("cell38");
+            cell38.setAttribute('ondrop', "drop(event)")
+            cell38.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell39").classList.add("drops");
+            let cell39 = document.getElementById("cell39");
+            cell39.setAttribute('ondrop', "drop(event)")
+            cell39.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell48").classList.add("drops");
+            let cell48 = document.getElementById("cell48");
+            cell48.setAttribute('ondrop', "drop(event)")
+            cell48.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell49").classList.add("drops");
+            let cell49 = document.getElementById("cell49");
+            cell49.setAttribute('ondrop', "drop(event)")
+            cell49.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell58").classList.add("drops");
+            let cell58 = document.getElementById("cell58");
+            cell58.setAttribute('ondrop', "drop(event)")
+            cell58.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell59").classList.add("drops");
+            let cell59 = document.getElementById("cell59");
+            cell59.setAttribute('ondrop', "drop(event)")
+            cell59.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell68").classList.add("drops");
+            let cell68 = document.getElementById("cell68");
+            cell68.setAttribute('ondrop', "drop(event)")
+            cell68.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell69").classList.add("drops");
+            let cell69 = document.getElementById("cell69");
+            cell69.setAttribute('ondrop', "drop(event)")
+            cell69.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell78").classList.add("drops");
+            let cell78 = document.getElementById("cell78");
+            cell78.setAttribute('ondrop', "drop(event)")
+            cell78.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell79").classList.add("drops");
+            let cell79 = document.getElementById("cell79");
+            cell79.setAttribute('ondrop', "drop(event)")
+            cell79.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell88").classList.add("drops");
+            let cell88 = document.getElementById("cell88");
+            cell88.setAttribute('ondrop', "drop(event)")
+            cell88.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell89").classList.add("drops");
+            let cell89 = document.getElementById("cell89");
+            cell89.setAttribute('ondrop', "drop(event)")
+            cell89.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell98").classList.add("drops");
+            let cell98 = document.getElementById("cell98");
+            cell98.setAttribute('ondrop', "drop(event)")
+            cell98.setAttribute('ondragover', "allowDrop(event)")
+
+            document.querySelector("#cell99").classList.add("drops");
+            let cell99 = document.getElementById("cell99");
+            cell99.setAttribute('ondrop', "drop(event)")
+            cell99.setAttribute('ondragover', "allowDrop(event)")
+
                 let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
@@ -706,6 +906,7 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready1").remove();
                 document.getElementById("ready-check1").innerHTML = "Ready!"
                 document.getElementById("p1").remove();
+                document.getElementById("ready2").style.marginLeft = "67.3%"
 
             })
             ready2.addEventListener('click', event => {

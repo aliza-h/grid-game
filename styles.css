@@ -321,6 +321,7 @@ margin-left: 65%;
 }
 
 #readybuttons{
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -352,7 +353,7 @@ margin-left: 65%;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-left: 60%;
+    justify-content: space-between;
 }
 
 #p1 {
