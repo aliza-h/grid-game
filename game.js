@@ -13,16 +13,13 @@ let numberOfColumns = 0;
 let select = document.getElementById('board-size');
 let option = select.options[select.selectedIndex];
 
-let player1 = document.getElementById("player1Name")
-let player2 = document.getElementById("player2Name")
-let currentturn = player1
+let player1 = document.getElementById("player1Name");
+let player2 = document.getElementById("player2Name");
+let currentturn = player1;
 
-let submit = document.getElementById("submit")
-let colorsubmit = document.getElementById('colorsubmit')
-let player1Color = document.getElementById("player1Color")
-let player2Color = document.getElementById("player2Color")
-let div = document.getElementById("Names")
-let p1 = document.getElementById("p1");
+let submit = document.getElementById("submit");
+let player1Color = document.getElementById("player1Color");
+let player2Color = document.getElementById("player2Color");
 
 const drops = [].slice.call(
     document.querySelectorAll( '.drop' ), 0 );
@@ -361,7 +358,7 @@ function isAtBottom(num) {
 }
 
 // ARH: This function takes the parameters (rows and columns) and creates a game board with [rows] cells in the y-axis and [columns] cells in the x-axis.
-function generateGrid(rows, colunms) {
+function generateGrid(rows, columns) {
     let id = 0;
     let gameBoard = document.getElementById("game-board"); // the game board
 
@@ -373,7 +370,7 @@ function generateGrid(rows, colunms) {
         //gameRow.id = row;
         gameBoard.appendChild(gameRow); // adds row to board
 
-        for (let col = 1; col <= colunms; col++) { // creates cells
+        for (let col = 1; col <= columns; col++) { // creates cells
             let gameCell = document.createElement("div");
             gameCell.className = "game-cell";
             gameCell.id = "cell" + id;
@@ -393,7 +390,7 @@ function generateGrid(rows, colunms) {
     }
 
     numberOfRows = rows;
-    numberOfColumns = colunms;
+    numberOfColumns = columns;
 }
 
 
@@ -455,14 +452,22 @@ function dropp(event) {
 
 submit.addEventListener('click', event => {
     event.preventDefault();
-    document.getElementById('player1Color').style.visibility = 'visible';
-    document.getElementById('player2Name').style.visibility = 'hidden';
+    
     document.getElementById('player1Name').style.visibility = 'hidden';
+    document.getElementById('player1Name').style.height = '0vh';
+    document.getElementById('player1Color').style.visibility = "visible";
+
+    document.getElementById('player2Name').style.visibility = 'hidden';
+    document.getElementById('player2Name').style.height = '0vh';
     document.getElementById('player2Color').style.visibility = 'visible';
+
     if (player1.value == player2.value) {
         alert("Don't have the same name");
         document.location.reload();
     }
+
+    document.getElementById("text-prompt1").innerHTML = "Please select your team color";
+    document.getElementById("text-prompt2").innerHTML = "Please select your team color";
     
     function preventDupes( select, index ) {
         var options = select.options,
@@ -488,47 +493,47 @@ submit.addEventListener('click', event => {
     submit.addEventListener('click', event => {
 
         document.getElementById('player1Color').style.visibility = "hidden";
-        document.getElementById('words').style.visibility = "hidden";
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt + "&nbsp" + "side";
-        let txtcolor = document.getElementById("name1")
-        //txtcolor.style.color = player1Color.value;
-        txtcolor.style.fontWeight = 'bolder';
-        document.getElementById('player2Color').style.visibility = "hidden";
-        document.getElementById('words1').style.visibility = "hidden";
+        document.getElementById("name1").innerHTML = txt + "'s side";
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt + "&nbsp" + "side";
-        let txtcolor2 = document.getElementById("name2")
-        //txtcolor2.style.color = player2Color.value;
-        txtcolor2.style.fontWeight = 'bolder';
-        document.getElementById('board-size').style.visibility = 'visible';
+        document.getElementById("name2").innerHTML = txt + "'s side";
+
+        document.getElementById("player-input-box").remove();
+        
+        document.getElementById("board-size-box").style.height = "auto";
+        document.getElementById("board-size-box").style.visibility = "visible";
+        document.getElementById("board-size").style.visibility = "visible";
+
+        let txtcolor = document.getElementById("name1");
+        let txtcolor2 = document.getElementById("name2");
+        
 
         //console.log(player1Color.value);
         //console.log(player2Color.value);
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#e9967a"
+            txtcolor.style.color = "#7B0000";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#0bd67e"
+            txtcolor.style.color = "#047B00";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#87ceeb"
+            txtcolor.style.color = "#001A7B";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#fada5e"
+            txtcolor.style.color = "#997B00";
         }
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#e9967a"
+            txtcolor2.style.color = "#7B0000";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#0bd67e"
+            txtcolor2.style.color = "#047B00";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#87ceeb"
+            txtcolor2.style.color = "#001A7B";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#fada5e"
+            txtcolor2.style.color = "#997B00";
         }
         
 
@@ -750,34 +755,76 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                         if (player1Color.value == "Red") {
-                            color1[i].style.backgroundColor = "#e9967a"
+                            color1[i].style.backgroundColor = "#e9967a";
+                            color1[i].style.borderColor = "#7B0000";
+                            document.getElementById("p1-Melee").src="images/attacker_red.png";
+                            document.getElementById("p1-Defender").src="images/defender_red.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color1[i].style.backgroundColor = "#0bd67e"
+                            color1[i].style.backgroundColor = "#0bd67e";
+                            color1[i].style.borderColor = "#047B00";
+                            document.getElementById("p1-Melee").src="images/attacker_green.png";
+                            document.getElementById("p1-Defender").src="images/defender_green.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color1[i].style.backgroundColor = "#87ceeb"
+                            color1[i].style.backgroundColor = "#87ceeb";
+                            color1[i].style.borderColor = "#001A7B";
+                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src="images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color1[i].style.backgroundColor = "#fada5e"
+                            color1[i].style.backgroundColor = "#fada5e";
+                            color1[i].style.borderColor = "#997B00";
+                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
                         }
                         //= player1Color.value;
                     }
                 }
+
+                // cell colors are defined here
                 let color2 = document.querySelectorAll("#cell8, #cell9, #cell18, #cell19, #cell28, #cell29, #cell38, #cell39, #cell48, #cell49, #cell58, #cell59, #cell68, #cell69, #cell78, #cell79, #cell88, #cell89, #cell98, #cell99");
                 for (let i = 0; i < color2.length; i++) {
                     if (color2) {
                         if (player2Color.value == "Red") {
-                            color2[i].style.backgroundColor = "#e9967a"
+                            color2[i].style.backgroundColor = "#e9967a";
+                            color2[i].style.borderColor = "#7B0000";
+                            document.getElementById("p2-Melee").src="images/attacker_red.png";
+                            document.getElementById("p2-Defender").src="images/defender_red.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
-                            color2[i].style.backgroundColor = "#0bd67e"
+                            color2[i].style.backgroundColor = "#0bd67e";
+                            color2[i].style.borderColor = "#047B00";
+                            document.getElementById("p2-Melee").src="images/attacker_green.png";
+                            document.getElementById("p2-Defender").src="images/defender_green.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
-                            color2[i].style.backgroundColor = "#87ceeb"
+                            color2[i].style.backgroundColor = "#87ceeb";
+                            color2[i].style.borderColor = "#001A7B";
+                            document.getElementById("p2-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p2-Defender").src="images/defender_blue.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
-                            color2[i].style.backgroundColor = "#fada5e"
+                            color2[i].style.backgroundColor = "#fada5e";
+                            color2[i].style.borderColor = "#997B00";
+                            document.getElementById("p2-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p2-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p2-Healer").src="images/healer_yellow.png";
                         }
                     }
                 }
@@ -788,16 +835,36 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color3.length; i++) {
                     if (color3) {
                         if (player1Color.value == "Red") {
-                            color3[i].style.backgroundColor = "#e9967a"
+                            color3[i].style.backgroundColor = "#e9967a";
+                            color3[i].style.borderColor = "#7B0000";
+                            document.getElementById("p1-Melee").src="images/attacker_red.png";
+                            document.getElementById("p1-Defender").src="images/defender_red.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color3[i].style.backgroundColor = "#0bd67e"
+                            color3[i].style.backgroundColor = "#0bd67e";
+                            color3[i].style.borderColor = "#047B00";
+                            document.getElementById("p1-Melee").src="images/attacker_green.png";
+                            document.getElementById("p1-Defender").src="images/defender_green.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color3[i].style.backgroundColor = "#87ceeb"
+                            color3[i].style.backgroundColor = "#87ceeb";
+                            color3[i].style.borderColor = "#001A7B";
+                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src="images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color3[i].style.backgroundColor = "#fada5e"
+                            color3[i].style.backgroundColor = "#fada5e";
+                            color3[i].style.borderColor = "#997B00";
+                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
                         }
                     }
 
@@ -806,15 +873,35 @@ submit.addEventListener('click', event => {
                         if (color4) {
                             if (player2Color.value == "Red") {
                                 color4[i].style.backgroundColor = "#e9967a"
+                                color4[i].style.borderColor = "#7B0000";
+                                document.getElementById("p2-Melee").src="images/attacker_red.png";
+                                document.getElementById("p2-Defender").src="images/defender_red.png";
+                                document.getElementById("p2-Ranger").src="images/ranger_red.png";
+                                document.getElementById("p2-Healer").src="images/healer_red.png";
                             }
                             if (player2Color.value == "Green") {
-                                color4[i].style.backgroundColor = "#0bd67e"
+                                color4[i].style.backgroundColor = "#0bd67e";
+                                color4[i].style.borderColor = "#047B00";
+                                document.getElementById("p2-Melee").src="images/attacker_green.png";
+                                document.getElementById("p2-Defender").src="images/defender_green.png";
+                                document.getElementById("p2-Ranger").src="images/ranger_green.png";
+                                document.getElementById("p2-Healer").src="images/healer_green.png";
                             }
                             if (player2Color.value == "Blue") {
                                 color4[i].style.backgroundColor = "#87ceeb"
+                                color4[i].style.borderColor = "#001A7B";
+                                document.getElementById("p2-Melee").src="images/attacker_blue.png";
+                                document.getElementById("p2-Defender").src="images/defender_blue.png";
+                                document.getElementById("p2-Ranger").src="images/ranger_blue.png";
+                                document.getElementById("p2-Healer").src="images/healer_blue.png";
                             }
                             if (player2Color.value == "Yellow") {
-                                color4[i].style.backgroundColor = "#fada5e"
+                                color4[i].style.backgroundColor = "#fada5e";
+                                color4[i].style.borderColor = "#997B00";
+                                document.getElementById("p2-Melee").src="images/attacker_yellow.png";
+                                document.getElementById("p2-Defender").src="images/defender_yellow.png";
+                                document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
+                                document.getElementById("p2-Healer").src="images/healer_yellow.png";
                             }
                         }
                     }
@@ -826,15 +913,35 @@ submit.addEventListener('click', event => {
                     if (color5) {
                         if (player1Color.value == "Red") {
                             color5[i].style.backgroundColor = "#e9967a"
+                            color5[i].style.borderColor = "#7B0000";
+                            document.getElementById("p1-Melee").src="images/attacker_red.png";
+                            document.getElementById("p1-Defender").src="images/defender_red.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color5[i].style.backgroundColor = "#0bd67e"
+                            color5[i].style.backgroundColor = "#0bd67e";
+                            color5[i].style.borderColor = "#047B00";
+                            document.getElementById("p1-Melee").src="images/attacker_green.png";
+                            document.getElementById("p1-Defender").src="images/defender_green.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color5[i].style.backgroundColor = "#87ceeb"
+                            color5[i].style.backgroundColor = "#87ceeb";
+                            color5[i].style.borderColor = "#001A7B";
+                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src="images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color5[i].style.backgroundColor = "#fada5e"
+                            color5[i].style.backgroundColor = "#fada5e";
+                            color5[i].style.borderColor = "#997B00";
+                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
                         }
                     }
                 }
@@ -843,16 +950,36 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color6.length; i++) {
                     if (color6) {
                         if (player2Color.value == "Red") {
-                            color6[i].style.backgroundColor = "#e9967a"
+                            color6[i].style.backgroundColor = "#e9967a";
+                            color6[i].style.borderColor = "#7B0000";
+                            document.getElementById("p2-Melee").src="images/attacker_red.png";
+                            document.getElementById("p2-Defender").src="images/defender_red.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_red.png";
+                            document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
-                            color6[i].style.backgroundColor = "#0bd67e"
+                            color6[i].style.backgroundColor = "#0bd67e";
+                            color6[i].style.borderColor = "#047B00";
+                            document.getElementById("p2-Melee").src="images/attacker_green.png";
+                            document.getElementById("p2-Defender").src="images/defender_green.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_green.png";
+                            document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
-                            color6[i].style.backgroundColor = "#87ceeb"
+                            color6[i].style.backgroundColor = "#87ceeb";
+                            color6[i].style.borderColor = "#001A7B";
+                            document.getElementById("p2-Melee").src="images/attacker_blue.png";
+                            document.getElementById("p2-Defender").src="images/defender_blue.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_blue.png";
+                            document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
-                            color6[i].style.backgroundColor = "#fada5e"
+                            color6[i].style.backgroundColor = "#fada5e";
+                            color6[i].style.borderColor = "#997B00";
+                            document.getElementById("p2-Melee").src="images/attacker_yellow.png";
+                            document.getElementById("p2-Defender").src="images/defender_yellow.png";
+                            document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
+                            document.getElementById("p2-Healer").src="images/healer_yellow.png";
                         }
                     }
                 }
@@ -865,6 +992,7 @@ submit.addEventListener('click', event => {
             document.getElementById("p2").style.visibility = "visible"
             document.getElementById("game-board").style.visibility = "visible"
             document.getElementById('board-size').remove();
+            document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
             document.getElementById('player2Name').remove();
             document.getElementById('player1Name').remove();
@@ -876,42 +1004,42 @@ submit.addEventListener('click', event => {
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
             if (player1Color.value == "Red") {
-                document.getElementById("ready1").style.backgroundColor = "#e9967a"
+                document.getElementById("ready1").style.backgroundColor = "#e9967a";
             }
             if (player1Color.value == "Green") {
-                document.getElementById("ready1").style.backgroundColor = "#0bd67e"
+                document.getElementById("ready1").style.backgroundColor = "#0bd67e";
             }
             if (player1Color.value == "Blue") {
-                document.getElementById("ready1").style.backgroundColor = "#87ceeb"
+                document.getElementById("ready1").style.backgroundColor = "#87ceeb";
             }
             if (player1Color.value == "Yellow") {
-                document.getElementById("ready1").style.backgroundColor = "#fada5e"
+                document.getElementById("ready1").style.backgroundColor = "#fada5e";
             }
 
             if (player2Color.value == "Red") {
-                document.getElementById("ready2").style.backgroundColor = "#e9967a"
+                document.getElementById("ready2").style.backgroundColor = "#e9967a";
             }
             if (player2Color.value == "Green") {
-                document.getElementById("ready2").style.backgroundColor = "#0bd67e"
+                document.getElementById("ready2").style.backgroundColor = "#0bd67e";
             }
             if (player2Color.value == "Blue") {
-                document.getElementById("ready2").style.backgroundColor = "#87ceeb"
+                document.getElementById("ready2").style.backgroundColor = "#87ceeb";
             }
             if (player2Color.value == "Yellow") {
-                document.getElementById("ready2").style.backgroundColor = "#fada5e"
+                document.getElementById("ready2").style.backgroundColor = "#fada5e";
             }
 
             //optimize this so no matter what order you click it will do the set timeout
             ready1.addEventListener('click', event => {
                 document.getElementById("ready1").remove();
-                document.getElementById("ready-check1").innerHTML = "Ready!"
+                document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
                 document.getElementById("ready2").style.marginLeft = "67.3%"
 
             })
             ready2.addEventListener('click', event => {
                 document.getElementById("ready2").remove();
-                document.getElementById("ready-check2").innerHTML = "Ready!"
+                document.getElementById("ready-check2").innerHTML = "Ready!";
                 document.getElementById("p2").remove();
 
                 function countDown(i, callback) {
@@ -922,7 +1050,7 @@ submit.addEventListener('click', event => {
                     }, 1000);
                 }
                 countDown(5, function() {
-                    alert("game started")
+                    alert("game started");
                     //Not sure if this works
                     document.getElementById("displayDiv").remove();
                 });
@@ -932,31 +1060,31 @@ submit.addEventListener('click', event => {
                 function() {
 
                     if (player2Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a"
+                        document.body.style.backgroundColor = "#e9967a";
                     }
                     if (player2Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e"
+                        document.body.style.backgroundColor = "#0bd67e";
                     }
                     if (player2Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb"
+                        document.body.style.backgroundColor = "#87ceeb";
                     }
                     if (player2Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e"
+                        document.body.style.backgroundColor = "#fada5e";
                     }
                 }, 5000)
             setInterval(
                 function() {
                     if (player1Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a"
+                        document.body.style.backgroundColor = "#e9967a";
                     }
                     if (player1Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e"
+                        document.body.style.backgroundColor = "#0bd67e";
                     }
                     if (player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb"
+                        document.body.style.backgroundColor = "#87ceeb";
                     }
                     if (player1Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e"
+                        document.body.style.backgroundColor = "#fada5e";
                     }
 
                 }, 4000
@@ -964,16 +1092,16 @@ submit.addEventListener('click', event => {
 
             if (currentturn == player1) {
                 if (player1Color.value == "Red") {
-                    document.body.style.backgroundColor = "#e9967a"
+                    document.body.style.backgroundColor = "#e9967a";
                 }
                 if (player1Color.value == "Green") {
-                    document.body.style.backgroundColor = "#0bd67e"
+                    document.body.style.backgroundColor = "#0bd67e";
                 }
                 if (player1Color.value == "Blue") {
-                    document.body.style.backgroundColor = "#87ceeb"
+                    document.body.style.backgroundColor = "#87ceeb";
                 }
                 if (player1Color.value == "Yellow") {
-                    document.body.style.backgroundColor = "#fada5e"
+                    document.body.style.backgroundColor = "#fada5e";
                 }
             }
 
