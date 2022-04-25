@@ -297,9 +297,9 @@ font-size: 25px;
 }
 
 #readybuttons{
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -329,6 +329,7 @@ font-size: 25px;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    justify-content: space-between;
 }
 
 #p1 {
