@@ -52,6 +52,9 @@ Healer2.style.display = "none";
 
 let cellArr = []; // the array of cell objects
 
+let canDoDamage = true;
+let moveable = true;
+
 
 let shipStats = [{
         shipType: "Defender",
@@ -84,7 +87,7 @@ let shipStats = [{
 ];
 
 
-function drawActors() //unsure how to impliment at this point, but it should update every time an action happens
+function drawActors() //probably to be deprecated
 {
     cellArr.forEach(function doIt() {
         if (hasObstacle) {
@@ -119,6 +122,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
 }
 
 function moveShipTo(from, to) {
+    if (!moveable) return;
     cellArr[to] = {
         "id": cellArr[from].id,
         "hasAnything": true,
@@ -138,9 +142,10 @@ function moveShipTo(from, to) {
         "shipColor": null,
         "HP": -1,
     }
+    moveable = false;
 }
 
-function chooseYourShips() {
+function chooseYourShips() {//to be deprecated
     blueShipsToChoose = 3;
     redShipsToChoose = 3;
     blueShipsToPlace = 0;
@@ -161,12 +166,21 @@ function chooseYourShips() {
     //move onto the ship placing phase
 }
 
-function attactCell(cell, color, damage) { //cell is the cell that is being attacked
-    if (cellArr[cell].hasAnything) {
-        if (cellArr[cell].shipColor != color) {
-            cellArr[cell].HP -= damage;
+function attackCell(cell, color, damage) { //cell is the cell that is being attacked
+    console.log("attacked " + cell);
+    console.log("We are " + color);
+    console.log("for " + damage + " damage");
+    if(canDoDamage)
+    {
+        if (cellArr[cell].hasAnything) {
+            if (cellArr[cell].shipColor != color) {
+                if (canDoDamage)cellArr[cell].HP -= damage;
+            }
         }
     }
+    else console.log("Damage is disabled this time around");
+    canDoDamage = false;
+
 }
 
 function attackRow(yourColor, startAt, toRight, damage) {
@@ -218,7 +232,8 @@ function attackColumn(yourColor, startAt, down, damage) {
     }
 }
 
-function attackInARange(at, range) {
+function attackInARange(at, range, color, damage) {
+    canDoDamage = true;
     let ups = range;
     let rights = 0;
     let downs = 0;
@@ -238,9 +253,33 @@ function attackInARange(at, range) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "red";
+>>>>>>> origin/main
             console.log("colored " + adding);
-            //add event listener to cell "adding"
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+
+                attackCell(cell.id.substring(4),color,damage);
+
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                    var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                    else
+                    {
+                        cell.style.backgroundColor = "#9CEAEF";
+                    }
+                }
+                console.log("ran");
+                
+            },{once:true});
             goUps--;
 
         }
@@ -249,8 +288,29 @@ function attackInARange(at, range) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goRights--;
 
         }
@@ -275,8 +335,29 @@ function attackInARange(at, range) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goRights--;
         }
 
@@ -284,8 +365,29 @@ function attackInARange(at, range) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goDowns--;
         }
         rights--;
@@ -308,8 +410,29 @@ function attackInARange(at, range) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goDowns--;
         }
 
@@ -317,8 +440,29 @@ function attackInARange(at, range) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goLefts--;
         }
 
@@ -340,8 +484,29 @@ function attackInARange(at, range) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goLefts--;
         }
 
@@ -349,8 +514,29 @@ function attackInARange(at, range) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
+=======
+            cell.style.backgroundColor = "red";
+            cell.addEventListener('click', cell.fn=function fn()
+            {
+                attackCell(cell.id.substring(4),color,damage);
+                
+                var cells = document.getElementsByClassName("game-cell");
+                for (var i = 0; i < cells.length; i++) {
+                    if (i != cell.id.substring(4)){
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
+                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                    }
+                }
+                console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
+                
+            },{once:true});
+>>>>>>> origin/main
             goUps--;
         }
         lefts--;
@@ -362,6 +548,7 @@ function attackInARange(at, range) {
 
 
 function move(at, range, moving) {
+    moveable = true;
     let ups = range;
     let rights = 0;
     let downs = 0;
@@ -381,10 +568,15 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             console.log("colored " + adding);
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -392,10 +584,13 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goUps--;
@@ -406,9 +601,16 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -416,10 +618,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goRights--;
@@ -446,9 +652,15 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -456,10 +668,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goRights--;
@@ -469,9 +685,15 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -479,10 +701,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goDowns--;
@@ -507,9 +733,15 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -517,10 +749,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goDowns--;
@@ -530,9 +766,15 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -540,10 +782,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goLefts--;
@@ -567,9 +813,15 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -577,10 +829,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goLefts--;
@@ -590,9 +846,15 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
+=======
+            cell.style.backgroundColor = "green";
+>>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
+                moveShipTo(at,cell.id.substring(4));
+
                 cell.appendChild(document.getElementById(moving));
                 //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
                  var cells = document.getElementsByClassName("game-cell");
@@ -600,10 +862,14 @@ function move(at, range, moving) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i != cell.id.substring(4)){
                     var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
+
                     cells.item(i).parentNode.replaceChild(replace,cells.item(i));
                     }
                 }
                 console.log("ran");
+                cell.style.backgroundColor = "#9CEAEF";
+
                 
             },{once:true});
             goUps--;
@@ -2234,7 +2500,7 @@ function AttackM1() {
         }
         pos++;
     }
-    attackInARange(at,2);
+    attackInARange(at,2,"p1",25);
 }
 
 function MovementM1(){
@@ -2250,7 +2516,7 @@ function MovementM1(){
         }
         pos++;
     }
-    move(at,2,"p1-Melee");
+    move(at,3,"p1-Melee");
 }
 
 function EndTurnM1(){
@@ -2264,7 +2530,7 @@ function EndTurnM1(){
     }
 
 function AttackR1() {
-
+    //attack row or attack color
 }
 
 function MovementR1(){
@@ -2295,6 +2561,19 @@ function EndTurnR1(){
 }
 
 function AttackD1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p1")
+        {
+            console.log("Found it at " + pos);
+            at = pos;
+            
+        }
+        pos++;
+    }
+    attackInARange(at,2,"p1",30);
 
 }
 
@@ -2330,6 +2609,19 @@ function HealH1(){
 }
 
 function AttackH1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
+        {
+            console.log("Found it at " + pos);
+            at = pos;
+            
+        }
+        pos++;
+    }
+    attackInARange(at,1,"p1",10);
 
 }
 
@@ -2346,7 +2638,7 @@ function MovementH1(){
         }
         pos++;
     }
-    move(at,3,"p1-Healer");
+    move(at,4,"p1-Healer");
 
 }
 
@@ -2364,6 +2656,19 @@ function EndTurnH1(){
 
 
 function AttackM2() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p2")
+        {
+            console.log("Found it at " + pos);
+            at = pos;
+            
+        }
+        pos++;
+    }
+    attackInARange(at,2,"p2",25);
 
 }
 
@@ -2380,7 +2685,7 @@ function MovementM2(){
         }
         pos++;
     }
-    move(at,2,"p2-Melee");
+    move(at,3,"p2-Melee");
 
 }
 
@@ -2395,7 +2700,7 @@ function EndTurnM2(){
 }
 
 function AttackR2() {
-
+    //attack row or column
 }
 
 function MovementR2(){
@@ -2426,6 +2731,19 @@ function EndTurnR2(){
 }
 
 function AttackD2() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p2")
+        {
+            console.log("Found it at " + pos);
+            at = pos;
+            
+        }
+        pos++;
+    }
+    attackInARange(at,2,"p2",30);
 
 }
 
@@ -2462,6 +2780,19 @@ function HealH2(){
 
 function AttackH2() {
 
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
+        {
+            console.log("Found it at " + pos);
+            at = pos;
+            
+        }
+        pos++;
+    }
+    attackInARange(at,1,"p2",10);
 }
 
 function MovementH2(){
@@ -2477,7 +2808,7 @@ function MovementH2(){
         }
         pos++;
     }
-    move(at,3,"p2-Healer");
+    move(at,4,"p2-Healer");
 
 }
 
