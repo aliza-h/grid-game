@@ -25,18 +25,19 @@ const drops = [].slice.call(
     document.querySelectorAll( '.drop' ), 0 );
 let ready1 = document.getElementById("ready1")
 let ready2 = document.getElementById("ready2")
+let ready3 = document.getElementById("ready3")
 
-const melee1 = document.getElementById('ActionsM1');
-melee1.style.display = "none";
+const Melee1 = document.getElementById('ActionsM1');
+Melee1.style.display = "none";
 
-const ranger1 = document.getElementById('ActionsR1');
-ranger1.style.display = "none";
+const Ranger1 = document.getElementById('ActionsR1');
+Ranger1.style.display = "none";
 
-const defender1 = document.getElementById('ActionsD1');
-defender1.style.display = "none";
+const Defender1 = document.getElementById('ActionsD1');
+Defender1.style.display = "none";
 
-const healer1 = document.getElementById('ActionsH1');
-healer1.style.display = "none";
+const Healer1 = document.getElementById('ActionsH1');
+Healer1.style.display = "none";
 
 const Melee2 = document.getElementById('ActionsM2');
 Melee2.style.display = "none";
@@ -2112,7 +2113,7 @@ submit.addEventListener('click', event => {
                 document.getElementById("p1").remove();
                 document.getElementById("ready2").style.marginLeft = "67.3%"
 
-            })
+            
             ready2.addEventListener('click', event => {
                 let color1 = document.querySelectorAll(".game-cell.drops");
                 for (let i = 0; i < color1.length; i++) {
@@ -2121,6 +2122,26 @@ submit.addEventListener('click', event => {
                 color1[i].style.borderColor = "#057672"
                     }
                 }
+                function countDown(i, callback) {
+                    callback = callback || function() {};
+                    var int = setInterval(function() {
+                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
+                        i-- || (clearInterval(int), callback());
+                    }, 1000);
+                }
+                countDown(5, function() {
+                    
+                    alert("game started");
+                    document.getElementById("displayDiv").remove();
+                    Melee1.style.display = "";
+                    Ranger1.style.display = "";
+                    Defender1.style.display = "";
+                    Healer1.style.display = "";
+                    Melee2.style.display = "";
+                    Ranger2.style.display = "";
+                    Defender2.style.display = "";
+                    Healer2.style.display = "";
+                    })
                 let melee2 = document.getElementById("p2-Melee");
                 melee2.setAttribute('draggable', "false")
 
@@ -2135,7 +2156,42 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready2").remove();
                 document.getElementById("ready-check2").innerHTML = "Ready!";
                 document.getElementById("p2").remove();
+                document.getElementById("ready3").display = "";
+            })
+        })
+        
+        ready2.addEventListener('click', event => {
+            let color1 = document.querySelectorAll(".game-cell.drops");
+            for (let i = 0; i < color1.length; i++) {
+                if (color1) {
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
+                }
+            }
 
+            let melee2 = document.getElementById("p2-Melee");
+            melee2.setAttribute('draggable', "false")
+
+            let defender2 = document.getElementById("p2-Defender");
+            defender2.setAttribute('draggable', "false")
+
+            let ranger2 = document.getElementById("p2-Ranger");
+            ranger2.setAttribute('draggable', "false")
+
+            let healer2 = document.getElementById("p2-Healer");
+            healer2.setAttribute('draggable', "false")
+            document.getElementById("ready2").remove();
+            document.getElementById("ready-check2").innerHTML = "Ready!";
+            document.getElementById("p2").remove();
+
+            ready1.addEventListener('click', event => {
+                let color1 = document.querySelectorAll(".game-cell.drop");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                color1[i].style.backgroundColor = "#9CEAEF"
+                color1[i].style.borderColor = "#057672"
+                    }
+                }
                 function countDown(i, callback) {
                     callback = callback || function() {};
                     var int = setInterval(function() {
@@ -2147,17 +2203,35 @@ submit.addEventListener('click', event => {
                     
                     alert("game started");
                     document.getElementById("displayDiv").remove();
-                    melee1.style.display = "";
-                    ranger1.style.display = "";
-                    defender1.style.display = "";
-                    healer1.style.display = "";
+                    Melee1.style.display = "";
+                    Ranger1.style.display = "";
+                    Defender1.style.display = "";
+                    Healer1.style.display = "";
                     Melee2.style.display = "";
                     Ranger2.style.display = "";
                     Defender2.style.display = "";
                     Healer2.style.display = "";
                     })
+                let melee1 = document.getElementById("p1-Melee");
+                melee1.setAttribute('draggable', "false")
+
+                let defender1 = document.getElementById("p1-Defender");
+                defender1.setAttribute('draggable', "false")
+
+                let ranger1 = document.getElementById("p1-Ranger");
+                ranger1.setAttribute('draggable', "false")
+
+                let healer1 = document.getElementById("p1-Healer");
+                healer1.setAttribute('draggable', "false")
+
+                document.getElementById("ready1").remove();
+                document.getElementById("ready-check1").innerHTML = "Ready!";
+                document.getElementById("p1").remove();
+
                 });
             })
+        
+                
             setInterval(
                 function() {
                     
@@ -2209,8 +2283,8 @@ submit.addEventListener('click', event => {
             }
 
 })  
+    })
 })
-
 function listingM1() {
         document.getElementById("ActionsM1").classList.toggle("show");
 }
