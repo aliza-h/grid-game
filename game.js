@@ -155,7 +155,7 @@ function attackRow(yourColor, startAt, toRight, damage) {
             if (isAtRight(cellStart)) break;
             cellStart++;
             let cell = document.getElementById("cell" + cellStart);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             attactCell(cellStart, yourColor, damage);
         }
     } else {
@@ -166,7 +166,7 @@ function attackRow(yourColor, startAt, toRight, damage) {
             if (isAtLeft(cellStart)) break;
             cellStart--;
             let cell = document.getElementById("cell" + cellStart);
-            cell.style.borderColor = "red";
+            cell.style.borderColor = "red"
             attactCell(cellStart, yourColor, damage);
         }
     }
@@ -178,7 +178,7 @@ function attackColumn(yourColor, startAt, down, damage) {
         while (true) {
             let cell = document.getElementById("cell" + cellStart);
             console.log(cell);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             attactCell(cellStart, yourColor, damage);
             if (isAtBottom(cellStart)) break;
             cellStart += numberOfColumns;
@@ -187,7 +187,7 @@ function attackColumn(yourColor, startAt, down, damage) {
         let cellStart = startAt;
         while (true) {
             let cell = document.getElementById("cell" + cellStart);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             attactCell(cellStart, yourColor, damage);
             if (isAtTop(cellStart)) break;
             cellStart -= numberOfColumns;
@@ -215,7 +215,7 @@ function attackInARange(at, range) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             console.log("colored " + adding);
             //add event listener to cell "adding"
             goUps--;
@@ -226,7 +226,7 @@ function attackInARange(at, range) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goRights--;
 
@@ -252,7 +252,7 @@ function attackInARange(at, range) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goRights--;
         }
@@ -261,7 +261,7 @@ function attackInARange(at, range) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goDowns--;
         }
@@ -285,7 +285,7 @@ function attackInARange(at, range) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goDowns--;
         }
@@ -294,7 +294,7 @@ function attackInARange(at, range) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goLefts--;
         }
@@ -317,7 +317,7 @@ function attackInARange(at, range) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goLefts--;
         }
@@ -326,7 +326,7 @@ function attackInARange(at, range) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "red";
+            cell.style.backgroundColor = player1Color.value
             //add event listener to cell "adding"
             goUps--;
         }
@@ -358,7 +358,7 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             console.log("colored " + adding);
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -383,7 +383,7 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -423,7 +423,7 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -446,7 +446,7 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -484,7 +484,7 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -507,7 +507,7 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -544,7 +544,7 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -567,7 +567,7 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            cell.style.borderColor = "green";
+            cell.style.backgroundColor = player1Color.value
             cell.addEventListener('click', cell.fn=function fn()
             {
                 cell.appendChild(document.getElementById(moving));
@@ -1962,12 +1962,6 @@ submit.addEventListener('click', event => {
             document.getElementById('board-size').remove();
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
-            //document.getElementById('player2Name').remove();
-            //document.getElementById('player1Name').remove();
-            //document.getElementById('player1Color').remove();
-            //document.getElementById('words').remove();
-            //document.getElementById('player2Color').remove();
-            //document.getElementById('words1').remove();
             document.getElementById("ready-check1").innerHTML = "Not Ready";
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
@@ -1999,6 +1993,25 @@ submit.addEventListener('click', event => {
 
             //optimize this so no matter what order you click it will do the set timeout
             ready1.addEventListener('click', event => {
+                let color1 = document.querySelectorAll(".game-cell.drop");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                color1[i].style.backgroundColor = "#9CEAEF"
+                color1[i].style.borderColor = "#057672"
+                    }
+                }
+                let melee1 = document.getElementById("p1-Melee");
+                melee1.setAttribute('draggable', "false")
+
+                let defender1 = document.getElementById("p1-Defender");
+                defender1.setAttribute('draggable', "false")
+
+                let ranger1 = document.getElementById("p1-Ranger");
+                ranger1.setAttribute('draggable', "false")
+
+                let healer1 = document.getElementById("p1-Healer");
+                healer1.setAttribute('draggable', "false")
+
                 document.getElementById("ready1").remove();
                 document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
@@ -2006,6 +2019,25 @@ submit.addEventListener('click', event => {
 
             })
             ready2.addEventListener('click', event => {
+                let color1 = document.querySelectorAll(".game-cell.drops");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                color1[i].style.backgroundColor = "#9CEAEF"
+                color1[i].style.borderColor = "#057672"
+                    }
+                }
+                console.log(color1)
+                let melee2 = document.getElementById("p2-Melee");
+                melee2.setAttribute('draggable', "false")
+
+                let defender2 = document.getElementById("p2-Defender");
+                defender2.setAttribute('draggable', "false")
+
+                let ranger2 = document.getElementById("p2-Ranger");
+                ranger2.setAttribute('draggable', "false")
+
+                let healer2 = document.getElementById("p2-Healer");
+                healer2.setAttribute('draggable', "false")
                 document.getElementById("ready2").remove();
                 document.getElementById("ready-check2").innerHTML = "Ready!";
                 document.getElementById("p2").remove();
@@ -2026,6 +2058,7 @@ submit.addEventListener('click', event => {
             //optimize this better. Timer for change colors
             setInterval(
                 function() {
+                    
 
                     if (player2Color.value == "Red") {
                         document.body.style.backgroundColor = "#e9967a";
@@ -2073,28 +2106,7 @@ submit.addEventListener('click', event => {
                 }
             }
 
-})
-ready2.addEventListener('click', event => {
-    document.getElementById("ready2").remove();
-    document.getElementById("ready-check2").innerHTML = "Ready!"
-    document.getElementById("p2").remove();
-    function countDown(i, callback) {
-        callback = callback || function(){};
-        var int = setInterval(function() {
-            document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
-            i-- || (clearInterval(int), callback());
-        }, 1000);
-    }
-    countDown(5, function(){
-        alert("game started")
-        //Not sure if this works
-        document.getElementById("displayDiv").remove();
-        document.getElementById("ready-check1").remove();
-        document.getElementById("ready-check2").remove();
-    });
-})
-    //optimize this better. Timer for change colors
-    
+})  
 })
 })
 
@@ -2211,8 +2223,14 @@ function MovementM1(){
 }
 
 function EndTurnM1(){
-
-}
+        let color1 = document.querySelectorAll(".game-cell");
+        for (let i = 0; i < color1.length; i++) {
+            if (color1) {
+        color1[i].style.backgroundColor = "#9CEAEF"
+        color1[i].style.borderColor = "#057672"
+            }
+        }
+    }
 
 function AttackR1() {
 
@@ -2236,7 +2254,13 @@ function MovementR1(){
 }
 
 function EndTurnR1(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                color1[i].style.backgroundColor = "#9CEAEF"
+                color1[i].style.borderColor = "#057672"
+                    }
+                }
 }
 
 function AttackD1() {
@@ -2261,7 +2285,13 @@ function MovementD1(){
 }
 
 function EndTurnD1(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 function HealH1(){
@@ -2290,7 +2320,13 @@ function MovementH1(){
 }
 
 function EndTurnH1(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 
@@ -2318,7 +2354,13 @@ function MovementM2(){
 }
 
 function EndTurnM2(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 function AttackR2() {
@@ -2343,7 +2385,13 @@ function MovementR2(){
 }
 
 function EndTurnR2(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 function AttackD2() {
@@ -2368,7 +2416,13 @@ function MovementD2(){
 }
 
 function EndTurnD2(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 function HealH2(){
@@ -2397,7 +2451,13 @@ function MovementH2(){
 }
 
 function EndTurnH2(){
-
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+    color1[i].style.backgroundColor = "#9CEAEF"
+    color1[i].style.borderColor = "#057672"
+        }
+    }
 }
 
 
