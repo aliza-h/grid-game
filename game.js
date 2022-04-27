@@ -26,6 +26,29 @@ const drops = [].slice.call(
 let ready1 = document.getElementById("ready1")
 let ready2 = document.getElementById("ready2")
 
+const melee1 = document.getElementById('ActionsM1');
+melee1.style.display = "none";
+
+const ranger1 = document.getElementById('ActionsR1');
+ranger1.style.display = "none";
+
+const defender1 = document.getElementById('ActionsD1');
+defender1.style.display = "none";
+
+const healer1 = document.getElementById('ActionsH1');
+healer1.style.display = "none";
+
+const Melee2 = document.getElementById('ActionsM2');
+Melee2.style.display = "none";
+
+const Ranger2 = document.getElementById('ActionsR2');
+Ranger2.style.display = "none";
+
+const Defender2 = document.getElementById('ActionsD2');
+Defender2.style.display = "none";
+
+const Healer2 = document.getElementById('ActionsH2');
+Healer2.style.display = "none";
 
 let cellArr = []; // the array of cell objects
 
@@ -747,7 +770,6 @@ submit.addEventListener('click', event => {
     };
 
     submit.addEventListener('click', event => {
-
         //document.getElementById('player1Color').style.visibility = "hidden";
         //document.getElementById('words').style.visibility = "hidden";
         
@@ -2050,9 +2072,19 @@ submit.addEventListener('click', event => {
                     }, 1000);
                 }
                 countDown(5, function() {
+                    
                     alert("game started");
                     //Not sure if this works
                     document.getElementById("displayDiv").remove();
+                    melee1.style.display = "";
+                    ranger1.style.display = "";
+                    defender1.style.display = "";
+                    healer1.style.display = "";
+                    Melee2.style.display = "";
+                    Ranger2.style.display = "";
+                    Defender2.style.display = "";
+                    Healer2.style.display = "";
+                    })
                 });
             })
             //optimize this better. Timer for change colors
@@ -2108,12 +2140,11 @@ submit.addEventListener('click', event => {
 
 })  
 })
-})
-
 
 function listingM1() {
-  document.getElementById("ActionsM1").classList.toggle("show");
+        document.getElementById("ActionsM1").classList.toggle("show");
 }
+
 function listingR1() {
   document.getElementById("ActionsR1").classList.toggle("show");
 }
