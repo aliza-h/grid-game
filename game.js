@@ -253,11 +253,7 @@ function attackInARange(at, range, color, damage) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "red";
->>>>>>> origin/main
             console.log("colored " + adding);
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -288,10 +284,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -310,7 +302,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goRights--;
 
         }
@@ -335,10 +326,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -357,7 +344,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goRights--;
         }
 
@@ -365,10 +351,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -387,7 +369,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goDowns--;
         }
         rights--;
@@ -410,10 +391,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -432,7 +409,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goDowns--;
         }
 
@@ -440,10 +416,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -462,7 +434,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goLefts--;
         }
 
@@ -484,10 +455,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -506,7 +473,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goLefts--;
         }
 
@@ -514,10 +480,6 @@ function attackInARange(at, range, color, damage) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-            //add event listener to cell "adding"
-=======
             cell.style.backgroundColor = "red";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -536,7 +498,6 @@ function attackInARange(at, range, color, damage) {
 
                 
             },{once:true});
->>>>>>> origin/main
             goUps--;
         }
         lefts--;
@@ -568,11 +529,7 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             console.log("colored " + adding);
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -601,12 +558,8 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -652,11 +605,7 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -685,11 +634,7 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -733,11 +678,7 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -766,11 +707,7 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -813,11 +750,7 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
             cell.style.backgroundColor = player1Color.value
-=======
-            cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -846,11 +779,7 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-<<<<<<< HEAD
-            cell.style.backgroundColor = player1Color.value
-=======
             cell.style.backgroundColor = "green";
->>>>>>> origin/main
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
