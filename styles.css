@@ -332,6 +332,7 @@ font-size: 25px;
     justify-content: space-between;
 }
 
+
 #p1 {
 visibility: hidden;
 float: left;
@@ -372,6 +373,7 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
+ 
  /*margin-right: 100px;
  margin-left: 100px;*/
 
