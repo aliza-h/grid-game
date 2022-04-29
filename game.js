@@ -1964,7 +1964,7 @@ submit.addEventListener('click', event => {
             document.getElementById('board-size').remove();
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
-            document.body.style.backgroundColor = "#222222";
+            document.body.style.background = 'none';
             document.getElementById("ready-check1").innerHTML = "Not Ready";
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
