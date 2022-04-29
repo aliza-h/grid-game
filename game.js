@@ -102,16 +102,13 @@ function drawActors()
 function addShipTo(thisCell, thisShip, thisColor) {
     var result = shipStats.filter(x => x.shipType == thisShip);
 
-  
-
-
     cellArr[thisCell] = {
         "id": thisCell,
         "hasAnything": true,
         "hasObstacle": false,
         "shipType": thisShip,
         "shipColor": thisColor,
-        //"HP": result[0].shipHP,
+        "HP": result[0].shipHP,
     }
 }
 
@@ -149,11 +146,11 @@ function attackCell(cell, color, damage) {
     {
         if (cellArr[cell].hasAnything) {
             if (cellArr[cell].shipColor != color) {
-                if (canDoDamage)cellArr[cell].HP -= damage;
+                cellArr[cell].HP -= damage;
             }
         }
     }
-    else 
+    
     canDoDamage = false;
 
 }
@@ -488,6 +485,7 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -504,7 +502,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goUps--;
 
         }
@@ -513,7 +511,8 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -532,7 +531,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goRights--;
 
         }
@@ -555,6 +554,8 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -574,7 +575,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goRights--;
         }
 
@@ -582,6 +583,8 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -600,7 +603,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goDowns--;
         }
         rights--;
@@ -621,6 +624,8 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -639,7 +644,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goDowns--;
         }
 
@@ -647,6 +652,8 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -665,7 +672,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goLefts--;
         }
 
@@ -685,6 +692,8 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green"
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -703,7 +712,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goLefts--;
         }
 
@@ -711,6 +720,8 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
+            if (!cellArr[cell.id.substring(4)].hasAnything){
+
             cell.style.backgroundColor = "green";
             cell.addEventListener('click', cell.fn=function fn()
             {
@@ -729,7 +740,7 @@ function move(at, range, moving) {
                 cell.style.backgroundColor = "#9CEAEF";
 
                 
-            },{once:true});
+            },{once:true});}
             goUps--;
         }
         lefts--;
@@ -2687,4 +2698,5 @@ function EndTurnH2(){
 
 
 function printArray() {
+    console.log(cellArr);
 }
