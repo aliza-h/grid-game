@@ -148,6 +148,17 @@ function attackCell(cell, color, damage) {
             if (cellArr[cell].shipColor != color) {
                 cellArr[cell].HP -= damage;
             }
+            if(cellArr[cell].HP < 1)
+            {
+                document.getElementById("cell" + cell).removeChild(document.getElementById("cell" + cell).firstChild);
+                cellArr[cell] = {
+                    "hasAnything": false,
+                    "hasObstacle": false,
+                    "shipType": null,
+                    "shipColor": null,
+                    "HP": -1,
+                }
+            }
         }
     }
     
@@ -2243,40 +2254,40 @@ submit.addEventListener('click', event => {
             })
         
                 
-            setInterval(
-                function() {
+            // setInterval(
+            //     function() {
                     
 
-                    if (player2Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a";
-                    }
-                    if (player2Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e";
-                    }
-                    if (player2Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb";
-                    }
-                    if (player2Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e";
-                    }
-                }, 5000)
-            setInterval(
-                function() {
-                    if (player1Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a";
-                    }
-                    if (player1Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e";
-                    }
-                    if (player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb";
-                    }
-                    if (player1Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e";
-                    }
+            //         if (player2Color.value == "Red") {
+            //             document.body.style.backgroundColor = "#e9967a";
+            //         }
+            //         if (player2Color.value == "Green") {
+            //             document.body.style.backgroundColor = "#0bd67e";
+            //         }
+            //         if (player2Color.value == "Blue") {
+            //             document.body.style.backgroundColor = "#87ceeb";
+            //         }
+            //         if (player2Color.value == "Yellow") {
+            //             document.body.style.backgroundColor = "#fada5e";
+            //         }
+            //     }, 5000)
+            // setInterval(
+            //     function() {
+            //         if (player1Color.value == "Red") {
+            //             document.body.style.backgroundColor = "#e9967a";
+            //         }
+            //         if (player1Color.value == "Green") {
+            //             document.body.style.backgroundColor = "#0bd67e";
+            //         }
+            //         if (player1Color.value == "Blue") {
+            //             document.body.style.backgroundColor = "#87ceeb";
+            //         }
+            //         if (player1Color.value == "Yellow") {
+            //             document.body.style.backgroundColor = "#fada5e";
+            //         }
 
-                }, 4000
-            )
+            //     }, 4000
+            // )
 
             if (currentturn == player1) {
                 if (player1Color.value == "Red") {
