@@ -59,7 +59,10 @@
 
     <button type="submit" id="submit">Submit</button>
 
-
+    <div id="turns1">
+        <div class="board-turn-name" id="turns"></div>
+        <div class="board-turn-name" id="turns2"></div>
+    </div>
             <div>
                 <div id="p1">
                     <img src="images/MAttack.jpeg" id="p1-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listingM1()">
@@ -67,7 +70,6 @@
                     <img src="images/RAttack.jpeg" id="p1-Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listingR1()">
                     <img src="images/Healer.jpeg" id="p1-Healer" draggable="true" ondragstart="drag(event)" ondblclick="listingH1()">
                 </div>
-
 
                 <div id="ActionsM1" class="actList">
           <button type="button" id="attackM1" onclick="AttackM1()">Attack</button>
