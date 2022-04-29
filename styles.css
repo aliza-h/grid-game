@@ -283,6 +283,24 @@ font-size: 25px;
     font-size: 25px;
 }
 
+#turns{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    visibility: hidden;
+}
+
+#turns2{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    visibility: hidden;
+}
+
 #names1, #readycheck {
     display: flex;
     flex-direction: row;
@@ -291,6 +309,12 @@ font-size: 25px;
 }
 
 .board-player-name, .readychecks {
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.board-turn-name{
     font-size: 20px;
     margin-left: 2%;
     margin-right: 2%;
