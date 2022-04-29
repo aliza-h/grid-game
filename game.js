@@ -760,6 +760,8 @@ submit.addEventListener('click', event => {
         
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
+        document.getElementById("board-size-box").style.marginTop = "20vh";
+        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -1962,12 +1964,7 @@ submit.addEventListener('click', event => {
             document.getElementById('board-size').remove();
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
-            //document.getElementById('player2Name').remove();
-            //document.getElementById('player1Name').remove();
-            //document.getElementById('player1Color').remove();
-            //document.getElementById('words').remove();
-            //document.getElementById('player2Color').remove();
-            //document.getElementById('words1').remove();
+            document.body.style.backgroundColor = "#222222";
             document.getElementById("ready-check1").innerHTML = "Not Ready";
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
@@ -2002,8 +1999,7 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready1").remove();
                 document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
-                document.getElementById("ready2").style.marginLeft = "67.3%"
-
+                document.getElementById("readybuttons").style.justifyContent = "flex-end";
             })
             ready2.addEventListener('click', event => {
                 document.getElementById("ready2").remove();
@@ -2024,7 +2020,7 @@ submit.addEventListener('click', event => {
                 });
             })
             //optimize this better. Timer for change colors
-            setInterval(
+            /*setInterval(
                 function() {
 
                     if (player2Color.value == "Red") {
@@ -2056,7 +2052,7 @@ submit.addEventListener('click', event => {
                     }
 
                 }, 4000
-            )
+            )*/
 
             if (currentturn == player1) {
                 if (player1Color.value == "Red") {
