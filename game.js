@@ -26,7 +26,6 @@ const drops = [].slice.call(
 let ready1 = document.getElementById("ready1")
 let ready2 = document.getElementById("ready2")
 let ready3 = document.getElementById("ready3")
-
 const Melee1 = document.getElementById('ActionsM1');
 Melee1.style.display = "none";
 
@@ -143,7 +142,6 @@ function chooseYourShips() {
     blueShipsToPlace = 0;
     redShipsToPlace = 0;
 }
-
 function attackCell(cell, color, damage) {
     if(canDoDamage)
     {
@@ -862,7 +860,8 @@ submit.addEventListener('click', event => {
         document.getElementById("name1").innerHTML = txt + "'s side";
         var txt = document.getElementById("player2Name").value;
         document.getElementById("name2").innerHTML = txt + "'s side";
-
+        document.getElementById("name1").style.fontWeight = "bolder"
+        document.getElementById("name2").style.fontWeight = "bolder"
         document.getElementById("player-input-box").remove();
         
         document.getElementById("board-size-box").style.height = "auto";
@@ -873,28 +872,28 @@ submit.addEventListener('click', event => {
         let txtcolor2 = document.getElementById("name2");
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#7B0000";
+            txtcolor.style.color = "#FF7462";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#047B00";
+            txtcolor.style.color = "#23EE96";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#001A7B";
+            txtcolor.style.color = "#78D8FF";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#997B00";
+            txtcolor.style.color = "#FFE88F";
         }
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#7B0000";
+            txtcolor2.style.color = "#FF7462";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#047B00";
+            txtcolor2.style.color = "#23EE96";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#001A7B";
+            txtcolor2.style.color = "#78D8FF";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#997B00";
+            txtcolor2.style.color = "#FFE88F";
         }
         
 
@@ -1117,32 +1116,28 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                         if (player1Color.value == "Red") {
-                            color1[i].style.backgroundColor = "#e9967a";
-                            color1[i].style.borderColor = "#7B0000";
+                            color1[i].style.backgroundColor = "#FF7462";
                             document.getElementById("p1-Melee").src="images/attacker_red.png";
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color1[i].style.backgroundColor = "#0bd67e";
-                            color1[i].style.borderColor = "#047B00";
+                            color1[i].style.backgroundColor = "#23EE96";
                             document.getElementById("p1-Melee").src="images/attacker_green.png";
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color1[i].style.backgroundColor = "#87ceeb";
-                            color1[i].style.borderColor = "#001A7B";
+                            color1[i].style.backgroundColor = "#78D8FF";
                             document.getElementById("p1-Melee").src="images/attacker_blue.png";
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color1[i].style.backgroundColor = "#fada5e";
-                            color1[i].style.borderColor = "#997B00";
+                            color1[i].style.backgroundColor = "#FFE88F";
                             document.getElementById("p1-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
@@ -1155,32 +1150,28 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color2.length; i++) {
                     if (color2) {
                         if (player2Color.value == "Red") {
-                            color2[i].style.backgroundColor = "#e9967a";
-                            color2[i].style.borderColor = "#7B0000";
+                            color2[i].style.backgroundColor = "#FF7462";
                             document.getElementById("p2-Melee").src="images/attacker_red.png";
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
-                            color2[i].style.backgroundColor = "#0bd67e";
-                            color2[i].style.borderColor = "#047B00";
+                            color2[i].style.backgroundColor = "#23EE96";
                             document.getElementById("p2-Melee").src="images/attacker_green.png";
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
-                            color2[i].style.backgroundColor = "#87ceeb";
-                            color2[i].style.borderColor = "#001A7B";
+                            color2[i].style.backgroundColor = "#78D8FF";
                             document.getElementById("p2-Melee").src="images/attacker_blue.png";
                             document.getElementById("p2-Defender").src="images/defender_blue.png";
                             document.getElementById("p2-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
-                            color2[i].style.backgroundColor = "#fada5e";
-                            color2[i].style.borderColor = "#997B00";
+                            color2[i].style.backgroundColor = "#FFE88F";
                             document.getElementById("p2-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
@@ -1496,32 +1487,28 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color3.length; i++) {
                     if (color3) {
                         if (player1Color.value == "Red") {
-                            color3[i].style.backgroundColor = "#e9967a";
-                            color3[i].style.borderColor = "#7B0000";
+                            color3[i].style.backgroundColor = "#FF7462";
                             document.getElementById("p1-Melee").src="images/attacker_red.png";
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color3[i].style.backgroundColor = "#0bd67e";
-                            color3[i].style.borderColor = "#047B00";
+                            color3[i].style.backgroundColor = "#23EE96";
                             document.getElementById("p1-Melee").src="images/attacker_green.png";
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color3[i].style.backgroundColor = "#87ceeb";
-                            color3[i].style.borderColor = "#001A7B";
+                            color3[i].style.backgroundColor = "#78D8FF";
                             document.getElementById("p1-Melee").src="images/attacker_blue.png";
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color3[i].style.backgroundColor = "#fada5e";
-                            color3[i].style.borderColor = "#997B00";
+                            color3[i].style.backgroundColor = "#FFE88F";
                             document.getElementById("p1-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
@@ -1533,32 +1520,28 @@ submit.addEventListener('click', event => {
                     for (let i = 0; i < color4.length; i++) {
                         if (color4) {
                             if (player2Color.value == "Red") {
-                                color4[i].style.backgroundColor = "#e9967a"
-                                color4[i].style.borderColor = "#7B0000";
+                                color4[i].style.backgroundColor = "#FF7462"
                                 document.getElementById("p2-Melee").src="images/attacker_red.png";
                                 document.getElementById("p2-Defender").src="images/defender_red.png";
                                 document.getElementById("p2-Ranger").src="images/ranger_red.png";
                                 document.getElementById("p2-Healer").src="images/healer_red.png";
                             }
                             if (player2Color.value == "Green") {
-                                color4[i].style.backgroundColor = "#0bd67e";
-                                color4[i].style.borderColor = "#047B00";
+                                color4[i].style.backgroundColor = "#23EE96";
                                 document.getElementById("p2-Melee").src="images/attacker_green.png";
                                 document.getElementById("p2-Defender").src="images/defender_green.png";
                                 document.getElementById("p2-Ranger").src="images/ranger_green.png";
                                 document.getElementById("p2-Healer").src="images/healer_green.png";
                             }
                             if (player2Color.value == "Blue") {
-                                color4[i].style.backgroundColor = "#87ceeb"
-                                color4[i].style.borderColor = "#001A7B";
+                                color4[i].style.backgroundColor = "#78D8FF"
                                 document.getElementById("p2-Melee").src="images/attacker_blue.png";
                                 document.getElementById("p2-Defender").src="images/defender_blue.png";
                                 document.getElementById("p2-Ranger").src="images/ranger_blue.png";
                                 document.getElementById("p2-Healer").src="images/healer_blue.png";
                             }
                             if (player2Color.value == "Yellow") {
-                                color4[i].style.backgroundColor = "#fada5e";
-                                color4[i].style.borderColor = "#997B00";
+                                color4[i].style.backgroundColor = "#FFE88F";
                                 document.getElementById("p2-Melee").src="images/attacker_yellow.png";
                                 document.getElementById("p2-Defender").src="images/defender_yellow.png";
                                 document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
@@ -1976,32 +1959,28 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color5.length; i++) {
                     if (color5) {
                         if (player1Color.value == "Red") {
-                            color5[i].style.backgroundColor = "#e9967a"
-                            color5[i].style.borderColor = "#7B0000";
+                            color5[i].style.backgroundColor = "#FF7462"
                             document.getElementById("p1-Melee").src="images/attacker_red.png";
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
                         }
                         if (player1Color.value == "Green") {
-                            color5[i].style.backgroundColor = "#0bd67e";
-                            color5[i].style.borderColor = "#047B00";
+                            color5[i].style.backgroundColor = "#23EE96";
                             document.getElementById("p1-Melee").src="images/attacker_green.png";
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
                         }
                         if (player1Color.value == "Blue") {
-                            color5[i].style.backgroundColor = "#87ceeb";
-                            color5[i].style.borderColor = "#001A7B";
+                            color5[i].style.backgroundColor = "#78D8FF";
                             document.getElementById("p1-Melee").src="images/attacker_blue.png";
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
                         }
                         if (player1Color.value == "Yellow") {
-                            color5[i].style.backgroundColor = "#fada5e";
-                            color5[i].style.borderColor = "#997B00";
+                            color5[i].style.backgroundColor = "#FFE88F";
                             document.getElementById("p1-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
@@ -2014,32 +1993,28 @@ submit.addEventListener('click', event => {
                 for (let i = 0; i < color6.length; i++) {
                     if (color6) {
                         if (player2Color.value == "Red") {
-                            color6[i].style.backgroundColor = "#e9967a";
-                            color6[i].style.borderColor = "#7B0000";
+                            color6[i].style.backgroundColor = "#FF7462";
                             document.getElementById("p2-Melee").src="images/attacker_red.png";
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
-                            color6[i].style.backgroundColor = "#0bd67e";
-                            color6[i].style.borderColor = "#047B00";
+                            color6[i].style.backgroundColor = "#23EE96";
                             document.getElementById("p2-Melee").src="images/attacker_green.png";
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
-                            color6[i].style.backgroundColor = "#87ceeb";
-                            color6[i].style.borderColor = "#001A7B";
+                            color6[i].style.backgroundColor = "#78D8FF";
                             document.getElementById("p2-Melee").src="images/attacker_blue.png";
                             document.getElementById("p2-Defender").src="images/defender_blue.png";
                             document.getElementById("p2-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p2-Healer").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
-                            color6[i].style.backgroundColor = "#fada5e";
-                            color6[i].style.borderColor = "#997B00";
+                            color6[i].style.backgroundColor = "#FFE88F";
                             document.getElementById("p2-Melee").src="images/attacker_yellow.png";
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
@@ -2062,29 +2037,29 @@ submit.addEventListener('click', event => {
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
             if (player1Color.value == "Red") {
-                document.getElementById("ready1").style.backgroundColor = "#e9967a";
+                document.getElementById("ready1").style.backgroundColor = "#FF7462";
             }
             if (player1Color.value == "Green") {
-                document.getElementById("ready1").style.backgroundColor = "#0bd67e";
+                document.getElementById("ready1").style.backgroundColor = "#23EE96";
             }
             if (player1Color.value == "Blue") {
-                document.getElementById("ready1").style.backgroundColor = "#87ceeb";
+                document.getElementById("ready1").style.backgroundColor = "#78D8FF";
             }
             if (player1Color.value == "Yellow") {
-                document.getElementById("ready1").style.backgroundColor = "#fada5e";
+                document.getElementById("ready1").style.backgroundColor = "#FFE88F";
             }
 
             if (player2Color.value == "Red") {
-                document.getElementById("ready2").style.backgroundColor = "#e9967a";
+                document.getElementById("ready2").style.backgroundColor = "#FF7462";
             }
             if (player2Color.value == "Green") {
-                document.getElementById("ready2").style.backgroundColor = "#0bd67e";
+                document.getElementById("ready2").style.backgroundColor = "#23EE96";
             }
             if (player2Color.value == "Blue") {
-                document.getElementById("ready2").style.backgroundColor = "#87ceeb";
+                document.getElementById("ready2").style.backgroundColor = "#78D8FF";
             }
             if (player2Color.value == "Yellow") {
-                document.getElementById("ready2").style.backgroundColor = "#fada5e";
+                document.getElementById("ready2").style.backgroundColor = "#FFE88F";
             }
 
             //optimize this so no matter what order you click it will do the set timeout
@@ -2237,31 +2212,31 @@ submit.addEventListener('click', event => {
                     
 
                     if (player2Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a";
+                        document.body.style.backgroundColor = "#FF7462";
                     }
                     if (player2Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e";
+                        document.body.style.backgroundColor = "#23EE96";
                     }
                     if (player2Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb";
+                        document.body.style.backgroundColor = "#78D8FF";
                     }
                     if (player2Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e";
+                        document.body.style.backgroundColor = "#FFE88F";
                     }
                 }, 5000)
             setInterval(
                 function() {
                     if (player1Color.value == "Red") {
-                        document.body.style.backgroundColor = "#e9967a";
+                        document.body.style.backgroundColor = "#FF7462";
                     }
                     if (player1Color.value == "Green") {
-                        document.body.style.backgroundColor = "#0bd67e";
+                        document.body.style.backgroundColor = "#23EE96";
                     }
                     if (player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#87ceeb";
+                        document.body.style.backgroundColor = "#78D8FF";
                     }
                     if (player1Color.value == "Yellow") {
-                        document.body.style.backgroundColor = "#fada5e";
+                        document.body.style.backgroundColor = "#FFE88F";
                     }
 
                 }, 4000
@@ -2269,16 +2244,16 @@ submit.addEventListener('click', event => {
 
             if (currentturn == player1) {
                 if (player1Color.value == "Red") {
-                    document.body.style.backgroundColor = "#e9967a";
+                    document.body.style.backgroundColor = "#FF7462";
                 }
                 if (player1Color.value == "Green") {
-                    document.body.style.backgroundColor = "#0bd67e";
+                    document.body.style.backgroundColor = "#23EE96";
                 }
                 if (player1Color.value == "Blue") {
-                    document.body.style.backgroundColor = "#87ceeb";
+                    document.body.style.backgroundColor = "#78D8FF";
                 }
                 if (player1Color.value == "Yellow") {
-                    document.body.style.backgroundColor = "#fada5e";
+                    document.body.style.backgroundColor = "#FFE88F";
                 }
             }
 
@@ -2553,6 +2528,7 @@ function MovementM2(){
         }
         pos++;
     }
+
     move(at,3,"p2-Melee");
 
 }
