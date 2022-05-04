@@ -87,13 +87,13 @@ let shipStats = [{
 ];
 
 
-function drawActors()
+function drawHP()
 {
-    cellArr.forEach(function doIt() {
-        
-
-        if (hasAnything) {
-           // document.getElementById(
+    cellArr.forEach(function(element) {
+        if (element.hasAnything) {
+            console.log(element.shipColor+"-"+element.shipType+"-HP");
+            console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
+           document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
         }
     })
 }
@@ -109,6 +109,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
         "shipColor": thisColor,
         "HP": result[0].shipHP,
     }
+    drawHP();
 }
 
 function moveShipTo(from, to) {
@@ -161,6 +162,7 @@ function attackCell(cell, color, damage) {
     }
     
     canDoDamage = false;
+    drawHP();
 
 }
 
