@@ -2245,7 +2245,7 @@ submit.addEventListener('click', event => {
             })
         })
     })
-})
+
 
 function listingM1() {
         document.getElementById("ActionsM1").classList.toggle("show");
