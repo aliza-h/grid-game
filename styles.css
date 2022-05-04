@@ -1,15 +1,15 @@
-
 /*
 Reference palette:
 https://coolors.co/palette/057672-05827d-058f8a-059d98-06ada7-07beb8-3dccc7-68d8d6-9ceaef-c4fff9
 */
 
 body {
+    font-family: Optima;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #06ADA7;
-    font-family: Optima;
+    background-image: url("images/strife_bg.png");
+    background-size: contain; // I don't like how it's tiled when I resize the window.
 }
 
 #game-board {
@@ -29,11 +29,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    /*height: 6vw;
-    width: 55vw;*/
     height: auto;
     width: auto;
-    /*border: 1px solid green;*/
 }
 
 .game-cell {
@@ -44,11 +41,6 @@ body {
     border: 2px solid #057672;
 }
 
-/*.game-cell:hover {
-    background-color: #C4FFF9;
-}*/
-
-/* ARH: I'll style this stuff */
 form {
     display: flex;
     justify-content: center;
@@ -98,6 +90,7 @@ h3 {
     flex-direction: row;
     border: 4px solid #057672;
     background-color: #9CEAEF;
+    margin-top: 15vh;
 }
 
 .single-player-input {
@@ -114,7 +107,6 @@ h3 {
     height: auto;
     padding: 2vh;
     border-radius: 10px;
-     /*text-transform: uppercase;*/
     letter-spacing: 3px;
 }
 
@@ -397,10 +389,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- 
- /*margin-right: 100px;
- margin-left: 100px;*/
-
 }
 
 #ActionsR1{
@@ -411,8 +399,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 
@@ -424,8 +410,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 
@@ -450,8 +434,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 
@@ -463,8 +445,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 
@@ -476,8 +456,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 
@@ -489,8 +467,6 @@ float: left;
  width: 10vw;
  border: 2px solid black;
  margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
 
 }
 

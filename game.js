@@ -893,6 +893,8 @@ submit.addEventListener('click', event => {
         
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
+        document.getElementById("board-size-box").style.marginTop = "20vh";
+        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -2072,6 +2074,9 @@ submit.addEventListener('click', event => {
             document.getElementById('board-size').remove();
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
+
+            document.body.style.background = 'none';
+
             document.getElementById("ready-check1").innerHTML = "Not Ready";
             document.getElementById("ready-check2").innerHTML = "Not Ready";
 
@@ -2125,9 +2130,9 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready1").remove();
                 document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
-                document.getElementById("ready2").style.marginLeft = "67.3%"
 
-            
+                document.getElementById("readybuttons").style.justifyContent = "flex-end";
+            })
             ready2.addEventListener('click', event => {
                 let color1 = document.querySelectorAll(".game-cell.drops");
                 for (let i = 0; i < color1.length; i++) {
@@ -2213,6 +2218,7 @@ submit.addEventListener('click', event => {
                     
                     alert("game started");
                     document.getElementById("displayDiv").remove();
+
                     Melee1.style.display = "";
                     Ranger1.style.display = "";
                     Defender1.style.display = "";
@@ -2223,6 +2229,7 @@ submit.addEventListener('click', event => {
 
                 let defender1 = document.getElementById("p1-Defender");
                 defender1.setAttribute('draggable', "false")
+
 
                 let ranger1 = document.getElementById("p1-Ranger");
                 ranger1.setAttribute('draggable', "false")
@@ -2238,7 +2245,7 @@ submit.addEventListener('click', event => {
             })
         })
     })
-})
+
 
 function listingM1() {
         document.getElementById("ActionsM1").classList.toggle("show");
