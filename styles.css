@@ -17,6 +17,38 @@ body {
     flex-direction: row;
 }
 
+#hp-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.player-hp-box {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.hp-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+}
+
+.hp-row img {
+    margin: 0vw;
+}
+
+.hp-stat-text {
+    display: flex;
+    align-items: flex-end;
+}
+
 #game-board {
     display: flex;
     flex-direction: column;
