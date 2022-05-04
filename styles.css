@@ -12,11 +12,6 @@ body {
     background-size: contain; // I don't like how it's tiled when I resize the window.
 }
 
-#big-row {
-    display: flex;
-    flex-direction: row;
-}
-
 #hp-display {
     display: flex;
     flex-direction: row;

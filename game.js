@@ -903,28 +903,28 @@ submit.addEventListener('click', event => {
         let txtcolor2 = document.getElementById("name2");
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#7B0000";
+            txtcolor.style.color = "#FF7462";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#047B00";
+            txtcolor.style.color = "#23EE96";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#001A7B";
+            txtcolor.style.color = "#78D8FF";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#997B00";
+            txtcolor.style.color = "#FFE88F";
         }
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#7B0000";
+            txtcolor2.style.color = "#FF7462";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#047B00";
+            txtcolor2.style.color = "#23EE96";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#001A7B";
+            txtcolor2.style.color = "#78D8FF";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#997B00";
+            txtcolor2.style.color = "#FFE88F";
         }
         
 
