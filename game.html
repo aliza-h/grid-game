@@ -62,112 +62,137 @@
         <div class="board-turn-name" id="turns"></div>
         <div class="board-turn-name" id="turns2"></div>
     </div>
-            
-    <div>
-        <div id="p1">
-            <img src="images/MAttack.jpeg" id="p1-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listingM1()">
-            <img src="images/Defender.jpeg" id="p1-Defender" draggable="true" ondragstart="drag(event)" ondblclick="listingD1()">
-            <img src="images/RAttack.jpeg" id="p1-Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listingR1()">
-            <img src="images/Healer.jpeg" id="p1-Healer" draggable="true" ondragstart="drag(event)" ondblclick="listingH1()">
+            <div>
+                <div id="p1">
+                    <img src="images/MAttack.jpeg" id="p1-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listingM1()">
+                    <img src="images/Defender.jpeg" id="p1-Defender" draggable="true" ondragstart="drag(event)" ondblclick="listingD1()">
+                    <img src="images/RAttack.jpeg" id="p1-Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listingR1()">
+                    <img src="images/Healer.jpeg" id="p1-Healer" draggable="true" ondragstart="drag(event)" ondblclick="listingH1()">
+                </div>
+
+                <div id="ActionsM1" class="actList">
+          <button type="button" id="attackM1" onclick="AttackM1()">Attack</button>
+          <button type="button" id="movementM1" onclick="MovementM1()">Movement</button>
+          <button type="button" id="endTurnM1" onclick="EndTurnM1()">End Turn</button>
         </div>
 
-        <!-- player 1 actions were here -->
-        
-
-        <!-- Player 2 actions were here -->
-
-
-        <div id="p2">
-            <img src="images/MAttack.jpeg" id="p2-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listingM2()">
-            <img src="images/Defender.jpeg" id="p2-Defender" draggable="true" ondragstart="drag(event)" ondblclick="listingD2()">
-            <img src="images/RAttack.jpeg" id="p2-Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listingR2()">
-            <img src="images/Healer.jpeg" id="p2-Healer" draggable="true" ondragstart="drag(event)" ondblclick="listingH2()">
-        </div>
-    </div>
-
-    <div id="big-row">
-
-        <!-- Player 1 action menus -->
-        <div>
-            
-            <div id="ActionsM1" class="actList">
-                <button type="button" id="attackM1" onclick="AttackM1()">Attack</button>
-                <button type="button" id="movementM1" onclick="MovementM1()">Movement</button>
-                <button type="button" id="endTurnM1" onclick="EndTurnM1()">End Turn</button>
-            </div>
-
-            <div id="ActionsR1" class="actList">
-                <button type="button" id="attackR1" onclick="AttackR1()">Attack</button>
-                <button type="button" id="movementR1" onclick="MovementR1()">Movement</button>
-                <button type="button" id="endTurnR1" onclick="EndTurnR1()">End Turn</button>
-            </div>
-
-            <div id="ActionsD1" class="actList">
-                <button type="button" id="attackD1" onclick="AttackD1()">Attack</button>
-                <button type="button" id="movementD1" onclick="MovementD1()">Movement</button>
-                <button type="button" id="endTurnD1" onclick="EndTurnD1()">End Turn</button>
-            </div>
-
-            <div id="ActionsH1" class="actList">
-                <button type="button" id="healH1" onclick="HealH1()">Heal</button>
-                <button type="button" id="attackH1" onclick="AttackH1()">Attack</button>
-                <button type="button" id="movementH1" onclick="MovementH1()">Movement</button>
-                <button type="button" id="endTurnH1" onclick="EndTurnH1()">End Turn</button>
-            </div>
-
+        <div id="ActionsR1" class="actList">
+          <button type="button" id="attackR1" onclick="AttackR1()">Attack</button>
+          <button type="button" id="movementR1" onclick="MovementR1()">Movement</button>
+          <button type="button" id="endTurnR1" onclick="EndTurnR1()">End Turn</button>
         </div>
 
-        <div id="game-board">
-            <!-- game board goes here -->
-            <span id="displayDiv"></span>
-            <div id="readybuttons">
-                <button type="button" id="ready1">Ready?</button>
-                <button type="button" id="ready2">Ready?</button>
-            </div>
-            <div id="names1">
-                <div class="board-player-name" id="name1"></div>
-                <div class="board-player-name" id="name2"></div>
-            </div>
-            <div id="readycheck">
-                <div class="readychecks" id="ready-check1"></div>
-                <div class="readychecks" id="ready-check2"></div>
-            </div>
+        <div id="ActionsD1" class="actList">
+          <button type="button" id="attackD1" onclick="AttackD1()">Attack</button>
+          <button type="button" id="movementD1" onclick="MovementD1()">Movement</button>
+          <button type="button" id="endTurnD1" onclick="EndTurnD1()">End Turn</button>
         </div>
 
-        <!-- Player 2 action menus -->
-
-        <div>
-
-            <div id="ActionsM2" class="actList">
-                <button type="button" id="attackM2" onclick="AttackM2()">Attack</button>
-                <button type="button" id="movementM2" onclick="MovementM2()">Movement</button>
-                <button type="button" id="endTurnM2" onclick="EndTurnM2()">End Turn</button>
-            </div>
-
-            <div id="ActionsR2" class="actList">
-                <button type="button" id="attackR2" onclick="AttackR2()">Attack</button>
-                <button type="button" id="movementR2" onclick="MovementR2()">Movement</button>
-                <button type="button" id="endTurnR2" onclick="EndTurnR2()">End Turn</button>
-            </div>
-
-            <div id="ActionsD2" class="actList">
-                <button type="button" id="attackD2" onclick="AttackD2()">Attack</button>
-                <button type="button" id="movementD2" onclick="MovementD2()">Movement</button>
-                <button type="button" id="endTurnD2" onclick="EndTurnD2()">End Turn</button>
-            </div>
-
-            <div id="ActionsH2" class="actList">
-                <button type="button" id="healH2" onclick="HealH2()">Heal</button>
-                <button type="button" id="attackH2" onclick="AttackH2()">Attack</button>
-                <button type="button" id="movementH2" onclick="MovementH2()">Movement</button>
-                <button type="button" id="endTurnH2" onclick="EndTurnH2()">End Turn</button>
-
-            </div>
-
+        <div id="ActionsH1" class="actList">
+          <button type="button" id="healH1" onclick="HealH1()">Heal</button>
+          <button type="button" id="attackH1" onclick="AttackH1()">Attack</button>
+          <button type="button" id="movementH1" onclick="MovementH1()">Movement</button>
+          <button type="button" id="endTurnH1" onclick="EndTurnH1()">End Turn</button>
         </div>
 
-    </div>
+        <div id="ActionsM2" class="actList">
+          <button type="button" id="attackM2" onclick="AttackM2()">Attack</button>
+          <button type="button" id="movementM2" onclick="MovementM2()">Movement</button>
+          <button type="button" id="endTurnM2" onclick="EndTurnM2()">End Turn</button>
+        </div>
 
-    <script src="game.js"></script>
+        <div id="ActionsR2" class="actList">
+          <button type="button" id="attackR2" onclick="AttackR2()">Attack</button>
+          <button type="button" id="movementR2" onclick="MovementR2()">Movement</button>
+          <button type="button" id="endTurnR2" onclick="EndTurnR2()">End Turn</button>
+        </div>
+
+        <div id="ActionsD2" class="actList">
+          <button type="button" id="attackD2" onclick="AttackD2()">Attack</button>
+          <button type="button" id="movementD2" onclick="MovementD2()">Movement</button>
+          <button type="button" id="endTurnD2" onclick="EndTurnD2()">End Turn</button>
+        </div>
+
+        <div id="ActionsH2" class="actList">
+          <button type="button" id="healH2" onclick="HealH2()">Heal</button>
+          <button type="button" id="attackH2" onclick="AttackH2()">Attack</button>
+          <button type="button" id="movementH2" onclick="MovementH2()">Movement</button>
+          <button type="button" id="endTurnH2" onclick="EndTurnH2()">End Turn</button>
+        </div>
+
+                <div id="p2">
+                    <img src="images/MAttack.jpeg" id="p2-Melee" draggable="true" ondragstart="drag(event)" ondblclick="listingM2()">
+                    <img src="images/Defender.jpeg" id="p2-Defender" draggable="true" ondragstart="drag(event)" ondblclick="listingD2()">
+                    <img src="images/RAttack.jpeg" id="p2-Ranger" draggable="true" ondragstart="drag(event)" ondblclick="listingR2()">
+                    <img src="images/Healer.jpeg" id="p2-Healer" draggable="true" ondragstart="drag(event)" ondblclick="listingH2()">
+                </div>
+            </div>
+            <div id="game-board">
+                <!-- game board goes here -->
+
+                <div id="hp-display">
+
+                    <div class="player-hp-box">
+                        <div class="hp-row">
+                            <img src="images/MAttack.jpeg" id="p1-Melee-Display" draggable="false">
+                            <div class="hp-stat-text" id="p1-Meelee-HP">100 HP</div>
+                        </div>
+
+                        <div class="hp-row">    
+                            <img src="images/Defender.jpeg" id="p1-Defender-Display" draggable="false">
+                            <div class="hp-stat-text" id="p1-Defender-HP">100 HP</div>
+                        </div>
+
+                        <div class="hp-row">
+                            <img src="images/RAttack.jpeg" id="p1-Ranger-Display" draggable="false">
+                            <div class="hp-stat-text" id="p1-Ranger-HP">100 HP</div>
+                        </div>
+
+                        <div class="hp-row">
+                            <img src="images/Healer.jpeg" id="p1-Healer-Display" draggable="false">
+                            <div class="hp-stat-text" id="p1-Healer-HP">100 HP</div>
+                        </div>
+                    </div>
+
+                    <div class="player-hp-box">
+                        <div class="hp-row">
+                            <img src="images/MAttack.jpeg" id="p2-Melee-Display" draggable="false">
+                            <div class="hp-stat-text" id="p2-Meelee-HP">100 HP</div>
+                        </div>
+
+                        <div class="hp-row">
+                            <img src="images/Defender.jpeg" id="p2-Defender-Display" draggable="false">
+                            <div class="hp-stat-text" id="p2-Defender-HP">100 HP</div>
+                        </div>
+
+                        <div class="hp-row">
+                            <img src="images/RAttack.jpeg" id="p2-Ranger-Display" draggable="false">
+                            <div class="hp-stat-text" id="p2-Ranger-HP">100 HP</div>
+                        </div>
+                        
+                        <div class="hp-row">
+                            <img src="images/Healer.jpeg" id="p2-Healer-Display" draggable="false">
+                            <div class="hp-stat-text" id="p2-Healer-HP">100 HP</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <span id="displayDiv"></span>
+                <div id="readybuttons">
+                    <button type="button" id="ready1">Ready?</button>
+                    <button type="button" id="ready2">Ready?</button>
+                </div>
+                <div id="names1">
+                    <div class="board-player-name" id="name1"></div>
+                    <div class="board-player-name" id="name2"></div>
+                </div>
+                <div id="readycheck">
+                    <div class="readychecks" id="ready-check1"></div>
+                    <div class="readychecks" id="ready-check2"></div>
+                </div>
+            </div>
+
+            <script src="game.js"></script>
     </body>
 </html>
