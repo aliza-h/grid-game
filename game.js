@@ -2342,7 +2342,6 @@ function MovementM1(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1")
         {
             at = pos;
-            
         }
         pos++;
     }
@@ -2760,6 +2759,7 @@ function MovementH2(){
         pos++;
     }
     move(at,4,"p2-Healer");
+
 
 }
 
