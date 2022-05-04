@@ -2156,6 +2156,15 @@ submit.addEventListener('click', event => {
                     Ranger1.style.display = "";
                     Defender1.style.display = "";
                     Healer1.style.display = "";
+                    if(player1Color.value == "Blue") {
+                        document.body.style.backgroundColor = "#78D8FF"
+                    } else if(player1Color.value == "Green"){
+                        document.body.style.backgroundColor = "#23EE96"
+                    } else if(player1Color.value == "Red"){
+                        document.body.style.backgroundColor = "#FF7462"
+                    } else if(player1Color.value == "Yellow"){
+                        document.body.style.backgroundColor = "#FFE88F"
+                    }
                 })
                 let melee2 = document.getElementById("p2-Melee");
                 melee2.setAttribute('draggable', "false")
@@ -2223,6 +2232,15 @@ submit.addEventListener('click', event => {
                     Ranger1.style.display = "";
                     Defender1.style.display = "";
                     Healer1.style.display = "";
+                    if(player1Color.value == "Blue") {
+                        document.body.style.backgroundColor = "#78D8FF"
+                    } else if(player1Color.value == "Green"){
+                        document.body.style.backgroundColor = "#23EE96"
+                    } else if(player1Color.value == "Red"){
+                        document.body.style.backgroundColor = "#FF7462"
+                    } else if(player1Color.value == "Yellow"){
+                        document.body.style.backgroundColor = "#FFE88F"
+                    }
                     })
                 let melee1 = document.getElementById("p1-Melee");
                 melee1.setAttribute('draggable', "false")
@@ -2249,28 +2267,54 @@ submit.addEventListener('click', event => {
 
 function listingM1() {
         document.getElementById("ActionsM1").classList.toggle("show");
+        document.getElementById("p1-Defender").removeAttribute("ondblclick")
+        document.getElementById("p1-Healer").removeAttribute("ondblclick")
+        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
 }
 function listingR1() {
   document.getElementById("ActionsR1").classList.toggle("show");
+  document.getElementById("p1-Defender").removeAttribute("ondblclick")
+        document.getElementById("p1-Healer").removeAttribute("ondblclick")
+        document.getElementById("p1-Melee").removeAttribute("ondblclick")
 }
 function listingD1() {
-  document.getElementById("ActionsD1").classList.toggle("show");
+  document.getElementById("ActionsD1").classList.toggle("show"); 
+  document.getElementById("p1-Melee").removeAttribute("ondblclick")
+        document.getElementById("p1-Healer").removeAttribute("ondblclick")
+        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
 }
 function listingH1() {
   document.getElementById("ActionsH1").classList.toggle("show");
+  document.getElementById("p1-Defender").removeAttribute("ondblclick")
+        document.getElementById("p1-Melee").removeAttribute("ondblclick")
+        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
 }
 
 function listingM2() {
   document.getElementById("ActionsM2").classList.toggle("show");
+  document.getElementById("p2-Defender").removeAttribute("ondblclick")
+        document.getElementById("p2-Healer").removeAttribute("ondblclick")
+        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
 }
 function listingR2() {
   document.getElementById("ActionsR2").classList.toggle("show");
+  document.getElementById("p2-Defender").removeAttribute("ondblclick")
+        document.getElementById("p2-Healer").removeAttribute("ondblclick")
+        document.getElementById("p2-Melee").removeAttribute("ondblclick")  
+  
 }
 function listingD2() {
   document.getElementById("ActionsD2").classList.toggle("show");
+  document.getElementById("p2-Melee").removeAttribute("ondblclick")
+        document.getElementById("p2-Healer").removeAttribute("ondblclick")
+        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
+
 }
 function listingH2() {
   document.getElementById("ActionsH2").classList.toggle("show");
+  document.getElementById("p2-Defender").removeAttribute("ondblclick")
+        document.getElementById("p2-Melee").removeAttribute("ondblclick")
+        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
 }
 
 window.onclick = function(event) {
@@ -2285,7 +2329,6 @@ window.onclick = function(event) {
         }
     }
 }
-
 
 let mAtt1 = document.getElementById("attackM1");
 let mMove1 = document.getElementById("movementM1");
@@ -2349,7 +2392,6 @@ function MovementM1(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1")
         {
             at = pos;
-            
         }
         pos++;
     }
@@ -2384,6 +2426,12 @@ function EndTurnM1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
+
+            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+
     }
 
 function AttackR1() {
@@ -2413,14 +2461,16 @@ function EndTurnR1(){
                 color1[i].style.borderColor = "#057672"
                     }
                 }
+                Melee2.style.display = "none";
                 Melee2.style.display = "";
-        Ranger2.style.display = "";
-        Defender2.style.display = "";
-        Healer2.style.display = "";
-        Melee1.style.display = "none";
-        Ranger1.style.display = "none";
-        Defender1.style.display = "none";
-        Healer1.style.display = "none";
+                Ranger2.style.display = "";
+                Defender2.style.display = "";
+                Healer2.style.display = "";
+                Melee1.style.display = "none";
+                Ranger1.style.display = "none";
+                Defender1.style.display = "none";
+                Healer1.style.display = "none";
+       
         if(player2Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player2Color.value == "Green"){
@@ -2432,7 +2482,12 @@ function EndTurnR1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-}
+        
+            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+    }
 
 function AttackD1() {
     let at = -1;
@@ -2475,13 +2530,13 @@ function EndTurnD1(){
         }
     }
     Melee2.style.display = "";
-        Ranger2.style.display = "";
-        Defender2.style.display = "";
-        Healer2.style.display = "";
-        Melee1.style.display = "none";
-        Ranger1.style.display = "none";
-        Defender1.style.display = "none";
-        Healer1.style.display = "none";
+    Ranger2.style.display = "";
+    Defender2.style.display = "";
+    Healer2.style.display = "";
+    Melee1.style.display = "none";
+    Ranger1.style.display = "none";
+    Defender1.style.display = "none";
+    Healer1.style.display = "none";
         if(player2Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player2Color.value == "Green"){
@@ -2493,7 +2548,12 @@ function EndTurnD1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-}
+        
+            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+    }
 
 function HealH1(){
 
@@ -2558,7 +2618,12 @@ function EndTurnH1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-}
+        
+            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+    }
 
 
 
@@ -2623,7 +2688,12 @@ function EndTurnM2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-}
+
+            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+        }
 
 function AttackR2() {
 }
@@ -2671,7 +2741,13 @@ function EndTurnR2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-}
+        
+            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+    }
+
 
 function AttackD2() {
     let at = -1;
@@ -2732,7 +2808,12 @@ function EndTurnD2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-}
+        
+            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+    }
 
 function HealH2(){
 
@@ -2768,6 +2849,7 @@ function MovementH2(){
     }
     move(at,4,"p2-Healer");
 
+
 }
 
 function EndTurnH2(){
@@ -2797,7 +2879,13 @@ function EndTurnH2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-}
+
+            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+
+    }
 
 
 
