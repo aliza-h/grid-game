@@ -87,13 +87,13 @@ let shipStats = [{
 ];
 
 
-function drawActors()
+function drawHP()
 {
-    cellArr.forEach(function doIt() {
-        if (hasObstacle) {
-        }
-
-        if (hasAnything) {
+    cellArr.forEach(function(element) {
+        if (element.hasAnything) {
+            console.log(element.shipColor+"-"+element.shipType+"-HP");
+            console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
+           document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
         }
     })
 }
@@ -109,6 +109,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
         "shipColor": thisColor,
         "HP": result[0].shipHP,
     }
+    drawHP();
 }
 
 function moveShipTo(from, to) {
@@ -161,6 +162,7 @@ function attackCell(cell, color, damage) {
     }
     
     canDoDamage = false;
+    drawHP();
 
 }
 
@@ -1150,6 +1152,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
+                            document.getElementById("p1-Melee-Display").src="images/attacker_red.png";
+                            document.getElementById("p1-Defender-Display").src="images/defender_red.png";
+                            document.getElementById("p1-Ranger-Display").src="images/ranger_red.png";
+                            document.getElementById("p1-Healer-Display").src="images/healer_red.png";
                             document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
@@ -1158,6 +1164,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
+                            document.getElementById("p1-Melee-Display").src="images/attacker_green.png";
+                            document.getElementById("p1-Defender-Display").src="images/defender_green.png";
+                            document.getElementById("p1-Ranger-Display").src="images/ranger_green.png";
+                            document.getElementById("p1-Healer-Display").src="images/healer_green.png";
                             document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
@@ -1166,6 +1176,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
+                            document.getElementById("p1-Melee-Display").src="images/attacker_blue.png";
+                            document.getElementById("p1-Defender-Display").src="images/defender_blue.png";
+                            document.getElementById("p1-Ranger-Display").src="images/ranger_blue.png";
+                            document.getElementById("p1-Healer-Display").src="images/healer_blue.png";
                             document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
@@ -1174,6 +1188,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p1-Healer").src="images/healer_yellow.png";
+                            document.getElementById("p1-Melee-Display").src="images/attacker_yellow.png";
+                            document.getElementById("p1-Defender-Display").src="images/defender_yellow.png";
+                            document.getElementById("p1-Ranger-Display").src="images/ranger_yellow.png";
+                            document.getElementById("p1-Healer-Display").src="images/healer_yellow.png";
                             document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
@@ -1188,6 +1206,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
+                            document.getElementById("p2-Melee-Display").src="images/attacker_red.png";
+                            document.getElementById("p2-Defender-Display").src="images/defender_red.png";
+                            document.getElementById("p2-Ranger-Display").src="images/ranger_red.png";
+                            document.getElementById("p2-Healer-Display").src="images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
                             color2[i].style.backgroundColor = "#23EE96";
@@ -1195,6 +1217,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
+                            document.getElementById("p2-Melee-Display").src="images/attacker_green.png";
+                            document.getElementById("p2-Defender-Display").src="images/defender_green.png";
+                            document.getElementById("p2-Ranger-Display").src="images/ranger_green.png";
+                            document.getElementById("p2-Healer-Display").src="images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
                             color2[i].style.backgroundColor = "#78D8FF";
@@ -1202,6 +1228,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_blue.png";
                             document.getElementById("p2-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p2-Healer").src="images/healer_blue.png";
+                            document.getElementById("p2-Melee-Display").src="images/attacker_blue.png";
+                            document.getElementById("p2-Defender-Display").src="images/defender_blue.png";
+                            document.getElementById("p2-Ranger-Display").src="images/ranger_blue.png";
+                            document.getElementById("p2-Healer-Display").src="images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
                             color2[i].style.backgroundColor = "#FFE88F";
@@ -1209,6 +1239,10 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p2-Healer").src="images/healer_yellow.png";
+                            document.getElementById("p2-Melee-Display").src="images/attacker_yellow.png";
+                            document.getElementById("p2-Defender-Display").src="images/defender_yellow.png";
+                            document.getElementById("p2-Ranger-Display").src="images/ranger_yellow.png";
+                            document.getElementById("p2-Healer-Display").src="images/healer_yellow.png";
                         }
                     }
                 }
