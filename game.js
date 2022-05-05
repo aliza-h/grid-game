@@ -2205,10 +2205,11 @@ function listingM1() {
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
   document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
      
-        document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        
 }
 function listingR1() {
     document.getElementById("ActionsR1").classList.add("show");
@@ -2216,9 +2217,10 @@ function listingR1() {
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
   document.getElementById("ActionsH2").classList.remove("show");
-  document.getElementById("p1-Defender").removeAttribute("onclick")
-      document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Melee").removeAttribute("onclick")
+  document.getElementById("ActionsM1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+  
 }
 function listingD1() {
     document.getElementById("ActionsD1").classList.add("show"); 
@@ -2226,9 +2228,10 @@ function listingD1() {
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
   document.getElementById("ActionsH2").classList.remove("show");
-  document.getElementById("p1-Melee").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+  document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+
 }
 function listingH1() {
   document.getElementById("ActionsH1").classList.add("show");
@@ -2236,66 +2239,54 @@ function listingH1() {
   document.getElementById("ActionsR2").classList.remove("show");
 document.getElementById("ActionsD2").classList.remove("show");
 document.getElementById("ActionsH2").classList.remove("show");
-  document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Melee").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
 }
 
 function listingM2() {
     document.getElementById("ActionsM2").classList.add("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-  document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")  
+ 
 }
 function listingR2() {
     document.getElementById("ActionsR2").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
-  document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Melee").removeAttribute("onclick")  
+  document.getElementById("ActionsH1").classList.remove("show"); 
   
 }
 function listingD2() {
     document.getElementById("ActionsD2").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-  document.getElementById("p2-Melee").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")  
 
 }
 function listingH2() {
   document.getElementById("ActionsH2").classList.add("show");
+  document.getElementById("ActionsM2").classList.remove("show");
+  document.getElementById("ActionsR2").classList.remove("show");
+document.getElementById("ActionsD2").classList.remove("show");
   document.getElementById("ActionsM1").classList.remove("show");
   document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-  document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Melee").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")  
 }
-
-/*window.onclick = function(event) {
-    if (event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("actList");
-        console.log(dropdowns)
-        /*var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            if (dropdowns.classList.contains('show')) {
-                dropdowns.classList.remove('show');
-            }
-        }
-    }
-}*/
 
 let mAtt1 = document.getElementById("attackM1");
 let mMove1 = document.getElementById("movementM1");
@@ -2349,6 +2340,10 @@ function AttackM1() {
         pos++;
     }
     attackInARange(at,2,"p1",25);
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 }
 
 function MovementM1(){
@@ -2363,6 +2358,10 @@ function MovementM1(){
         pos++;
     }
     move(at,3,"p1-Melee");
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 
 function EndTurnM1(){
@@ -2402,6 +2401,10 @@ function EndTurnM1(){
     }
 
 function AttackR1() {
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 }
 
 function MovementR1(){
@@ -2417,6 +2420,10 @@ function MovementR1(){
         pos++;
     }
     move(at,2,"p1-Ranger");
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2469,7 +2476,10 @@ function AttackD1() {
         pos++;
     }
     attackInARange(at,2,"p1",30);
-
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 }
 
 function MovementD1(){
@@ -2485,6 +2495,10 @@ function MovementD1(){
         pos++;
     }
     move(at,1,"p1-Defender");
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2523,6 +2537,10 @@ function EndTurnD1(){
     }
 
 function HealH1(){
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 
 }
 
@@ -2539,7 +2557,10 @@ function AttackH1() {
         pos++;
     }
     attackInARange(at,1,"p1",10);
-
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 }
 
 function MovementH1(){
@@ -2555,6 +2576,10 @@ function MovementH1(){
         pos++;
     }
     move(at,4,"p1-Healer");
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2608,7 +2633,10 @@ function AttackM2() {
         pos++;
     }
     attackInARange(at,2,"p2",25);
-
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementM2(){
@@ -2625,6 +2653,10 @@ function MovementM2(){
     }
 
     move(at,3,"p2-Melee");
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2663,6 +2695,10 @@ function EndTurnM2(){
         }
 
 function AttackR2() {
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementR2(){
@@ -2678,6 +2714,10 @@ function MovementR2(){
         pos++;
     }
     move(at,2,"p2-Ranger");
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2729,7 +2769,10 @@ function AttackD2() {
         pos++;
     }
     attackInARange(at,2,"p2",30);
-
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementD2(){
@@ -2745,6 +2788,10 @@ function MovementD2(){
         pos++;
     }
     move(at,1,"p2-Defender");
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2783,7 +2830,10 @@ function EndTurnD2(){
     }
 
 function HealH2(){
-
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function AttackH2() {
@@ -2800,6 +2850,10 @@ function AttackH2() {
         pos++;
     }
     attackInARange(at,1,"p2",10);
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementH2(){
@@ -2815,6 +2869,11 @@ function MovementH2(){
         pos++;
     }
     move(at,4,"p2-Healer");
+
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 
 }
