@@ -91,8 +91,8 @@ function drawHP()
 {
     cellArr.forEach(function(element) {
         if (element.hasAnything) {
-            console.log(element.shipColor+"-"+element.shipType+"-HP");
-            console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
+            //console.log(element.shipColor+"-"+element.shipType+"-HP");
+            //console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
            document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
         }
     })
@@ -2141,15 +2141,21 @@ submit.addEventListener('click', event => {
             }
 
             //optimize this so no matter what order you click it will do the set timeout
-            ready1.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drop");
+            });
+        })
+    })
+        
+        
+ready1.addEventListener('click', event => {
+    let color1 = document.querySelectorAll(".game-cell.drop");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                 color1[i].style.backgroundColor = "#9CEAEF"
                 color1[i].style.borderColor = "#057672"
                     }
                 }
-                let melee1 = document.getElementById("p1-Melee");
+    event.preventDefault();
+    let melee1 = document.getElementById("p1-Melee");
                 melee1.setAttribute('draggable', "false")
 
                 let defender1 = document.getElementById("p1-Defender");
@@ -2160,46 +2166,6 @@ submit.addEventListener('click', event => {
 
                 let healer1 = document.getElementById("p1-Healer");
                 healer1.setAttribute('draggable', "false")
-
-                document.getElementById("ready1").remove();
-                document.getElementById("ready-check1").innerHTML = "Ready!";
-                document.getElementById("p1").remove();
-
-                document.getElementById("readybuttons").style.justifyContent = "flex-end";
-            })
-            ready2.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drops");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                function countDown(i, callback) {
-                    callback = callback || function() {};
-                    var int = setInterval(function() {
-                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
-                        i-- || (clearInterval(int), callback());
-                    }, 1000);
-                }
-                countDown(5, function() {
-                    
-                    alert("game started");
-                    document.getElementById("displayDiv").remove();
-                    Melee1.style.display = "";
-                    Ranger1.style.display = "";
-                    Defender1.style.display = "";
-                    Healer1.style.display = "";
-                    if(player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#78D8FF"
-                    } else if(player1Color.value == "Green"){
-                        document.body.style.backgroundColor = "#23EE96"
-                    } else if(player1Color.value == "Red"){
-                        document.body.style.backgroundColor = "#FF7462"
-                    } else if(player1Color.value == "Yellow"){
-                        document.body.style.backgroundColor = "#FFE88F"
-                    }
-                })
                 let melee2 = document.getElementById("p2-Melee");
                 melee2.setAttribute('draggable', "false")
 
@@ -2211,148 +2177,82 @@ submit.addEventListener('click', event => {
 
                 let healer2 = document.getElementById("p2-Healer");
                 healer2.setAttribute('draggable', "false")
-                document.getElementById("ready2").remove();
-                document.getElementById("ready-check2").innerHTML = "Ready!";
-                document.getElementById("p2").remove();
-                document.getElementById("ready3").display = "";
-            })
-        })
-        
-        ready2.addEventListener('click', event => {
-            let color1 = document.querySelectorAll(".game-cell.drops");
-            for (let i = 0; i < color1.length; i++) {
-                if (color1) {
-            color1[i].style.backgroundColor = "#9CEAEF"
-            color1[i].style.borderColor = "#057672"
-                }
-            }
 
-            let melee2 = document.getElementById("p2-Melee");
-            melee2.setAttribute('draggable', "false")
-
-            let defender2 = document.getElementById("p2-Defender");
-            defender2.setAttribute('draggable', "false")
-
-            let ranger2 = document.getElementById("p2-Ranger");
-            ranger2.setAttribute('draggable', "false")
-
-            let healer2 = document.getElementById("p2-Healer");
-            healer2.setAttribute('draggable', "false")
-            document.getElementById("ready2").remove();
-            document.getElementById("ready-check2").innerHTML = "Ready!";
-            document.getElementById("p2").remove();
-
-            ready1.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drop");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                function countDown(i, callback) {
-                    callback = callback || function() {};
-                    var int = setInterval(function() {
-                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
-                        i-- || (clearInterval(int), callback());
-                    }, 1000);
-                }
-                countDown(5, function() {
-                    
-                    alert("game started");
-                    document.getElementById("displayDiv").remove();
-
-                    Melee1.style.display = "";
-                    Ranger1.style.display = "";
-                    Defender1.style.display = "";
-                    Healer1.style.display = "";
-                    if(player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#78D8FF"
-                    } else if(player1Color.value == "Green"){
-                        document.body.style.backgroundColor = "#23EE96"
-                    } else if(player1Color.value == "Red"){
-                        document.body.style.backgroundColor = "#FF7462"
-                    } else if(player1Color.value == "Yellow"){
-                        document.body.style.backgroundColor = "#FFE88F"
-                    }
-                    })
-                let melee1 = document.getElementById("p1-Melee");
-                melee1.setAttribute('draggable', "false")
-
-                let defender1 = document.getElementById("p1-Defender");
-                defender1.setAttribute('draggable', "false")
-
-
-                let ranger1 = document.getElementById("p1-Ranger");
-                ranger1.setAttribute('draggable', "false")
-
-                let healer1 = document.getElementById("p1-Healer");
-                healer1.setAttribute('draggable', "false")
-
-                document.getElementById("ready1").remove();
-                document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
+                document.getElementById("ready1").remove();
+                document.getElementById("p2").remove();
+                console.log("test")
+                document.getElementById("displayDiv").remove();
 
-                });
-            })
-        })
-    })
-
+                Melee1.style.display = "";
+                Ranger1.style.display = "";
+                Defender1.style.display = "";
+                Healer1.style.display = "";
+                if(player1Color.value == "Blue") {
+                    document.body.style.backgroundColor = "#78D8FF"
+                } else if(player1Color.value == "Green"){
+                    document.body.style.backgroundColor = "#23EE96"
+                } else if(player1Color.value == "Red"){
+                    document.body.style.backgroundColor = "#FF7462"
+                } else if(player1Color.value == "Yellow"){
+                    document.body.style.backgroundColor = "#FFE88F"
+                }                   
+})
 
 function listingM1() {
         document.getElementById("ActionsM1").classList.toggle("show");
-        document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 function listingR1() {
   document.getElementById("ActionsR1").classList.toggle("show");
-  document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Melee").removeAttribute("ondblclick")
+  document.getElementById("p1-Defender").removeAttribute("onclick")
+      document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
 }
 function listingD1() {
   document.getElementById("ActionsD1").classList.toggle("show"); 
-  document.getElementById("p1-Melee").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+  document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 function listingH1() {
   document.getElementById("ActionsH1").classList.toggle("show");
-  document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Melee").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+  document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 
 function listingM2() {
   document.getElementById("ActionsM2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
+  document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")  
 }
 function listingR2() {
   document.getElementById("ActionsR2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Melee").removeAttribute("ondblclick")  
+  document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Melee").removeAttribute("onclick")  
   
 }
 function listingD2() {
   document.getElementById("ActionsD2").classList.toggle("show");
-  document.getElementById("p2-Melee").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
+  document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")  
 
 }
 function listingH2() {
   document.getElementById("ActionsH2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Melee").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")  
+  document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")  
 }
 
 window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    if (event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("actList");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
@@ -2461,10 +2361,10 @@ function EndTurnM1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 
     }
 
@@ -2517,10 +2417,10 @@ function EndTurnR1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
     }
 
 function AttackD1() {
@@ -2583,10 +2483,10 @@ function EndTurnD1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
     }
 
 function HealH1(){
@@ -2653,10 +2553,10 @@ function EndTurnH1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
     }
 
 
@@ -2723,10 +2623,10 @@ function EndTurnM2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
         }
 
 function AttackR2() {
@@ -2776,10 +2676,10 @@ function EndTurnR2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
     }
 
 
@@ -2843,10 +2743,10 @@ function EndTurnD2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
     }
 
 function HealH2(){
@@ -2914,10 +2814,10 @@ function EndTurnH2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
 
     }
 
