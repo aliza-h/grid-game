@@ -21,6 +21,14 @@ let submit = document.getElementById("submit");
 let player1Color = document.getElementById("player1Color");
 let player2Color = document.getElementById("player2Color");
 
+let img_melee1 = document.getElementById("p1-Melee")
+let img_defender1 = document.getElementById("p1-Defender")
+let img_ranger1 = document.getElementById("p1-Ranger")
+let img_healer1 = document.getElementById("p1-Healer")
+let img_melee2 = document.getElementById("p2-Melee")
+let img_defender2 = document.getElementById("p2-Defender")
+let img_ranger2 = document.getElementById("p2-Ranger")
+let img_healer2 = document.getElementById("p2-Healer")
 const drops = [].slice.call(
     document.querySelectorAll( '.drop' ), 0 );
 let ready1 = document.getElementById("ready1")
@@ -2158,6 +2166,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
+                            
                         }
                         if (player2Color.value == "Green") {
                             color6[i].style.backgroundColor = "#23EE96";
@@ -2165,6 +2174,8 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
+                            
+
                         }
                         if (player2Color.value == "Blue") {
                             color6[i].style.backgroundColor = "#78D8FF";
@@ -2179,6 +2190,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p2-Healer").src="images/healer_yellow.png";
+                            
                         }
                     }
                 }
@@ -2195,9 +2207,6 @@ submit.addEventListener('click', event => {
             document.getElementById('submit').remove();
 
             document.body.style.background = 'none';
-
-            document.getElementById("ready-check1").innerHTML = "Not Ready";
-            document.getElementById("ready-check2").innerHTML = "Not Ready";
 
             if (player1Color.value == "Red") {
                 document.getElementById("ready1").style.backgroundColor = "#FF7462";
@@ -2226,15 +2235,34 @@ submit.addEventListener('click', event => {
             }
 
             //optimize this so no matter what order you click it will do the set timeout
-            ready1.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drop");
+            });
+        })
+    })
+        
+        
+ready1.addEventListener('click', event => {
+    let color1 = document.querySelectorAll(".game-cell.drop");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                 color1[i].style.backgroundColor = "#9CEAEF"
                 color1[i].style.borderColor = "#057672"
                     }
                 }
-                let melee1 = document.getElementById("p1-Melee");
+                let color2 = document.querySelectorAll(".game-cell.drops");
+                for (let i = 0; i < color1.length; i++) {
+                    if (color1) {
+                color2[i].style.backgroundColor = "#9CEAEF"
+                color2[i].style.borderColor = "#057672"
+                    }
+                }
+    event.preventDefault();
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
+    let melee1 = document.getElementById("p1-Melee");
                 melee1.setAttribute('draggable', "false")
 
                 let defender1 = document.getElementById("p1-Defender");
@@ -2245,46 +2273,6 @@ submit.addEventListener('click', event => {
 
                 let healer1 = document.getElementById("p1-Healer");
                 healer1.setAttribute('draggable', "false")
-
-                document.getElementById("ready1").remove();
-                document.getElementById("ready-check1").innerHTML = "Ready!";
-                document.getElementById("p1").remove();
-
-                document.getElementById("readybuttons").style.justifyContent = "flex-end";
-            })
-            ready2.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drops");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                function countDown(i, callback) {
-                    callback = callback || function() {};
-                    var int = setInterval(function() {
-                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
-                        i-- || (clearInterval(int), callback());
-                    }, 1000);
-                }
-                countDown(5, function() {
-
-                    alert("game started");
-                    document.getElementById("displayDiv").remove();
-                    Melee1.style.display = "";
-                    Ranger1.style.display = "";
-                    Defender1.style.display = "";
-                    Healer1.style.display = "";
-                    if(player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#78D8FF"
-                    } else if(player1Color.value == "Green"){
-                        document.body.style.backgroundColor = "#23EE96"
-                    } else if(player1Color.value == "Red"){
-                        document.body.style.backgroundColor = "#FF7462"
-                    } else if(player1Color.value == "Yellow"){
-                        document.body.style.backgroundColor = "#FFE88F"
-                    }
-                })
                 let melee2 = document.getElementById("p2-Melee");
                 melee2.setAttribute('draggable', "false")
 
@@ -2296,157 +2284,114 @@ submit.addEventListener('click', event => {
 
                 let healer2 = document.getElementById("p2-Healer");
                 healer2.setAttribute('draggable', "false")
-                document.getElementById("ready2").remove();
-                document.getElementById("ready-check2").innerHTML = "Ready!";
-                document.getElementById("p2").remove();
-                document.getElementById("ready3").display = "";
-            })
-        })
 
-        ready2.addEventListener('click', event => {
-            let color1 = document.querySelectorAll(".game-cell.drops");
-            for (let i = 0; i < color1.length; i++) {
-                if (color1) {
-            color1[i].style.backgroundColor = "#9CEAEF"
-            color1[i].style.borderColor = "#057672"
-                }
-            }
-
-            let melee2 = document.getElementById("p2-Melee");
-            melee2.setAttribute('draggable', "false")
-
-            let defender2 = document.getElementById("p2-Defender");
-            defender2.setAttribute('draggable', "false")
-
-            let ranger2 = document.getElementById("p2-Ranger");
-            ranger2.setAttribute('draggable', "false")
-
-            let healer2 = document.getElementById("p2-Healer");
-            healer2.setAttribute('draggable', "false")
-            document.getElementById("ready2").remove();
-            document.getElementById("ready-check2").innerHTML = "Ready!";
-            document.getElementById("p2").remove();
-
-            ready1.addEventListener('click', event => {
-                let color1 = document.querySelectorAll(".game-cell.drop");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                function countDown(i, callback) {
-                    callback = callback || function() {};
-                    var int = setInterval(function() {
-                        document.getElementById("displayDiv").innerHTML = "Game starting in: " + i;
-                        i-- || (clearInterval(int), callback());
-                    }, 1000);
-                }
-                countDown(5, function() {
-
-                    alert("game started");
-                    document.getElementById("displayDiv").remove();
-
-                    Melee1.style.display = "";
-                    Ranger1.style.display = "";
-                    Defender1.style.display = "";
-                    Healer1.style.display = "";
-                    if(player1Color.value == "Blue") {
-                        document.body.style.backgroundColor = "#78D8FF"
-                    } else if(player1Color.value == "Green"){
-                        document.body.style.backgroundColor = "#23EE96"
-                    } else if(player1Color.value == "Red"){
-                        document.body.style.backgroundColor = "#FF7462"
-                    } else if(player1Color.value == "Yellow"){
-                        document.body.style.backgroundColor = "#FFE88F"
-                    }
-                    })
-                let melee1 = document.getElementById("p1-Melee");
-                melee1.setAttribute('draggable', "false")
-
-                let defender1 = document.getElementById("p1-Defender");
-                defender1.setAttribute('draggable', "false")
-
-
-                let ranger1 = document.getElementById("p1-Ranger");
-                ranger1.setAttribute('draggable', "false")
-
-                let healer1 = document.getElementById("p1-Healer");
-                healer1.setAttribute('draggable', "false")
-
-                document.getElementById("ready1").remove();
-                document.getElementById("ready-check1").innerHTML = "Ready!";
                 document.getElementById("p1").remove();
+                document.getElementById("ready1").remove();
+                document.getElementById("p2").remove();
+                document.getElementById("displayDiv").remove();
 
-                });
-            })
-        })
-    })
-
+                Melee1.style.display = "";
+                Ranger1.style.display = "";
+                Defender1.style.display = "";
+                Healer1.style.display = "";
+                if(player1Color.value == "Blue") {
+                    document.body.style.backgroundColor = "#78D8FF"
+                } else if(player1Color.value == "Green"){
+                    document.body.style.backgroundColor = "#23EE96"
+                } else if(player1Color.value == "Red"){
+                    document.body.style.backgroundColor = "#FF7462"
+                } else if(player1Color.value == "Yellow"){
+                    document.body.style.backgroundColor = "#FFE88F"
+                }          
+})
 
 function listingM1() {
-        document.getElementById("ActionsM1").classList.toggle("show");
-        document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+    document.getElementById("ActionsM1").classList.add("show"); 
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+     
+        
 }
 function listingR1() {
-  document.getElementById("ActionsR1").classList.toggle("show");
-  document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Melee").removeAttribute("ondblclick")
+    document.getElementById("ActionsR1").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+  document.getElementById("ActionsM1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+  
 }
 function listingD1() {
-  document.getElementById("ActionsD1").classList.toggle("show");
-  document.getElementById("p1-Melee").removeAttribute("ondblclick")
-        document.getElementById("p1-Healer").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+    document.getElementById("ActionsD1").classList.add("show"); 
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+  document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+
 }
 function listingH1() {
-  document.getElementById("ActionsH1").classList.toggle("show");
-  document.getElementById("p1-Defender").removeAttribute("ondblclick")
-        document.getElementById("p1-Melee").removeAttribute("ondblclick")
-        document.getElementById("p1-Ranger").removeAttribute("ondblclick")
+  document.getElementById("ActionsH1").classList.add("show");
+  document.getElementById("ActionsM2").classList.remove("show");
+  document.getElementById("ActionsR2").classList.remove("show");
+document.getElementById("ActionsD2").classList.remove("show");
+document.getElementById("ActionsH2").classList.remove("show");
+document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
 }
 
 function listingM2() {
-  document.getElementById("ActionsM2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")
+    document.getElementById("ActionsM2").classList.add("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
+ 
 }
 function listingR2() {
-  document.getElementById("ActionsR2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Melee").removeAttribute("ondblclick")
-
+    document.getElementById("ActionsR2").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+  document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show"); 
+  
 }
 function listingD2() {
-  document.getElementById("ActionsD2").classList.toggle("show");
-  document.getElementById("p2-Melee").removeAttribute("ondblclick")
-        document.getElementById("p2-Healer").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")
+    document.getElementById("ActionsD2").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
 
 }
 function listingH2() {
-  document.getElementById("ActionsH2").classList.toggle("show");
-  document.getElementById("p2-Defender").removeAttribute("ondblclick")
-        document.getElementById("p2-Melee").removeAttribute("ondblclick")
-        document.getElementById("p2-Ranger").removeAttribute("ondblclick")
-}
-
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("actList");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
+  document.getElementById("ActionsH2").classList.add("show");
+  document.getElementById("ActionsM2").classList.remove("show");
+  document.getElementById("ActionsR2").classList.remove("show");
+document.getElementById("ActionsD2").classList.remove("show");
+  document.getElementById("ActionsM1").classList.remove("show");
+  document.getElementById("ActionsR1").classList.remove("show");
+  document.getElementById("ActionsD1").classList.remove("show");
+  document.getElementById("ActionsH1").classList.remove("show");
 }
 
 let mAtt1 = document.getElementById("attackM1");
@@ -2503,6 +2448,10 @@ function AttackM1() {
     attackInARange(at,2,"p1",25);
     document.getElementById("attackM1").disabled = true;
     document.querySelector('#attackM1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+  
 }
 
 function MovementM1(){
@@ -2519,10 +2468,18 @@ function MovementM1(){
     move(at,3,"p1-Melee");
     document.getElementById("movementM1").disabled = true;
     document.querySelector('#movementM1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
-
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 
 function EndTurnM1(){
+
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+
         document.getElementById("attackM1").disabled = false;
         document.querySelector('#attackM1').innerHTML = 'Attack';
         document.getElementById("movementM1").disabled = false;
@@ -2556,14 +2513,15 @@ function EndTurnM1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
     }
 
 function AttackR1() {
+    document.getElementById("attackR1").disabled = true;
     let at = -1;
     let pos = 0;
     while (at == -1)
@@ -2579,6 +2537,9 @@ function AttackR1() {
 
   document.getElementById("attackR1").disabled = true;
   document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 }
 
 function MovementR1(){
@@ -2596,10 +2557,18 @@ function MovementR1(){
     move(at,2,"p1-Ranger");
     document.getElementById("movementR1").disabled = true;
     document.querySelector('#movementR1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
 }
 
 function EndTurnR1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
+    
     document.getElementById("attackR1").disabled = false;
     document.querySelector('#attackR1').innerHTML = 'Attack';
     document.getElementById("movementR1").disabled = false;
@@ -2633,11 +2602,13 @@ function EndTurnR1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
+        
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
+            
     }
 
 function AttackD1() {
@@ -2655,6 +2626,9 @@ function AttackD1() {
     attackInARange(at,2,"p1",30);
     document.getElementById("attackD1").disabled = true;
     document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2673,10 +2647,18 @@ function MovementD1(){
     move(at,1,"p1-Defender");
     document.getElementById("movementD1").disabled = true;
     document.querySelector('#movementD1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
 function EndTurnD1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+        document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+        document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+        document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
+    
     document.getElementById("attackD1").disabled = false;
     document.querySelector('#attackD1').innerHTML = 'Attack';
     document.getElementById("movementD1").disabled = false;
@@ -2708,21 +2690,25 @@ function EndTurnD1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
+        
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
     }
 
 function HealH1(){
-
-  document.getElementById("healH1").disabled = true;
+    document.getElementById("healH1").disabled = true;
   document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
   document.getElementById("attackH1").disabled = true;
   document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
-}
+    }
+
 
 function AttackH1() {
     let at = -1;
@@ -2741,6 +2727,9 @@ function AttackH1() {
     document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH1").disabled = true;
     document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2759,10 +2748,18 @@ function MovementH1(){
     move(at,4,"p1-Healer");
     document.getElementById("movementH1").disabled = true;
     document.querySelector('#movementH1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
 function EndTurnH1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+        document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+        document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+        document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
+    
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
     document.getElementById("attackH1").disabled = false;
@@ -2795,16 +2792,13 @@ function EndTurnH1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
+        
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
-            document.getElementById("p1-Melee").setAttribute("ondblclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("ondblclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("ondblclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("ondblclick", "listingH1()")
     }
-
-
-
-
 function AttackM2() {
     let at = -1;
     let pos = 0;
@@ -2820,6 +2814,9 @@ function AttackM2() {
     attackInARange(at,2,"p2",25);
     document.getElementById("attackM2").disabled = true;
     document.querySelector('#attackM2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2839,10 +2836,18 @@ function MovementM2(){
     move(at,3,"p2-Melee");
     document.getElementById("movementM2").disabled = true;
     document.querySelector('#movementM2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
 function EndTurnM2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+
     document.getElementById("attackM2").disabled = false;
     document.querySelector('#attackM2').innerHTML = 'Attack';
     document.getElementById("movementM2").disabled = false;
@@ -2875,13 +2880,14 @@ function EndTurnM2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
-        }
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
+    }
 
 function AttackR2() {
+    document.getElementById("attackR2").disabled = true;
 
     let at = -1;
     let pos = 0;
@@ -2897,6 +2903,9 @@ function AttackR2() {
     decideRow(at,20);
   document.getElementById("attackR2").disabled = true;
   document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
 }
 
 function MovementR2(){
@@ -2914,10 +2923,18 @@ function MovementR2(){
     move(at,2,"p2-Ranger");
     document.getElementById("movementR2").disabled = true;
     document.querySelector('#movementR2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
 
 }
 
 function EndTurnR2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+
     document.getElementById("attackR2").disabled = false;
     document.querySelector('#attackR2').innerHTML = 'Attack';
     document.getElementById("movementR2").disabled = false;
@@ -2949,13 +2966,12 @@ function EndTurnR2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+        
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
     }
-
 
 function AttackD2() {
     let at = -1;
@@ -2972,6 +2988,9 @@ function AttackD2() {
     attackInARange(at,2,"p2",30);
     document.getElementById("attackD2").disabled = true;
     document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2990,10 +3009,18 @@ function MovementD2(){
     move(at,1,"p2-Defender");
     document.getElementById("movementD2").disabled = true;
     document.querySelector('#movementD2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
 function EndTurnD2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+    
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
     document.getElementById("movementD2").disabled = false;
@@ -3025,19 +3052,22 @@ function EndTurnD2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+        
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
     }
 
 function HealH2(){
-  document.getElementById("healH2").disabled = true;
+    document.getElementById("healH2").disabled = true;
   document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
   document.getElementById("attackH2").disabled = true;
   document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-}
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    }
 
 function AttackH2() {
 
@@ -3057,6 +3087,9 @@ function AttackH2() {
     document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH2").disabled = true;
     document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementH2(){
@@ -3072,12 +3105,22 @@ function MovementH2(){
         pos++;
     }
     move(at,4,"p2-Healer");
+
     document.getElementById("movementH2").disabled = true;
     document.querySelector('#movementH2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
 function EndTurnH2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+    
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
     document.getElementById("attackH2").disabled = false;
@@ -3112,15 +3155,12 @@ function EndTurnH2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("ondblclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("ondblclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("ondblclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("ondblclick", "listingH2()")
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
 
     }
-
-
-
 function printArray() {
     console.log(cellArr);
 }
