@@ -2171,6 +2171,12 @@ ready1.addEventListener('click', event => {
                     }
                 }
     event.preventDefault();
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
     let melee1 = document.getElementById("p1-Melee");
                 melee1.setAttribute('draggable', "false")
 
@@ -2211,7 +2217,7 @@ ready1.addEventListener('click', event => {
                     document.body.style.backgroundColor = "#FF7462"
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
-                }            
+                }          
 })
 
 function listingM1() {
@@ -2383,6 +2389,12 @@ function MovementM1(){
 }
 
 function EndTurnM1(){
+
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+
         document.getElementById("attackM1").disabled = false;
         document.querySelector('#attackM1').innerHTML = 'Attack';
         document.getElementById("movementM1").disabled = false;
@@ -2416,10 +2428,11 @@ function EndTurnM1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+
     }
 
 function AttackR1() {
@@ -2452,6 +2465,10 @@ function MovementR1(){
 }
 
 function EndTurnR1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
     
     document.getElementById("attackR1").disabled = false;
     document.querySelector('#attackR1').innerHTML = 'Attack';
@@ -2487,10 +2504,12 @@ function EndTurnR1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+
+            
     }
 
 function AttackD1() {
@@ -2536,6 +2555,10 @@ function MovementD1(){
 }
 
 function EndTurnD1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+        document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+        document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+        document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
     
     document.getElementById("attackD1").disabled = false;
     document.querySelector('#attackD1').innerHTML = 'Attack';
@@ -2569,10 +2592,11 @@ function EndTurnD1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+
     }
 
 function HealH1(){
@@ -2632,6 +2656,10 @@ function MovementH1(){
 }
 
 function EndTurnH1(){
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()" )
+        document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
+        document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
+        document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
     
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
@@ -2666,10 +2694,10 @@ function EndTurnH1(){
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+        document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 
     }
 function AttackM2() {
@@ -2716,7 +2744,11 @@ function MovementM2(){
 }
 
 function EndTurnM2(){
-    
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+
     document.getElementById("attackM2").disabled = false;
     document.querySelector('#attackM2').innerHTML = 'Attack';
     document.getElementById("movementM2").disabled = false;
@@ -2749,10 +2781,10 @@ function EndTurnM2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
     }
 
 function AttackR2() {
@@ -2785,7 +2817,11 @@ function MovementR2(){
 }
 
 function EndTurnR2(){
-    
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
+
     document.getElementById("attackR2").disabled = false;
     document.querySelector('#attackR2').innerHTML = 'Attack';
     document.getElementById("movementR2").disabled = false;
@@ -2818,10 +2854,10 @@ function EndTurnR2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
     }
 
 function AttackD2() {
@@ -2867,6 +2903,10 @@ function MovementD2(){
 }
 
 function EndTurnD2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
     
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
@@ -2900,10 +2940,10 @@ function EndTurnD2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
     }
 
 function HealH2(){
@@ -2963,6 +3003,10 @@ function MovementH2(){
 }
 
 function EndTurnH2(){
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()" )
+        document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
+        document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
+        document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
     
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
@@ -2998,10 +3042,10 @@ function EndTurnH2(){
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+            document.getElementById("p2-Melee").removeAttribute("onclick")
+            document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Ranger").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
 
     }
 function printArray() {
