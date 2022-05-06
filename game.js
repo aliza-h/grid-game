@@ -2123,9 +2123,6 @@ submit.addEventListener('click', event => {
 
             document.body.style.background = 'none';
 
-            document.getElementById("ready-check1").innerHTML = "Not Ready";
-            document.getElementById("ready-check2").innerHTML = "Not Ready";
-
             if (player1Color.value == "Red") {
                 document.getElementById("ready1").style.backgroundColor = "#FF7462";
             }
@@ -2358,12 +2355,12 @@ function AttackM1() {
         pos++;
     }
     attackInARange(at,2,"p1",25);
-    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
     document.getElementById("attackM1").disabled = true;
     document.querySelector('#attackM1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+  
 }
 
 function MovementM1(){
@@ -2378,12 +2375,11 @@ function MovementM1(){
         pos++;
     }
     move(at,3,"p1-Melee");
-    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("movementM1").disabled = true;
+    document.querySelector('#movementM1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Healer").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
-        document.getElementById("movementM1").disabled = true;
-    document.querySelector('#movementM1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
 }
 
 function EndTurnM1(){
@@ -2427,12 +2423,11 @@ function EndTurnM1(){
     }
 
 function AttackR1() {
-    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
-
-  document.getElementById("attackR1").disabled = true;
+    document.getElementById("attackR1").disabled = true;
   document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
 }
 
 function MovementR1(){
@@ -2448,12 +2443,11 @@ function MovementR1(){
         pos++;
     }
     move(at,2,"p1-Ranger");
+    document.getElementById("movementR1").disabled = true;
+    document.querySelector('#movementR1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
-    document.getElementById("movementR1").disabled = true;
-    document.querySelector('#movementR1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
 
 }
 
@@ -2512,11 +2506,11 @@ function AttackD1() {
         pos++;
     }
     attackInARange(at,2,"p1",30);
-    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
     document.getElementById("attackD1").disabled = true;
     document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2533,12 +2527,11 @@ function MovementD1(){
         pos++;
     }
     move(at,1,"p1-Defender");
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-    document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
     document.getElementById("movementD1").disabled = true;
     document.querySelector('#movementD1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+        document.getElementById("p1-Healer").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2583,13 +2576,14 @@ function EndTurnD1(){
     }
 
 function HealH1(){
-    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("healH1").disabled = true;
+    document.getElementById("healH1").disabled = true;
   document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
   document.getElementById("attackH1").disabled = true;
   document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
+
     }
 
 
@@ -2606,13 +2600,13 @@ function AttackH1() {
         pos++;
     }
     attackInARange(at,1,"p1",10);
-    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
     document.getElementById("attackH1").disabled = true;
     document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH1").disabled = true;
     document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2629,12 +2623,11 @@ function MovementH1(){
         pos++;
     }
     move(at,4,"p1-Healer");
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-    document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
     document.getElementById("movementH1").disabled = true;
     document.querySelector('#movementH1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+        document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2692,11 +2685,11 @@ function AttackM2() {
         pos++;
     }
     attackInARange(at,2,"p2",25);
+    document.getElementById("attackM2").disabled = true;
+    document.querySelector('#attackM2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Defender").removeAttribute("onclick")
         document.getElementById("p2-Healer").removeAttribute("onclick")
         document.getElementById("p2-Ranger").removeAttribute("onclick")
-    document.getElementById("attackM2").disabled = true;
-    document.querySelector('#attackM2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
 
 }
 
@@ -2714,12 +2707,11 @@ function MovementM2(){
     }
 
     move(at,3,"p2-Melee");
-    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("movementM2").disabled = true;
+    document.querySelector('#movementM2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p2-Defender").removeAttribute("onclick")
         document.getElementById("p2-Healer").removeAttribute("onclick")
         document.getElementById("p2-Ranger").removeAttribute("onclick")
-    document.getElementById("movementM2").disabled = true;
-    document.querySelector('#movementM2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
 
 }
 
@@ -2764,11 +2756,11 @@ function EndTurnM2(){
     }
 
 function AttackR2() {
+    document.getElementById("attackR2").disabled = true;
+  document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
         document.getElementById("p2-Healer").removeAttribute("onclick")
-  document.getElementById("attackR2").disabled = true;
-  document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
 }
 
 function MovementR2(){
@@ -2784,12 +2776,11 @@ function MovementR2(){
         pos++;
     }
     move(at,2,"p2-Ranger");
+    document.getElementById("movementR2").disabled = true;
+    document.querySelector('#movementR2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
         document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
-    document.getElementById("movementR2").disabled = true;
-    document.querySelector('#movementR2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
 
 }
 
@@ -2846,11 +2837,11 @@ function AttackD2() {
         pos++;
     }
     attackInARange(at,2,"p2",30);
+    document.getElementById("attackD2").disabled = true;
+    document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
         document.getElementById("p2-Healer").removeAttribute("onclick")
         document.getElementById("p2-Ranger").removeAttribute("onclick")
-    document.getElementById("attackD2").disabled = true;
-    document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
 
 }
 
@@ -2867,12 +2858,11 @@ function MovementD2(){
         pos++;
     }
     move(at,1,"p2-Defender");
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
     document.getElementById("movementD2").disabled = true;
     document.querySelector('#movementD2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Healer").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
@@ -2917,13 +2907,13 @@ function EndTurnD2(){
     }
 
 function HealH2(){
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
-        document.getElementById("healH2").disabled = true;
+    document.getElementById("healH2").disabled = true;
   document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
   document.getElementById("attackH2").disabled = true;
   document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
     }
 
 function AttackH2() {
@@ -2940,13 +2930,13 @@ function AttackH2() {
         pos++;
     }
     attackInARange(at,1,"p2",10);
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
     document.getElementById("attackH2").disabled = true;
     document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH2").disabled = true;
     document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
 function MovementH2(){
@@ -2963,13 +2953,12 @@ function MovementH2(){
     }
     move(at,4,"p2-Healer");
 
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
-
     document.getElementById("movementH2").disabled = true;
     document.querySelector('#movementH2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+        document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
