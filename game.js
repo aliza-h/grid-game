@@ -91,8 +91,8 @@ function drawHP()
 {
     cellArr.forEach(function(element) {
         if (element.hasAnything) {
-            console.log(element.shipColor+"-"+element.shipType+"-HP");
-            console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
+            //console.log(element.shipColor+"-"+element.shipType+"-HP");
+            //console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
            document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
         }
     })
@@ -166,8 +166,14 @@ function attackCell(cell, color, damage) {
 
 }
 
-function attackRow(yourColor, startAt, toRight, damage) {
-    if (toRight) {
+function decideRow(startAt,damage)
+{
+    colorRow(startAt,damage);
+    colorColumn(startAt,damage);
+}
+
+function colorRow(startAt, damage) {
+
         let cellStart = startAt;
         let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns) + 1)
 
@@ -175,44 +181,123 @@ function attackRow(yourColor, startAt, toRight, damage) {
             if (isAtRight(cellStart)) break;
             cellStart++;
             let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "green"
-            attactCell(cellStart, yourColor, damage);
+            cell.style.backgroundColor = "red"
+            cell.addEventListener('click',cell.fn=function fn()
+            {
+                attackRow(null,startAt,true,damage);
+            });
+        }
+
+        cellStart = startAt;
+        endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns)) + 1
+
+        while (cellStart >= endAt) {
+            if (isAtLeft(cellStart)) break;
+            cellStart--;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.background = "red"
+            cell.addEventListener('click',cell.fn=function fn()
+            {
+                attackRow(null,startAt,false,damage);
+            });
+        }
+    }
+
+function colorColumn(startAt, damage) {
+    
+        let cellStart = startAt;
+        while (true) {
+            if (isAtBottom(cellStart)) break;
+            cellStart += numberOfColumns;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.backgroundColor = "red"
+            cell.addEventListener('click',cell.fn=function fn()
+            {
+                attackColumn(null,startAt,true,damage);
+            });
+        }
+   
+        cellStart = startAt;
+        while (true) {
+            if (isAtTop(cellStart)) break;
+            cellStart -= numberOfColumns;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.backgroundColor = "red"
+            cell.addEventListener('click',cell.fn=function fn()
+            {
+                attackColumn(null,startAt,false,damage);
+            });
+        }
+    }
+
+
+function attackRow(yourColor, startAt, toRight, damage) {
+    console.log('sup');
+    if (toRight) {
+        let cellStart = startAt;
+        let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns) + 1)
+
+        while (true) {
+            canDoDamage = true;
+            if (isAtRight(cellStart)) break;
+            cellStart++;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.backgroundColor = "red"
+            attackCell(cellStart, yourColor, damage);
         }
     } else {
         let cellStart = startAt;
         let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns)) + 1
 
         while (cellStart >= endAt) {
+            canDoDamage = true;
             if (isAtLeft(cellStart)) break;
             cellStart--;
             let cell = document.getElementById("cell" + cellStart);
-            cell.style.borderColor = "red"
-            attactCell(cellStart, yourColor, damage);
+            cell.style.background = "red"
+            attackCell(cellStart, yourColor, damage);
         }
     }
-}
+    var cells = document.getElementsByClassName("game-cell");
+    for (var i = 0; i < cells.length; i++) {
+        var replace = cells.item(i).cloneNode(true);
+        replace.style.backgroundColor = "#9CEAEF";
+        cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+        }
+    }
+
 
 function attackColumn(yourColor, startAt, down, damage) {
     if (down) {
         let cellStart = startAt;
         while (true) {
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "green"
-            attactCell(cellStart, yourColor, damage);
             if (isAtBottom(cellStart)) break;
             cellStart += numberOfColumns;
+            canDoDamage = true;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.backgroundColor = "red"
+            attackCell(cellStart, yourColor, damage);
         }
     } else {
         let cellStart = startAt;
         while (true) {
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "green"
-            attactCell(cellStart, yourColor, damage);
             if (isAtTop(cellStart)) break;
             cellStart -= numberOfColumns;
+            canDoDamage = true;
+            let cell = document.getElementById("cell" + cellStart);
+            cell.style.backgroundColor = "red"
+            attackCell(cellStart, yourColor, damage);
         }
     }
-}
+    var cells = document.getElementsByClassName("game-cell");
+    for (var i = 0; i < cells.length; i++) {
+        var replace = cells.item(i).cloneNode(true);
+        replace.style.backgroundColor = "#9CEAEF";
+
+        cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+        }
+    }
+
 
 function attackInARange(at, range, color, damage) {
     canDoDamage = true;
@@ -2479,6 +2564,18 @@ function EndTurnM1(){
     }
 
 function AttackR1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    decideRow(at,20);
 
   document.getElementById("attackR1").disabled = true;
   document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
@@ -2785,6 +2882,19 @@ function EndTurnM2(){
         }
 
 function AttackR2() {
+
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    decideRow(at,20);
   document.getElementById("attackR2").disabled = true;
   document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
 }
