@@ -299,6 +299,137 @@ function attackColumn(yourColor, startAt, down, damage) {
     }
 
 
+function heal(cell,hp)
+{
+    if (cellArr[cell].hasAnything) {
+        
+            cellArr[cell].HP += hp;
+        
+    }
+
+    drawHP();
+}
+
+function chooseHeal(startAt, hp)
+{
+    if (!isAtTop(startAt))
+    {
+        startAt -= numberOfColumns;
+        let cell = document.getElementById("cell" + startAt);
+        cell.style.backgroundColor = "green";
+        cell.addEventListener('click', cell.fn=function fn()
+        {
+
+            heal(cell.id.substring(4),hp);
+
+            var cells = document.getElementsByClassName("game-cell");
+            for (var i = 0; i < cells.length; i++) {
+                if (i != cell.id.substring(4)){
+                var replace = cells.item(i).cloneNode(true);
+                replace.style.backgroundColor = "#9CEAEF";
+
+                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                }
+                else
+                {
+                    cell.style.backgroundColor = "#9CEAEF";
+                }
+            }
+
+        },{once:true});
+        startAt += numberOfColumns;
+        console.log("E");
+    }
+
+    if (!isAtRight(startAt))
+    {
+        startAt++;
+        let cell = document.getElementById("cell" + startAt);
+        cell.style.backgroundColor = "green";
+        cell.addEventListener('click', cell.fn=function fn()
+        {
+
+            heal(cell.id.substring(4),hp);
+
+            var cells = document.getElementsByClassName("game-cell");
+            for (var i = 0; i < cells.length; i++) {
+                if (i != cell.id.substring(4)){
+                var replace = cells.item(i).cloneNode(true);
+                replace.style.backgroundColor = "#9CEAEF";
+
+                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                }
+                else
+                {
+                    cell.style.backgroundColor = "#9CEAEF";
+                }
+            }
+
+        },{once:true});
+        startAt--;
+        console.log("E");
+    }
+
+    if (!isAtBottom(startAt))
+    {
+        startAt += numberOfColumns;
+        let cell = document.getElementById("cell" + startAt);
+        cell.style.backgroundColor = "green";
+        cell.addEventListener('click', cell.fn=function fn()
+        {
+
+            heal(cell.id.substring(4),hp);
+
+            var cells = document.getElementsByClassName("game-cell");
+            for (var i = 0; i < cells.length; i++) {
+                if (i != cell.id.substring(4)){
+                var replace = cells.item(i).cloneNode(true);
+                replace.style.backgroundColor = "#9CEAEF";
+
+                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                }
+                else
+                {
+                    cell.style.backgroundColor = "#9CEAEF";
+                }
+            }
+
+        },{once:true});
+        startAt -= numberOfColumns;
+        console.log("E");
+    }
+
+    if (!isAtLeft(startAt))
+    {
+        startAt--;
+        let cell = document.getElementById("cell" + startAt);
+        cell.style.backgroundColor = "green";
+        cell.addEventListener('click', cell.fn=function fn()
+        {
+
+            heal(cell.id.substring(4),hp);
+
+            var cells = document.getElementsByClassName("game-cell");
+            for (var i = 0; i < cells.length; i++) {
+                if (i != cell.id.substring(4)){
+                var replace = cells.item(i).cloneNode(true);
+                replace.style.backgroundColor = "#9CEAEF";
+
+                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                }
+                else
+                {
+                    cell.style.backgroundColor = "#9CEAEF";
+                }
+            }
+
+        },{once:true});
+        startAt++;
+        console.log("E");
+    }
+}
+
+
 function attackInARange(at, range, color, damage) {
     canDoDamage = true;
     let ups = range;
@@ -2716,6 +2847,18 @@ function EndTurnD1(){
     }
 
 function HealH1(){
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    chooseHeal(at,15);
 
   document.getElementById("healH1").disabled = true;
   document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
@@ -3033,6 +3176,18 @@ function EndTurnD2(){
     }
 
 function HealH2(){
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    chooseHeal(at,15);
   document.getElementById("healH2").disabled = true;
   document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
   document.getElementById("attackH2").disabled = true;
