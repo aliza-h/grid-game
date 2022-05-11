@@ -212,7 +212,7 @@ function colorRow(startAt, damage) {
     }
 
 function colorColumn(startAt, damage) {
-    
+
         let cellStart = startAt;
         while (true) {
             if (isAtBottom(cellStart)) break;
@@ -224,7 +224,7 @@ function colorColumn(startAt, damage) {
                 attackColumn(null,startAt,true,damage);
             });
         }
-   
+
         cellStart = startAt;
         while (true) {
             if (isAtTop(cellStart)) break;
@@ -589,7 +589,7 @@ function move(at, range, moving) {
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -616,7 +616,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -659,7 +659,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -688,7 +688,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -729,7 +729,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -757,7 +757,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -797,7 +797,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green"
+            cell.style.backgroundColor = "blue"
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -825,7 +825,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -2165,7 +2165,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
-                            
+
                         }
                         if (player2Color.value == "Green") {
                             color6[i].style.backgroundColor = "#23EE96";
@@ -2173,7 +2173,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
-                            
+
 
                         }
                         if (player2Color.value == "Blue") {
@@ -2189,7 +2189,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p2-Healer").src="images/healer_yellow.png";
-                            
+
                         }
                     }
                 }
@@ -2237,8 +2237,8 @@ submit.addEventListener('click', event => {
             });
         })
     })
-        
-        
+
+
 ready1.addEventListener('click', event => {
 
 
@@ -2303,11 +2303,11 @@ ready1.addEventListener('click', event => {
                     document.body.style.backgroundColor = "#FF7462"
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
-                }          
+                }
 })
 
 function listingM1() {
-    document.getElementById("ActionsM1").classList.add("show"); 
+    document.getElementById("ActionsM1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
@@ -2315,8 +2315,8 @@ function listingM1() {
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-     
-        
+
+
 }
 function listingR1() {
     document.getElementById("ActionsR1").classList.add("show");
@@ -2327,10 +2327,10 @@ function listingR1() {
   document.getElementById("ActionsM1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-  
+
 }
 function listingD1() {
-    document.getElementById("ActionsD1").classList.add("show"); 
+    document.getElementById("ActionsD1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
@@ -2360,7 +2360,7 @@ function listingM2() {
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
- 
+
 }
 function listingR2() {
     document.getElementById("ActionsR2").classList.add("show");
@@ -2370,8 +2370,8 @@ function listingR2() {
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show"); 
-  
+  document.getElementById("ActionsH1").classList.remove("show");
+
 }
 function listingD2() {
     document.getElementById("ActionsD2").classList.add("show");
@@ -2450,7 +2450,7 @@ function AttackM1() {
     document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Healer").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
-  
+
 }
 
 function MovementM1(){
