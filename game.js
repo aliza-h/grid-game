@@ -2433,6 +2433,7 @@ let hMove2 = document.getElementById("movementH2");
 let hEndTurn2 = document.getElementById("endTurnH2");
 
 function AttackM1() {
+    document.getElementById("attackM1").disabled = true;
     let at = -1;
     let pos = 0;
     while (at == -1)
@@ -2514,6 +2515,20 @@ function EndTurnM1(){
 
 function AttackR1() {
     document.getElementById("attackR1").disabled = true;
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    decideRow(at,20);
+
+  document.getElementById("attackR1").disabled = true;
   document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
@@ -2845,13 +2860,27 @@ function EndTurnM2(){
             document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
     }
 
-function AttackR2() {
-    document.getElementById("attackR2").disabled = true;
-  document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-}
+    function AttackR2() {
+        document.getElementById("attackR2").disabled = true;
+    
+        let at = -1;
+        let pos = 0;
+        while (at == -1)
+        {
+            if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
+            {
+                at = pos;
+    
+            }
+            pos++;
+        }
+        decideRow(at,20);
+      document.getElementById("attackR2").disabled = true;
+      document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+        document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
+    }
 
 function MovementR2(){
     let at = -1;
