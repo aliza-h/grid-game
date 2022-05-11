@@ -212,7 +212,7 @@ function colorRow(startAt, damage) {
     }
 
 function colorColumn(startAt, damage) {
-    
+
         let cellStart = startAt;
         while (true) {
             if (isAtBottom(cellStart)) break;
@@ -224,7 +224,7 @@ function colorColumn(startAt, damage) {
                 attackColumn(null,startAt,true,damage);
             });
         }
-   
+
         cellStart = startAt;
         while (true) {
             if (isAtTop(cellStart)) break;
@@ -590,7 +590,7 @@ function move(at, range, moving) {
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -617,7 +617,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -660,7 +660,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -689,7 +689,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -730,7 +730,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -758,7 +758,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -798,7 +798,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green"
+            cell.style.backgroundColor = "blue"
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -826,7 +826,7 @@ function move(at, range, moving) {
             let cell = document.getElementById("cell" + adding);
             if (!cellArr[cell.id.substring(4)].hasAnything){
 
-            cell.style.backgroundColor = "green";
+            cell.style.backgroundColor = "blue";
             cell.addEventListener('click', cell.fn=function fn()
             {
                 moveShipTo(at,cell.id.substring(4));
@@ -2166,7 +2166,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_red.png";
                             document.getElementById("p2-Ranger").src="images/ranger_red.png";
                             document.getElementById("p2-Healer").src="images/healer_red.png";
-                            
+
                         }
                         if (player2Color.value == "Green") {
                             color6[i].style.backgroundColor = "#23EE96";
@@ -2174,7 +2174,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_green.png";
                             document.getElementById("p2-Ranger").src="images/ranger_green.png";
                             document.getElementById("p2-Healer").src="images/healer_green.png";
-                            
+
 
                         }
                         if (player2Color.value == "Blue") {
@@ -2190,7 +2190,7 @@ submit.addEventListener('click', event => {
                             document.getElementById("p2-Defender").src="images/defender_yellow.png";
                             document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p2-Healer").src="images/healer_yellow.png";
-                            
+
                         }
                     }
                 }
@@ -2238,8 +2238,8 @@ submit.addEventListener('click', event => {
             });
         })
     })
-        
-        
+
+
 ready1.addEventListener('click', event => {
     let color1 = document.querySelectorAll(".game-cell.drop");
                 for (let i = 0; i < color1.length; i++) {
@@ -2302,11 +2302,11 @@ ready1.addEventListener('click', event => {
                     document.body.style.backgroundColor = "#FF7462"
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
-                }          
+                }
 })
 
 function listingM1() {
-    document.getElementById("ActionsM1").classList.add("show"); 
+    document.getElementById("ActionsM1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
@@ -2314,8 +2314,8 @@ function listingM1() {
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-     
-        
+
+
 }
 function listingR1() {
     document.getElementById("ActionsR1").classList.add("show");
@@ -2326,10 +2326,10 @@ function listingR1() {
   document.getElementById("ActionsM1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
-  
+
 }
 function listingD1() {
-    document.getElementById("ActionsD1").classList.add("show"); 
+    document.getElementById("ActionsD1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
   document.getElementById("ActionsD2").classList.remove("show");
@@ -2359,7 +2359,7 @@ function listingM2() {
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
   document.getElementById("ActionsH1").classList.remove("show");
- 
+
 }
 function listingR2() {
     document.getElementById("ActionsR2").classList.add("show");
@@ -2369,8 +2369,8 @@ function listingR2() {
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
   document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show"); 
-  
+  document.getElementById("ActionsH1").classList.remove("show");
+
 }
 function listingD2() {
     document.getElementById("ActionsD2").classList.add("show");
@@ -2451,7 +2451,7 @@ function AttackM1() {
     document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Healer").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
-  
+
 }
 
 function MovementM1(){
@@ -2568,7 +2568,7 @@ function EndTurnR1(){
     document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
     document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
     document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
-    
+
     document.getElementById("attackR1").disabled = false;
     document.querySelector('#attackR1').innerHTML = 'Attack';
     document.getElementById("movementR1").disabled = false;
@@ -2602,13 +2602,13 @@ function EndTurnR1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
         document.getElementById("p1-Melee").removeAttribute("onclick")
         document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
         document.getElementById("p1-Healer").removeAttribute("onclick")
 
-            
+
     }
 
 function AttackD1() {
@@ -2658,7 +2658,7 @@ function EndTurnD1(){
         document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
         document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
         document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
-    
+
     document.getElementById("attackD1").disabled = false;
     document.querySelector('#attackD1').innerHTML = 'Attack';
     document.getElementById("movementD1").disabled = false;
@@ -2690,7 +2690,7 @@ function EndTurnD1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
         document.getElementById("p1-Melee").removeAttribute("onclick")
         document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
@@ -2759,7 +2759,7 @@ function EndTurnH1(){
         document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()" )
         document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()" )
         document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()" )
-    
+
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
     document.getElementById("attackH1").disabled = false;
@@ -2792,7 +2792,7 @@ function EndTurnH1(){
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
         document.getElementById("p1-Melee").removeAttribute("onclick")
         document.getElementById("p1-Defender").removeAttribute("onclick")
         document.getElementById("p1-Ranger").removeAttribute("onclick")
@@ -2966,7 +2966,7 @@ function EndTurnR2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").removeAttribute("onclick")
             document.getElementById("p2-Defender").removeAttribute("onclick")
             document.getElementById("p2-Ranger").removeAttribute("onclick")
@@ -3020,7 +3020,7 @@ function EndTurnD2(){
         document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
         document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
         document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
-    
+
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
     document.getElementById("movementD2").disabled = false;
@@ -3052,7 +3052,7 @@ function EndTurnD2(){
         }
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").removeAttribute("onclick")
             document.getElementById("p2-Defender").removeAttribute("onclick")
             document.getElementById("p2-Ranger").removeAttribute("onclick")
@@ -3120,7 +3120,7 @@ function EndTurnH2(){
         document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()" )
         document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()" )
         document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()" )
-    
+
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
     document.getElementById("attackH2").disabled = false;
