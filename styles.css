@@ -1,10 +1,5 @@
-/*
-Reference palette:
-https://coolors.co/palette/057672-05827d-058f8a-059d98-06ada7-07beb8-3dccc7-68d8d6-9ceaef-c4fff9
-*/
-
 body {
-    font-family: Optima;
+    font-family: 'Press Start 2P', cursive;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,7 +126,7 @@ h3 {
 }
 
 #player1Name, #player2Name {
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     width: auto;
     height: auto;
@@ -174,7 +169,7 @@ h3 {
 
 #submit  { /* Change font + rounded border + color CHECK ON THIS!!!*/
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -188,7 +183,7 @@ h3 {
 
 #button1 {
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -268,7 +263,7 @@ img {
 }
 
 #board-size{
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     width: auto;
     height: auto;
@@ -351,7 +346,7 @@ font-size: 25px;
 
 #ready1{
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -365,7 +360,7 @@ font-size: 25px;
 
 #ready2{
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
