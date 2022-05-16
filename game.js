@@ -175,7 +175,7 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
-    if(document.getElementById("p2-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+    if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player1end.style.display = "flex";
@@ -187,7 +187,7 @@ function attackCell(cell, color, damage) {
             document.location.reload();
         })
         
-    } else if(document.getElementById("p1-Melee") == undefined /*&& document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined*/){
+    } else if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player2end.style.display = "flex";
@@ -201,37 +201,7 @@ function attackCell(cell, color, damage) {
         
     }
 
-    if(document.getElementById("p2-Melee").HP < 1){
-        document.getElementById("p2-Melee") == undefined
-    }
-
-    else if(document.getElementById("p2-Defender").HP < 1){
-        document.getElementById("p2-Defender") == undefined
-    }
-
-    else if(document.getElementById("p2-Ranger").HP < 1){
-        document.getElementById("p2-Ranger") == undefined
-    }
-
-    else if(document.getElementById("p2-Healer").HP < 1){
-        document.getElementById("p2-Healer") == undefined
-    }
-
-    else if(document.getElementById("p1-Melee").HP < 1){
-        document.getElementById("p1-Melee") == undefined
-    }
-
-    else if(document.getElementById("p1-Defender").HP < 1){
-        document.getElementById("p1-Defender") == undefined
-    }
-
-    else if(document.getElementById("p1-Ranger").HP < 1){
-        document.getElementById("p1-Ranger") == undefined
-    }
-
-    else if(document.getElementById("p1-Healer").HP < 1){
-        document.getElementById("p1-Healer") == undefined
-    } 
+    
 }
 
 function decideRow(startAt,damage)
@@ -1094,6 +1064,7 @@ function generateGrid(rows, columns) {
 
 function allowDrop(ev) {
     ev.preventDefault();
+    ev.target.draggable = false;
 if (ev.target.getAttribute("draggable") == "true")
     ev.dataTransfer.dropEffect = "none";
 else
@@ -1113,13 +1084,7 @@ function drop(ev) {
     addShipTo(toCell,type,player);
 }
 
-
-
-
-
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
-
-
 
 submit.addEventListener('click', event => {
     event.preventDefault();
@@ -2456,29 +2421,6 @@ ready1.addEventListener('click', event => {
     event.preventDefault();
     
 
-    let melee1 = document.getElementById("p1-Melee");
-                melee1.setAttribute('draggable', "false")
-
-                let defender1 = document.getElementById("p1-Defender");
-                defender1.setAttribute('draggable', "false")
-
-                let ranger1 = document.getElementById("p1-Ranger");
-                ranger1.setAttribute('draggable', "false")
-
-                let healer1 = document.getElementById("p1-Healer");
-                healer1.setAttribute('draggable', "false")
-                let melee2 = document.getElementById("p2-Melee");
-                melee2.setAttribute('draggable', "false")
-
-                let defender2 = document.getElementById("p2-Defender");
-                defender2.setAttribute('draggable', "false")
-
-                let ranger2 = document.getElementById("p2-Ranger");
-                ranger2.setAttribute('draggable', "false")
-
-                let healer2 = document.getElementById("p2-Healer");
-                healer2.setAttribute('draggable', "false")
-
                 document.getElementById("p1").remove();
                 document.getElementById("ready1").remove();
                 document.getElementById("p2").remove();
@@ -2497,14 +2439,14 @@ ready1.addEventListener('click', event => {
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
                 }
-                if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
+                /*if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
                     alert("Player1 place all your ships down please before starting");
                     document.location.reload();
                 } 
                 else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
                     alert("Player2 place all your ships down please before starting");
                     document.location.reload();
-                }
+                }*/
 })
 
 function listingM1() {
@@ -2792,10 +2734,7 @@ function EndTurnR1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
-            alert("The game is over player 1 wins!!!!")
         
-        }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
@@ -2878,10 +2817,7 @@ function EndTurnD1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
-            alert("The game is over player 1 wins!!!!")
         
-        }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
@@ -2993,10 +2929,7 @@ function EndTurnH1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
-            alert("The game is over player 1 wins!!!!")
         
-        }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
         
@@ -3080,10 +3013,7 @@ function EndTurnM2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
-            alert("The game is over player 2 wins!!!!")
-        
-        }
+       
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -3167,10 +3097,7 @@ function EndTurnR2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
-            alert("The game is over player 2 wins!!!!")
-        
-        }
+       
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
@@ -3253,10 +3180,7 @@ function EndTurnD2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
-            alert("The game is over player 2 wins!!!!")
-        
-        }
+       
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
         
@@ -3368,10 +3292,7 @@ function EndTurnH2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
-            alert("The game is over player 2 wins!!!!")
-        
-        }
+       
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
