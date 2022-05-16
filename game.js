@@ -20,12 +20,13 @@ let currentturn = player1;
 let submit = document.getElementById("submit");
 let player1Color = document.getElementById("player1Color");
 let player2Color = document.getElementById("player2Color");
+let player1end = document.getElementById("player1end");
+let player2end = document.getElementById("player2end");
 
 const drops = [].slice.call(
     document.querySelectorAll( '.drop' ), 0 );
 let ready1 = document.getElementById("ready1")
-let ready2 = document.getElementById("ready2")
-let ready3 = document.getElementById("ready3")
+let end = document.getElementById("end")
 const Melee1 = document.getElementById('ActionsM1');
 Melee1.style.display = "none";
 
@@ -164,6 +165,31 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
+    if(document.getElementById("p2-Melee") == null /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+        document.getElementById("turns2").style.visibility = "hidden";
+        document.getElementById("turns").style.visibility = "hidden";
+        player1end.style.display = "flex";
+        player1end.style.color = "white";
+        gameBoard.style.visibility = "hidden";
+        document.body.style.backgroundColor = "black";
+        end.style.display = "flex";
+        end.addEventListener('click', event => {
+            document.location.reload();
+        })
+        
+    } else if(document.getElementById("p1-Melee") == null /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+        document.getElementById("turns2").style.visibility = "hidden";
+        document.getElementById("turns").style.visibility = "hidden";
+        player2end.style.display = "flex";
+        player2end.style.color = "white";
+        gameBoard.style.visibility = "hidden";
+        document.body.style.backgroundColor = "black";
+        end.style.display = "flex";
+        end.addEventListener('click', event => {
+            document.location.reload();
+        })
+        
+    }
     if(document.getElementById("p2-Melee").HP < 1){
         document.getElementById("p2-Melee") == undefined
     }
@@ -194,7 +220,7 @@ function attackCell(cell, color, damage) {
 
     else if(document.getElementById("p1-Healer").HP < 1){
         document.getElementById("p1-Healer") == undefined
-    }
+    } 
 }
 
 function decideRow(startAt,damage)
@@ -1059,13 +1085,7 @@ function generateGrid(rows, columns) {
 }
 
 function allowDrop(ev) {
-let cell0 = document.querySelector("#cell0")
-if (cell0.className === "game-cell drop") {
-  ev.preventDefault();
-}
-else if (cell0.className != "game-cell drop"){
-    console.log("can't place here")
-}
+    ev.preventDefault();
 if (ev.target.getAttribute("draggable") == "true")
     ev.dataTransfer.dropEffect = "none";
 else
@@ -1084,6 +1104,7 @@ function drop(ev) {
     var type = data.substring(3);
     addShipTo(toCell,type,player);
 }
+
 
 
 
@@ -1201,6 +1222,8 @@ submit.addEventListener('click', event => {
             let cell = document.getElementById("cell0");
             cell.setAttribute('ondrop', "drop(event)")
             cell.setAttribute('ondragover', "allowDrop(event)")
+            cell.setAttribute('data-drop', "p1-Melee")
+            cell.setAttribute('data-drop', "p1-Defender")
 
             document.querySelector("#cell1").classList.add("drop");
             let cell1 = document.getElementById("cell1");
@@ -2670,10 +2693,6 @@ function EndTurnM1(){
             document.body.style.backgroundColor = "#FF7462"
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
-        }
-        if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
-            alert("The game is over player 1 wins!!!!")
-        
         }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"

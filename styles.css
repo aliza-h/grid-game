@@ -325,6 +325,25 @@ font-size: 25px;
     visibility: hidden;
 }
 
+#player1end{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    display: none;
+    color: white;
+}
+
+#player2end{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    display: none;
+}
+
 #names1, #readycheck {
     display: flex;
     flex-direction: row;
@@ -338,7 +357,7 @@ font-size: 25px;
     margin-right: 2%;
 }
 
-.board-turn-name{
+.board-turn-name, .board-turn-end{
     font-size: 20px;
     margin-left: 2%;
     margin-right: 2%;
@@ -350,6 +369,7 @@ font-size: 25px;
     flex-direction: row;
     width: 100%;
 }
+
 
 #ready1{
     background-color: #9CEAEF;
@@ -365,7 +385,7 @@ font-size: 25px;
     letter-spacing: 3px;
 }
 
-#ready2{
+#end{
     background-color: #9CEAEF;
     font-family: Verdana;
     font-size: 20px;
@@ -377,9 +397,10 @@ font-size: 25px;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    justify-content: space-between;
+    display: none;
+    text-align: center;
+    align-items: center;
 }
-
 
 #p1 {
 visibility: hidden;
