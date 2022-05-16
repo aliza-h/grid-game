@@ -106,6 +106,8 @@ function drawHP() {
             document.getElementById(element.shipColor + "-" + element.shipType + "-HP").innerHTML = element.HP + " HP";
         }
     })
+
+    
 }
 
 function addShipTo(thisCell, thisShip, thisColor) {
@@ -173,6 +175,7 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
+
     if (document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined) {
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
@@ -214,7 +217,6 @@ function attackCell(cell, color, damage) {
         })
 
     }
-
 
 }
 
@@ -545,6 +547,8 @@ function attackInARange(at, range, color, damage) {
         rights = 0;
     }
 
+    //sleep(1000);
+
     while (rights > 0) {
         let adding = at;
         let goRights = rights;
@@ -814,6 +818,7 @@ function move(at, range, moving) {
         downs = rights;
         rights = 0;
     }
+    //sleep(1000);
 
     while (rights > 0) {
         let adding = at;
@@ -1085,6 +1090,7 @@ function generateGrid(rows, columns) {
 
 function allowDrop(ev) {
     ev.preventDefault();
+
     ev.target.draggable = false;
     if (ev.target.getAttribute("draggable") == "true")
         ev.dataTransfer.dropEffect = "none";
@@ -1097,16 +1103,24 @@ function drag(ev) {
 }
 
 function drop(ev) {
-    var data = ev.dataTransfer.getData("text");
+    let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+
     document.getElementById(data).draggable = false;
     var player = data.substring(0, 2);
+
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
     addShipTo(toCell, type, player);
 }
 
+
+
+
+
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
+
+
 
 submit.addEventListener('click', event => {
     event.preventDefault();
@@ -1167,6 +1181,7 @@ submit.addEventListener('click', event => {
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
         document.getElementById("board-size-box").style.marginTop = "20vh";
+        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -2413,11 +2428,13 @@ submit.addEventListener('click', event => {
             }
 
         });
+
     })
 })
 
 
 ready1.addEventListener('click', event => {
+
 
     document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
     document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
@@ -2440,6 +2457,7 @@ ready1.addEventListener('click', event => {
         }
     }
     event.preventDefault();
+
 
 
     document.getElementById("p1").remove();
@@ -2467,6 +2485,7 @@ ready1.addEventListener('click', event => {
         alert("Player2 place all your ships down please before starting");
         document.location.reload();
     }
+
 })
 
 function listingM1() {
@@ -2732,8 +2751,8 @@ function EndTurnR1() {
             color1[i].style.backgroundColor = "#9CEAEF"
             color1[i].style.borderColor = "#057672"
         }
+
     }
-    Melee2.style.display = "none";
     Melee2.style.display = "";
     Ranger2.style.display = "";
     Defender2.style.display = "";
@@ -2751,6 +2770,15 @@ function EndTurnR1() {
         document.body.style.backgroundColor = "#FF7462"
     } else if (player2Color.value == "Yellow") {
         document.body.style.backgroundColor = "#FFE88F"
+
+        document.getElementById("turns").style.visibility = "hidden"
+        document.getElementById("turns2").style.visibility = "visible"
+
+            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
     }
 
     document.getElementById("turns").style.visibility = "hidden"
@@ -2832,8 +2860,10 @@ function EndTurnD1() {
         document.body.style.backgroundColor = "#FFE88F"
     }
 
+
     document.getElementById("turns").style.visibility = "hidden"
     document.getElementById("turns2").style.visibility = "visible"
+
 
     document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
     document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
@@ -2946,6 +2976,7 @@ function EndTurnH1() {
     document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
     document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
 
+
 }
 
 function AttackM2() {
@@ -3027,6 +3058,7 @@ function EndTurnM2() {
     document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
     document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
 }
+
 
 function AttackR2() {
     document.getElementById("attackR2").disabled = true;
@@ -3267,6 +3299,7 @@ function EndTurnH2() {
         }
     }
     Melee2.style.display = "none";
+
     Ranger2.style.display = "none";
     Defender2.style.display = "none";
     Healer2.style.display = "none";
@@ -3291,7 +3324,6 @@ function EndTurnH2() {
     document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
     document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
     document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
-
 }
 
 function printArray() {
