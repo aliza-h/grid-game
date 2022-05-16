@@ -187,7 +187,7 @@ function attackCell(cell, color, damage) {
             document.location.reload();
         })
         
-    } else if(document.getElementById("p1-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+    } else if(document.getElementById("p1-Melee") == undefined /*&& document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined*/){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player2end.style.display = "flex";
@@ -576,8 +576,6 @@ function attackInARange(at, range, color, damage) {
         rights = 0;
     }
 
-    //sleep(1000);
-
     while (rights > 0) {
         let adding = at;
         let goRights = rights;
@@ -837,7 +835,6 @@ function move(at, range, moving) {
         downs = rights;
         rights = 0;
     }
-    //sleep(1000);
 
     while (rights > 0) {
         let adding = at;
@@ -1183,7 +1180,6 @@ submit.addEventListener('click', event => {
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
         document.getElementById("board-size-box").style.marginTop = "20vh";
-        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -2430,14 +2426,12 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready2").style.backgroundColor = "#FFE88F";
             }
 
-            //optimize this so no matter what order you click it will do the set timeout
             });
         })
     })
 
 
 ready1.addEventListener('click', event => {
-
 
     document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
     document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
@@ -2502,6 +2496,14 @@ ready1.addEventListener('click', event => {
                     document.body.style.backgroundColor = "#FF7462"
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
+                }
+                if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
+                    alert("Player1 place all your ships down please before starting");
+                    document.location.reload();
+                } 
+                else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
+                    alert("Player2 place all your ships down please before starting");
+                    document.location.reload();
                 }
 })
 
