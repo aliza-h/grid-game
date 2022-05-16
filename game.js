@@ -2440,14 +2440,14 @@ ready1.addEventListener('click', event => {
                 } else if(player1Color.value == "Yellow"){
                     document.body.style.backgroundColor = "#FFE88F"
                 }
-                /*if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
+                if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
                     alert("Player1 place all your ships down please before starting");
                     document.location.reload();
                 } 
                 else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
                     alert("Player2 place all your ships down please before starting");
                     document.location.reload();
-                }*/
+                }
 })
 
 function listingM1() {
