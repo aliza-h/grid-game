@@ -97,6 +97,16 @@ let shipStats = [{
 
 function drawHP()
 {
+    document.getElementById("p1-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Healer-HP").innerHTML = "DESTROYED!";
+
+    document.getElementById("p2-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Healer-HP").innerHTML = "DESTROYED!";
+
     cellArr.forEach(function(element) {
         if (element.hasAnything) {
             //console.log(element.shipColor+"-"+element.shipType+"-HP");
