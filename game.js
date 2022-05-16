@@ -107,6 +107,8 @@ function drawHP()
            document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
         }
     })
+
+    
 }
 
 function addShipTo(thisCell, thisShip, thisColor) {
@@ -175,7 +177,7 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
-    if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
+    if(document.getElementById("p2-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player1end.style.display = "flex";
@@ -216,7 +218,6 @@ function attackCell(cell, color, damage) {
         })
 
     }
-
 
 }
 
@@ -562,6 +563,8 @@ function attackInARange(at, range, color, damage) {
         rights = 0;
     }
 
+    //sleep(1000);
+
     while (rights > 0) {
         let adding = at;
         let goRights = rights;
@@ -821,6 +824,7 @@ function move(at, range, moving) {
         downs = rights;
         rights = 0;
     }
+    //sleep(1000);
 
     while (rights > 0) {
         let adding = at;
@@ -1080,7 +1084,6 @@ function generateGrid(rows, columns) {
 
 function allowDrop(ev) {
     ev.preventDefault();
-    ev.target.draggable = false;
 if (ev.target.getAttribute("draggable") == "true")
     ev.dataTransfer.dropEffect = "none";
 else
@@ -1092,16 +1095,21 @@ ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    var data = ev.dataTransfer.getData("text");
+    let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-    document.getElementById(data).draggable = false;
     var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
     addShipTo(toCell,type,player);
 }
 
+
+
+
+
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
+
+
 
 submit.addEventListener('click', event => {
     event.preventDefault();
@@ -1162,6 +1170,7 @@ submit.addEventListener('click', event => {
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
         document.getElementById("board-size-box").style.marginTop = "20vh";
+        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -2408,12 +2417,14 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready2").style.backgroundColor = "#FFE88F";
             }
 
+            //optimize this so no matter what order you click it will do the set timeout
             });
         })
     })
 
 
 ready1.addEventListener('click', event => {
+
 
     document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
     document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
@@ -2437,6 +2448,29 @@ ready1.addEventListener('click', event => {
                 }
     event.preventDefault();
 
+
+    let melee1 = document.getElementById("p1-Melee");
+                melee1.setAttribute('draggable', "false")
+
+                let defender1 = document.getElementById("p1-Defender");
+                defender1.setAttribute('draggable', "false")
+
+                let ranger1 = document.getElementById("p1-Ranger");
+                ranger1.setAttribute('draggable', "false")
+
+                let healer1 = document.getElementById("p1-Healer");
+                healer1.setAttribute('draggable', "false")
+                let melee2 = document.getElementById("p2-Melee");
+                melee2.setAttribute('draggable', "false")
+
+                let defender2 = document.getElementById("p2-Defender");
+                defender2.setAttribute('draggable', "false")
+
+                let ranger2 = document.getElementById("p2-Ranger");
+                ranger2.setAttribute('draggable', "false")
+
+                let healer2 = document.getElementById("p2-Healer");
+                healer2.setAttribute('draggable', "false")
 
                 document.getElementById("p1").remove();
                 document.getElementById("ready1").remove();
@@ -2751,7 +2785,6 @@ function EndTurnR1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
@@ -2834,7 +2867,6 @@ function EndTurnD1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
@@ -2946,7 +2978,6 @@ function EndTurnH1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
@@ -3030,7 +3061,6 @@ function EndTurnM2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -3114,7 +3144,6 @@ function EndTurnR2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -3197,7 +3226,6 @@ function EndTurnD2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -3309,7 +3337,6 @@ function EndTurnH2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
