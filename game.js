@@ -1154,15 +1154,13 @@ submit.addEventListener('click', event => {
 
     submit.addEventListener('click', event => {
         var text = document.getElementById("player1Name").value;
-            document.getElementById("turns").innerHTML = text + "'s Turn";
-            turns.style.color = "black";
-            var text2 = document.getElementById("player2Name").value;
+        document.getElementById("turns").innerHTML = text + "'s Turn";
+        var text2 = document.getElementById("player2Name").value;
         document.getElementById("turns2").innerHTML = text2 + "'s Turn";
-        turns.style.color = "black";
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt + "'s side";
+        document.getElementById("name1").innerHTML = txt;
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt + "'s side";
+        document.getElementById("name2").innerHTML = txt;
         document.getElementById("name1").style.fontWeight = "bolder"
         document.getElementById("name2").style.fontWeight = "bolder"
         document.getElementById("player-input-box").remove();
@@ -1177,28 +1175,28 @@ submit.addEventListener('click', event => {
         let txtcolor2 = document.getElementById("name2");
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#FF7462";
+            txtcolor.style.color = "#7B0000";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#23EE96";
+            txtcolor.style.color = "#047B00";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#78D8FF";
+            txtcolor.style.color = "#001A7B";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#FFE88F";
+            txtcolor.style.color = "#997B00";
         }
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#FF7462";
+            txtcolor2.style.color = "#7B0000";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#23EE96";
+            txtcolor2.style.color = "#047B00";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#78D8FF";
+            txtcolor2.style.color = "#001A7B";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#FFE88F";
+            txtcolor2.style.color = "#997B00";
         }
 
 
@@ -1432,7 +1430,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender-Display").src="images/defender_red.png";
                             document.getElementById("p1-Ranger-Display").src="images/ranger_red.png";
                             document.getElementById("p1-Healer-Display").src="images/healer_red.png";
-                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color1[i].style.backgroundColor = "#23EE96";
@@ -1444,7 +1441,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender-Display").src="images/defender_green.png";
                             document.getElementById("p1-Ranger-Display").src="images/ranger_green.png";
                             document.getElementById("p1-Healer-Display").src="images/healer_green.png";
-                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color1[i].style.backgroundColor = "#78D8FF";
@@ -1456,7 +1452,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender-Display").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger-Display").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer-Display").src="images/healer_blue.png";
-                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color1[i].style.backgroundColor = "#FFE88F";
@@ -1468,7 +1463,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender-Display").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger-Display").src="images/ranger_yellow.png";
                             document.getElementById("p1-Healer-Display").src="images/healer_yellow.png";
-                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
                 }
@@ -1835,7 +1829,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
-                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color3[i].style.backgroundColor = "#23EE96";
@@ -1843,7 +1836,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
-                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color3[i].style.backgroundColor = "#78D8FF";
@@ -1851,7 +1843,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
-                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color3[i].style.backgroundColor = "#FFE88F";
@@ -1859,7 +1850,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p1-Healer").src="images/healer_yellow.png";
-                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
 
@@ -2311,7 +2301,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_red.png";
                             document.getElementById("p1-Ranger").src="images/ranger_red.png";
                             document.getElementById("p1-Healer").src="images/healer_red.png";
-                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color5[i].style.backgroundColor = "#23EE96";
@@ -2319,7 +2308,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_green.png";
                             document.getElementById("p1-Ranger").src="images/ranger_green.png";
                             document.getElementById("p1-Healer").src="images/healer_green.png";
-                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color5[i].style.backgroundColor = "#78D8FF";
@@ -2327,7 +2315,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_blue.png";
                             document.getElementById("p1-Ranger").src="images/ranger_blue.png";
                             document.getElementById("p1-Healer").src="images/healer_blue.png";
-                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color5[i].style.backgroundColor = "#FFE88F";
@@ -2335,7 +2322,6 @@ submit.addEventListener('click', event => {
                             document.getElementById("p1-Defender").src="images/defender_yellow.png";
                             document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
                             document.getElementById("p1-Healer").src="images/healer_yellow.png";
-                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
                 }
@@ -2389,7 +2375,7 @@ submit.addEventListener('click', event => {
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
 
-            document.body.style.background = 'none';
+            //document.body.style.background = 'none';
 
             if (player1Color.value == "Red") {
                 document.getElementById("ready1").style.backgroundColor = "#FF7462";
@@ -2481,6 +2467,7 @@ ready1.addEventListener('click', event => {
                 Ranger1.style.display = "";
                 Defender1.style.display = "";
                 Healer1.style.display = "";
+
                 if(player1Color.value == "Blue") {
                     document.body.style.backgroundColor = "#78D8FF"
                 } else if(player1Color.value == "Green"){
@@ -2691,15 +2678,6 @@ function EndTurnM1(){
         Defender1.style.display = "none";
         Healer1.style.display = "none";
 
-        if(player2Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player2Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player2Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player2Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
@@ -2858,6 +2836,7 @@ function EndTurnD1(){
     Ranger1.style.display = "none";
     Defender1.style.display = "none";
     Healer1.style.display = "none";
+
         if(player2Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player2Color.value == "Green"){
@@ -2969,6 +2948,7 @@ function EndTurnH1(){
         Ranger1.style.display = "none";
         Defender1.style.display = "none";
         Healer1.style.display = "none";
+
         if(player2Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player2Color.value == "Green"){
@@ -3052,6 +3032,7 @@ function EndTurnM2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
         if(player1Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player1Color.value == "Green"){
@@ -3135,6 +3116,7 @@ function EndTurnR2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
         if(player1Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player1Color.value == "Green"){
@@ -3217,6 +3199,7 @@ function EndTurnD2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
         if(player1Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player1Color.value == "Green"){
@@ -3328,6 +3311,7 @@ function EndTurnH2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
         if(player1Color.value == "Blue") {
             document.body.style.backgroundColor = "#78D8FF"
         } else if(player1Color.value == "Green"){
