@@ -90,6 +90,16 @@ let shipStats = [{
 
 function drawHP()
 {
+    document.getElementById("p1-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Healer-HP").innerHTML = "DESTROYED!";
+
+    document.getElementById("p2-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Healer-HP").innerHTML = "DESTROYED!";
+
     cellArr.forEach(function(element) {
         if (element.hasAnything) {
             //console.log(element.shipColor+"-"+element.shipType+"-HP");
@@ -2804,7 +2814,7 @@ function AttackD1() {
         }
         pos++;
     }
-    attackInARange(at,2,"p1",30);
+    attackInARange(at,2,"p1",35);
     document.getElementById("attackD1").disabled = true;
     document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
@@ -3179,7 +3189,7 @@ function AttackD2() {
         }
         pos++;
     }
-    attackInARange(at,2,"p2",30);
+    attackInARange(at,2,"p2",35);
     document.getElementById("attackD2").disabled = true;
     document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
