@@ -1103,15 +1103,13 @@ submit.addEventListener('click', event => {
 
     submit.addEventListener('click', event => {
         var text = document.getElementById("player1Name").value;
-            document.getElementById("turns").innerHTML = text + "'s Turn";
-            turns.style.color = "black";
-            var text2 = document.getElementById("player2Name").value;
+        document.getElementById("turns").innerHTML = text + "'s Turn";
+        var text2 = document.getElementById("player2Name").value;
         document.getElementById("turns2").innerHTML = text2 + "'s Turn";
-        turns.style.color = "black";
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt + "'s side";
+        document.getElementById("name1").innerHTML = txt;
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt + "'s side";
+        document.getElementById("name2").innerHTML = txt;
         document.getElementById("name1").style.fontWeight = "bolder"
         document.getElementById("name2").style.fontWeight = "bolder"
         document.getElementById("player-input-box").remove();
