@@ -24,7 +24,7 @@ let player1end = document.getElementById("player1end");
 let player2end = document.getElementById("player2end");
 
 const drops = [].slice.call(
-    document.querySelectorAll( '.drop' ), 0 );
+    document.querySelectorAll('.drop'), 0);
 let ready1 = document.getElementById("ready1")
 let end = document.getElementById("end")
 const Melee1 = document.getElementById('ActionsM1');
@@ -88,8 +88,7 @@ let shipStats = [{
 ];
 
 
-function drawHP()
-{
+function drawHP() {
     document.getElementById("p1-Melee-HP").innerHTML = "DESTROYED!";
     document.getElementById("p1-Defender-HP").innerHTML = "DESTROYED!";
     document.getElementById("p1-Ranger-HP").innerHTML = "DESTROYED!";
@@ -104,7 +103,7 @@ function drawHP()
         if (element.hasAnything) {
             //console.log(element.shipColor+"-"+element.shipType+"-HP");
             //console.log(document.getElementById(element.shipColor+"-"+element.shipType+"-HP"));
-           document.getElementById(element.shipColor+"-"+element.shipType+"-HP").innerHTML = element.HP + " HP";
+            document.getElementById(element.shipColor + "-" + element.shipType + "-HP").innerHTML = element.HP + " HP";
         }
     })
 
@@ -153,15 +152,14 @@ function chooseYourShips() {
     blueShipsToPlace = 0;
     redShipsToPlace = 0;
 }
+
 function attackCell(cell, color, damage) {
-    if(canDoDamage)
-    {
+    if (canDoDamage) {
         if (cellArr[cell].hasAnything) {
             if (cellArr[cell].shipColor != color) {
                 cellArr[cell].HP -= damage;
             }
-            if(cellArr[cell].HP < 1)
-            {
+            if (cellArr[cell].HP < 1) {
 
                 document.getElementById("cell" + cell).removeChild(document.getElementById("cell" + cell).firstChild);
                 cellArr[cell] = {
@@ -177,7 +175,8 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
-    if(document.getElementById("p2-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+
+    if (document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined) {
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player1end.style.display = "flex";
@@ -186,18 +185,18 @@ function attackCell(cell, color, damage) {
         document.body.style.backgroundColor = "black";
         end.style.display = "flex";
         Melee2.style.display = "none";
-                Ranger2.style.display = "none";
-                Defender2.style.display = "none";
-                Healer2.style.display = "none";
-                Melee1.style.display = "none";
-                Ranger1.style.display = "none";
-                Defender1.style.display = "none";
-                Healer1.style.display = "none";
+        Ranger2.style.display = "none";
+        Defender2.style.display = "none";
+        Healer2.style.display = "none";
+        Melee1.style.display = "none";
+        Ranger1.style.display = "none";
+        Defender1.style.display = "none";
+        Healer1.style.display = "none";
         end.addEventListener('click', event => {
             document.location.reload();
         })
 
-    } else if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
+    } else if (document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined) {
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player2end.style.display = "flex";
@@ -206,13 +205,13 @@ function attackCell(cell, color, damage) {
         document.body.style.backgroundColor = "black";
         end.style.display = "flex";
         Melee2.style.display = "none";
-                Ranger2.style.display = "none";
-                Defender2.style.display = "none";
-                Healer2.style.display = "none";
-                Melee1.style.display = "none";
-                Ranger1.style.display = "none";
-                Defender1.style.display = "none";
-                Healer1.style.display = "none";
+        Ranger2.style.display = "none";
+        Defender2.style.display = "none";
+        Healer2.style.display = "none";
+        Melee1.style.display = "none";
+        Ranger1.style.display = "none";
+        Defender1.style.display = "none";
+        Healer1.style.display = "none";
         end.addEventListener('click', event => {
             document.location.reload();
         })
@@ -221,69 +220,64 @@ function attackCell(cell, color, damage) {
 
 }
 
-function decideRow(startAt,damage)
-{
-    colorRow(startAt,damage);
-    colorColumn(startAt,damage);
+function decideRow(startAt, damage) {
+    colorRow(startAt, damage);
+    colorColumn(startAt, damage);
 }
 
 function colorRow(startAt, damage) {
 
-        let cellStart = startAt;
-        let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns) + 1)
+    let cellStart = startAt;
+    let endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns) + 1)
 
-        while (true) {
-            if (isAtRight(cellStart)) break;
-            cellStart++;
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "red"
-            cell.addEventListener('click',cell.fn=function fn()
-            {
-                attackRow(null,startAt,true,damage);
-            });
-        }
-
-        cellStart = startAt;
-        endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns)) + 1
-
-        while (cellStart >= endAt) {
-            if (isAtLeft(cellStart)) break;
-            cellStart--;
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.background = "red"
-            cell.addEventListener('click',cell.fn=function fn()
-            {
-                attackRow(null,startAt,false,damage);
-            });
-        }
+    while (true) {
+        if (isAtRight(cellStart)) break;
+        cellStart++;
+        let cell = document.getElementById("cell" + cellStart);
+        cell.style.backgroundColor = "red"
+        cell.addEventListener('click', cell.fn = function fn() {
+            attackRow(null, startAt, true, damage);
+        });
     }
+
+    cellStart = startAt;
+    endAt = numberOfColumns * (Math.trunc(startAt / numberOfColumns)) + 1
+
+    while (cellStart >= endAt) {
+        if (isAtLeft(cellStart)) break;
+        cellStart--;
+        let cell = document.getElementById("cell" + cellStart);
+        cell.style.background = "red"
+        cell.addEventListener('click', cell.fn = function fn() {
+            attackRow(null, startAt, false, damage);
+        });
+    }
+}
 
 function colorColumn(startAt, damage) {
 
-        let cellStart = startAt;
-        while (true) {
-            if (isAtBottom(cellStart)) break;
-            cellStart += numberOfColumns;
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "red"
-            cell.addEventListener('click',cell.fn=function fn()
-            {
-                attackColumn(null,startAt,true,damage);
-            });
-        }
-
-        cellStart = startAt;
-        while (true) {
-            if (isAtTop(cellStart)) break;
-            cellStart -= numberOfColumns;
-            let cell = document.getElementById("cell" + cellStart);
-            cell.style.backgroundColor = "red"
-            cell.addEventListener('click',cell.fn=function fn()
-            {
-                attackColumn(null,startAt,false,damage);
-            });
-        }
+    let cellStart = startAt;
+    while (true) {
+        if (isAtBottom(cellStart)) break;
+        cellStart += numberOfColumns;
+        let cell = document.getElementById("cell" + cellStart);
+        cell.style.backgroundColor = "red"
+        cell.addEventListener('click', cell.fn = function fn() {
+            attackColumn(null, startAt, true, damage);
+        });
     }
+
+    cellStart = startAt;
+    while (true) {
+        if (isAtTop(cellStart)) break;
+        cellStart -= numberOfColumns;
+        let cell = document.getElementById("cell" + cellStart);
+        cell.style.backgroundColor = "red"
+        cell.addEventListener('click', cell.fn = function fn() {
+            attackColumn(null, startAt, false, damage);
+        });
+    }
+}
 
 
 function attackRow(yourColor, startAt, toRight, damage) {
@@ -316,9 +310,9 @@ function attackRow(yourColor, startAt, toRight, damage) {
     for (var i = 0; i < cells.length; i++) {
         var replace = cells.item(i).cloneNode(true);
         replace.style.backgroundColor = "#9CEAEF";
-        cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-        }
+        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
     }
+}
 
 
 function attackColumn(yourColor, startAt, down, damage) {
@@ -348,136 +342,126 @@ function attackColumn(yourColor, startAt, down, damage) {
         var replace = cells.item(i).cloneNode(true);
         replace.style.backgroundColor = "#9CEAEF";
 
-        cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-        }
+        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
     }
+}
 
 
-function heal(cell,hp)
-{
+function heal(cell, hp) {
     if (cellArr[cell].hasAnything) {
 
-            cellArr[cell].HP += hp;
+        cellArr[cell].HP += hp;
 
     }
 
     drawHP();
 }
 
-function chooseHeal(startAt, hp)
-{
-    if (!isAtTop(startAt))
-    {
+function chooseHeal(startAt, hp) {
+    if (!isAtTop(startAt)) {
         startAt -= numberOfColumns;
         let cell = document.getElementById("cell" + startAt);
         cell.style.backgroundColor = "green";
-        cell.addEventListener('click', cell.fn=function fn()
-        {
+        cell.addEventListener('click', cell.fn = function fn() {
 
-            heal(cell.id.substring(4),hp);
+            heal(cell.id.substring(4), hp);
 
             var cells = document.getElementsByClassName("game-cell");
             for (var i = 0; i < cells.length; i++) {
-                if (i != cell.id.substring(4)){
-                var replace = cells.item(i).cloneNode(true);
-                replace.style.backgroundColor = "#9CEAEF";
+                if (i != cell.id.substring(4)) {
+                    var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
 
-                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-                }
-                else
-                {
+                    cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                } else {
                     cell.style.backgroundColor = "#9CEAEF";
                 }
             }
 
-        },{once:true});
+        }, {
+            once: true
+        });
         startAt += numberOfColumns;
         console.log("E");
     }
 
-    if (!isAtRight(startAt))
-    {
+    if (!isAtRight(startAt)) {
         startAt++;
         let cell = document.getElementById("cell" + startAt);
         cell.style.backgroundColor = "green";
-        cell.addEventListener('click', cell.fn=function fn()
-        {
+        cell.addEventListener('click', cell.fn = function fn() {
 
-            heal(cell.id.substring(4),hp);
+            heal(cell.id.substring(4), hp);
 
             var cells = document.getElementsByClassName("game-cell");
             for (var i = 0; i < cells.length; i++) {
-                if (i != cell.id.substring(4)){
-                var replace = cells.item(i).cloneNode(true);
-                replace.style.backgroundColor = "#9CEAEF";
+                if (i != cell.id.substring(4)) {
+                    var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
 
-                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-                }
-                else
-                {
+                    cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                } else {
                     cell.style.backgroundColor = "#9CEAEF";
                 }
             }
 
-        },{once:true});
+        }, {
+            once: true
+        });
         startAt--;
         console.log("E");
     }
 
-    if (!isAtBottom(startAt))
-    {
+    if (!isAtBottom(startAt)) {
         startAt += numberOfColumns;
         let cell = document.getElementById("cell" + startAt);
         cell.style.backgroundColor = "green";
-        cell.addEventListener('click', cell.fn=function fn()
-        {
+        cell.addEventListener('click', cell.fn = function fn() {
 
-            heal(cell.id.substring(4),hp);
+            heal(cell.id.substring(4), hp);
 
             var cells = document.getElementsByClassName("game-cell");
             for (var i = 0; i < cells.length; i++) {
-                if (i != cell.id.substring(4)){
-                var replace = cells.item(i).cloneNode(true);
-                replace.style.backgroundColor = "#9CEAEF";
+                if (i != cell.id.substring(4)) {
+                    var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
 
-                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-                }
-                else
-                {
+                    cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                } else {
                     cell.style.backgroundColor = "#9CEAEF";
                 }
             }
 
-        },{once:true});
+        }, {
+            once: true
+        });
         startAt -= numberOfColumns;
         console.log("E");
     }
 
-    if (!isAtLeft(startAt))
-    {
+    if (!isAtLeft(startAt)) {
         startAt--;
         let cell = document.getElementById("cell" + startAt);
         cell.style.backgroundColor = "green";
-        cell.addEventListener('click', cell.fn=function fn()
-        {
+        cell.addEventListener('click', cell.fn = function fn() {
 
-            heal(cell.id.substring(4),hp);
+            heal(cell.id.substring(4), hp);
 
             var cells = document.getElementsByClassName("game-cell");
             for (var i = 0; i < cells.length; i++) {
-                if (i != cell.id.substring(4)){
-                var replace = cells.item(i).cloneNode(true);
-                replace.style.backgroundColor = "#9CEAEF";
+                if (i != cell.id.substring(4)) {
+                    var replace = cells.item(i).cloneNode(true);
+                    replace.style.backgroundColor = "#9CEAEF";
 
-                cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-                }
-                else
-                {
+                    cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                } else {
                     cell.style.backgroundColor = "#9CEAEF";
                 }
             }
 
-        },{once:true});
+        }, {
+            once: true
+        });
         startAt++;
         console.log("E");
     }
@@ -506,26 +490,25 @@ function attackInARange(at, range, color, damage) {
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
+            cell.addEventListener('click', cell.fn = function fn() {
 
-                attackCell(cell.id.substring(4),color,damage);
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    if (i != cell.id.substring(4)) {
+                        var replace = cells.item(i).cloneNode(true);
+                        replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
-                    }
-                    else
-                    {
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                    } else {
                         cell.style.backgroundColor = "#9CEAEF";
                     }
                 }
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goUps--;
 
         }
@@ -535,22 +518,23 @@ function attackInARange(at, range, color, damage) {
             adding++;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goRights--;
 
         }
@@ -575,22 +559,23 @@ function attackInARange(at, range, color, damage) {
             adding++;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goRights--;
         }
 
@@ -599,22 +584,23 @@ function attackInARange(at, range, color, damage) {
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goDowns--;
         }
         rights--;
@@ -636,22 +622,23 @@ function attackInARange(at, range, color, damage) {
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goDowns--;
         }
 
@@ -660,22 +647,23 @@ function attackInARange(at, range, color, damage) {
             adding--;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goLefts--;
         }
 
@@ -697,22 +685,23 @@ function attackInARange(at, range, color, damage) {
             adding--;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goLefts--;
         }
 
@@ -721,22 +710,23 @@ function attackInARange(at, range, color, damage) {
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
             cell.style.backgroundColor = "red";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                attackCell(cell.id.substring(4),color,damage);
+            cell.addEventListener('click', cell.fn = function fn() {
+                attackCell(cell.id.substring(4), color, damage);
 
                 var cells = document.getElementsByClassName("game-cell");
                 for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
+                    if (i != cell.id.substring(4)) {
                         var replace = cells.item(i).cloneNode(true);
                         replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                        cells.item(i).parentNode.replaceChild(replace, cells.item(i));
                     }
                 }
                 cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});
+            }, {
+                once: true
+            });
             goUps--;
         }
         lefts--;
@@ -766,24 +756,26 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goUps--;
 
         }
@@ -792,27 +784,29 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goRights--;
 
         }
@@ -835,28 +829,30 @@ function move(at, range, moving) {
             if (isAtRight(adding)) break;
             adding++;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    //document.getElementById("cell" + at).removeChild(document.getElementById("cell" + at).firstChild);
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goRights--;
         }
 
@@ -864,27 +860,29 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goDowns--;
         }
         rights--;
@@ -905,27 +903,29 @@ function move(at, range, moving) {
             if (isAtBottom(adding)) break;
             adding += numberOfColumns
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goDowns--;
         }
 
@@ -933,27 +933,29 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goLefts--;
         }
 
@@ -973,27 +975,29 @@ function move(at, range, moving) {
             if (isAtLeft(adding)) break;
             adding--;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue"
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue"
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goLefts--;
         }
 
@@ -1001,27 +1005,29 @@ function move(at, range, moving) {
             if (isAtTop(adding)) break;
             adding -= numberOfColumns;
             let cell = document.getElementById("cell" + adding);
-            if (!cellArr[cell.id.substring(4)].hasAnything){
+            if (!cellArr[cell.id.substring(4)].hasAnything) {
 
-            cell.style.backgroundColor = "blue";
-            cell.addEventListener('click', cell.fn=function fn()
-            {
-                moveShipTo(at,cell.id.substring(4));
+                cell.style.backgroundColor = "blue";
+                cell.addEventListener('click', cell.fn = function fn() {
+                    moveShipTo(at, cell.id.substring(4));
 
-                cell.appendChild(document.getElementById(moving));
-                 var cells = document.getElementsByClassName("game-cell");
-                for (var i = 0; i < cells.length; i++) {
-                    if (i != cell.id.substring(4)){
-                    var replace = cells.item(i).cloneNode(true);
-                    replace.style.backgroundColor = "#9CEAEF";
+                    cell.appendChild(document.getElementById(moving));
+                    var cells = document.getElementsByClassName("game-cell");
+                    for (var i = 0; i < cells.length; i++) {
+                        if (i != cell.id.substring(4)) {
+                            var replace = cells.item(i).cloneNode(true);
+                            replace.style.backgroundColor = "#9CEAEF";
 
-                    cells.item(i).parentNode.replaceChild(replace,cells.item(i));
+                            cells.item(i).parentNode.replaceChild(replace, cells.item(i));
+                        }
                     }
-                }
-                cell.style.backgroundColor = "#9CEAEF";
+                    cell.style.backgroundColor = "#9CEAEF";
 
 
-            },{once:true});}
+                }, {
+                    once: true
+                });
+            }
             goUps--;
         }
         lefts--;
@@ -1084,23 +1090,28 @@ function generateGrid(rows, columns) {
 
 function allowDrop(ev) {
     ev.preventDefault();
-if (ev.target.getAttribute("draggable") == "true")
-    ev.dataTransfer.dropEffect = "none";
-else
-    ev.dataTransfer.dropEffect = "all";
+
+    ev.target.draggable = false;
+    if (ev.target.getAttribute("draggable") == "true")
+        ev.dataTransfer.dropEffect = "none";
+    else
+        ev.dataTransfer.dropEffect = "all";
 }
 
 function drag(ev) {
-ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
     let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-    var player = data.substring(0,2);
+
+    document.getElementById(data).draggable = false;
+    var player = data.substring(0, 2);
+
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
-    addShipTo(toCell,type,player);
+    addShipTo(toCell, type, player);
 }
 
 
@@ -1114,9 +1125,10 @@ function drop(ev) {
 submit.addEventListener('click', event => {
     event.preventDefault();
 
-    if (document.getElementById('player1Name') != null){
-    document.getElementById('player1Name').style.visibility = 'hidden';
-    document.getElementById('player1Name').style.height = '0vh';}
+    if (document.getElementById('player1Name') != null) {
+        document.getElementById('player1Name').style.visibility = 'hidden';
+        document.getElementById('player1Name').style.height = '0vh';
+    }
     document.getElementById('player1Color').style.visibility = "visible";
 
     document.getElementById('player2Name').style.visibility = 'hidden';
@@ -1131,30 +1143,31 @@ submit.addEventListener('click', event => {
     document.getElementById("text-prompt1").innerHTML = "Please select your team color";
     document.getElementById("text-prompt2").innerHTML = "Please select your team color";
 
-    function preventDupes( select, index ) {
+    function preventDupes(select, index) {
         var options = select.options,
             len = options.length;
-        while( len-- ) {
-            options[ len ].disabled = false;
+        while (len--) {
+            options[len].disabled = false;
         }
-        select.options[ index ].disabled = true;
-        if( index === select.selectedIndex ) {
+        select.options[index].disabled = true;
+        if (index === select.selectedIndex) {
             alert('You\'ve already selected the item "' + select.options[index].text + '".\n\nPlease choose another.');
             this.selectedIndex = 0;
         }
     }
 
     player1Color.onchange = function() {
-        preventDupes.call(this, player2Color, this.selectedIndex );
+        preventDupes.call(this, player2Color, this.selectedIndex);
     };
 
     player2Color.onchange = function() {
-        preventDupes.call(this, player1Color, this.selectedIndex );
+        preventDupes.call(this, player1Color, this.selectedIndex);
     };
 
     submit.addEventListener('click', event => {
         var text = document.getElementById("player1Name").value;
         document.getElementById("turns").innerHTML = text + "'s Turn";
+        turns.style.color = "black";
         var text2 = document.getElementById("player2Name").value;
         document.getElementById("turns2").innerHTML = text2 + "'s Turn";
         var txt = document.getElementById("player1Name").value;
@@ -1202,11 +1215,10 @@ submit.addEventListener('click', event => {
 
 
 
-
         submit.addEventListener('click', event => {
 
             event.preventDefault();
-
+            ready1.style.display = "flex";
             let select = document.getElementById('board-size');
             let option = select.options[select.selectedIndex];
 
@@ -1214,255 +1226,259 @@ submit.addEventListener('click', event => {
                 generateGrid(10, 10);
                 document.getElementById("turns").style.visibility = "visible";
 
-            document.querySelector("#cell0").classList.add("drop");
-            let cell = document.getElementById("cell0");
-            cell.setAttribute('ondrop', "drop(event)")
-            cell.setAttribute('ondragover', "allowDrop(event)")
-            cell.setAttribute('data-drop', "p1-Melee")
-            cell.setAttribute('data-drop', "p1-Defender")
+                document.querySelector("#cell0").classList.add("drop");
+                let cell = document.getElementById("cell0");
+                cell.setAttribute('ondrop', "drop(event)")
+                cell.setAttribute('ondragover', "allowDrop(event)")
+                cell.setAttribute('data-drop', "p1-Melee")
+                cell.setAttribute('data-drop', "p1-Defender")
 
-            document.querySelector("#cell1").classList.add("drop");
-            let cell1 = document.getElementById("cell1");
-            cell1.setAttribute('ondrop', "drop(event)")
-            cell1.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell1").classList.add("drop");
+                let cell1 = document.getElementById("cell1");
+                cell1.setAttribute('ondrop', "drop(event)")
+                cell1.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell10").classList.add("drop");
-            let cell10 = document.getElementById("cell10");
-            cell10.setAttribute('ondrop', "drop(event)")
-            cell10.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell10").classList.add("drop");
+                let cell10 = document.getElementById("cell10");
+                cell10.setAttribute('ondrop', "drop(event)")
+                cell10.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell11").classList.add("drop");
-            let cell11 = document.getElementById("cell11");
-            cell11.setAttribute('ondrop', "drop(event)")
-            cell11.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell11").classList.add("drop");
+                let cell11 = document.getElementById("cell11");
+                cell11.setAttribute('ondrop', "drop(event)")
+                cell11.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell20").classList.add("drop");
-            let cell20 = document.getElementById("cell20");
-            cell20.setAttribute('ondrop', "drop(event)")
-            cell20.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell20").classList.add("drop");
+                let cell20 = document.getElementById("cell20");
+                cell20.setAttribute('ondrop', "drop(event)")
+                cell20.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell21").classList.add("drop");
-            let cell21 = document.getElementById("cell21");
-            cell21.setAttribute('ondrop', "drop(event)")
-            cell21.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell21").classList.add("drop");
+                let cell21 = document.getElementById("cell21");
+                cell21.setAttribute('ondrop', "drop(event)")
+                cell21.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell30").classList.add("drop");
-            let cell30 = document.getElementById("cell30");
-            cell30.setAttribute('ondrop', "drop(event)")
-            cell30.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell30").classList.add("drop");
+                let cell30 = document.getElementById("cell30");
+                cell30.setAttribute('ondrop', "drop(event)")
+                cell30.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell31").classList.add("drop");
-            let cell31 = document.getElementById("cell31");
-            cell31.setAttribute('ondrop', "drop(event)")
-            cell31.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell31").classList.add("drop");
+                let cell31 = document.getElementById("cell31");
+                cell31.setAttribute('ondrop', "drop(event)")
+                cell31.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell40").classList.add("drop");
-            let cell40 = document.getElementById("cell40");
-            cell40.setAttribute('ondrop', "drop(event)")
-            cell40.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell40").classList.add("drop");
+                let cell40 = document.getElementById("cell40");
+                cell40.setAttribute('ondrop', "drop(event)")
+                cell40.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell41").classList.add("drop");
-            let cell41 = document.getElementById("cell41");
-            cell41.setAttribute('ondrop', "drop(event)")
-            cell41.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell41").classList.add("drop");
+                let cell41 = document.getElementById("cell41");
+                cell41.setAttribute('ondrop', "drop(event)")
+                cell41.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell50").classList.add("drop");
-            let cell50 = document.getElementById("cell50");
-            cell50.setAttribute('ondrop', "drop(event)")
-            cell50.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell50").classList.add("drop");
+                let cell50 = document.getElementById("cell50");
+                cell50.setAttribute('ondrop', "drop(event)")
+                cell50.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell51").classList.add("drop");
-            let cell51 = document.getElementById("cell51");
-            cell51.setAttribute('ondrop', "drop(event)")
-            cell51.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell51").classList.add("drop");
+                let cell51 = document.getElementById("cell51");
+                cell51.setAttribute('ondrop', "drop(event)")
+                cell51.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell60").classList.add("drop");
-            let cell60 = document.getElementById("cell60");
-            cell60.setAttribute('ondrop', "drop(event)")
-            cell60.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell60").classList.add("drop");
+                let cell60 = document.getElementById("cell60");
+                cell60.setAttribute('ondrop', "drop(event)")
+                cell60.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell61").classList.add("drop");
-            let cell61 = document.getElementById("cell61");
-            cell61.setAttribute('ondrop', "drop(event)")
-            cell61.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell61").classList.add("drop");
+                let cell61 = document.getElementById("cell61");
+                cell61.setAttribute('ondrop', "drop(event)")
+                cell61.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell70").classList.add("drop");
-            let cell70 = document.getElementById("cell70");
-            cell70.setAttribute('ondrop', "drop(event)")
-            cell70.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell70").classList.add("drop");
+                let cell70 = document.getElementById("cell70");
+                cell70.setAttribute('ondrop', "drop(event)")
+                cell70.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell71").classList.add("drop");
-            let cell71 = document.getElementById("cell71");
-            cell71.setAttribute('ondrop', "drop(event)")
-            cell71.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell71").classList.add("drop");
+                let cell71 = document.getElementById("cell71");
+                cell71.setAttribute('ondrop', "drop(event)")
+                cell71.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell80").classList.add("drop");
-            let cell80 = document.getElementById("cell80");
-            cell80.setAttribute('ondrop', "drop(event)")
-            cell80.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell80").classList.add("drop");
+                let cell80 = document.getElementById("cell80");
+                cell80.setAttribute('ondrop', "drop(event)")
+                cell80.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell81").classList.add("drop");
-            let cell81 = document.getElementById("cell81");
-            cell81.setAttribute('ondrop', "drop(event)")
-            cell81.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell81").classList.add("drop");
+                let cell81 = document.getElementById("cell81");
+                cell81.setAttribute('ondrop', "drop(event)")
+                cell81.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell90").classList.add("drop");
-            let cell90 = document.getElementById("cell90");
-            cell90.setAttribute('ondrop', "drop(event)")
-            cell90.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell90").classList.add("drop");
+                let cell90 = document.getElementById("cell90");
+                cell90.setAttribute('ondrop', "drop(event)")
+                cell90.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell91").classList.add("drop");
-            let cell91 = document.getElementById("cell91");
-            cell91.setAttribute('ondrop', "drop(event)")
-            cell91.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell91").classList.add("drop");
+                let cell91 = document.getElementById("cell91");
+                cell91.setAttribute('ondrop', "drop(event)")
+                cell91.setAttribute('ondragover', "allowDrop(event)")
 
 
-            document.querySelector("#cell8").classList.add("drops");
-            let cell8 = document.getElementById("cell8");
-            cell8.setAttribute('ondrop', "drop(event)")
-            cell8.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell8").classList.add("drops");
+                let cell8 = document.getElementById("cell8");
+                cell8.setAttribute('ondrop', "drop(event)")
+                cell8.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell9").classList.add("drops");
-            let cell9 = document.getElementById("cell9");
-            cell9.setAttribute('ondrop', "drop(event)")
-            cell9.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell9").classList.add("drops");
+                let cell9 = document.getElementById("cell9");
+                cell9.setAttribute('ondrop', "drop(event)")
+                cell9.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell18").classList.add("drops");
-            let cell18 = document.getElementById("cell18");
-            cell18.setAttribute('ondrop', "drop(event)")
-            cell18.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell18").classList.add("drops");
+                let cell18 = document.getElementById("cell18");
+                cell18.setAttribute('ondrop', "drop(event)")
+                cell18.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell19").classList.add("drops");
-            let cell19 = document.getElementById("cell19");
-            cell19.setAttribute('ondrop', "drop(event)")
-            cell19.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell19").classList.add("drops");
+                let cell19 = document.getElementById("cell19");
+                cell19.setAttribute('ondrop', "drop(event)")
+                cell19.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell28").classList.add("drops");
-            let cell28 = document.getElementById("cell28");
-            cell28.setAttribute('ondrop', "drop(event)")
-            cell28.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell28").classList.add("drops");
+                let cell28 = document.getElementById("cell28");
+                cell28.setAttribute('ondrop', "drop(event)")
+                cell28.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell29").classList.add("drops");
-            let cell29 = document.getElementById("cell29");
-            cell29.setAttribute('ondrop', "drop(event)")
-            cell29.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell29").classList.add("drops");
+                let cell29 = document.getElementById("cell29");
+                cell29.setAttribute('ondrop', "drop(event)")
+                cell29.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell38").classList.add("drops");
-            let cell38 = document.getElementById("cell38");
-            cell38.setAttribute('ondrop', "drop(event)")
-            cell38.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell38").classList.add("drops");
+                let cell38 = document.getElementById("cell38");
+                cell38.setAttribute('ondrop', "drop(event)")
+                cell38.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell39").classList.add("drops");
-            let cell39 = document.getElementById("cell39");
-            cell39.setAttribute('ondrop', "drop(event)")
-            cell39.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell39").classList.add("drops");
+                let cell39 = document.getElementById("cell39");
+                cell39.setAttribute('ondrop', "drop(event)")
+                cell39.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell48").classList.add("drops");
-            let cell48 = document.getElementById("cell48");
-            cell48.setAttribute('ondrop', "drop(event)")
-            cell48.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell48").classList.add("drops");
+                let cell48 = document.getElementById("cell48");
+                cell48.setAttribute('ondrop', "drop(event)")
+                cell48.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell49").classList.add("drops");
-            let cell49 = document.getElementById("cell49");
-            cell49.setAttribute('ondrop', "drop(event)")
-            cell49.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell49").classList.add("drops");
+                let cell49 = document.getElementById("cell49");
+                cell49.setAttribute('ondrop', "drop(event)")
+                cell49.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell58").classList.add("drops");
-            let cell58 = document.getElementById("cell58");
-            cell58.setAttribute('ondrop', "drop(event)")
-            cell58.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell58").classList.add("drops");
+                let cell58 = document.getElementById("cell58");
+                cell58.setAttribute('ondrop', "drop(event)")
+                cell58.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell59").classList.add("drops");
-            let cell59 = document.getElementById("cell59");
-            cell59.setAttribute('ondrop', "drop(event)")
-            cell59.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell59").classList.add("drops");
+                let cell59 = document.getElementById("cell59");
+                cell59.setAttribute('ondrop', "drop(event)")
+                cell59.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell68").classList.add("drops");
-            let cell68 = document.getElementById("cell68");
-            cell68.setAttribute('ondrop', "drop(event)")
-            cell68.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell68").classList.add("drops");
+                let cell68 = document.getElementById("cell68");
+                cell68.setAttribute('ondrop', "drop(event)")
+                cell68.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell69").classList.add("drops");
-            let cell69 = document.getElementById("cell69");
-            cell69.setAttribute('ondrop', "drop(event)")
-            cell69.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell69").classList.add("drops");
+                let cell69 = document.getElementById("cell69");
+                cell69.setAttribute('ondrop', "drop(event)")
+                cell69.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell78").classList.add("drops");
-            let cell78 = document.getElementById("cell78");
-            cell78.setAttribute('ondrop', "drop(event)")
-            cell78.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell78").classList.add("drops");
+                let cell78 = document.getElementById("cell78");
+                cell78.setAttribute('ondrop', "drop(event)")
+                cell78.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell79").classList.add("drops");
-            let cell79 = document.getElementById("cell79");
-            cell79.setAttribute('ondrop', "drop(event)")
-            cell79.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell79").classList.add("drops");
+                let cell79 = document.getElementById("cell79");
+                cell79.setAttribute('ondrop', "drop(event)")
+                cell79.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell88").classList.add("drops");
-            let cell88 = document.getElementById("cell88");
-            cell88.setAttribute('ondrop', "drop(event)")
-            cell88.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell88").classList.add("drops");
+                let cell88 = document.getElementById("cell88");
+                cell88.setAttribute('ondrop', "drop(event)")
+                cell88.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell89").classList.add("drops");
-            let cell89 = document.getElementById("cell89");
-            cell89.setAttribute('ondrop', "drop(event)")
-            cell89.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell89").classList.add("drops");
+                let cell89 = document.getElementById("cell89");
+                cell89.setAttribute('ondrop', "drop(event)")
+                cell89.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell98").classList.add("drops");
-            let cell98 = document.getElementById("cell98");
-            cell98.setAttribute('ondrop', "drop(event)")
-            cell98.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell98").classList.add("drops");
+                let cell98 = document.getElementById("cell98");
+                cell98.setAttribute('ondrop', "drop(event)")
+                cell98.setAttribute('ondragover', "allowDrop(event)")
 
-            document.querySelector("#cell99").classList.add("drops");
-            let cell99 = document.getElementById("cell99");
-            cell99.setAttribute('ondrop', "drop(event)")
-            cell99.setAttribute('ondragover', "allowDrop(event)")
+                document.querySelector("#cell99").classList.add("drops");
+                let cell99 = document.getElementById("cell99");
+                cell99.setAttribute('ondrop', "drop(event)")
+                cell99.setAttribute('ondragover', "allowDrop(event)")
 
                 let color1 = document.querySelectorAll("#cell0, #cell1, #cell10, #cell11, #cell20, #cell21, #cell30, #cell31, #cell40, #cell41, #cell50, #cell51, #cell60, #cell61, #cell70, #cell71, #cell80, #cell81, #cell90, #cell91");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
                         if (player1Color.value == "Red") {
                             color1[i].style.backgroundColor = "#FF7462";
-                            document.getElementById("p1-Melee").src="images/attacker_red.png";
-                            document.getElementById("p1-Defender").src="images/defender_red.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
-                            document.getElementById("p1-Healer").src="images/healer_red.png";
-                            document.getElementById("p1-Melee-Display").src="images/attacker_red.png";
-                            document.getElementById("p1-Defender-Display").src="images/defender_red.png";
-                            document.getElementById("p1-Ranger-Display").src="images/ranger_red.png";
-                            document.getElementById("p1-Healer-Display").src="images/healer_red.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_red.png";
+                            document.getElementById("p1-Defender").src = "images/defender_red.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_red.png";
+                            document.getElementById("p1-Healer").src = "images/healer_red.png";
+                            document.getElementById("p1-Melee-Display").src = "images/attacker_red.png";
+                            document.getElementById("p1-Defender-Display").src = "images/defender_red.png";
+                            document.getElementById("p1-Ranger-Display").src = "images/ranger_red.png";
+                            document.getElementById("p1-Healer-Display").src = "images/healer_red.png";
+                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color1[i].style.backgroundColor = "#23EE96";
-                            document.getElementById("p1-Melee").src="images/attacker_green.png";
-                            document.getElementById("p1-Defender").src="images/defender_green.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
-                            document.getElementById("p1-Healer").src="images/healer_green.png";
-                            document.getElementById("p1-Melee-Display").src="images/attacker_green.png";
-                            document.getElementById("p1-Defender-Display").src="images/defender_green.png";
-                            document.getElementById("p1-Ranger-Display").src="images/ranger_green.png";
-                            document.getElementById("p1-Healer-Display").src="images/healer_green.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_green.png";
+                            document.getElementById("p1-Defender").src = "images/defender_green.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_green.png";
+                            document.getElementById("p1-Healer").src = "images/healer_green.png";
+                            document.getElementById("p1-Melee-Display").src = "images/attacker_green.png";
+                            document.getElementById("p1-Defender-Display").src = "images/defender_green.png";
+                            document.getElementById("p1-Ranger-Display").src = "images/ranger_green.png";
+                            document.getElementById("p1-Healer-Display").src = "images/healer_green.png";
+                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color1[i].style.backgroundColor = "#78D8FF";
-                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
-                            document.getElementById("p1-Defender").src="images/defender_blue.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
-                            document.getElementById("p1-Healer").src="images/healer_blue.png";
-                            document.getElementById("p1-Melee-Display").src="images/attacker_blue.png";
-                            document.getElementById("p1-Defender-Display").src="images/defender_blue.png";
-                            document.getElementById("p1-Ranger-Display").src="images/ranger_blue.png";
-                            document.getElementById("p1-Healer-Display").src="images/healer_blue.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src = "images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src = "images/healer_blue.png";
+                            document.getElementById("p1-Melee-Display").src = "images/attacker_blue.png";
+                            document.getElementById("p1-Defender-Display").src = "images/defender_blue.png";
+                            document.getElementById("p1-Ranger-Display").src = "images/ranger_blue.png";
+                            document.getElementById("p1-Healer-Display").src = "images/healer_blue.png";
+                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color1[i].style.backgroundColor = "#FFE88F";
-                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
-                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
-                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
-                            document.getElementById("p1-Melee-Display").src="images/attacker_yellow.png";
-                            document.getElementById("p1-Defender-Display").src="images/defender_yellow.png";
-                            document.getElementById("p1-Ranger-Display").src="images/ranger_yellow.png";
-                            document.getElementById("p1-Healer-Display").src="images/healer_yellow.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src = "images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src = "images/healer_yellow.png";
+                            document.getElementById("p1-Melee-Display").src = "images/attacker_yellow.png";
+                            document.getElementById("p1-Defender-Display").src = "images/defender_yellow.png";
+                            document.getElementById("p1-Ranger-Display").src = "images/ranger_yellow.png";
+                            document.getElementById("p1-Healer-Display").src = "images/healer_yellow.png";
+                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
                 }
@@ -1472,47 +1488,47 @@ submit.addEventListener('click', event => {
                     if (color2) {
                         if (player2Color.value == "Red") {
                             color2[i].style.backgroundColor = "#FF7462";
-                            document.getElementById("p2-Melee").src="images/attacker_red.png";
-                            document.getElementById("p2-Defender").src="images/defender_red.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_red.png";
-                            document.getElementById("p2-Healer").src="images/healer_red.png";
-                            document.getElementById("p2-Melee-Display").src="images/attacker_red.png";
-                            document.getElementById("p2-Defender-Display").src="images/defender_red.png";
-                            document.getElementById("p2-Ranger-Display").src="images/ranger_red.png";
-                            document.getElementById("p2-Healer-Display").src="images/healer_red.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_red.png";
+                            document.getElementById("p2-Defender").src = "images/defender_red.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_red.png";
+                            document.getElementById("p2-Healer").src = "images/healer_red.png";
+                            document.getElementById("p2-Melee-Display").src = "images/attacker_red.png";
+                            document.getElementById("p2-Defender-Display").src = "images/defender_red.png";
+                            document.getElementById("p2-Ranger-Display").src = "images/ranger_red.png";
+                            document.getElementById("p2-Healer-Display").src = "images/healer_red.png";
                         }
                         if (player2Color.value == "Green") {
                             color2[i].style.backgroundColor = "#23EE96";
-                            document.getElementById("p2-Melee").src="images/attacker_green.png";
-                            document.getElementById("p2-Defender").src="images/defender_green.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_green.png";
-                            document.getElementById("p2-Healer").src="images/healer_green.png";
-                            document.getElementById("p2-Melee-Display").src="images/attacker_green.png";
-                            document.getElementById("p2-Defender-Display").src="images/defender_green.png";
-                            document.getElementById("p2-Ranger-Display").src="images/ranger_green.png";
-                            document.getElementById("p2-Healer-Display").src="images/healer_green.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_green.png";
+                            document.getElementById("p2-Defender").src = "images/defender_green.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_green.png";
+                            document.getElementById("p2-Healer").src = "images/healer_green.png";
+                            document.getElementById("p2-Melee-Display").src = "images/attacker_green.png";
+                            document.getElementById("p2-Defender-Display").src = "images/defender_green.png";
+                            document.getElementById("p2-Ranger-Display").src = "images/ranger_green.png";
+                            document.getElementById("p2-Healer-Display").src = "images/healer_green.png";
                         }
                         if (player2Color.value == "Blue") {
                             color2[i].style.backgroundColor = "#78D8FF";
-                            document.getElementById("p2-Melee").src="images/attacker_blue.png";
-                            document.getElementById("p2-Defender").src="images/defender_blue.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_blue.png";
-                            document.getElementById("p2-Healer").src="images/healer_blue.png";
-                            document.getElementById("p2-Melee-Display").src="images/attacker_blue.png";
-                            document.getElementById("p2-Defender-Display").src="images/defender_blue.png";
-                            document.getElementById("p2-Ranger-Display").src="images/ranger_blue.png";
-                            document.getElementById("p2-Healer-Display").src="images/healer_blue.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_blue.png";
+                            document.getElementById("p2-Defender").src = "images/defender_blue.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_blue.png";
+                            document.getElementById("p2-Healer").src = "images/healer_blue.png";
+                            document.getElementById("p2-Melee-Display").src = "images/attacker_blue.png";
+                            document.getElementById("p2-Defender-Display").src = "images/defender_blue.png";
+                            document.getElementById("p2-Ranger-Display").src = "images/ranger_blue.png";
+                            document.getElementById("p2-Healer-Display").src = "images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
                             color2[i].style.backgroundColor = "#FFE88F";
-                            document.getElementById("p2-Melee").src="images/attacker_yellow.png";
-                            document.getElementById("p2-Defender").src="images/defender_yellow.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
-                            document.getElementById("p2-Healer").src="images/healer_yellow.png";
-                            document.getElementById("p2-Melee-Display").src="images/attacker_yellow.png";
-                            document.getElementById("p2-Defender-Display").src="images/defender_yellow.png";
-                            document.getElementById("p2-Ranger-Display").src="images/ranger_yellow.png";
-                            document.getElementById("p2-Healer-Display").src="images/healer_yellow.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_yellow.png";
+                            document.getElementById("p2-Defender").src = "images/defender_yellow.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_yellow.png";
+                            document.getElementById("p2-Healer").src = "images/healer_yellow.png";
+                            document.getElementById("p2-Melee-Display").src = "images/attacker_yellow.png";
+                            document.getElementById("p2-Defender-Display").src = "images/defender_yellow.png";
+                            document.getElementById("p2-Ranger-Display").src = "images/ranger_yellow.png";
+                            document.getElementById("p2-Healer-Display").src = "images/healer_yellow.png";
                         }
                     }
                 }
@@ -1825,31 +1841,35 @@ submit.addEventListener('click', event => {
                     if (color3) {
                         if (player1Color.value == "Red") {
                             color3[i].style.backgroundColor = "#FF7462";
-                            document.getElementById("p1-Melee").src="images/attacker_red.png";
-                            document.getElementById("p1-Defender").src="images/defender_red.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
-                            document.getElementById("p1-Healer").src="images/healer_red.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_red.png";
+                            document.getElementById("p1-Defender").src = "images/defender_red.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_red.png";
+                            document.getElementById("p1-Healer").src = "images/healer_red.png";
+                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color3[i].style.backgroundColor = "#23EE96";
-                            document.getElementById("p1-Melee").src="images/attacker_green.png";
-                            document.getElementById("p1-Defender").src="images/defender_green.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
-                            document.getElementById("p1-Healer").src="images/healer_green.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_green.png";
+                            document.getElementById("p1-Defender").src = "images/defender_green.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_green.png";
+                            document.getElementById("p1-Healer").src = "images/healer_green.png";
+                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color3[i].style.backgroundColor = "#78D8FF";
-                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
-                            document.getElementById("p1-Defender").src="images/defender_blue.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
-                            document.getElementById("p1-Healer").src="images/healer_blue.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src = "images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src = "images/healer_blue.png";
+                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color3[i].style.backgroundColor = "#FFE88F";
-                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
-                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
-                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src = "images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src = "images/healer_yellow.png";
+                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
 
@@ -1858,31 +1878,31 @@ submit.addEventListener('click', event => {
                         if (color4) {
                             if (player2Color.value == "Red") {
                                 color4[i].style.backgroundColor = "#FF7462"
-                                document.getElementById("p2-Melee").src="images/attacker_red.png";
-                                document.getElementById("p2-Defender").src="images/defender_red.png";
-                                document.getElementById("p2-Ranger").src="images/ranger_red.png";
-                                document.getElementById("p2-Healer").src="images/healer_red.png";
+                                document.getElementById("p2-Melee").src = "images/attacker_red.png";
+                                document.getElementById("p2-Defender").src = "images/defender_red.png";
+                                document.getElementById("p2-Ranger").src = "images/ranger_red.png";
+                                document.getElementById("p2-Healer").src = "images/healer_red.png";
                             }
                             if (player2Color.value == "Green") {
                                 color4[i].style.backgroundColor = "#23EE96";
-                                document.getElementById("p2-Melee").src="images/attacker_green.png";
-                                document.getElementById("p2-Defender").src="images/defender_green.png";
-                                document.getElementById("p2-Ranger").src="images/ranger_green.png";
-                                document.getElementById("p2-Healer").src="images/healer_green.png";
+                                document.getElementById("p2-Melee").src = "images/attacker_green.png";
+                                document.getElementById("p2-Defender").src = "images/defender_green.png";
+                                document.getElementById("p2-Ranger").src = "images/ranger_green.png";
+                                document.getElementById("p2-Healer").src = "images/healer_green.png";
                             }
                             if (player2Color.value == "Blue") {
                                 color4[i].style.backgroundColor = "#78D8FF"
-                                document.getElementById("p2-Melee").src="images/attacker_blue.png";
-                                document.getElementById("p2-Defender").src="images/defender_blue.png";
-                                document.getElementById("p2-Ranger").src="images/ranger_blue.png";
-                                document.getElementById("p2-Healer").src="images/healer_blue.png";
+                                document.getElementById("p2-Melee").src = "images/attacker_blue.png";
+                                document.getElementById("p2-Defender").src = "images/defender_blue.png";
+                                document.getElementById("p2-Ranger").src = "images/ranger_blue.png";
+                                document.getElementById("p2-Healer").src = "images/healer_blue.png";
                             }
                             if (player2Color.value == "Yellow") {
                                 color4[i].style.backgroundColor = "#FFE88F";
-                                document.getElementById("p2-Melee").src="images/attacker_yellow.png";
-                                document.getElementById("p2-Defender").src="images/defender_yellow.png";
-                                document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
-                                document.getElementById("p2-Healer").src="images/healer_yellow.png";
+                                document.getElementById("p2-Melee").src = "images/attacker_yellow.png";
+                                document.getElementById("p2-Defender").src = "images/defender_yellow.png";
+                                document.getElementById("p2-Ranger").src = "images/ranger_yellow.png";
+                                document.getElementById("p2-Healer").src = "images/healer_yellow.png";
                             }
                         }
                     }
@@ -2297,31 +2317,35 @@ submit.addEventListener('click', event => {
                     if (color5) {
                         if (player1Color.value == "Red") {
                             color5[i].style.backgroundColor = "#FF7462"
-                            document.getElementById("p1-Melee").src="images/attacker_red.png";
-                            document.getElementById("p1-Defender").src="images/defender_red.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_red.png";
-                            document.getElementById("p1-Healer").src="images/healer_red.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_red.png";
+                            document.getElementById("p1-Defender").src = "images/defender_red.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_red.png";
+                            document.getElementById("p1-Healer").src = "images/healer_red.png";
+                            document.body.style.backgroundColor = "#FF7462";
                         }
                         if (player1Color.value == "Green") {
                             color5[i].style.backgroundColor = "#23EE96";
-                            document.getElementById("p1-Melee").src="images/attacker_green.png";
-                            document.getElementById("p1-Defender").src="images/defender_green.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_green.png";
-                            document.getElementById("p1-Healer").src="images/healer_green.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_green.png";
+                            document.getElementById("p1-Defender").src = "images/defender_green.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_green.png";
+                            document.getElementById("p1-Healer").src = "images/healer_green.png";
+                            document.body.style.backgroundColor = "#23EE96";
                         }
                         if (player1Color.value == "Blue") {
                             color5[i].style.backgroundColor = "#78D8FF";
-                            document.getElementById("p1-Melee").src="images/attacker_blue.png";
-                            document.getElementById("p1-Defender").src="images/defender_blue.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_blue.png";
-                            document.getElementById("p1-Healer").src="images/healer_blue.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_blue.png";
+                            document.getElementById("p1-Defender").src = "images/defender_blue.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_blue.png";
+                            document.getElementById("p1-Healer").src = "images/healer_blue.png";
+                            document.body.style.backgroundColor = "#78D8FF";
                         }
                         if (player1Color.value == "Yellow") {
                             color5[i].style.backgroundColor = "#FFE88F";
-                            document.getElementById("p1-Melee").src="images/attacker_yellow.png";
-                            document.getElementById("p1-Defender").src="images/defender_yellow.png";
-                            document.getElementById("p1-Ranger").src="images/ranger_yellow.png";
-                            document.getElementById("p1-Healer").src="images/healer_yellow.png";
+                            document.getElementById("p1-Melee").src = "images/attacker_yellow.png";
+                            document.getElementById("p1-Defender").src = "images/defender_yellow.png";
+                            document.getElementById("p1-Ranger").src = "images/ranger_yellow.png";
+                            document.getElementById("p1-Healer").src = "images/healer_yellow.png";
+                            document.body.style.backgroundColor = "#FFE88F";
                         }
                     }
                 }
@@ -2331,34 +2355,34 @@ submit.addEventListener('click', event => {
                     if (color6) {
                         if (player2Color.value == "Red") {
                             color6[i].style.backgroundColor = "#FF7462";
-                            document.getElementById("p2-Melee").src="images/attacker_red.png";
-                            document.getElementById("p2-Defender").src="images/defender_red.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_red.png";
-                            document.getElementById("p2-Healer").src="images/healer_red.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_red.png";
+                            document.getElementById("p2-Defender").src = "images/defender_red.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_red.png";
+                            document.getElementById("p2-Healer").src = "images/healer_red.png";
 
                         }
                         if (player2Color.value == "Green") {
                             color6[i].style.backgroundColor = "#23EE96";
-                            document.getElementById("p2-Melee").src="images/attacker_green.png";
-                            document.getElementById("p2-Defender").src="images/defender_green.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_green.png";
-                            document.getElementById("p2-Healer").src="images/healer_green.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_green.png";
+                            document.getElementById("p2-Defender").src = "images/defender_green.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_green.png";
+                            document.getElementById("p2-Healer").src = "images/healer_green.png";
 
 
                         }
                         if (player2Color.value == "Blue") {
                             color6[i].style.backgroundColor = "#78D8FF";
-                            document.getElementById("p2-Melee").src="images/attacker_blue.png";
-                            document.getElementById("p2-Defender").src="images/defender_blue.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_blue.png";
-                            document.getElementById("p2-Healer").src="images/healer_blue.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_blue.png";
+                            document.getElementById("p2-Defender").src = "images/defender_blue.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_blue.png";
+                            document.getElementById("p2-Healer").src = "images/healer_blue.png";
                         }
                         if (player2Color.value == "Yellow") {
                             color6[i].style.backgroundColor = "#FFE88F";
-                            document.getElementById("p2-Melee").src="images/attacker_yellow.png";
-                            document.getElementById("p2-Defender").src="images/defender_yellow.png";
-                            document.getElementById("p2-Ranger").src="images/ranger_yellow.png";
-                            document.getElementById("p2-Healer").src="images/healer_yellow.png";
+                            document.getElementById("p2-Melee").src = "images/attacker_yellow.png";
+                            document.getElementById("p2-Defender").src = "images/defender_yellow.png";
+                            document.getElementById("p2-Ranger").src = "images/ranger_yellow.png";
+                            document.getElementById("p2-Healer").src = "images/healer_yellow.png";
 
                         }
                     }
@@ -2403,10 +2427,10 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready2").style.backgroundColor = "#FFE88F";
             }
 
-            //optimize this so no matter what order you click it will do the set timeout
-            });
-        })
+        });
+
     })
+})
 
 
 ready1.addEventListener('click', event => {
@@ -2419,161 +2443,144 @@ ready1.addEventListener('click', event => {
 
 
     let color1 = document.querySelectorAll(".game-cell.drop");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                let color2 = document.querySelectorAll(".game-cell.drops");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color2[i].style.backgroundColor = "#9CEAEF"
-                color2[i].style.borderColor = "#057672"
-                    }
-                }
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
+        }
+    }
+    let color2 = document.querySelectorAll(".game-cell.drops");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+            color2[i].style.backgroundColor = "#9CEAEF"
+            color2[i].style.borderColor = "#057672"
+        }
+    }
     event.preventDefault();
 
 
-    let melee1 = document.getElementById("p1-Melee");
-                melee1.setAttribute('draggable', "false")
 
-                let defender1 = document.getElementById("p1-Defender");
-                defender1.setAttribute('draggable', "false")
+    document.getElementById("p1").remove();
+    document.getElementById("ready1").remove();
+    document.getElementById("p2").remove();
+    document.getElementById("displayDiv").remove();
 
-                let ranger1 = document.getElementById("p1-Ranger");
-                ranger1.setAttribute('draggable', "false")
+    Melee1.style.display = "";
+    Ranger1.style.display = "";
+    Defender1.style.display = "";
+    Healer1.style.display = "";
+    if (player1Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player1Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player1Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player1Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
+    }
+    if (document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null) {
+        alert("Player1 place all your ships down please before starting");
+        document.location.reload();
+    } else if (document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null) {
+        alert("Player2 place all your ships down please before starting");
+        document.location.reload();
+    }
 
-                let healer1 = document.getElementById("p1-Healer");
-                healer1.setAttribute('draggable', "false")
-                let melee2 = document.getElementById("p2-Melee");
-                melee2.setAttribute('draggable', "false")
-
-                let defender2 = document.getElementById("p2-Defender");
-                defender2.setAttribute('draggable', "false")
-
-                let ranger2 = document.getElementById("p2-Ranger");
-                ranger2.setAttribute('draggable', "false")
-
-                let healer2 = document.getElementById("p2-Healer");
-                healer2.setAttribute('draggable', "false")
-
-                document.getElementById("p1").remove();
-                document.getElementById("ready1").remove();
-                document.getElementById("p2").remove();
-                document.getElementById("displayDiv").remove();
-
-                Melee1.style.display = "";
-                Ranger1.style.display = "";
-                Defender1.style.display = "";
-                Healer1.style.display = "";
-
-                if(player1Color.value == "Blue") {
-                    document.body.style.backgroundColor = "#78D8FF"
-                } else if(player1Color.value == "Green"){
-                    document.body.style.backgroundColor = "#23EE96"
-                } else if(player1Color.value == "Red"){
-                    document.body.style.backgroundColor = "#FF7462"
-                } else if(player1Color.value == "Yellow"){
-                    document.body.style.backgroundColor = "#FFE88F"
-                }
-                if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
-                    alert("Player1 place all your ships down please before starting");
-                    document.location.reload();
-                }
-                else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
-                    alert("Player2 place all your ships down please before starting");
-                    document.location.reload();
-                }
 })
 
 function listingM1() {
     document.getElementById("ActionsM1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
-  document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 
 }
+
 function listingR1() {
     document.getElementById("ActionsR1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
-  document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
-  document.getElementById("ActionsM1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 }
+
 function listingD1() {
     document.getElementById("ActionsD1").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
-  document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
-  document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 }
+
 function listingH1() {
-  document.getElementById("ActionsH1").classList.add("show");
-  document.getElementById("ActionsM2").classList.remove("show");
-  document.getElementById("ActionsR2").classList.remove("show");
-document.getElementById("ActionsD2").classList.remove("show");
-document.getElementById("ActionsH2").classList.remove("show");
-document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
 }
 
 function listingM2() {
     document.getElementById("ActionsM2").classList.add("show");
     document.getElementById("ActionsR2").classList.remove("show");
-  document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 }
+
 function listingR2() {
     document.getElementById("ActionsR2").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
-  document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 }
+
 function listingD2() {
     document.getElementById("ActionsD2").classList.add("show");
     document.getElementById("ActionsM2").classList.remove("show");
     document.getElementById("ActionsR2").classList.remove("show");
-  document.getElementById("ActionsH2").classList.remove("show");
+    document.getElementById("ActionsH2").classList.remove("show");
     document.getElementById("ActionsM1").classList.remove("show");
     document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 
 }
+
 function listingH2() {
-  document.getElementById("ActionsH2").classList.add("show");
-  document.getElementById("ActionsM2").classList.remove("show");
-  document.getElementById("ActionsR2").classList.remove("show");
-document.getElementById("ActionsD2").classList.remove("show");
-  document.getElementById("ActionsM1").classList.remove("show");
-  document.getElementById("ActionsR1").classList.remove("show");
-  document.getElementById("ActionsD1").classList.remove("show");
-  document.getElementById("ActionsH1").classList.remove("show");
+    document.getElementById("ActionsH2").classList.add("show");
+    document.getElementById("ActionsM2").classList.remove("show");
+    document.getElementById("ActionsR2").classList.remove("show");
+    document.getElementById("ActionsD2").classList.remove("show");
+    document.getElementById("ActionsM1").classList.remove("show");
+    document.getElementById("ActionsR1").classList.remove("show");
+    document.getElementById("ActionsD1").classList.remove("show");
+    document.getElementById("ActionsH1").classList.remove("show");
 }
 
 let mAtt1 = document.getElementById("attackM1");
@@ -2619,213 +2626,50 @@ function AttackM1() {
     document.getElementById("attackM1").disabled = true;
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1") {
             at = pos;
 
         }
         pos++;
     }
-    attackInARange(at,2,"p1",25);
+    attackInARange(at, 2, "p1", 25);
     document.getElementById("attackM1").disabled = true;
     document.querySelector('#attackM1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
-function MovementM1(){
+function MovementM1() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p1") {
             at = pos;
         }
         pos++;
     }
-    move(at,3,"p1-Melee");
+    move(at, 3, "p1-Melee");
     document.getElementById("movementM1").disabled = true;
     document.querySelector('#movementM1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
 }
 
-function EndTurnM1(){
-        document.getElementById("attackM1").disabled = false;
-        document.querySelector('#attackM1').innerHTML = 'Attack';
-        document.getElementById("movementM1").disabled = false;
-        document.querySelector('#movementM1').innerHTML = 'Movement';
-
-        let color1 = document.querySelectorAll(".game-cell");
-        for (let i = 0; i < color1.length; i++) {
-            if (color1) {
-        color1[i].style.backgroundColor = "#9CEAEF"
-        color1[i].style.borderColor = "#057672"
-            }
-        }
-        Melee2.style.display = "";
-        Ranger2.style.display = "";
-        Defender2.style.display = "";
-        Healer2.style.display = "";
-        Melee1.style.display = "none";
-        Ranger1.style.display = "none";
-        Defender1.style.display = "none";
-        Healer1.style.display = "none";
-
-        document.getElementById("turns").style.visibility = "hidden"
-        document.getElementById("turns2").style.visibility = "visible"
-
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
-    }
-
-function AttackR1() {
-    document.getElementById("attackR1").disabled = true;
-    let at = -1;
-    let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1")
-        {
-            at = pos;
-
-        }
-        pos++;
-    }
-    decideRow(at,20);
-
-  document.getElementById("attackR1").disabled = true;
-  document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-    document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-}
-
-function MovementR1(){
-    let at = -1;
-    let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1")
-        {
-            at = pos;
-
-        }
-        pos++;
-    }
-    move(at,2,"p1-Ranger");
-    document.getElementById("movementR1").disabled = true;
-    document.querySelector('#movementR1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-    document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-
-}
-
-function EndTurnR1(){
-
-    document.getElementById("attackR1").disabled = false;
-    document.querySelector('#attackR1').innerHTML = 'Attack';
-    document.getElementById("movementR1").disabled = false;
-    document.querySelector('#movementR1').innerHTML = 'Movement';
-
-    let color1 = document.querySelectorAll(".game-cell");
-                for (let i = 0; i < color1.length; i++) {
-                    if (color1) {
-                color1[i].style.backgroundColor = "#9CEAEF"
-                color1[i].style.borderColor = "#057672"
-                    }
-                }
-                Melee2.style.display = "none";
-                Melee2.style.display = "";
-                Ranger2.style.display = "";
-                Defender2.style.display = "";
-                Healer2.style.display = "";
-                Melee1.style.display = "none";
-                Ranger1.style.display = "none";
-                Defender1.style.display = "none";
-                Healer1.style.display = "none";
-
-        if(player2Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player2Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player2Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player2Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "hidden"
-        document.getElementById("turns2").style.visibility = "visible"
-
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
-    }
-
-function AttackD1() {
-    let at = -1;
-    let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p1")
-        {
-            at = pos;
-
-        }
-        pos++;
-    }
-    attackInARange(at,2,"p1",35);
-    document.getElementById("attackD1").disabled = true;
-    document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
-
-}
-
-function MovementD1(){
-    let at = -1;
-    let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p1")
-        {
-            at = pos;
-
-        }
-        pos++;
-    }
-    move(at,1,"p1-Defender");
-    document.getElementById("movementD1").disabled = true;
-    document.querySelector('#movementD1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
-    document.getElementById("p1-Melee").removeAttribute("onclick")
-        document.getElementById("p1-Healer").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
-
-}
-
-function EndTurnD1(){
-
-    document.getElementById("attackD1").disabled = false;
-    document.querySelector('#attackD1').innerHTML = 'Attack';
-    document.getElementById("movementD1").disabled = false;
-    document.querySelector('#movementD1').innerHTML = 'Movement';
+function EndTurnM1() {
+    document.getElementById("attackM1").disabled = false;
+    document.querySelector('#attackM1').innerHTML = 'Attack';
+    document.getElementById("movementM1").disabled = false;
+    document.querySelector('#movementM1').innerHTML = 'Movement';
 
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "";
@@ -2837,15 +2681,96 @@ function EndTurnD1(){
     Defender1.style.display = "none";
     Healer1.style.display = "none";
 
-        if(player2Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player2Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player2Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player2Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
+    if (player2Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player2Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player2Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player2Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
+    }
+    document.getElementById("turns").style.visibility = "hidden"
+    document.getElementById("turns2").style.visibility = "visible"
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+}
+
+function AttackR1() {
+    document.getElementById("attackR1").disabled = true;
+    let at = -1;
+    let pos = 0;
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1") {
+            at = pos;
+
         }
+        pos++;
+    }
+    decideRow(at, 20);
+
+    document.getElementById("attackR1").disabled = true;
+    document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+}
+
+function MovementR1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1") {
+            at = pos;
+
+        }
+        pos++;
+    }
+    move(at, 2, "p1-Ranger");
+    document.getElementById("movementR1").disabled = true;
+    document.querySelector('#movementR1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Defender").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+
+}
+
+function EndTurnR1() {
+
+    document.getElementById("attackR1").disabled = false;
+    document.querySelector('#attackR1').innerHTML = 'Attack';
+    document.getElementById("movementR1").disabled = false;
+    document.querySelector('#movementR1').innerHTML = 'Movement';
+
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
+        }
+
+    }
+    Melee2.style.display = "";
+    Ranger2.style.display = "";
+    Defender2.style.display = "";
+    Healer2.style.display = "";
+    Melee1.style.display = "none";
+    Ranger1.style.display = "none";
+    Defender1.style.display = "none";
+    Healer1.style.display = "none";
+
+    if (player2Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player2Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player2Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player2Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
 
@@ -2853,79 +2778,164 @@ function EndTurnD1(){
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
             document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
     }
 
-function HealH1(){
+    document.getElementById("turns").style.visibility = "hidden"
+    document.getElementById("turns2").style.visibility = "visible"
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+}
+
+function AttackD1() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p1") {
             at = pos;
 
         }
         pos++;
     }
-    chooseHeal(at,15);
+    attackInARange(at, 2, "p1", 35);
+    document.getElementById("attackD1").disabled = true;
+    document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
+
+}
+
+function MovementD1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p1") {
+            at = pos;
+
+        }
+        pos++;
+    }
+    move(at, 1, "p1-Defender");
+    document.getElementById("movementD1").disabled = true;
+    document.querySelector('#movementD1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
+    document.getElementById("p1-Melee").removeAttribute("onclick")
+    document.getElementById("p1-Healer").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
+
+}
+
+function EndTurnD1() {
+
+    document.getElementById("attackD1").disabled = false;
+    document.querySelector('#attackD1').innerHTML = 'Attack';
+    document.getElementById("movementD1").disabled = false;
+    document.querySelector('#movementD1').innerHTML = 'Movement';
+
+    let color1 = document.querySelectorAll(".game-cell");
+    for (let i = 0; i < color1.length; i++) {
+        if (color1) {
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
+        }
+    }
+    Melee2.style.display = "";
+    Ranger2.style.display = "";
+    Defender2.style.display = "";
+    Healer2.style.display = "";
+    Melee1.style.display = "none";
+    Ranger1.style.display = "none";
+    Defender1.style.display = "none";
+    Healer1.style.display = "none";
+    if (player2Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player2Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player2Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player2Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
+    }
+
+
+    document.getElementById("turns").style.visibility = "hidden"
+    document.getElementById("turns2").style.visibility = "visible"
+
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+}
+
+function HealH1() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1") {
+            at = pos;
+
+        }
+        pos++;
+    }
+    chooseHeal(at, 15);
 
     document.getElementById("healH1").disabled = true;
-  document.getElementById("healH1").disabled = true;
-  document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
-  document.getElementById("attackH1").disabled = true;
-  document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("healH1").disabled = true;
+    document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("attackH1").disabled = true;
+    document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
 
-    }
+}
 
 
 function AttackH1() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1") {
             at = pos;
 
         }
         pos++;
     }
-    attackInARange(at,1,"p1",10);
+    attackInARange(at, 1, "p1", 10);
     document.getElementById("attackH1").disabled = true;
     document.querySelector('#attackH1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH1").disabled = true;
     document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
-function MovementH1(){
+function MovementH1() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1") {
             at = pos;
 
         }
         pos++;
     }
-    move(at,4,"p1-Healer");
+    move(at, 4, "p1-Healer");
     document.getElementById("movementH1").disabled = true;
     document.querySelector('#movementH1').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
-        document.getElementById("p1-Ranger").removeAttribute("onclick")
+    document.getElementById("p1-Ranger").removeAttribute("onclick")
 
 }
 
-function EndTurnH1(){
+function EndTurnH1() {
 
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
@@ -2936,81 +2946,79 @@ function EndTurnH1(){
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "";
-        Ranger2.style.display = "";
-        Defender2.style.display = "";
-        Healer2.style.display = "";
-        Melee1.style.display = "none";
-        Ranger1.style.display = "none";
-        Defender1.style.display = "none";
-        Healer1.style.display = "none";
-
-        if(player2Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player2Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player2Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player2Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "hidden"
-        document.getElementById("turns2").style.visibility = "visible"
-
-            document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
-            document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
-            document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
-            document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
-
+    Ranger2.style.display = "";
+    Defender2.style.display = "";
+    Healer2.style.display = "";
+    Melee1.style.display = "none";
+    Ranger1.style.display = "none";
+    Defender1.style.display = "none";
+    Healer1.style.display = "none";
+    if (player2Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player2Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player2Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player2Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
     }
+
+    document.getElementById("turns").style.visibility = "hidden"
+    document.getElementById("turns2").style.visibility = "visible"
+
+    document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
+    document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
+    document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
+    document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
+
+}
+
 function AttackM2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    attackInARange(at,2,"p2",25);
+    attackInARange(at, 2, "p2", 25);
     document.getElementById("attackM2").disabled = true;
     document.querySelector('#attackM2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
-function MovementM2(){
+function MovementM2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Melee" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
 
-    move(at,3,"p2-Melee");
+    move(at, 3, "p2-Melee");
     document.getElementById("movementM2").disabled = true;
     document.querySelector('#movementM2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
-function EndTurnM2(){
+function EndTurnM2() {
 
     document.getElementById("attackM2").disabled = false;
     document.querySelector('#attackM2').innerHTML = 'Attack';
@@ -3020,81 +3028,78 @@ function EndTurnM2(){
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "none";
-        Ranger2.style.display = "none";
-        Defender2.style.display = "none";
-        Healer2.style.display = "none";
-        Melee1.style.display = "";
-        Ranger1.style.display = "";
-        Defender1.style.display = "";
-        Healer1.style.display = "";
-
-        if(player1Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player1Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player1Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player1Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "visible"
-        document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+    Ranger2.style.display = "none";
+    Defender2.style.display = "none";
+    Healer2.style.display = "none";
+    Melee1.style.display = "";
+    Ranger1.style.display = "";
+    Defender1.style.display = "";
+    Healer1.style.display = "";
+    if (player1Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player1Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player1Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player1Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
     }
 
-    function AttackR2() {
-        document.getElementById("attackR2").disabled = true;
+    document.getElementById("turns").style.visibility = "visible"
+    document.getElementById("turns2").style.visibility = "hidden"
 
-        let at = -1;
-        let pos = 0;
-        while (at == -1)
-        {
-            if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
-            {
-                at = pos;
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+}
 
-            }
-            pos++;
-        }
-        decideRow(at,20);
-      document.getElementById("attackR2").disabled = true;
-      document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-        document.getElementById("p2-Melee").removeAttribute("onclick")
-        document.getElementById("p2-Defender").removeAttribute("onclick")
-            document.getElementById("p2-Healer").removeAttribute("onclick")
-    }
 
-function MovementR2(){
+function AttackR2() {
+    document.getElementById("attackR2").disabled = true;
+
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    move(at,2,"p2-Ranger");
+    decideRow(at, 20);
+    document.getElementById("attackR2").disabled = true;
+    document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("p2-Melee").removeAttribute("onclick")
+    document.getElementById("p2-Defender").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
+}
+
+function MovementR2() {
+    let at = -1;
+    let pos = 0;
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2") {
+            at = pos;
+
+        }
+        pos++;
+    }
+    move(at, 2, "p2-Ranger");
     document.getElementById("movementR2").disabled = true;
     document.querySelector('#movementR2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
 
 }
 
-function EndTurnR2(){
+function EndTurnR2() {
 
     document.getElementById("attackR2").disabled = false;
     document.querySelector('#attackR2').innerHTML = 'Attack';
@@ -3104,80 +3109,76 @@ function EndTurnR2(){
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "none";
-        Ranger2.style.display = "none";
-        Defender2.style.display = "none";
-        Healer2.style.display = "none";
-        Melee1.style.display = "";
-        Ranger1.style.display = "";
-        Defender1.style.display = "";
-        Healer1.style.display = "";
-
-        if(player1Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player1Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player1Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player1Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "visible"
-        document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+    Ranger2.style.display = "none";
+    Defender2.style.display = "none";
+    Healer2.style.display = "none";
+    Melee1.style.display = "";
+    Ranger1.style.display = "";
+    Defender1.style.display = "";
+    Healer1.style.display = "";
+    if (player1Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player1Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player1Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player1Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
     }
+
+    document.getElementById("turns").style.visibility = "visible"
+    document.getElementById("turns2").style.visibility = "hidden"
+
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+}
 
 function AttackD2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    attackInARange(at,2,"p2",35);
+    attackInARange(at, 2, "p2", 35);
     document.getElementById("attackD2").disabled = true;
     document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
-function MovementD2(){
+function MovementD2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Defender" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    move(at,1,"p2-Defender");
+    move(at, 1, "p2-Defender");
     document.getElementById("movementD2").disabled = true;
     document.querySelector('#movementD2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Healer").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
-function EndTurnD2(){
+function EndTurnD2() {
 
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
@@ -3187,107 +3188,101 @@ function EndTurnD2(){
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "none";
-        Ranger2.style.display = "none";
-        Defender2.style.display = "none";
-        Healer2.style.display = "none";
-        Melee1.style.display = "";
-        Ranger1.style.display = "";
-        Defender1.style.display = "";
-        Healer1.style.display = "";
-
-        if(player1Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player1Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player1Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player1Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "visible"
-        document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+    Ranger2.style.display = "none";
+    Defender2.style.display = "none";
+    Healer2.style.display = "none";
+    Melee1.style.display = "";
+    Ranger1.style.display = "";
+    Defender1.style.display = "";
+    Healer1.style.display = "";
+    if (player1Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player1Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player1Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player1Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
     }
 
-function HealH2(){
+    document.getElementById("turns").style.visibility = "visible"
+    document.getElementById("turns2").style.visibility = "hidden"
+
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+}
+
+function HealH2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    chooseHeal(at,15);
+    chooseHeal(at, 15);
     document.getElementById("healH2").disabled = true;
-  document.getElementById("healH2").disabled = true;
-  document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
-  document.getElementById("attackH2").disabled = true;
-  document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+    document.getElementById("healH2").disabled = true;
+    document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
+    document.getElementById("attackH2").disabled = true;
+    document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
-    }
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
+}
 
 function AttackH2() {
 
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    attackInARange(at,1,"p2",10);
+    attackInARange(at, 1, "p2", 10);
     document.getElementById("attackH2").disabled = true;
     document.querySelector('#attackH2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("healH2").disabled = true;
     document.querySelector('#healH2').innerHTML = 'H̶e̶a̶l̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 }
 
-function MovementH2(){
+function MovementH2() {
     let at = -1;
     let pos = 0;
-    while (at == -1)
-    {
-        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
-        {
+    while (at == -1) {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2") {
             at = pos;
 
         }
         pos++;
     }
-    move(at,4,"p2-Healer");
+    move(at, 4, "p2-Healer");
 
     document.getElementById("movementH2").disabled = true;
     document.querySelector('#movementH2').innerHTML = 'M̶o̶v̶e̶m̶e̶n̶t̶';
 
     document.getElementById("p2-Melee").removeAttribute("onclick")
     document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Ranger").removeAttribute("onclick")
+    document.getElementById("p2-Ranger").removeAttribute("onclick")
 
 }
 
-function EndTurnH2(){
+function EndTurnH2() {
 
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
@@ -3299,37 +3294,38 @@ function EndTurnH2(){
     let color1 = document.querySelectorAll(".game-cell");
     for (let i = 0; i < color1.length; i++) {
         if (color1) {
-    color1[i].style.backgroundColor = "#9CEAEF"
-    color1[i].style.borderColor = "#057672"
+            color1[i].style.backgroundColor = "#9CEAEF"
+            color1[i].style.borderColor = "#057672"
         }
     }
     Melee2.style.display = "none";
-        Ranger2.style.display = "none";
-        Defender2.style.display = "none";
-        Healer2.style.display = "none";
-        Melee1.style.display = "";
-        Ranger1.style.display = "";
-        Defender1.style.display = "";
-        Healer1.style.display = "";
 
-        if(player1Color.value == "Blue") {
-            document.body.style.backgroundColor = "#78D8FF"
-        } else if(player1Color.value == "Green"){
-            document.body.style.backgroundColor = "#23EE96"
-        } else if(player1Color.value == "Red"){
-            document.body.style.backgroundColor = "#FF7462"
-        } else if(player1Color.value == "Yellow"){
-            document.body.style.backgroundColor = "#FFE88F"
-        }
-        document.getElementById("turns").style.visibility = "visible"
-        document.getElementById("turns2").style.visibility = "hidden"
-
-            document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
-            document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
-            document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
-            document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
-
+    Ranger2.style.display = "none";
+    Defender2.style.display = "none";
+    Healer2.style.display = "none";
+    Melee1.style.display = "";
+    Ranger1.style.display = "";
+    Defender1.style.display = "";
+    Healer1.style.display = "";
+    if (player1Color.value == "Blue") {
+        document.body.style.backgroundColor = "#78D8FF"
+    } else if (player1Color.value == "Green") {
+        document.body.style.backgroundColor = "#23EE96"
+    } else if (player1Color.value == "Red") {
+        document.body.style.backgroundColor = "#FF7462"
+    } else if (player1Color.value == "Yellow") {
+        document.body.style.backgroundColor = "#FFE88F"
     }
+
+    document.getElementById("turns").style.visibility = "visible"
+    document.getElementById("turns2").style.visibility = "hidden"
+
+    document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
+    document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
+    document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
+    document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
+}
+
 function printArray() {
     console.log(cellArr);
 }

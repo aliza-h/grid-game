@@ -154,7 +154,8 @@ input[type=text]:focus {
 }
 
 
-#player1Color, #player2Color {
+#player1Color,
+#player2Color {
     font-family: Verdana;
     font-size: 8px;
     width: 150px;
@@ -167,7 +168,8 @@ input[type=text]:focus {
     visibility: hidden;
 }
 
-#text-prompt1, #text-prompt2 {
+#text-prompt1,
+#text-prompt2 {
     margin-bottom: 3vh;
 }
 
@@ -185,7 +187,8 @@ input[type=text]:focus {
     border-radius: 30px;
 }
 
-#submit  { /* Change font + rounded border + color CHECK ON THIS!!!*/
+#submit {
+    /* Change font + rounded border + color CHECK ON THIS!!!*/
     background-color: #9CEAEF;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
@@ -249,7 +252,7 @@ img {
     height: 100%;
     background-color: red;
     opacity: 0.5;
-    z-index:  7;
+    z-index: 7;
     display: none;
 }
 
@@ -260,7 +263,7 @@ img {
     height: 100%;
     background-color: blue;
     opacity: 0.5;
-    z-index:  7;
+    z-index: 7;
     display: none;
 }
 
@@ -272,12 +275,13 @@ img {
 
 
 
-#player1{
+#player1 {
     margin-left: 8%;
 }
 
-#player1Color, #player2Color{
-    visibility:hidden;
+#player1Color,
+#player2Color {
+    visibility: hidden;
 }
 
 #board-size{
@@ -306,29 +310,21 @@ img {
 }
 
 
-#name, #names, #colors{
+#name,
+#names,
+#colors {
     display: flex;
 }
 
-#name2{
-font-size: 25px;
-}
-
-#name1{
+#name2 {
     font-size: 25px;
 }
 
-#turns{
+#name1 {
     font-size: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    visibility: hidden;
-    color: #ADFAFF;
 }
 
-#turns2{
+#turns {
     font-size: 25px;
     display: flex;
     flex-direction: row;
@@ -338,7 +334,17 @@ font-size: 25px;
     color: #ADFAFF;
 }
 
-#player1end{
+#turns2 {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    visibility: hidden;
+    color: #ADFAFF;
+}
+
+#player1end {
     font-size: 25px;
     display: flex;
     flex-direction: row;
@@ -348,7 +354,7 @@ font-size: 25px;
     color: white;
 }
 
-#player2end{
+#player2end {
     font-size: 25px;
     display: flex;
     flex-direction: row;
@@ -357,7 +363,8 @@ font-size: 25px;
     display: none;
 }
 
-#names1, #readycheck {
+#names1,
+#readycheck {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -371,14 +378,15 @@ font-size: 25px;
     margin-right: 2%;
 }
 
-.board-turn-name, .board-turn-end{
+.board-turn-name,
+.board-turn-end {
     font-size: 20px;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 3vh;
 }
 
-#readybuttons{
+#readybuttons {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
@@ -387,7 +395,7 @@ font-size: 25px;
 }
 
 
-#ready1{
+#ready1 {
     background-color: #9CEAEF;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
@@ -399,9 +407,10 @@ font-size: 25px;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    display: none;
 }
 
-#end{
+#end {
     background-color: #9CEAEF;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
@@ -419,171 +428,170 @@ font-size: 25px;
 }
 
 #p1 {
-visibility: hidden;
-float: left;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 8vw;
-  width: 20vw;
-  border: 4px solid #ADFAFF;
-  margin-right: 45px;
-  margin-bottom: 15px;
-  visibility: hidden;
+    visibility: hidden;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vw;
+    width: 20vw;
+    border: 4px solid black;
+    margin-right: 45px;
+    margin-bottom: 15px;
+    visibility: hidden;
 }
 
-#p2{
+#p2 {
 
-  float: right;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 8vw;
-  width: 20vw;
-  border: 4px solid #ADFAFF;
-  margin-left: 45px;
-  margin-bottom: 15px;
-  visibility: hidden;
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vw;
+    width: 20vw;
+    border: 4px solid black;
+    margin-left: 45px;
+    margin-bottom: 15px;
+    visibility: hidden;
 }
 
 
 
-#ActionsM1{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+#ActionsM1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 }
 
-#ActionsR1{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
-
-}
-
-#ActionsD1{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+#ActionsR1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
-#ActionsH1{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
- /*margin-right: 100px;
- margin-left: 100px;*/
+#ActionsD1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
-#ActionsM2{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+
+#ActionsH1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
+}
+
+#ActionsM2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
-#ActionsR2{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+#ActionsR2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
-#ActionsD2{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+#ActionsD2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
-#ActionsH2{
- flex-direction: column;
- align-items: center;
- justify-content: space-around;
- height: 10vw;
- width: 10vw;
- border: 2px solid black;
- margin-bottom: 15px;
+#ActionsH2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vw;
+    width: 10vw;
+    border: 2px solid black;
+    margin-bottom: 15px;
 
 }
 
 
 
 .dropbtn {
- background-color: #3498DB;
- color: white;
- padding: 16px;
- font-size: 16px;
- border: none;
- cursor: pointer;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus{
- background-color: #2980B9;
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #2980B9;
 }
 
 .dropdown {
- position: relative;
- display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .actList {
 
- float: left;
- align-items: center;
- justify-content: center;
- flex-direction: column;
- display: none;
- position: relative;
- background-color: #f1f1f1;
- min-width: 5vw;
- box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    float: left;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+    position: relative;
+    background-color: #f1f1f1;
+    min-width: 5vw;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .actList a {
- color: black;
- padding: 12px 16px;
- text-decoration: none;
- display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 .dropdown a:hover {
- background-color: #ddd;
- display: block;
+    background-color: #ddd;
+    display: block;
 }
 
 .show {
- display: flex;
+    display: flex;
 }
