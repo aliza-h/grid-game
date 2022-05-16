@@ -1076,8 +1076,9 @@ ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    let data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    document.getElementById(data).draggable = false;
     var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
