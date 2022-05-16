@@ -8,55 +8,61 @@
         <meta name="author" content="The four of us">
         <!-- <link rel="icon" href="/favicon.ico"><link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
         <link rel="stylesheet" href="styles.css">
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        </style>
     </head>
     <body>
-        <a href="rules.html" target="_blank">Learn how to play!</a>
+        
+        <img src="images/strife_top_banner.png" style="width: 100%; height: auto;">
 
+        <div id="arcade-screen">
+            <a href="rules.html" target="_blank">Learn how to play!</a>
+            <div id="board-size-box">
+                <h2>Choose a board size</h2>
+
+                <select name="board-size" id="board-size">
+                    <option disabled selected></option>
+                    <option id = "1">10x10</option>
+                    <option id = "2">15x15</option>
+                    <option id = "3">20x20</option>
+                </select>
+            </div>
+
+
+
+            <div id="player-input-box">
             
-        <div id="board-size-box">
-            <h2>Choose a board size</h2>
+                <div class="single-player-input" id="player-1-box">
+                    <h2>Player 1</h2>
+                    <div id="text-prompt1">Please enter a nickname</div>
+                    <input type="text" id="player1Name" required>
 
-            <select name="board-size" id="board-size">
-                <option disabled selected></option>
-                <option id = "1">10x10</option>
-                <option id = "2">15x15</option>
-                <option id = "3">20x20</option>
-            </select>
-        </div>
+                    <select id="player1Color" required>
+                        <option hidden disabled selected value>choose...</option>
+                        <option>Red</option>
+                        <option>Green</option>
+                        <option>Blue</option>
+                        <option>Yellow</option>
+                    </select>
+                </div>
 
+                <div class="single-player-input" id="player-2-box">
+                    <h2>Player 2</h2>
+                    <div id="text-prompt2">Please enter a nickname</div>
+                    <input type="text" id="player2Name" required>
 
-    <div id="player-input-box">
-    
-        <div class="single-player-input" id="player-1-box">
-            <h2>Player 1</h2>
-            <div id="text-prompt1">Please enter a nickname</div>
-            <input type="text" id="player1Name" required>
-
-            <select id="player1Color" required>
-                <option hidden disabled selected value>choose...</option>
-                <option>Red</option>
-                <option>Green</option>
-                <option>Blue</option>
-                <option>Yellow</option>
-            </select>
-        </div>
-
-        <div class="single-player-input" id="player-2-box">
-            <h2>Player 2</h2>
-            <div id="text-prompt2">Please enter a nickname</div>
-            <input type="text" id="player2Name" required>
-
-            <select id="player2Color" required>
-                <option hidden disabled selected value>choose...</option>
-                <option>Red</option>
-                <option>Green</option>
-                <option>Blue</option>
-                <option>Yellow</option>
-            </select>
-        </div>
-    
-    </div>
-
+                    <select id="player2Color" required>
+                        <option hidden disabled selected value>choose...</option>
+                        <option>Red</option>
+                        <option>Green</option>
+                        <option>Blue</option>
+                        <option>Yellow</option>
+                    </select>
+                </div>
+            
+            </div>
 
     <button type="submit" id="submit">Submit</button>
     <div id="turns1">
@@ -78,110 +84,119 @@
                     <img src="images/Healer.jpeg" id="p1-Healer" draggable="true" ondragstart="drag(event)" onclick="listingH1()">
                 </div>
 
-                <div id="ActionsM1" class="actList">
-          <button type="button" id="attackM1" onclick="AttackM1()">Attack</button>
-          <button type="button" id="movementM1" onclick="MovementM1()">Movement</button>
-          <button type="button" id="endTurnM1" onclick="EndTurnM1()">End Turn</button>
-        </div>
 
-        <div id="ActionsR1" class="actList">
-          <button type="button" id="attackR1" onclick="AttackR1()">Attack</button>
-          <button type="button" id="movementR1" onclick="MovementR1()">Movement</button>
-          <button type="button" id="endTurnR1" onclick="EndTurnR1()">End Turn</button>
-        </div>
-
-        <div id="ActionsD1" class="actList">
-          <button type="button" id="attackD1" onclick="AttackD1()">Attack</button>
-          <button type="button" id="movementD1" onclick="MovementD1()">Movement</button>
-          <button type="button" id="endTurnD1" onclick="EndTurnD1()">End Turn</button>
-        </div>
-
-        <div id="ActionsH1" class="actList">
-          <button type="button" id="healH1" onclick="HealH1()">Heal</button>
-          <button type="button" id="attackH1" onclick="AttackH1()">Attack</button>
-          <button type="button" id="movementH1" onclick="MovementH1()">Movement</button>
-          <button type="button" id="endTurnH1" onclick="EndTurnH1()">End Turn</button>
-        </div>
-
-        <div id="ActionsM2" class="actList">
-          <button type="button" id="attackM2" onclick="AttackM2()">Attack</button>
-          <button type="button" id="movementM2" onclick="MovementM2()">Movement</button>
-          <button type="button" id="endTurnM2" onclick="EndTurnM2()">End Turn</button>
-        </div>
-
-        <div id="ActionsR2" class="actList">
-          <button type="button" id="attackR2" onclick="AttackR2()">Attack</button>
-          <button type="button" id="movementR2" onclick="MovementR2()">Movement</button>
-          <button type="button" id="endTurnR2" onclick="EndTurnR2()">End Turn</button>
-        </div>
-
-        <div id="ActionsD2" class="actList">
-          <button type="button" id="attackD2" onclick="AttackD2()">Attack</button>
-          <button type="button" id="movementD2" onclick="MovementD2()">Movement</button>
-          <button type="button" id="endTurnD2" onclick="EndTurnD2()">End Turn</button>
-        </div>
-
-        <div id="ActionsH2" class="actList">
-          <button type="button" id="healH2" onclick="HealH2()">Heal</button>
-          <button type="button" id="attackH2" onclick="AttackH2()">Attack</button>
-          <button type="button" id="movementH2" onclick="MovementH2()">Movement</button>
-          <button type="button" id="endTurnH2" onclick="EndTurnH2()">End Turn</button>
-        </div>
-
-                <div id="p2">
-                    <img src="images/MAttack.png" id="p2-Melee" draggable="true" ondragstart="drag(event)" onclick="listingM2()">
-                    <img src="images/Defender.jpeg" id="p2-Defender" draggable="true" ondragstart="drag(event)" onclick="listingD2()">
-                    <img src="images/RAttack.jpeg" id="p2-Ranger" draggable="true" ondragstart="drag(event)" onclick="listingR2()">
-                    <img src="images/Healer.jpeg" id="p2-Healer" draggable="true" ondragstart="drag(event)" onclick="listingH2()">
-                </div>
+                    <div id="ActionsM1" class="actList">
+            <button type="button" id="attackM1" onclick="AttackM1()">Attack</button>
+            <button type="button" id="movementM1" onclick="MovementM1()">Movement</button>
+            <button type="button" id="endTurnM1" onclick="EndTurnM1()">End Turn</button>
             </div>
-            <div id="game-board">
-                <!-- game board goes here -->
 
-                <div id="hp-display">
+            <div id="ActionsR1" class="actList">
+            <button type="button" id="attackR1" onclick="AttackR1()">Attack</button>
+            <button type="button" id="movementR1" onclick="MovementR1()">Movement</button>
+            <button type="button" id="endTurnR1" onclick="EndTurnR1()">End Turn</button>
+            </div>
 
-                    <div class="player-hp-box">
-                        <div class="hp-row">
-                            <img src="images/MAttack.jpeg" id="p1-Melee-Display" draggable="false">
-                            <div class="hp-stat-text" id="p1-Melee-HP">50 HP</div>
-                        </div>
+            <div id="ActionsD1" class="actList">
+            <button type="button" id="attackD1" onclick="AttackD1()">Attack</button>
+            <button type="button" id="movementD1" onclick="MovementD1()">Movement</button>
+            <button type="button" id="endTurnD1" onclick="EndTurnD1()">End Turn</button>
+            </div>
 
-                        <div class="hp-row">    
-                            <img src="images/Defender.jpeg" id="p1-Defender-Display" draggable="false">
-                            <div class="hp-stat-text" id="p1-Defender-HP">100 HP</div>
-                        </div>
+            <div id="ActionsH1" class="actList">
+            <button type="button" id="healH1" onclick="HealH1()">Heal</button>
+            <button type="button" id="attackH1" onclick="AttackH1()">Attack</button>
+            <button type="button" id="movementH1" onclick="MovementH1()">Movement</button>
+            <button type="button" id="endTurnH1" onclick="EndTurnH1()">End Turn</button>
+            </div>
 
-                        <div class="hp-row">
-                            <img src="images/RAttack.jpeg" id="p1-Ranger-Display" draggable="false">
-                            <div class="hp-stat-text" id="p1-Ranger-HP">50 HP</div>
-                        </div>
+            <div id="ActionsM2" class="actList">
+            <button type="button" id="attackM2" onclick="AttackM2()">Attack</button>
+            <button type="button" id="movementM2" onclick="MovementM2()">Movement</button>
+            <button type="button" id="endTurnM2" onclick="EndTurnM2()">End Turn</button>
+            </div>
 
-                        <div class="hp-row">
-                            <img src="images/Healer.jpeg" id="p1-Healer-Display" draggable="false">
-                            <div class="hp-stat-text" id="p1-Healer-HP">30 HP</div>
-                        </div>
+            <div id="ActionsR2" class="actList">
+            <button type="button" id="attackR2" onclick="AttackR2()">Attack</button>
+            <button type="button" id="movementR2" onclick="MovementR2()">Movement</button>
+            <button type="button" id="endTurnR2" onclick="EndTurnR2()">End Turn</button>
+            </div>
+
+            <div id="ActionsD2" class="actList">
+            <button type="button" id="attackD2" onclick="AttackD2()">Attack</button>
+            <button type="button" id="movementD2" onclick="MovementD2()">Movement</button>
+            <button type="button" id="endTurnD2" onclick="EndTurnD2()">End Turn</button>
+            </div>
+
+            <div id="ActionsH2" class="actList">
+            <button type="button" id="healH2" onclick="HealH2()">Heal</button>
+            <button type="button" id="attackH2" onclick="AttackH2()">Attack</button>
+            <button type="button" id="movementH2" onclick="MovementH2()">Movement</button>
+            <button type="button" id="endTurnH2" onclick="EndTurnH2()">End Turn</button>
+            </div>
+
+                    <div id="p2">
+                        <img src="images/MAttack.jpeg" id="p2-Melee" draggable="true" ondragstart="drag(event)" onclick="listingM2()">
+                        <img src="images/Defender.jpeg" id="p2-Defender" draggable="true" ondragstart="drag(event)" onclick="listingD2()">
+                        <img src="images/RAttack.jpeg" id="p2-Ranger" draggable="true" ondragstart="drag(event)" onclick="listingR2()">
+                        <img src="images/Healer.jpeg" id="p2-Healer" draggable="true" ondragstart="drag(event)" onclick="listingH2()">
                     </div>
 
-                    <div class="player-hp-box">
-                        <div class="hp-row">
-                            <img src="images/MAttack.jpeg" id="p2-Melee-Display" draggable="false">
-                            <div class="hp-stat-text" id="p2-Melee-HP">50 HP</div>
+            </div>
+            <div id="game-board">
+                    <!-- game board goes here -->
+
+                    <div id="hp-display">
+
+                        <div class="player-hp-box">
+                            <div class="hp-row">
+                                <img src="images/MAttack.jpeg" id="p1-Melee-Display" draggable="false">
+                                <div class="hp-stat-text" id="p1-Melee-HP">50 HP</div>
+                            </div>
+
+                            <div class="hp-row">    
+                                <img src="images/Defender.jpeg" id="p1-Defender-Display" draggable="false">
+                                <div class="hp-stat-text" id="p1-Defender-HP">100 HP</div>
+                            </div>
+
+                            <div class="hp-row">
+                                <img src="images/RAttack.jpeg" id="p1-Ranger-Display" draggable="false">
+                                <div class="hp-stat-text" id="p1-Ranger-HP">50 HP</div>
+                            </div>
+
+                            <div class="hp-row">
+                                <img src="images/Healer.jpeg" id="p1-Healer-Display" draggable="false">
+                                <div class="hp-stat-text" id="p1-Healer-HP">30 HP</div>
+                            </div>
                         </div>
 
-                        <div class="hp-row">
-                            <img src="images/Defender.jpeg" id="p2-Defender-Display" draggable="false">
-                            <div class="hp-stat-text" id="p2-Defender-HP">100 HP</div>
+                        <div class="player-hp-box">
+                            <div class="hp-row">
+                                <img src="images/MAttack.jpeg" id="p2-Melee-Display" draggable="false">
+                                <div class="hp-stat-text" id="p2-Melee-HP">50 HP</div>
+                            </div>
+
+                            <div class="hp-row">
+                                <img src="images/Defender.jpeg" id="p2-Defender-Display" draggable="false">
+                                <div class="hp-stat-text" id="p2-Defender-HP">100 HP</div>
+                            </div>
+
+                            <div class="hp-row">
+                                <img src="images/RAttack.jpeg" id="p2-Ranger-Display" draggable="false">
+                                <div class="hp-stat-text" id="p2-Ranger-HP">50 HP</div>
+                            </div>
+                            
+                            <div class="hp-row">
+                                <img src="images/Healer.jpeg" id="p2-Healer-Display" draggable="false">
+                                <div class="hp-stat-text" id="p2-Healer-HP">30 HP</div>
+                            </div>
                         </div>
 
-                        <div class="hp-row">
-                            <img src="images/RAttack.jpeg" id="p2-Ranger-Display" draggable="false">
-                            <div class="hp-stat-text" id="p2-Ranger-HP">50 HP</div>
-                        </div>
-                        
-                        <div class="hp-row">
-                            <img src="images/Healer.jpeg" id="p2-Healer-Display" draggable="false">
-                            <div class="hp-stat-text" id="p2-Healer-HP">30 HP</div>
-                        </div>
+
+                    </div>
+                    <span id="displayDiv"></span>
+                    <div id="readybuttons">
+                        <button type="button" id="ready1">Start Game</button>
                     </div>
 
 
@@ -194,7 +209,9 @@
                     <div class="board-player-name" id="name1"></div>
                     <div class="board-player-name" id="name2"></div>
                 </div>
+
             </div>
+        </div>
 
             <script src="game.js"></script>
     </body>
