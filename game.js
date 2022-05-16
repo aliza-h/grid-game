@@ -175,7 +175,7 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
-    if(document.getElementById("p2-Melee") == null /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+    if(document.getElementById("p2-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player1end.style.display = "flex";
@@ -187,7 +187,7 @@ function attackCell(cell, color, damage) {
             document.location.reload();
         })
         
-    } else if(document.getElementById("p1-Melee") == null /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
+    } else if(document.getElementById("p1-Melee") == undefined /*&& document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined*/){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
         player2end.style.display = "flex";
@@ -200,6 +200,7 @@ function attackCell(cell, color, damage) {
         })
         
     }
+
     if(document.getElementById("p2-Melee").HP < 1){
         document.getElementById("p2-Melee") == undefined
     }
