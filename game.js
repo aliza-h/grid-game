@@ -1204,7 +1204,7 @@ submit.addEventListener('click', event => {
         submit.addEventListener('click', event => {
 
             event.preventDefault();
-
+            ready1.style.display = "flex";
             let select = document.getElementById('board-size');
             let option = select.options[select.selectedIndex];
 
