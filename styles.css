@@ -1,15 +1,18 @@
-/*
-Reference palette:
-https://coolors.co/palette/057672-05827d-058f8a-059d98-06ada7-07beb8-3dccc7-68d8d6-9ceaef-c4fff9
-*/
-
 body {
-    font-family: Optima;
+    font-family: 'Press Start 2P', cursive;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("images/strife_bg.png");
-    background-size: contain;
+    background-color: #222222;
+}
+
+#arcade-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 4px solid #057672;
+    width: 90vw;
+    background-color: #00002C;
 }
 
 #hp-display {
@@ -120,34 +123,41 @@ h3 {
     width: 80vw;
     justify-content: space-around;
     flex-direction: row;
-    border: 4px solid #057672;
-    background-color: #9CEAEF;
-    margin-top: 15vh;
+    background-color: #00002C;
+    color: #ADFAFF;
 }
 
 .single-player-input {
     display: flex;
+    width: 40%;
     flex-direction: column;
     align-items: space-around;
     justify-content: space-between;
 }
 
-#player1Name,
-#player2Name {
-    font-family: Verdana;
-    font-size: 10px;
+#player1Name, #player2Name {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #00002C;
+    border: none;
+    border-bottom: 1px solid #ADFAFF;
+    font-size: 8px;
     width: auto;
     height: auto;
     padding: 2vh;
     border-radius: 10px;
     letter-spacing: 3px;
 }
+input[type=text]:focus {
+    background-color: #00002C;
+    border: none;
+    border-bottom: 1px solid #ADFAFF;
+}
 
 
 #player1Color,
 #player2Color {
     font-family: Verdana;
-    font-size: 10px;
+    font-size: 8px;
     width: 150px;
     height: 50px;
     padding: 2vh;
@@ -180,7 +190,7 @@ h3 {
 #submit {
     /* Change font + rounded border + color CHECK ON THIS!!!*/
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -194,7 +204,7 @@ h3 {
 
 #button1 {
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -274,8 +284,8 @@ img {
     visibility: hidden;
 }
 
-#board-size {
-    font-family: Verdana;
+#board-size{
+    font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     width: auto;
     height: auto;
@@ -294,8 +304,8 @@ img {
     padding: 3vw;
     justify-content: space-around;
     height: 0vh;
-    border: 4px solid #057672;
-    background-color: #9CEAEF;
+    background-color: #00002C;
+    color: #ADFAFF;
     visibility: hidden;
 }
 
@@ -321,6 +331,7 @@ img {
     justify-content: space-between;
     width: 100%;
     visibility: hidden;
+    color: #ADFAFF;
 }
 
 #turns2 {
@@ -330,6 +341,7 @@ img {
     justify-content: space-between;
     width: 100%;
     visibility: hidden;
+    color: #ADFAFF;
 }
 
 #player1end {
@@ -359,9 +371,9 @@ img {
     width: 100%;
 }
 
-.board-player-name,
-.readychecks {
-    font-size: 20px;
+.board-player-name, .readychecks {
+    font-family: Player Start 2P;
+    font-size: 10px;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -371,19 +383,21 @@ img {
     font-size: 20px;
     margin-left: 2%;
     margin-right: 2%;
+    margin-top: 3vh;
 }
 
 #readybuttons {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     width: 100%;
 }
 
 
 #ready1 {
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;
@@ -398,7 +412,7 @@ img {
 
 #end {
     background-color: #9CEAEF;
-    font-family: Verdana;
+    font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     width: auto;
     height: auto;

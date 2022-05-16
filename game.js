@@ -1156,11 +1156,10 @@ submit.addEventListener('click', event => {
         turns.style.color = "black";
         var text2 = document.getElementById("player2Name").value;
         document.getElementById("turns2").innerHTML = text2 + "'s Turn";
-        turns.style.color = "black";
         var txt = document.getElementById("player1Name").value;
-        document.getElementById("name1").innerHTML = txt + "'s side";
+        document.getElementById("name1").innerHTML = txt;
         var txt = document.getElementById("player2Name").value;
-        document.getElementById("name2").innerHTML = txt + "'s side";
+        document.getElementById("name2").innerHTML = txt;
         document.getElementById("name1").style.fontWeight = "bolder"
         document.getElementById("name2").style.fontWeight = "bolder"
         document.getElementById("player-input-box").remove();
@@ -1174,28 +1173,28 @@ submit.addEventListener('click', event => {
         let txtcolor2 = document.getElementById("name2");
 
         if (player1Color.value == "Red") {
-            txtcolor.style.color = "#FF7462";
+            txtcolor.style.color = "#7B0000";
         }
         if (player1Color.value == "Green") {
-            txtcolor.style.color = "#23EE96";
+            txtcolor.style.color = "#047B00";
         }
         if (player1Color.value == "Blue") {
-            txtcolor.style.color = "#78D8FF";
+            txtcolor.style.color = "#001A7B";
         }
         if (player1Color.value == "Yellow") {
-            txtcolor.style.color = "#FFE88F";
+            txtcolor.style.color = "#997B00";
         }
         if (player2Color.value == "Red") {
-            txtcolor2.style.color = "#FF7462";
+            txtcolor2.style.color = "#7B0000";
         }
         if (player2Color.value == "Green") {
-            txtcolor2.style.color = "#23EE96";
+            txtcolor2.style.color = "#047B00";
         }
         if (player2Color.value == "Blue") {
-            txtcolor2.style.color = "#78D8FF";
+            txtcolor2.style.color = "#001A7B";
         }
         if (player2Color.value == "Yellow") {
-            txtcolor2.style.color = "#FFE88F";
+            txtcolor2.style.color = "#997B00";
         }
 
 
@@ -2385,7 +2384,7 @@ submit.addEventListener('click', event => {
             document.getElementById("board-size-box").remove();
             document.getElementById('submit').remove();
 
-            document.body.style.background = 'none';
+            //document.body.style.background = 'none';
 
             if (player1Color.value == "Red") {
                 document.getElementById("ready1").style.backgroundColor = "#FF7462";
