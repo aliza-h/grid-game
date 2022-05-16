@@ -20,20 +20,13 @@ let currentturn = player1;
 let submit = document.getElementById("submit");
 let player1Color = document.getElementById("player1Color");
 let player2Color = document.getElementById("player2Color");
+let player1end = document.getElementById("player1end");
+let player2end = document.getElementById("player2end");
 
-let img_melee1 = document.getElementById("p1-Melee")
-let img_defender1 = document.getElementById("p1-Defender")
-let img_ranger1 = document.getElementById("p1-Ranger")
-let img_healer1 = document.getElementById("p1-Healer")
-let img_melee2 = document.getElementById("p2-Melee")
-let img_defender2 = document.getElementById("p2-Defender")
-let img_ranger2 = document.getElementById("p2-Ranger")
-let img_healer2 = document.getElementById("p2-Healer")
 const drops = [].slice.call(
     document.querySelectorAll( '.drop' ), 0 );
 let ready1 = document.getElementById("ready1")
-let ready2 = document.getElementById("ready2")
-let ready3 = document.getElementById("ready3")
+let end = document.getElementById("end")
 const Melee1 = document.getElementById('ActionsM1');
 Melee1.style.display = "none";
 
@@ -97,6 +90,16 @@ let shipStats = [{
 
 function drawHP()
 {
+    document.getElementById("p1-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p1-Healer-HP").innerHTML = "DESTROYED!";
+
+    document.getElementById("p2-Melee-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Defender-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Ranger-HP").innerHTML = "DESTROYED!";
+    document.getElementById("p2-Healer-HP").innerHTML = "DESTROYED!";
+
     cellArr.forEach(function(element) {
         if (element.hasAnything) {
             //console.log(element.shipColor+"-"+element.shipType+"-HP");
@@ -157,6 +160,7 @@ function attackCell(cell, color, damage) {
             }
             if(cellArr[cell].HP < 1)
             {
+
                 document.getElementById("cell" + cell).removeChild(document.getElementById("cell" + cell).firstChild);
                 cellArr[cell] = {
                     "hasAnything": false,
@@ -171,6 +175,48 @@ function attackCell(cell, color, damage) {
 
     canDoDamage = false;
     drawHP();
+    if(document.getElementById("p2-Melee") == undefined && document.getElementById("p2-Defender") == undefined && document.getElementById("p2-Ranger") == undefined && document.getElementById("p2-Healer") == undefined){
+        document.getElementById("turns2").style.visibility = "hidden";
+        document.getElementById("turns").style.visibility = "hidden";
+        player1end.style.display = "flex";
+        player1end.style.color = "white";
+        gameBoard.style.visibility = "hidden";
+        document.body.style.backgroundColor = "black";
+        end.style.display = "flex";
+        Melee2.style.display = "none";
+                Ranger2.style.display = "none";
+                Defender2.style.display = "none";
+                Healer2.style.display = "none";
+                Melee1.style.display = "none";
+                Ranger1.style.display = "none";
+                Defender1.style.display = "none";
+                Healer1.style.display = "none";
+        end.addEventListener('click', event => {
+            document.location.reload();
+        })
+
+    } else if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
+        document.getElementById("turns2").style.visibility = "hidden";
+        document.getElementById("turns").style.visibility = "hidden";
+        player2end.style.display = "flex";
+        player2end.style.color = "white";
+        gameBoard.style.visibility = "hidden";
+        document.body.style.backgroundColor = "black";
+        end.style.display = "flex";
+        Melee2.style.display = "none";
+                Ranger2.style.display = "none";
+                Defender2.style.display = "none";
+                Healer2.style.display = "none";
+                Melee1.style.display = "none";
+                Ranger1.style.display = "none";
+                Defender1.style.display = "none";
+                Healer1.style.display = "none";
+        end.addEventListener('click', event => {
+            document.location.reload();
+        })
+
+    }
+
 
 }
 
@@ -309,9 +355,9 @@ function attackColumn(yourColor, startAt, down, damage) {
 function heal(cell,hp)
 {
     if (cellArr[cell].hasAnything) {
-        
+
             cellArr[cell].HP += hp;
-        
+
     }
 
     drawHP();
@@ -515,8 +561,6 @@ function attackInARange(at, range, color, damage) {
         downs = rights;
         rights = 0;
     }
-
-    //sleep(1000);
 
     while (rights > 0) {
         let adding = at;
@@ -777,7 +821,6 @@ function move(at, range, moving) {
         downs = rights;
         rights = 0;
     }
-    //sleep(1000);
 
     while (rights > 0) {
         let adding = at;
@@ -1035,21 +1078,23 @@ function generateGrid(rows, columns) {
     numberOfColumns = columns;
 }
 
-
 function allowDrop(ev) {
     ev.preventDefault();
-    if (ev.target.getAttribute("draggable") == "true")
-        ev.dataTransfer.dropEffect = "none";
-    else
-        ev.dataTransfer.dropEffect = "all";
+    ev.target.draggable = false;
+if (ev.target.getAttribute("draggable") == "true")
+    ev.dataTransfer.dropEffect = "none";
+else
+    ev.dataTransfer.dropEffect = "all";
 }
+
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    let data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    document.getElementById(data).draggable = false;
     var player = data.substring(0,2);
     var toCell = ev.target.id.substring(4);
     var type = data.substring(3);
@@ -1057,8 +1102,6 @@ function drop(ev) {
 }
 
 //chooseYourShips(); ARH: commented out for now--DO NOT DELETE THIS LINE
-
-
 
 submit.addEventListener('click', event => {
     event.preventDefault();
@@ -1117,7 +1160,6 @@ submit.addEventListener('click', event => {
         document.getElementById("board-size-box").style.height = "auto";
         document.getElementById("board-size-box").style.visibility = "visible";
         document.getElementById("board-size-box").style.marginTop = "20vh";
-        //margin-top: 20vh;
         document.getElementById("board-size").style.visibility = "visible";
 
         let txtcolor = document.getElementById("name1");
@@ -1167,6 +1209,8 @@ submit.addEventListener('click', event => {
             let cell = document.getElementById("cell0");
             cell.setAttribute('ondrop', "drop(event)")
             cell.setAttribute('ondragover', "allowDrop(event)")
+            cell.setAttribute('data-drop', "p1-Melee")
+            cell.setAttribute('data-drop', "p1-Defender")
 
             document.querySelector("#cell1").classList.add("drop");
             let cell1 = document.getElementById("cell1");
@@ -2350,7 +2394,6 @@ submit.addEventListener('click', event => {
                 document.getElementById("ready2").style.backgroundColor = "#FFE88F";
             }
 
-            //optimize this so no matter what order you click it will do the set timeout
             });
         })
     })
@@ -2358,11 +2401,12 @@ submit.addEventListener('click', event => {
 
 ready1.addEventListener('click', event => {
 
-
     document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
     document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
     document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
     document.getElementById("p1-Healer").setAttribute("onclick", "listingH1()")
+
+
     let color1 = document.querySelectorAll(".game-cell.drop");
                 for (let i = 0; i < color1.length; i++) {
                     if (color1) {
@@ -2378,30 +2422,7 @@ ready1.addEventListener('click', event => {
                     }
                 }
     event.preventDefault();
-    
 
-    let melee1 = document.getElementById("p1-Melee");
-                melee1.setAttribute('draggable', "false")
-
-                let defender1 = document.getElementById("p1-Defender");
-                defender1.setAttribute('draggable', "false")
-
-                let ranger1 = document.getElementById("p1-Ranger");
-                ranger1.setAttribute('draggable', "false")
-
-                let healer1 = document.getElementById("p1-Healer");
-                healer1.setAttribute('draggable', "false")
-                let melee2 = document.getElementById("p2-Melee");
-                melee2.setAttribute('draggable', "false")
-
-                let defender2 = document.getElementById("p2-Defender");
-                defender2.setAttribute('draggable', "false")
-
-                let ranger2 = document.getElementById("p2-Ranger");
-                ranger2.setAttribute('draggable', "false")
-
-                let healer2 = document.getElementById("p2-Healer");
-                healer2.setAttribute('draggable', "false")
 
                 document.getElementById("p1").remove();
                 document.getElementById("ready1").remove();
@@ -2412,6 +2433,24 @@ ready1.addEventListener('click', event => {
                 Ranger1.style.display = "";
                 Defender1.style.display = "";
                 Healer1.style.display = "";
+
+                if(player1Color.value == "Blue") {
+                    document.body.style.backgroundColor = "#78D8FF"
+                } else if(player1Color.value == "Green"){
+                    document.body.style.backgroundColor = "#23EE96"
+                } else if(player1Color.value == "Red"){
+                    document.body.style.backgroundColor = "#FF7462"
+                } else if(player1Color.value == "Yellow"){
+                    document.body.style.backgroundColor = "#FFE88F"
+                }
+                if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
+                    alert("Player1 place all your ships down please before starting");
+                    document.location.reload();
+                }
+                else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
+                    alert("Player2 place all your ships down please before starting");
+                    document.location.reload();
+                }
 })
 
 function listingM1() {
@@ -2540,7 +2579,10 @@ let hAtt2 = document.getElementById("attackH2");
 let hMove2 = document.getElementById("movementH2");
 let hEndTurn2 = document.getElementById("endTurnH2");
 
+
+
 function AttackM1() {
+    document.getElementById("attackM1").disabled = true;
     let at = -1;
     let pos = 0;
     while (at == -1)
@@ -2613,6 +2655,20 @@ function EndTurnM1(){
 
 function AttackR1() {
     document.getElementById("attackR1").disabled = true;
+    let at = -1;
+    let pos = 0;
+    while (at == -1)
+    {
+        if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p1")
+        {
+            at = pos;
+
+        }
+        pos++;
+    }
+    decideRow(at,20);
+
+  document.getElementById("attackR1").disabled = true;
   document.querySelector('#attackR1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
     document.getElementById("p1-Defender").removeAttribute("onclick")
@@ -2641,7 +2697,7 @@ function MovementR1(){
 }
 
 function EndTurnR1(){
-    
+
     document.getElementById("attackR1").disabled = false;
     document.querySelector('#attackR1').innerHTML = 'Attack';
     document.getElementById("movementR1").disabled = false;
@@ -2664,9 +2720,19 @@ function EndTurnR1(){
                 Defender1.style.display = "none";
                 Healer1.style.display = "none";
 
+        if(player2Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player2Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player2Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player2Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2685,7 +2751,7 @@ function AttackD1() {
         }
         pos++;
     }
-    attackInARange(at,2,"p1",30);
+    attackInARange(at,2,"p1",35);
     document.getElementById("attackD1").disabled = true;
     document.querySelector('#attackD1').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p1-Melee").removeAttribute("onclick")
@@ -2716,7 +2782,7 @@ function MovementD1(){
 }
 
 function EndTurnD1(){
-    
+
     document.getElementById("attackD1").disabled = false;
     document.querySelector('#attackD1').innerHTML = 'Attack';
     document.getElementById("movementD1").disabled = false;
@@ -2737,9 +2803,21 @@ function EndTurnD1(){
     Ranger1.style.display = "none";
     Defender1.style.display = "none";
     Healer1.style.display = "none";
+
+        if(player2Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player2Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player2Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player2Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2754,12 +2832,12 @@ function HealH1(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
         {
             at = pos;
-            
+
         }
         pos++;
     }
     chooseHeal(at,15);
-    
+
     document.getElementById("healH1").disabled = true;
   document.getElementById("healH1").disabled = true;
   document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
@@ -2817,7 +2895,7 @@ function MovementH1(){
 }
 
 function EndTurnH1(){
-    
+
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
     document.getElementById("attackH1").disabled = false;
@@ -2839,9 +2917,20 @@ function EndTurnH1(){
         Ranger1.style.display = "none";
         Defender1.style.display = "none";
         Healer1.style.display = "none";
+
+        if(player2Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player2Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player2Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player2Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2892,7 +2981,7 @@ function MovementM2(){
 }
 
 function EndTurnM2(){
-    
+
     document.getElementById("attackM2").disabled = false;
     document.querySelector('#attackM2').innerHTML = 'Attack';
     document.getElementById("movementM2").disabled = false;
@@ -2913,6 +3002,17 @@ function EndTurnM2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
+        if(player1Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player1Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player1Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player1Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -2922,13 +3022,27 @@ function EndTurnM2(){
             document.getElementById("p2-Healer").setAttribute("onclick", "listingH2()")
     }
 
-function AttackR2() {
-    document.getElementById("attackR2").disabled = true;
-  document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
-    document.getElementById("p2-Melee").removeAttribute("onclick")
-    document.getElementById("p2-Defender").removeAttribute("onclick")
-        document.getElementById("p2-Healer").removeAttribute("onclick")
-}
+    function AttackR2() {
+        document.getElementById("attackR2").disabled = true;
+
+        let at = -1;
+        let pos = 0;
+        while (at == -1)
+        {
+            if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
+            {
+                at = pos;
+
+            }
+            pos++;
+        }
+        decideRow(at,20);
+      document.getElementById("attackR2").disabled = true;
+      document.querySelector('#attackR2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
+        document.getElementById("p2-Melee").removeAttribute("onclick")
+        document.getElementById("p2-Defender").removeAttribute("onclick")
+            document.getElementById("p2-Healer").removeAttribute("onclick")
+    }
 
 function MovementR2(){
     let at = -1;
@@ -2952,7 +3066,7 @@ function MovementR2(){
 }
 
 function EndTurnR2(){
-    
+
     document.getElementById("attackR2").disabled = false;
     document.querySelector('#attackR2').innerHTML = 'Attack';
     document.getElementById("movementR2").disabled = false;
@@ -2973,9 +3087,20 @@ function EndTurnR2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
+        if(player1Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player1Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player1Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player1Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
             document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
             document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
@@ -2994,7 +3119,7 @@ function AttackD2() {
         }
         pos++;
     }
-    attackInARange(at,2,"p2",30);
+    attackInARange(at,2,"p2",35);
     document.getElementById("attackD2").disabled = true;
     document.querySelector('#attackD2').innerHTML = 'A̶t̶t̶a̶c̶k̶';
     document.getElementById("p2-Melee").removeAttribute("onclick")
@@ -3025,7 +3150,7 @@ function MovementD2(){
 }
 
 function EndTurnD2(){
-    
+
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
     document.getElementById("movementD2").disabled = false;
@@ -3046,9 +3171,20 @@ function EndTurnD2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
+        if(player1Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player1Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player1Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player1Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
             document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
             document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
@@ -3063,7 +3199,7 @@ function HealH2(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
         {
             at = pos;
-            
+
         }
         pos++;
     }
@@ -3125,7 +3261,7 @@ function MovementH2(){
 }
 
 function EndTurnH2(){
-    
+
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
     document.getElementById("attackH2").disabled = false;
@@ -3148,6 +3284,18 @@ function EndTurnH2(){
         Ranger1.style.display = "";
         Defender1.style.display = "";
         Healer1.style.display = "";
+
+        if(player1Color.value == "Blue") {
+            document.body.style.backgroundColor = "#78D8FF"
+        } else if(player1Color.value == "Green"){
+            document.body.style.backgroundColor = "#23EE96"
+        } else if(player1Color.value == "Red"){
+            document.body.style.backgroundColor = "#FF7462"
+        } else if(player1Color.value == "Yellow"){
+            document.body.style.backgroundColor = "#FFE88F"
+        }
+
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
