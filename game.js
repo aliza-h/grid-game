@@ -160,7 +160,7 @@ function attackCell(cell, color, damage) {
             }
             if(cellArr[cell].HP < 1)
             {
-                
+
                 document.getElementById("cell" + cell).removeChild(document.getElementById("cell" + cell).firstChild);
                 cellArr[cell] = {
                     "hasAnything": false,
@@ -183,10 +183,18 @@ function attackCell(cell, color, damage) {
         gameBoard.style.visibility = "hidden";
         document.body.style.backgroundColor = "black";
         end.style.display = "flex";
+        Melee2.style.display = "none";
+                Ranger2.style.display = "none";
+                Defender2.style.display = "none";
+                Healer2.style.display = "none";
+                Melee1.style.display = "none";
+                Ranger1.style.display = "none";
+                Defender1.style.display = "none";
+                Healer1.style.display = "none";
         end.addEventListener('click', event => {
             document.location.reload();
         })
-        
+
     } else if(document.getElementById("p1-Melee") == undefined && document.getElementById("p1-Defender") == undefined && document.getElementById("p1-Ranger") == undefined && document.getElementById("p1-Healer") == undefined){
         document.getElementById("turns2").style.visibility = "hidden";
         document.getElementById("turns").style.visibility = "hidden";
@@ -195,13 +203,21 @@ function attackCell(cell, color, damage) {
         gameBoard.style.visibility = "hidden";
         document.body.style.backgroundColor = "black";
         end.style.display = "flex";
+        Melee2.style.display = "none";
+                Ranger2.style.display = "none";
+                Defender2.style.display = "none";
+                Healer2.style.display = "none";
+                Melee1.style.display = "none";
+                Ranger1.style.display = "none";
+                Defender1.style.display = "none";
+                Healer1.style.display = "none";
         end.addEventListener('click', event => {
             document.location.reload();
         })
-        
+
     }
 
-    
+
 }
 
 function decideRow(startAt,damage)
@@ -339,9 +355,9 @@ function attackColumn(yourColor, startAt, down, damage) {
 function heal(cell,hp)
 {
     if (cellArr[cell].hasAnything) {
-        
+
             cellArr[cell].HP += hp;
-        
+
     }
 
     drawHP();
@@ -2420,7 +2436,7 @@ ready1.addEventListener('click', event => {
                     }
                 }
     event.preventDefault();
-    
+
 
                 document.getElementById("p1").remove();
                 document.getElementById("ready1").remove();
@@ -2443,7 +2459,7 @@ ready1.addEventListener('click', event => {
                 if(document.getElementById("p1-Melee") == null || document.getElementById("p1-Defender") == null || document.getElementById("p1-Ranger") == null || document.getElementById("p1-Healer") == null){
                     alert("Player1 place all your ships down please before starting");
                     document.location.reload();
-                } 
+                }
                 else if(document.getElementById("p2-Melee") == null || document.getElementById("p2-Defender") == null || document.getElementById("p2-Ranger") == null || document.getElementById("p2-Healer") == null){
                     alert("Player2 place all your ships down please before starting");
                     document.location.reload();
@@ -2703,7 +2719,7 @@ function MovementR1(){
 }
 
 function EndTurnR1(){
-    
+
     document.getElementById("attackR1").disabled = false;
     document.querySelector('#attackR1').innerHTML = 'Attack';
     document.getElementById("movementR1").disabled = false;
@@ -2735,10 +2751,10 @@ function EndTurnR1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2788,7 +2804,7 @@ function MovementD1(){
 }
 
 function EndTurnD1(){
-    
+
     document.getElementById("attackD1").disabled = false;
     document.querySelector('#attackD1').innerHTML = 'Attack';
     document.getElementById("movementD1").disabled = false;
@@ -2818,10 +2834,10 @@ function EndTurnD1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2836,12 +2852,12 @@ function HealH1(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p1")
         {
             at = pos;
-            
+
         }
         pos++;
     }
     chooseHeal(at,15);
-    
+
     document.getElementById("healH1").disabled = true;
   document.getElementById("healH1").disabled = true;
   document.querySelector('#healH1').innerHTML = 'H̶e̶a̶l̶';
@@ -2899,7 +2915,7 @@ function MovementH1(){
 }
 
 function EndTurnH1(){
-    
+
     document.getElementById("healH1").disabled = false;
     document.querySelector('#healH1').innerHTML = 'Heal';
     document.getElementById("attackH1").disabled = false;
@@ -2930,10 +2946,10 @@ function EndTurnH1(){
         } else if(player2Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-        
+
         document.getElementById("turns").style.visibility = "hidden"
         document.getElementById("turns2").style.visibility = "visible"
-        
+
             document.getElementById("p1-Melee").setAttribute("onclick", "listingM1()")
             document.getElementById("p1-Defender").setAttribute("onclick", "listingD1()")
             document.getElementById("p1-Ranger").setAttribute("onclick", "listingR1()")
@@ -2984,7 +3000,7 @@ function MovementM2(){
 }
 
 function EndTurnM2(){
-    
+
     document.getElementById("attackM2").disabled = false;
     document.querySelector('#attackM2').innerHTML = 'Attack';
     document.getElementById("movementM2").disabled = false;
@@ -3014,7 +3030,7 @@ function EndTurnM2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-       
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
@@ -3026,7 +3042,7 @@ function EndTurnM2(){
 
     function AttackR2() {
         document.getElementById("attackR2").disabled = true;
-    
+
         let at = -1;
         let pos = 0;
         while (at == -1)
@@ -3034,7 +3050,7 @@ function EndTurnM2(){
             if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Ranger" && cellArr[pos].shipColor == "p2")
             {
                 at = pos;
-    
+
             }
             pos++;
         }
@@ -3068,7 +3084,7 @@ function MovementR2(){
 }
 
 function EndTurnR2(){
-    
+
     document.getElementById("attackR2").disabled = false;
     document.querySelector('#attackR2').innerHTML = 'Attack';
     document.getElementById("movementR2").disabled = false;
@@ -3098,10 +3114,10 @@ function EndTurnR2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-       
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
             document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
             document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
@@ -3151,7 +3167,7 @@ function MovementD2(){
 }
 
 function EndTurnD2(){
-    
+
     document.getElementById("attackD2").disabled = false;
     document.querySelector('#attackD2').innerHTML = 'Attack';
     document.getElementById("movementD2").disabled = false;
@@ -3181,10 +3197,10 @@ function EndTurnD2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-       
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
-        
+
             document.getElementById("p2-Melee").setAttribute("onclick", "listingM2()")
             document.getElementById("p2-Defender").setAttribute("onclick", "listingD2()")
             document.getElementById("p2-Ranger").setAttribute("onclick", "listingR2()")
@@ -3199,7 +3215,7 @@ function HealH2(){
         if (cellArr[pos].hasAnything && cellArr[pos].shipType == "Healer" && cellArr[pos].shipColor == "p2")
         {
             at = pos;
-            
+
         }
         pos++;
     }
@@ -3261,7 +3277,7 @@ function MovementH2(){
 }
 
 function EndTurnH2(){
-    
+
     document.getElementById("healH2").disabled = false;
     document.querySelector('#healH2').innerHTML = 'Heal';
     document.getElementById("attackH2").disabled = false;
@@ -3293,7 +3309,7 @@ function EndTurnH2(){
         } else if(player1Color.value == "Yellow"){
             document.body.style.backgroundColor = "#FFE88F"
         }
-       
+
         document.getElementById("turns").style.visibility = "visible"
         document.getElementById("turns2").style.visibility = "hidden"
 
