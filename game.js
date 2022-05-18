@@ -121,7 +121,7 @@ function addShipTo(thisCell, thisShip, thisColor) {
         "shipColor": thisColor,
         "HP": result[0].shipHP,
     }
-    drawHP();
+    //drawHP();
 }
 
 function moveShipTo(from, to) {
